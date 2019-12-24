@@ -1,0 +1,76 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KpInfohelp"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+            xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+     xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"         
+    x:Class="KpInfohelp.Kamera1Settings"
+             mc:Ignorable="d" 
+             d:DesignHeight="420" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:ViewModelKamerySettings />
+    </UserControl.DataContext>
+    
+    <Grid>
+        <dxlc:LayoutControl Orientation="Vertical" Background="AliceBlue">
+            <dxlc:LayoutItem HorizontalAlignment="Stretch">
+                <dxb:BarContainerControl Grid.Row="0">
+                    <dxb:ToolBarControl Caption="Main Toolbar" BarItemHorizontalIndent="10" AllowCollapse="False" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                        <!--<dxb:BarButtonItem Content="Dodaj" Command="{Binding AddNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Add-16.png" />-->
+                        <dxb:BarButtonItem Content="Aktualizuj" Command="{Binding UdpKamera1Command}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Edit-16.png" />
+                        <dxb:BarButtonItem Content="Czyść Wybór" Command="{Binding ClearNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Erase-16.png" />
+                    </dxb:ToolBarControl>
+                </dxb:BarContainerControl>
+            </dxlc:LayoutItem>
+       
+            <dxlc:LayoutGroup Header="Konfiguracja Kamery" Orientation="Vertical" UseLayoutRounding="True" View="GroupBox" VerticalAlignment="Stretch">
+                <dxlc:LayoutItem Label="Producent" LabelPosition="Top">
+                    <dxe:ComboBoxEdit DockPanel.Dock="Top"  ShowCustomItems="False"
+                          Margin="10,0,10,0"  EditValue="{Binding Miernik,  UpdateSourceTrigger=PropertyChanged}"
+                          SeparatorString="; "
+                          DisplayMember="Nazwa"
+                           ItemsSource="{Binding MiernikLst}">
+                        <dxe:ComboBoxEdit.StyleSettings>
+                            <dxe:RadioComboBoxStyleSettings />
+                        </dxe:ComboBoxEdit.StyleSettings>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+
+                <dxlc:LayoutItem Label="Model" LabelPosition="Top">
+                    <dxe:ComboBoxEdit DockPanel.Dock="Top"  ShowCustomItems="False"
+                          Margin="10,0,10,0"  EditValue="{Binding Miernik,  UpdateSourceTrigger=PropertyChanged}"
+                          SeparatorString="; "
+                          DisplayMember="Nazwa"
+                           ItemsSource="{Binding MiernikLst}">
+                        <dxe:ComboBoxEdit.StyleSettings>
+                            <dxe:RadioComboBoxStyleSettings />
+                        </dxe:ComboBoxEdit.StyleSettings>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Adres IP Kamery" LabelPosition="Top">
+                    <dxe:TextEdit Text ="{Binding AdressIP1 ,UpdateSourceTrigger=PropertyChanged}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Port" LabelPosition="Top">
+                    <dxe:TextEdit Text ="{Binding Port1 ,UpdateSourceTrigger=PropertyChanged}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Uri" LabelPosition="Top">
+                    <dxe:TextEdit Text ="{Binding Uri1 ,UpdateSourceTrigger=PropertyChanged}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Uri (Live)" LabelPosition="Top">
+                    <dxe:TextEdit Text ="{Binding UriLive1 ,UpdateSourceTrigger=PropertyChanged}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Użytkownik:" LabelPosition="Top">
+                    <dxe:TextEdit Text ="{Binding cameraLogin1 ,UpdateSourceTrigger=PropertyChanged}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Hasło:" LabelPosition="Top">
+                    <dxe:TextEdit Text ="{Binding cameraPassword1 ,UpdateSourceTrigger=PropertyChanged}"/>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+          
+        </dxlc:LayoutControl>
+
+    </Grid>
+</UserControl>

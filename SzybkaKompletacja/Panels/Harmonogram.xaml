@@ -1,0 +1,129 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" 
+          xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:mvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"   
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+    xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduler" xmlns:local="clr-namespace:PlanowanieDostaw" x:Class="PlanowanieDostaw.Harmonogram"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:SchedulerViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <dxlc:LayoutGroup   View="Group" HorizontalAlignment="Stretch" Orientation="Vertical">
+            <dxlc:LayoutGroup>
+                <dxlc:LayoutItem   Label="Zacznij od:" HorizontalAlignment="left" Height="25">
+                <dxe:DateEdit  x:Name="dtDataDo" HorizontalAlignment="Stretch" Width="150" ShowWeekNumbers="True"
+							DateTime="{Binding DataStart, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}"/>
+            </dxlc:LayoutItem>
+                <dxlc:LayoutItem HorizontalAlignment="left">
+                    <Button x:Name="btnFiltruj" Content="OK" Command="{Binding CommandGoTot}" Width="45" Height="25"/>
+            </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+           <dxlc:LayoutItem    HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <dxsch:SchedulerControl x:Name="scheduler" ActiveViewType="Month" ActiveViewChanged="scheduler_ActiveViewChanged" ActiveViewChanging="scheduler_ActiveViewChanging" SelectionChanged="scheduler_SelectionChanged" PopupMenuShowing="scheduler_PopupMenuShowing">
+                    <mvvm:Interaction.Behaviors>
+                        <mvvm:EventToCommand EventName="Loaded" Command="{Binding SchedulerLoadedCommand}" PassEventArgsToCommand="True" />
+                    </mvvm:Interaction.Behaviors>
+                    <dxsch:SchedulerControl.OptionsView >
+                        <dxsch:OptionsView >
+                            <dxsch:OptionsView.NavigationButtonOptions>
+                                <dxsch:NavigationButtonOptions Visibility="Never"/>
+                            </dxsch:OptionsView.NavigationButtonOptions>
+                        </dxsch:OptionsView>
+                    </dxsch:SchedulerControl.OptionsView>
+
+                    <dxsch:SchedulerControl.DayView>
+                        <dxsch:DayView ResourcesPerPage="2" DayCount="3">
+                            <dxsch:DayView.AppointmentDisplayOptions>
+                                <dxsch:SchedulerDayViewAppointmentDisplayOptions   EndTimeVisibility="Never" StartTimeVisibility="Never"/>
+                            </dxsch:DayView.AppointmentDisplayOptions>
+                        </dxsch:DayView>
+                    </dxsch:SchedulerControl.DayView>
+
+
+                    <dxsch:SchedulerControl.WorkWeekView>
+                        <dxsch:WorkWeekView ResourcesPerPage="2"></dxsch:WorkWeekView>
+                    </dxsch:SchedulerControl.WorkWeekView>
+                    <dxsch:SchedulerControl.WeekView >
+                        <dxsch:WeekView ResourcesPerPage="2" Enabled="False"/>
+                    </dxsch:SchedulerControl.WeekView>
+                    <dxsch:SchedulerControl.FullWeekView>
+                        <dxsch:FullWeekView ResourcesPerPage="2" Enabled="True"/>
+                    </dxsch:SchedulerControl.FullWeekView>
+                    <dxsch:SchedulerControl.MonthView>
+
+                        <dxsch:MonthView ResourcesPerPage="2">
+
+                            <dxsch:MonthView.AppointmentDisplayOptions>
+                                <dxsch:SchedulerMonthViewAppointmentDisplayOptions 
+                        EndTimeVisibility="Never" StartTimeVisibility="Never"/>
+                            </dxsch:MonthView.AppointmentDisplayOptions>
+                        </dxsch:MonthView>
+                    </dxsch:SchedulerControl.MonthView>
+                    <dxsch:SchedulerControl.TimelineView>
+                        <dxsch:TimelineView ResourcesPerPage="2"></dxsch:TimelineView>
+                    </dxsch:SchedulerControl.TimelineView>
+
+                    <dxsch:SchedulerControl.Storage>
+                        <dxsch:SchedulerStorage>
+                            <mvvm:Interaction.Behaviors>
+                                <mvvm:EventToCommand EventName="FetchAppointments" Command="{Binding FetchAppointmentsCommand}" PassEventArgsToCommand="True" />
+                                <mvvm:EventToCommand EventName="AppointmentsInserted" Command="{Binding AppointmentsModifiedCommand}"  PassEventArgsToCommand="True"/>
+                                <mvvm:EventToCommand EventName="AppointmentsChanged" Command="{Binding AppointmentsModifiedCommand}"  PassEventArgsToCommand="True"/>
+                                <mvvm:EventToCommand EventName="AppointmentsDeleted" Command="{Binding AppointmentsDeletedCommand}"  PassEventArgsToCommand="True"/>
+                            </mvvm:Interaction.Behaviors>
+                            <dxsch:SchedulerStorage.AppointmentStorage>
+                                <dxsch:AppointmentStorage DataSource="{Binding Appointments ,UpdateSourceTrigger=PropertyChanged}"  ResourceSharing="False">
+
+                                    <dxsch:AppointmentStorage.Mappings>
+                                        <dxsch:AppointmentMapping
+									Start="StartTime"
+									End="EndTime"
+									Subject="Subject"
+									Description="Description"
+									Location="Location"
+									AllDay="AllDay"
+									Label="Label"
+                                	Status="Status"
+									Type="EventType"
+									RecurrenceInfo="RecurrenceInfo"
+									ReminderInfo="ReminderInfo"
+									ResourceId="ResourceId"/>
+                                    </dxsch:AppointmentStorage.Mappings>
+                                    <dxsch:AppointmentStorage.CustomFieldMappings>
+                                        <dxsch:SchedulerCustomFieldMapping Member="Price" Name="cfPrice" ValueType="Decimal"/>
+                                    </dxsch:AppointmentStorage.CustomFieldMappings>
+                                    <dxsch:AppointmentStorage.Labels>
+                                        <dxsch:AppointmentLabelCollection>
+                                            <dxsch:AppointmentLabel DisplayName="Important" MenuCaption="Important" Color="#F1B4B4"></dxsch:AppointmentLabel>
+                                            <dxsch:AppointmentLabel DisplayName="Business" MenuCaption="Business" Color="#ABD1F3"></dxsch:AppointmentLabel>
+                                            <dxsch:AppointmentLabel DisplayName="Personal" MenuCaption="Personal" Color="#F5EB90"></dxsch:AppointmentLabel>
+                                            <dxsch:AppointmentLabel DisplayName="Birthday " MenuCaption="Birthday" Color="#D1B0E3"></dxsch:AppointmentLabel>
+                                            <dxsch:AppointmentLabel DisplayName="Vocation" MenuCaption="Vocation" Color="#EBD2AA"></dxsch:AppointmentLabel>
+                                        </dxsch:AppointmentLabelCollection>
+                                    </dxsch:AppointmentStorage.Labels>
+                                </dxsch:AppointmentStorage>
+                            </dxsch:SchedulerStorage.AppointmentStorage>
+                            <dxsch:SchedulerStorage.ResourceStorage>
+                                <dxsch:ResourceStorage DataSource="{Binding Resources}">
+                                    <dxsch:ResourceStorage.Mappings>
+                                        <dxsch:ResourceMapping
+									Id="Id"
+									Caption="Name"
+									Color="Color"/>
+                                    </dxsch:ResourceStorage.Mappings>
+                                </dxsch:ResourceStorage>
+                            </dxsch:SchedulerStorage.ResourceStorage>
+                        </dxsch:SchedulerStorage>
+                    </dxsch:SchedulerControl.Storage>
+                </dxsch:SchedulerControl>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+    </Grid>
+</UserControl>

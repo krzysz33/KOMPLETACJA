@@ -1,0 +1,979 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E6C8B751-2C88-4EC4-A8E2-921A796F5166}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KpInfohelp</RootNamespace>
+    <AssemblyName>SzybkaKompletacja</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>IMAGES\logo_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v17.1.Export, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Carousel.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Controls.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Core.v17.1" />
+    <Reference Include="DevExpress.Data.v17.1" />
+    <Reference Include="DevExpress.Xpf.Core.v17.1.Extensions, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\DevExpress 17.1\Components\Bin\Framework\DevExpress.Xpf.Core.v17.1.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Docking.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.DocumentViewer.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.Grid.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.Grid.v17.1.Extensions, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\DevExpress 17.1\Components\Bin\Framework\DevExpress.Xpf.Grid.v17.1.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Layout.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.LayoutControl.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.NavBar.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Printing.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Ribbon.v17.1" />
+    <Reference Include="DevExpress.Printing.v17.1.Core" />
+    <Reference Include="DevExpress.Images.v17.1">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v17.1">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.RichEdit.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Scheduler.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Themes.Office2010Silver.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Themes.Office2013LightGray.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v17.1" />
+    <Reference Include="DevExpress.Xpo.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v17.1, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v17.1.Core, Version=17.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.ConnectionInfoExtended, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Smo, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WebEye.Controls.Wpf.StreamPlayerControl, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebEye.Controls.Wpf.StreamPlayerControl.1.0.5\lib\net40\WebEye.Controls.Wpf.StreamPlayerControl.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Common\AppInfoHandler.cs" />
+    <Compile Include="Common\AppInfo.cs" />
+    <Compile Include="IHP_CENNIK.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_CENNIKHISTORIA.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_COMCONFIG.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_DANEFIRMY.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_DEFCENY.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_DEFSTATUS.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_DOSTAWA.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_ERPCONNECTOR.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_FOTO.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_GRUPAKART.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_GRUPAPARAMETRY.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_HARMONOGRAM_DZIENNY.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_JM.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_JZ.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_KARTOTEKA.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_KIEROWCA.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_KONTRAHENT.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_KONTRAHENT_ARCH.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_MASZYNA.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_MIERNIK.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_MODEL.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_NAGLDOK.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_NUMERACJA.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_PARAMETRY.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_POZDOK.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_PRIORYTET.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_PRODUCENT.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_RODZAJDOK.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_RODZAJKART.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_RODZGRUPKART.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_ROZCHDOST.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_SAMOCHOD.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_STATUSHISTORIA.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_STAWKAVAT.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_TRASY.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_WAZENIE_USLUGA.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_WYSTCECHKART.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_WYSTGRKART.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_WYSTTRASAKONTRAH.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_WYST_GRUPAPARAM.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_WYST_JZ.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHP_ZAM_USERS.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Kamery\KameryDAL.cs" />
+    <Compile Include="Krypto.cs" />
+    <Compile Include="LicConfig.cs" />
+    <Compile Include="Licencja.cs" />
+    <Compile Include="AppSettings2.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Common\Base64Change.cs" />
+    <Compile Include="Common\DatabaseOperations.cs" />
+    <Compile Include="Common\DataCoding.cs" />
+    <Compile Include="Common\DataSerializer.cs" />
+    <Compile Include="Common\DataService.cs" />
+    <Compile Include="Common\DataTypeConvert.cs" />
+    <Compile Include="Common\IDataService.cs" />
+    <Compile Include="Common\PasswordManager.cs" />
+    <Compile Include="CommunicationManager.cs" />
+    <Compile Include="CustomDXGridLocalizer.cs" />
+    <Compile Include="CustomDXMessageBoxLocalizer.cs" />
+    <Compile Include="IMainWindowService.cs" />
+    <Compile Include="Kamery\AutomaticMultiPartReader.cs" />
+    <Compile Include="Kamery\ImageReadyEventArsgs.cs" />
+    <Compile Include="Kamery\IpCamController.cs" />
+    <Compile Include="Kamery\MultiPartStream.cs" />
+    <Compile Include="Kamery\PartReadyEventArgs.cs" />
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogManager.cs" />
+    <Compile Include="Messages\DokumentMessage.cs" />
+    <Compile Include="Messages\RejWagaMessage.cs" />
+    <Compile Include="ModelViewsEx\ComConfig.cs" />
+    <Compile Include="ModelViewsEx\CennikView.cs" />
+    <Compile Include="ModelViewsEx\IHP_GRUPAKART_EX.cs" />
+    <Compile Include="ModelViewsEx\IHP_PARAMETRY_EX.cs" />
+    <Compile Include="ModelViewsEx\IHP_KARTOTEKA_EX.cs" />
+    <Compile Include="ModelViewsEx\IHP_WAZENIE_USLUGA_EX.cs" />
+    <Compile Include="ModelViewsEx\IHP_ZAM_USERS_EX.cs" />
+    <Compile Include="ModelViewsEx\SqlStatmentsModel.cs" />
+    <Compile Include="ModelViewsEx\WystTrasyKartView.cs" />
+    <Compile Include="ModelViewsEx\WystJednDodatView.cs" />
+    <Compile Include="ModelViewsEx\ZamowieniaView.cs" />
+    <Compile Include="ModelViews\CrudVMBase.cs" />
+    <Compile Include="ModelViews\DisplayTextHelper.cs" />
+    <Compile Include="ModelViews\ModuleSelectorViewModel.cs" />
+    <Compile Include="ModelViews\NotifyUIBase.cs" />
+    <Compile Include="ModelViews\Panels.cs" />
+    <Compile Include="ModelViews\RelayCommand .cs" />
+    <Compile Include="ModelViews\StatusyView.cs" />
+    <Compile Include="ModelViews\View1ViewModel.cs" />
+    <Compile Include="ModelViews\ViewModel.cs" />
+    <Compile Include="ModelViews\ViewModelHarmonogramDzienny.cs" />
+    <Compile Include="ModelViews\ViewModelJM.cs" />
+    <Compile Include="ModelViews\ViewModelTrasy.cs" />
+    <Compile Include="ModelViews\ViewModelCennik.cs" />
+    <Compile Include="ModelViews\ViewModelGrupaKart.cs" />
+    <Compile Include="ModelViews\ViewModelDefCeny.cs" />
+    <Compile Include="ModelViews\ViewModelERPConnector.cs" />
+    <Compile Include="ModelViews\ViewModelDaneFirmy.cs" />
+    <Compile Include="ModelViews\ViewModelBazyDanych.cs" />
+    <Compile Include="ModelViews\ViewModelImport.cs" />
+    <Compile Include="ModelViews\ViewModelKafelki.cs" />
+    <Compile Include="ModelViews\ViewModelKafelkiFiltr.cs" />
+    <Compile Include="ModelViews\ViewModelKafelkiOkno.cs" />
+    <Compile Include="ModelViews\ViewModelKamerySettings.cs" />
+    <Compile Include="ModelViews\ViewModelWygladOkien.cs" />
+    <Compile Include="ModelViews\ViewModelLicencja.cs" />
+    <Compile Include="ModelViews\ViewModelMiernik.cs" />
+    <Compile Include="ModelViews\ViewModelLogin.cs" />
+    <Compile Include="ModelViews\ViewModelOknoUzytkownikow.cs" />
+    <Compile Include="ModelViews\ViewModelWartParam.cs" />
+    <Compile Include="ModelViews\ViewModelKonfWazenia.cs" />
+    <Compile Include="ModelViews\ViewModelKamera3.cs" />
+    <Compile Include="ModelViews\ViewModelKamera2.cs" />
+    <Compile Include="ModelViews\ViewModelKamera1.cs" />
+    <Compile Include="ModelViews\ViewModelLocator.cs" />
+    <Compile Include="ModelViews\ViewModelPoz.cs" />
+    <Compile Include="ModelViews\ViewModelPozDok.cs" />
+    <Compile Include="ModelViews\ViewModelDokumnetySettings.cs" />
+    <Compile Include="ModelViews\ViewModelProgramSettings.cs" />
+    <Compile Include="ModelViews\ViewModelKartoteki.cs" />
+    <Compile Include="ModelViews\ViewModelPojazdy.cs" />
+    <Compile Include="ModelViews\ViewModelKierowcy.cs" />
+    <Compile Include="ModelViews\ViewModelKontrahent.cs" />
+    <Compile Include="ModelViews\ViewModelMain.cs" />
+    <Compile Include="ModelViews\ViewModelUsluga.cs" />
+    <Compile Include="ModelViews\ViewModelOferta.cs" />
+    <Compile Include="ModelViews\ViewModelZamowienieLista.cs" />
+    <Compile Include="ModelViews\ViewModelZamowienie.cs" />
+    <Compile Include="ModelViews\VMBase.cs" />
+    <Compile Include="Panels\CennikDlaKart.xaml.cs">
+      <DependentUpon>CennikDlaKart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\GrupaKart.xaml.cs">
+      <DependentUpon>GrupaKart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\HarmonogramDzienny.xaml.cs">
+      <DependentUpon>HarmonogramDzienny.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Kafelki.xaml.cs">
+      <DependentUpon>Kafelki.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Kamera2Settings.xaml.cs">
+      <DependentUpon>Kamera2Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Kamera3Settings.xaml.cs">
+      <DependentUpon>Kamera3Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panel.xaml.cs">
+      <DependentUpon>Panel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\PokazDaneHarmonogram.xaml.cs">
+      <DependentUpon>PokazDaneHarmonogram.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\WygladOkien.xaml.cs">
+      <DependentUpon>WygladOkien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Licencja.xaml.cs">
+      <DependentUpon>Licencja.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Cennik.xaml.cs">
+      <DependentUpon>Cennik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Import.xaml.cs">
+      <DependentUpon>Import.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\DaneFirmy.xaml.cs">
+      <DependentUpon>DaneFirmy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\DefCeny.xaml.cs">
+      <DependentUpon>DefCeny.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\KonfWazenia.xaml.cs">
+      <DependentUpon>KonfWazenia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Mierniki.xaml.cs">
+      <DependentUpon>Mierniki.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\BazaDanych.xaml.cs">
+      <DependentUpon>BazaDanych.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\OknoUzytkownikow.xaml.cs">
+      <DependentUpon>OknoUzytkownikow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\ProgramSettings.xaml.cs">
+      <DependentUpon>ProgramSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Kamera1Settings.xaml.cs">
+      <DependentUpon>Kamera1Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\View1.xaml.cs">
+      <DependentUpon>View1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Oferta.xaml.cs">
+      <DependentUpon>Oferta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\ZamowieniaLista.xaml.cs">
+      <DependentUpon>ZamowieniaLista.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramDataSotrage.cs" />
+    <Compile Include="Reports\KwitUsluga.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\KwitUsluga.Designer.cs">
+      <DependentUpon>KwitUsluga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptKwitDB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptKwitDB.Designer.cs">
+      <DependentUpon>rptKwitDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="Repository\GrKartRepository.cs" />
+    <Compile Include="Repository\JMRepository.cs" />
+    <Compile Include="Repository\ZamowieniaListaRepository.cs" />
+    <Compile Include="Repository\KartotekaRepository.cs" />
+    <Compile Include="Repository\CennikiRepository.cs" />
+    <Compile Include="Repository\DokumentyRepository.cs" />
+    <Compile Include="Repository\RejestrRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewClasses\DialogViewModel.cs" />
+    <Compile Include="ViewClasses\DokDoWyst.cs" />
+    <Compile Include="ViewClasses\PozForm.cs" />
+    <Compile Include="Common\Waga.cs" />
+    <Compile Include="WagaDuza.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WagaDuza.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WagaDuza.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WagaDuza.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WagaDuza.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WagaDuza.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Trasy.xaml.cs">
+      <DependentUpon>Trasy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\JaednMiary.xaml.cs">
+      <DependentUpon>JaednMiary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GrupyKartPodpowiedz.xaml.cs">
+      <DependentUpon>GrupyKartPodpowiedz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Maszyny.xaml.cs">
+      <DependentUpon>Maszyny.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SplashScreen\SplashScreenView.xaml.cs">
+      <DependentUpon>SplashScreenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\JaednDodatPodpowiedz .xaml.cs">
+      <DependentUpon>JaednDodatPodpowiedz .xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\TrasyPodpowiedz.xaml.cs">
+      <DependentUpon>TrasyPodpowiedz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ZakresDat.xaml.cs">
+      <DependentUpon>ZakresDat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WartParam.xaml.cs">
+      <DependentUpon>WartParam.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Poz.xaml.cs">
+      <DependentUpon>Poz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PozDok.xaml.cs">
+      <DependentUpon>PozDok.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Kamera3.xaml.cs">
+      <DependentUpon>Kamera3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Kamera2.xaml.cs">
+      <DependentUpon>Kamera2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Kamera1.xaml.cs">
+      <DependentUpon>Kamera1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\DokumentySettings.xaml.cs">
+      <DependentUpon>DokumentySettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Kartoteki.xaml.cs">
+      <DependentUpon>Kartoteki.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Kontrahent.xaml.cs">
+      <DependentUpon>Kontrahent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Kierowcy.xaml.cs">
+      <DependentUpon>Kierowcy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Pojazdy.xaml.cs">
+      <DependentUpon>Pojazdy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\RestSerwer.xaml.cs">
+      <DependentUpon>RestSerwer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\SystemErp.xaml.cs">
+      <DependentUpon>SystemErp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panels\Usluga.xaml.cs">
+      <DependentUpon>Usluga.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfig.cs" />
+    <Compile Include="RodzajFiltru.cs" />
+    <Compile Include="Reports\rptKwit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptKwit.Designer.cs">
+      <DependentUpon>rptKwit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptKwitWagowy.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptKwitWagowy.Designer.cs">
+      <DependentUpon>rptKwitWagowy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SerializeDeserialize.cs" />
+    <Compile Include="SubjectSfera.cs" />
+    <Compile Include="SubjectSferaBasic.cs" />
+    <Compile Include="ViewClasses\WagaRamka.cs" />
+    <Compile Include="ViewClasses\WazenieKonfiguracja.cs" />
+    <Compile Include="Windows\frmKiwtWagowy.xaml.cs">
+      <DependentUpon>frmKiwtWagowy.xaml</DependentUpon>
+    </Compile>
+    <Page Include="LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Panels\CennikDlaKart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\GrupaKart.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\HarmonogramDzienny.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Kafelki.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Kamera2Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Kamera3Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\PokazDaneHarmonogram.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\WygladOkien.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Licencja.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Cennik.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Import.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\DaneFirmy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\DefCeny.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\KonfWazenia.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Mierniki.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\BazaDanych.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\OknoUzytkownikow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\ProgramSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Kamera1Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\View1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Oferta.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\ZamowieniaLista.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Trasy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\JaednMiary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\GrupyKartPodpowiedz.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Maszyny.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\SplashScreen\SplashScreenView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\JaednDodatPodpowiedz .xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\TrasyPodpowiedz.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\ZakresDat.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\WartParam.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\Poz.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\PozDok.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Kamera3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Kamera2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Kamera1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\DokumentySettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Kartoteki.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Kontrahent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Kierowcy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\Pojazdy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panels\RestSerwer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\SystemErp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Panels\Usluga.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\frmKiwtWagowy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\KwitUsluga.resx">
+      <DependentUpon>KwitUsluga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptKwit.resx">
+      <DependentUpon>rptKwit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptKwitDB.resx">
+      <DependentUpon>rptKwitDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptKwitWagowy.resx">
+      <DependentUpon>rptKwitWagowy.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <EntityDeploy Include="WagaDuza.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WagaDuza.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="WagaDuza.edmx.diagram">
+      <DependentUpon>WagaDuza.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{0C0FF45D-87C8-4333-9075-3D9B4D64F9FC}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="InsERT">
+      <Guid>{F1E91071-83CC-4766-90BA-E038B005ACE5}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons8-Add-16.png" />
+    <Resource Include="Resources\icons8-Bullet Camera-50.png" />
+    <Resource Include="Resources\icons8-Business Building-50.png" />
+    <Resource Include="Resources\icons8-Car-50.png" />
+    <Resource Include="Resources\icons8-Delete-16.png" />
+    <Resource Include="Resources\icons8-Documents-50.png" />
+    <Resource Include="Resources\icons8-Driver-50.png" />
+    <Resource Include="Resources\icons8-Edit-16.png" />
+    <Resource Include="Resources\icons8-Erase-16.png" />
+    <Resource Include="Resources\icons8-List-50.png" />
+    <Resource Include="Resources\icons8-Print-16.png" />
+    <Resource Include="Resources\icons8-Print-80.png" />
+    <Resource Include="Resources\icons8-Services-50.png" />
+    <Resource Include="Resources\icons8-SettingsFilled-50.png" />
+    <Resource Include="Resources\icons8-Warehouse-50.png" />
+    <Resource Include="Resources\icons8-Industrial Scales-16.png" />
+    <Resource Include="Resources\icons8-Industrial Scales-50.png" />
+    <Resource Include="Resources\icons8-disconnected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Windows\SplashScreen\logo_t.bmp" />
+    <Resource Include="Windows\SplashScreen\Image.png" />
+    <Resource Include="Windows\SplashScreen\Logo.png" />
+    <Resource Include="Resources\icons8-filter-16.png" />
+    <Resource Include="Resources\icons8-filter-40.png" />
+    <Resource Include="Resources\icons8-List-16.png" />
+    <Resource Include="Resources\icons8-SettingsFilled-16.png" />
+    <Resource Include="Resources\icons8-Documents-16.png" />
+    <Resource Include="Resources\icons8-synchronize-40.png" />
+    <Resource Include="Resources\icons8-test-passed-40.png" />
+    <Resource Include="Resources\icons8-navigate-40.png" />
+    <Resource Include="IMAGES\logo.ico" />
+    <Resource Include="IMAGES\logo2.ico" />
+    <Resource Include="Resources\icons8-weight-station-40.png" />
+    <Resource Include="Resources\icons8-dayCalendar-32.png" />
+    <Resource Include="Resources\icons8-minus-1-month-32.png" />
+    <Resource Include="Resources\icons8-plus-1-year-32.png" />
+    <Resource Include="Dodatki\AppSettings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Dodatki\DockingLayout.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Dodatki\DockingLayoutRejWaga.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Dodatki\KarottekiGrid.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Dodatki\KontrahGridFlie.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Dodatki\panelscfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\icons8-uncheck-all-16.png" />
+    <Resource Include="Resources\icons8-check-all-16.png" />
+    <Resource Include="IMAGES\logo_t.bmp" />
+    <Resource Include="AppSettings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="IMAGES\Info_help_bez_tla.png" />
+    <Resource Include="IMAGES\Info_help_bez_tla50.png" />
+    <Resource Include="IMAGES\Info_help_bez_tla250.png" />
+    <Resource Include="IMAGES\icons8-data-protection-80.png" />
+    <Resource Include="IMAGES\logo_new_icon.ico" />
+    <Resource Include="IMAGES\icons8-exit-50.png" />
+    <Resource Include="IMAGES\icons8-expensive-50.png" />
+    <Resource Include="IMAGES\logo_z_tlem.png" />
+    <Resource Include="IMAGES\icons8-price-tag-50.png" />
+    <Resource Include="IMAGES\logo_icon.ico" />
+    <Resource Include="IMAGES\camera_kolor_480.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="IMAGES\icons8-back-50.png" />
+    <Resource Include="IMAGES\icons8-forward-50.png" />
+    <Content Include="WagaDuza.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WagaDuza.edmx</DependentUpon>
+      <LastGenOutput>WagaDuza.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="WagaDuza.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WagaDuza.edmx</DependentUpon>
+      <LastGenOutput>WagaDuza.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

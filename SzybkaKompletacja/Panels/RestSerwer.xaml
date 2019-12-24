@@ -1,0 +1,41 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KpInfohelp"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+            xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+     xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"         
+    x:Class="KpInfohelp.RestSerwer"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+
+        <dxlc:LayoutControl Orientation="Vertical" Background="AliceBlue">
+            <dxlc:LayoutItem HorizontalAlignment="Stretch">
+                <dxb:BarContainerControl Grid.Row="0">
+                    <dxb:ToolBarControl Caption="Main Toolbar" BarItemHorizontalIndent="10" AllowCollapse="False" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                        <!--<dxb:BarButtonItem Content="Dodaj" Command="{Binding AddNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Add-16.png" />-->
+                        <dxb:BarButtonItem Content="Aktualizuj" Command="{Binding UpdNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Edit-16.png" />
+                        <dxb:BarButtonItem Content="Czyść Wybór" Command="{Binding ClearNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Erase-16.png" />
+                    </dxb:ToolBarControl>
+                </dxb:BarContainerControl>
+            </dxlc:LayoutItem>
+       
+            <dxlc:LayoutGroup Header="Konfiguracja Rest Serwera" Orientation="Vertical" UseLayoutRounding="True" View="GroupBox" VerticalAlignment="Stretch">
+                <dxlc:LayoutItem Label="Adres IP Serwera" LabelPosition="Top">
+                    <dxe:TextEdit EditValue="192.168.168.1"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Użytkownik:" LabelPosition="Top">
+                    <dxe:TextEdit/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Hasło:" LabelPosition="Top">
+                    <dxe:TextEdit/>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+
+        </dxlc:LayoutControl>
+
+    </Grid>
+</UserControl>

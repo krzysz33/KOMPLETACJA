@@ -1,0 +1,278 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+               xmlns:local="clr-namespace:KpInfohelp"
+              xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"  
+              xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v17.1"
+              x:Class="KpInfohelp.DaneFirmy"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="1200">
+
+    <UserControl.DataContext>
+        <local:ViewModelDaneFirmy />
+    </UserControl.DataContext>
+
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService />
+    </dxmvvm:Interaction.Behaviors>
+
+    <Grid>
+        <dxlc:LayoutControl Orientation="Vertical"  x:Name="container" dxe:ValidationService.IsValidationContainer="True">
+            <!--<dxlc:LayoutItem HorizontalAlignment="Stretch">
+                <dxb:BarContainerControl Grid.Row="0">
+                    <dxb:ToolBarControl Caption="Main Toolbar" BarItemHorizontalIndent="10" AllowCollapse="True" BarItemDisplayMode="Default" UseWholeRow="False" IsCollapsed="False">
+                        <dxb:BarButtonItem Content="Importuj Subject" Command="{Binding ImportSubjectCommand}" Glyph="{dx:DXImage Image=ConvertToRange_16x16.png}" />
+                        <dxb:BarButtonItem Content="Export Subject" Command="{Binding ExportSubjectCommand}" Glyph="{dx:DXImage Image=ConvertToRange_16x16.png}" />
+                        <dxb:BarButtonItem Content="Dodaj" Command="{Binding AddNewProgCommand}" Glyph="{dx:DXImage Image=Add_16x16.png}" />
+                        <dxb:BarButtonItem Content="Aktualizuj" Command="{Binding UpdateCommand}" Glyph="{dx:DXImage Image=Insert_16x16.png}" />
+                        <dxb:BarButtonItem Content="Czyść Wybór" Command="{Binding ClearCommand}" Glyph="{dx:DXImage Image=Clear_16x16.png}" />
+                        <dxb:BarButtonItem Content="Usuñ" Command="{Binding DeleteCommand}" Glyph="{dx:DXImage Image=Delete_16x16.png}" />
+                        <dxb:BarButtonItem Content="Wystaw Zamówienie" Command="{Binding CreateDokCommand}" Glyph="{dx:DXImage Image=InsertHeader_16x16.png}" />
+                    </dxb:ToolBarControl>
+                </dxb:BarContainerControl>
+            </dxlc:LayoutItem>-->
+            <dxlc:LayoutItem HorizontalAlignment="Stretch">
+                <dxb:BarContainerControl Grid.Row="0">
+                    <dxb:ToolBarControl Caption="Main Toolbar" BarItemHorizontalIndent="10" AllowCollapse="False" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                        <dxb:BarButtonItem Content="Zapisz" Command="{Binding AddNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Add-16.png"  IsEnabled="{Binding ElementName=container, Path=(dxe:ValidationService.HasValidationError), Converter={dxmvvm:BooleanNegationConverter}}"  />
+                        <!--<dxb:BarButtonItem Content="Aktualizuj" Command="{Binding UpdateCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Edit-16.png" />-->
+                        <dxb:BarButtonItem Content="Czyść Wybór" Command="{Binding ClearCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Erase-16.png" />
+                        <dxb:BarButtonItem Content="Usuń" Command="{Binding DeleteCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Delete-16.png" />
+                    </dxb:ToolBarControl>
+                </dxb:BarContainerControl>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutGroup x:Name="layoutGroup" VerticalAlignment="Top" Orientation="Horizontal">
+                <dxlc:LayoutGroup Header="Dane Kontaktowe" UseLayoutRounding="True" View="GroupBox" Name="FormKh" IsCollapsed="True" 
+                                   Background="AliceBlue" Orientation="Vertical" HorizontalAlignment="Left" Width="950">
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                        <dxlc:LayoutItem IsRequired="True" Label="Nazwa Firmy Pełna:" Width="450">
+                            <dxe:TextEdit NullText="Nazwa Pełna" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="True"  >
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding NazwaPelna, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                </dxmvvm:Interaction.Behaviors>-->
+                                <Binding Path="NazwaPelna"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" >
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="NazwaPelna"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </dxe:TextEdit>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem IsRequired="True" HorizontalAlignment="Stretch" Label="Nazwa Skrócona:" Width="425">
+                            <dxe:TextEdit NullText="Nazwa Skr."  ValidateOnEnterKeyPressed="True" ValidateOnTextInput="False"  >
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding Nazwa, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                </dxmvvm:Interaction.Behaviors>-->
+                                <Binding Path="Nazwa"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="Nazwa"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </dxe:TextEdit>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+
+                        <dxlc:LayoutItem Label="Nip:"  HorizontalAlignment="Stretch" Width="300">
+
+                            <dxe:TextEdit NullText="Nip" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="False"  >
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding Nip, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                </dxmvvm:Interaction.Behaviors>-->
+                                <Binding Path="Nip"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="Nip"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </dxe:TextEdit>
+
+
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Regon:"  HorizontalAlignment="Stretch" Width="300">
+                            <dxe:TextEdit NullText="Regon" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="False"  >
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding Regon, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                </dxmvvm:Interaction.Behaviors>-->
+                                <Binding Path="Regon"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="Regon"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </dxe:TextEdit>
+
+
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="E-Mail" Width="270">
+
+                            <dxe:TextEdit NullText="E-mail" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="False"   >
+                                <Binding Path="Email"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="Email"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                <local:DisplayTextHelper TextToBind="{Binding Email, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                            </dxmvvm:Interaction.Behaviors>-->
+                            </dxe:TextEdit>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                        <dxlc:LayoutItem IsRequired="True" Label="Miejscowość:" Width="300">
+
+                            <dxe:TextEdit NullText="Miejscowość" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="False"  >
+                                <Binding Path="Miejscowosc"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="Miejscowosc"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding Miejscowosc, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                </dxmvvm:Interaction.Behaviors>-->
+                            </dxe:TextEdit>
+
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem IsRequired="True" Label="Ulica:" Width="300">
+                            <dxe:TextEdit NullText="Nazwa Ulicy" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="False"  >
+                                <Binding Path="Ulica"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="Ulica"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding Ulica, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                </dxmvvm:Interaction.Behaviors>-->
+                            </dxe:TextEdit>
+
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem IsRequired="True" Label="Nr D.:" Width="133">
+                            <dxe:TextEdit NullText="Nr. D." ValidateOnEnterKeyPressed="True" ValidateOnTextInput="False"  >
+                                <Binding Path="NrDomu"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="NrDomu"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding NrDomu, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                </dxmvvm:Interaction.Behaviors>-->
+                            </dxe:TextEdit>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem IsRequired="True" Label="Nr L.:" Width="132">
+
+                            <dxe:TextEdit NullText="Nr. Lok." ValidateOnEnterKeyPressed="True" ValidateOnTextInput="False"  >
+                                <Binding Path="NrLokalu"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="NrLokalu"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding NrLokalu, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                </dxmvvm:Interaction.Behaviors>-->
+                            </dxe:TextEdit>
+
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                        <dxlc:LayoutItem IsRequired="True" Label="Kod Pocztowy:" Width="180">
+                            <dxe:TextEdit NullText="Kod Pocztowy" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="False"  >
+                                <Binding Path="KodPoczta"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="KodPoczta"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding KodPoczta, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                </dxmvvm:Interaction.Behaviors>-->
+                            </dxe:TextEdit>
+
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem IsRequired="True" Label="Poczta:" Width="240">
+                            <dxe:TextEdit NullText="Poczta" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="False"  >
+                                <Binding Path="Poczta"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="Poczta"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding Poczta, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                </dxmvvm:Interaction.Behaviors>-->
+                            </dxe:TextEdit>
+
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Tel. Stacjonarny" Width="240">
+
+                            <dxe:TextEdit NullText="telefon" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="False"  Width="150">
+                                <Binding Path="Telefon"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="Telefon"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding Telefon, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                </dxmvvm:Interaction.Behaviors>-->
+                            </dxe:TextEdit>
+
+                            <!--<dxe:TextEdit EditValue="{Binding Kontrah.TELEFON, Mode=TwoWay}">
+                                  <dxmvvm:Interaction.Behaviors>
+                                      <local:DisplayTextHelper TextToBind="{Binding Telefon, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                 </dxmvvm:Interaction.Behaviors>
+                            </dxe:TextEdit>-->
+
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Tel kom." Width="205">
+
+                            <dxe:TextEdit NullText="Telkom." ValidateOnEnterKeyPressed="True" ValidateOnTextInput="False"  >
+                                <Binding Path="Telkom"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRule FieldName="Telkom"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding Telkom, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                </dxmvvm:Interaction.Behaviors>-->
+                            </dxe:TextEdit>
+
+                            <!--<dxe:TextEdit MaskType="Simple" Mask="000-000-000" EditValue="{Binding Kontrah.TELEFON2, Mode=TwoWay}">
+                                    <dxmvvm:Interaction.Behaviors>
+                                        <local:DisplayTextHelper TextToBind="{Binding Telkom, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                    </dxmvvm:Interaction.Behaviors>
+                               </dxe:TextEdit>-->
+
+                        </dxlc:LayoutItem>
+
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+            <dxg:GridControl x:Name="dgvKontrah" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="False" ItemsSource="{Binding Kontrahs}" SelectedItem="{Binding Kontrah}" PreviewKeyDown="dgvKontrah_PreviewKeyDown" MouseDoubleClick="dgvKontrah_MouseDoubleClick">
+                <dxg:GridControl.View>
+                    <dxg:TableView AllowPerPixelScrolling="True" ShowSearchPanelMode="Always" ShowGroupPanel="False" ShowTotalSummary="True"  NavigationStyle="Row" />
+                </dxg:GridControl.View>
+                <dxg:GridColumn FieldName="ODDATY" Header="Od Daty" />
+                <dxg:GridColumn FieldName="NAZWA_SKROCONA" Header="Nazwa Firmy" />
+                <dxg:GridColumn FieldName="NAZWA_FIRMY" Header="Nazwa  Pełna Firmy" />
+                <dxg:GridColumn FieldName="EMAIL" Header="E-Mail" />
+                <dxg:GridColumn FieldName="TELEFON" Header="Tel. Stac." />
+                <dxg:GridColumn FieldName="TELEFON2" Header="Tel. Kom." />
+                <dxg:GridColumn FieldName="NIP" Header="Nip" />
+                <dxg:GridColumn FieldName="REGON" Header="Regon" />
+                <dxg:GridColumn FieldName="MIEJSCOWOSC" Header="Miejscowość" />
+                <dxg:GridColumn FieldName="KODPOCZTOWY" Header="Kod Pocztowy"/>
+                <dxg:GridColumn FieldName="POCZTA" Header="Poczta" />
+                <dxg:GridColumn FieldName="FAX" Header="fax" />
+                <dxg:GridColumn FieldName="ULICA" Header="Ulica" />
+                <dxg:GridColumn FieldName="NRDOMU" Header="Nr Domu" />
+                <dxg:GridColumn FieldName="NRLOKALU" Header="Nr Lokalu" />
+                <dxg:GridColumn FieldName="WWW" Header="Strona WWW" />
+                <dxg:GridColumn FieldName="TELEFON" Header="Telefon Stacjonarny" />
+                <dxg:GridColumn FieldName="ID_URZSKARB" Header=" "  Visible="False"/>
+                <dxg:GridColumn FieldName="ID_KRAJ"  Visible="False" />
+                <dxg:GridColumn FieldName="ID_WOJEWODZTWO" Visible="False" />
+
+            </dxg:GridControl>
+        </dxlc:LayoutControl>
+    </Grid>
+</UserControl>

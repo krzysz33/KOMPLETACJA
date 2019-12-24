@@ -1,0 +1,128 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KpInfohelp"        
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"     
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="KpInfohelp.Mierniki"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+    <UserControl.DataContext>
+        <local:ViewModelMiernik />
+    </UserControl.DataContext>
+    <Grid>
+        <dxlc:LayoutControl Orientation="Vertical" Background="AntiqueWhite">
+            <dxlc:LayoutItem HorizontalAlignment="Stretch">
+                <dxb:BarContainerControl Grid.Row="0">
+                    <dxb:ToolBarControl Caption="Main Toolbar" BarItemHorizontalIndent="10" AllowCollapse="False" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                        <dxb:BarButtonItem Content="Zapisz Ustawienia" Command="{Binding SaveCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Edit-16.png" />
+                        <dxb:BarButtonItem Content="Czyść Wybór" Command="{Binding ClearNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Erase-16.png" />
+                    </dxb:ToolBarControl>
+                </dxb:BarContainerControl>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutGroup Header="Miernik" Orientation="Vertical" UseLayoutRounding="True" View="GroupBox">
+                <!--<dxlc:LayoutItem Label="Producent">
+                    <dxe:ComboBoxEdit DockPanel.Dock="Top"  ShowCustomItems="False" SelectAllOnGotFocus="False"
+                          Margin="10,0,10,0"   EditValue="{Binding wProducent,  UpdateSourceTrigger=PropertyChanged}"
+                          SeparatorString="; "
+                          DisplayMember="Value"
+                           ItemsSource="{Binding ProducentLst}">
+                        <dxe:ComboBoxEdit.StyleSettings>
+                            <dxe:RadioComboBoxStyleSettings />
+                        </dxe:ComboBoxEdit.StyleSettings>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>-->
+                <dxlc:LayoutItem Label="Miernik">
+                    <dxe:ComboBoxEdit DockPanel.Dock="Top"  ShowCustomItems="False"
+                          Margin="10,0,10,0"  EditValue="{Binding Miernik,  UpdateSourceTrigger=PropertyChanged}"
+                          SeparatorString="; "
+                          DisplayMember="Nazwa"
+                           ItemsSource="{Binding MiernikLst}">
+                        <dxe:ComboBoxEdit.StyleSettings>
+                            <dxe:RadioComboBoxStyleSettings />
+                        </dxe:ComboBoxEdit.StyleSettings>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup Header="Ustawienie Portu" Orientation="Vertical" UseLayoutRounding="True" View="GroupBox">
+                <dxlc:LayoutItem Label="Numer Portu Com">
+                    <dxe:ComboBoxEdit DockPanel.Dock="Top"  ShowCustomItems="False"
+                          Margin="10,0,10,0"  EditValue="{Binding wPortName,  UpdateSourceTrigger=PropertyChanged}"
+                          SeparatorString="; "
+                          DisplayMember="Value"
+                           ItemsSource="{Binding PortNameLst}">
+                        <dxe:ComboBoxEdit.StyleSettings>
+                            <dxe:RadioComboBoxStyleSettings />
+                        </dxe:ComboBoxEdit.StyleSettings>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Prędkość">
+                    <dxe:ComboBoxEdit DockPanel.Dock="Top"  ShowCustomItems="False"   
+                          Margin="10,0,10,0"   EditValue="{Binding wSpeed,  UpdateSourceTrigger=PropertyChanged}"
+                          SeparatorString="; "
+                          DisplayMember="Value"
+                           ItemsSource="{Binding SpeedLst}">
+                        <dxe:ComboBoxEdit.StyleSettings>
+                            <dxe:RadioComboBoxStyleSettings />
+                        </dxe:ComboBoxEdit.StyleSettings>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Bit Danych">
+                    <dxe:ComboBoxEdit DockPanel.Dock="Top"  ShowCustomItems="False"
+                          Margin="10,0,10,0" EditValue="{Binding wBitData,  UpdateSourceTrigger=PropertyChanged}"
+                          SeparatorString="; "
+                          DisplayMember="Value"
+                           ItemsSource="{Binding BitDataLst}">
+                        <dxe:ComboBoxEdit.StyleSettings>
+                            <dxe:RadioComboBoxStyleSettings />
+                        </dxe:ComboBoxEdit.StyleSettings>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Parzystość">
+                    <dxe:ComboBoxEdit DockPanel.Dock="Top"   ShowCustomItems="False"   
+                          Margin="10,0,10,0"   EditValue="{Binding wParity,  UpdateSourceTrigger=PropertyChanged}"
+                          SeparatorString="; "
+                          DisplayMember="Value"
+                           ItemsSource="{Binding ParittyLst}">
+                        <dxe:ComboBoxEdit.StyleSettings>
+                            <dxe:RadioComboBoxStyleSettings />
+                        </dxe:ComboBoxEdit.StyleSettings>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Bit Stopu">
+                    <dxe:ComboBoxEdit DockPanel.Dock="Top"  ShowCustomItems="False"
+                          Margin="10,0,10,0"  EditValue="{Binding wBitStop,  UpdateSourceTrigger=PropertyChanged}"
+                          SeparatorString="; "
+                          DisplayMember="Value"
+                           ItemsSource="{Binding BitStopLst}">
+                        <dxe:ComboBoxEdit.StyleSettings>
+                            <dxe:RadioComboBoxStyleSettings />
+                        </dxe:ComboBoxEdit.StyleSettings>
+                    </dxe:ComboBoxEdit>
+
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Sterowanie Przepływem">
+                    <dxe:ComboBoxEdit DockPanel.Dock="Top" ShowCustomItems="False"
+                          Margin="10,0,10,0" EditValue="{Binding wSterPrzep,  UpdateSourceTrigger=PropertyChanged}"
+                          SeparatorString="; "
+                          DisplayMember="Value"
+                           ItemsSource="{Binding SterPrzepLst}">
+                        <dxe:ComboBoxEdit.StyleSettings>
+                            <dxe:RadioComboBoxStyleSettings />
+                        </dxe:ComboBoxEdit.StyleSettings>
+                    </dxe:ComboBoxEdit>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup Header="Sprawdzanie Połączenia z Wagą" UseLayoutRounding="True" View="GroupBox" >
+                <dxlc:LayoutItem   Width="185">
+                    <dxe:TextEdit FontSize="20" Text="{Binding WagaKgLocal, UpdateSourceTrigger=PropertyChanged}"  Background="#FFCADBF3" HorizontalContentAlignment="Center"  Foreground="White" IsReadOnly="True"  FontFamily="Tahoma" AllowNullInput="True"/>
+                </dxlc:LayoutItem>
+                <dx:SimpleButton  Content="Testuj" HorizontalAlignment="Left" Height="30" Width="105" Command="{Binding TestCommand}"   VerticalAlignment="Top" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-test-passed-40.png" GlyphAlignment="Left"/>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutControl>
+    </Grid>
+</UserControl>

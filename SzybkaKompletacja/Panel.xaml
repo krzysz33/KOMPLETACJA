@@ -1,0 +1,211 @@
+﻿<dx:DXWindow xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+                   xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"   
+             xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduler" 
+             xmlns:dxschi="http://schemas.devexpress.com/winfx/2008/xaml/scheduler/internal" 
+                xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        xmlns:local="clr-namespace:KpInfohelp"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v17.1" x:Class="KpInfohelp.Panel"
+        mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800">
+  
+    <dxlc:LayoutControl HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Orientation="Vertical">
+        <dxlc:LayoutGroup Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                 <dxlc:LayoutItem Label="Pracownik :" HorizontalAlignment="Stretch">
+
+                <dxe:TextEdit x:Name="subjectEdit1"
+        				 
+        				EditValue="{Binding Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}" />
+            </dxlc:LayoutItem>
+          
+            <dxlc:LayoutItem Label="Nr zam /pozycja :" HorizontalAlignment="Stretch">
+
+                <dxg:LookUpEdit  
+							DisplayMember="INDEKS"
+							ValueMember="ID_IHP_KARTOTEKA"
+							AutoPopulateColumns="False"
+							AutoComplete="True"
+							IncrementalFiltering="True"
+							ImmediatePopup="True"
+							IsPopupAutoWidth="False"
+							IsSynchronizedWithCurrentItem="False" SelectedItem="{Binding Kartoteka}" ItemsSource="{Binding Kartoteki}" EditValue="{Binding Wazenie.ID_IHP_KARTOTEKA, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" >
+                    <dxg:LookUpEdit.StyleSettings>
+                        <dxg:SearchLookUpEditStyleSettings />
+                    </dxg:LookUpEdit.StyleSettings>
+                    <dxg:LookUpEdit.PopupContentTemplate>
+                        <ControlTemplate>
+                            <dxg:GridControl Width="625" x:Name="PART_GridControl" ItemsSource="{Binding Kartoteki}">
+                                <dxg:GridControl.View>
+                                    <dxg:TableView AutoWidth="True" />
+                                </dxg:GridControl.View>
+                                <dxg:GridColumn FieldName="ID_IHP_KARTOTEKA" Visible="False" Header="ID_KARTOTEKA" />
+                                <dxg:GridColumn FieldName="ID_IHP_STAWKAVAT" Visible="False" Header="ID_STAWKAVAT" />
+                                <dxg:GridColumn FieldName="ID_IHP_RODZAJKART" Visible="False" Header="E-ID_RODZAJKART" />
+                                <dxg:GridColumn FieldName="ID_IHP_GRUPAKART" Visible="False" Header="ID_GRUPAKART" />
+                                <dxg:GridColumn FieldName="ID_IHP_JM" Visible="False" Header="ID_IHP_JM" />
+                                <dxg:GridColumn FieldName="ID_TOWSUBJECT" Visible="False" Header="ID_TOWSUBJECT" />
+                                <dxg:GridColumn FieldName="ID_JM" Visible="False" Header="ID_JM." />
+                                <dxg:GridColumn FieldName="INDEKS" Header="Indeks" />
+                                <dxg:GridColumn FieldName="NAZWASKR" Header="Nazwa Skr." />
+                                <dxg:GridColumn FieldName="NAZWADL" Header="Nazwa Dl." />
+                                <dxg:GridColumn FieldName="IHP_STAWKAVAT.NAZWA" Visible="true" Header="Stawka Vat" />
+                                <dxg:GridColumn FieldName="SWW" Visible="False" Header="SWW" />
+                                <dxg:GridColumn FieldName="PKWIU" Visible="False" Header="PKWIU" />
+                                <dxg:GridColumn FieldName="UWAGI" Visible="False" Header="UWAGI" />
+                                <dxg:GridColumn FieldName="KODEAN" Header="Ean" />
+                                <dxg:GridColumn FieldName="GRUPAKART" Visible="False" Header="GRUPAKART" />
+                                <dxg:GridColumn FieldName="IHP_GRUPAKART" Visible="False" Header="IHP_GRUPAKART" />
+                                <dxg:GridColumn FieldName="IHP_RODZAJKART" Visible="False" Header="IHP_RODZAJKART" />
+                                <dxg:GridColumn FieldName="IHP_STAWKAVAT" Visible="False" Header="IHP_STAWKAVAT" />
+                                <dxg:GridColumn FieldName="IHP_JM" Visible="False" Header="IHP_JM" />
+                            </dxg:GridControl>
+                        </ControlTemplate>
+                    </dxg:LookUpEdit.PopupContentTemplate>
+                </dxg:LookUpEdit>
+
+            </dxlc:LayoutItem>
+            <dxlc:LayoutItem Label="Maszyna :" HorizontalAlignment="Stretch">
+                <dxg:LookUpEdit  
+							DisplayMember="INDEKS"
+							ValueMember="ID_IHP_KARTOTEKA"
+							AutoPopulateColumns="False"
+							AutoComplete="True"
+							IncrementalFiltering="True"
+							ImmediatePopup="True"
+							IsPopupAutoWidth="False"
+							IsSynchronizedWithCurrentItem="False" SelectedItem="{Binding Kartoteka}" ItemsSource="{Binding Kartoteki}" EditValue="{Binding Wazenie.ID_IHP_KARTOTEKA, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" >
+                    <dxg:LookUpEdit.StyleSettings>
+                        <dxg:SearchLookUpEditStyleSettings />
+                    </dxg:LookUpEdit.StyleSettings>
+                    <dxg:LookUpEdit.PopupContentTemplate>
+                        <ControlTemplate>
+                            <dxg:GridControl Width="625" x:Name="PART_GridControl" ItemsSource="{Binding Kartoteki}">
+                                <dxg:GridControl.View>
+                                    <dxg:TableView AutoWidth="True" />
+                                </dxg:GridControl.View>
+                                <dxg:GridColumn FieldName="ID_IHP_KARTOTEKA" Visible="False" Header="ID_KARTOTEKA" />
+                                <dxg:GridColumn FieldName="ID_IHP_STAWKAVAT" Visible="False" Header="ID_STAWKAVAT" />
+                                <dxg:GridColumn FieldName="ID_IHP_RODZAJKART" Visible="False" Header="E-ID_RODZAJKART" />
+                                <dxg:GridColumn FieldName="ID_IHP_GRUPAKART" Visible="False" Header="ID_GRUPAKART" />
+                                <dxg:GridColumn FieldName="ID_IHP_JM" Visible="False" Header="ID_IHP_JM" />
+                                <dxg:GridColumn FieldName="ID_TOWSUBJECT" Visible="False" Header="ID_TOWSUBJECT" />
+                                <dxg:GridColumn FieldName="ID_JM" Visible="False" Header="ID_JM." />
+                                <dxg:GridColumn FieldName="INDEKS" Header="Indeks" />
+                                <dxg:GridColumn FieldName="NAZWASKR" Header="Nazwa Skr." />
+                                <dxg:GridColumn FieldName="NAZWADL" Header="Nazwa Dl." />
+                                <dxg:GridColumn FieldName="IHP_STAWKAVAT.NAZWA" Visible="true" Header="Stawka Vat" />
+                                <dxg:GridColumn FieldName="SWW" Visible="False" Header="SWW" />
+                                <dxg:GridColumn FieldName="PKWIU" Visible="False" Header="PKWIU" />
+                                <dxg:GridColumn FieldName="UWAGI" Visible="False" Header="UWAGI" />
+                                <dxg:GridColumn FieldName="KODEAN" Header="Ean" />
+                                <dxg:GridColumn FieldName="GRUPAKART" Visible="False" Header="GRUPAKART" />
+                                <dxg:GridColumn FieldName="IHP_GRUPAKART" Visible="False" Header="IHP_GRUPAKART" />
+                                <dxg:GridColumn FieldName="IHP_RODZAJKART" Visible="False" Header="IHP_RODZAJKART" />
+                                <dxg:GridColumn FieldName="IHP_STAWKAVAT" Visible="False" Header="IHP_STAWKAVAT" />
+                                <dxg:GridColumn FieldName="IHP_JM" Visible="False" Header="IHP_JM" />
+                            </dxg:GridControl>
+                        </ControlTemplate>
+                    </dxg:LookUpEdit.PopupContentTemplate>
+                </dxg:LookUpEdit>
+
+            </dxlc:LayoutItem>
+
+            <dxlc:LayoutItem Label="Status :" HorizontalAlignment="Stretch">
+                <dxg:LookUpEdit  
+							DisplayMember="INDEKS"
+							ValueMember="ID_IHP_KARTOTEKA"
+							AutoPopulateColumns="False"
+							AutoComplete="True"
+							IncrementalFiltering="True"
+							ImmediatePopup="True"
+							IsPopupAutoWidth="False"
+							IsSynchronizedWithCurrentItem="False" SelectedItem="{Binding Kartoteka}" ItemsSource="{Binding Kartoteki}" EditValue="{Binding Wazenie.ID_IHP_KARTOTEKA, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" >
+                    <dxg:LookUpEdit.StyleSettings>
+                        <dxg:SearchLookUpEditStyleSettings />
+                    </dxg:LookUpEdit.StyleSettings>
+                    <dxg:LookUpEdit.PopupContentTemplate>
+                        <ControlTemplate>
+                            <dxg:GridControl Width="625" x:Name="PART_GridControl" ItemsSource="{Binding Kartoteki}">
+                                <dxg:GridControl.View>
+                                    <dxg:TableView AutoWidth="True" />
+                                </dxg:GridControl.View>
+                                <dxg:GridColumn FieldName="ID_IHP_KARTOTEKA" Visible="False" Header="ID_KARTOTEKA" />
+                                <dxg:GridColumn FieldName="ID_IHP_STAWKAVAT" Visible="False" Header="ID_STAWKAVAT" />
+                                <dxg:GridColumn FieldName="ID_IHP_RODZAJKART" Visible="False" Header="E-ID_RODZAJKART" />
+                                <dxg:GridColumn FieldName="ID_IHP_GRUPAKART" Visible="False" Header="ID_GRUPAKART" />
+                                <dxg:GridColumn FieldName="ID_IHP_JM" Visible="False" Header="ID_IHP_JM" />
+                                <dxg:GridColumn FieldName="ID_TOWSUBJECT" Visible="False" Header="ID_TOWSUBJECT" />
+                                <dxg:GridColumn FieldName="ID_JM" Visible="False" Header="ID_JM." />
+                                <dxg:GridColumn FieldName="INDEKS" Header="Indeks" />
+                                <dxg:GridColumn FieldName="NAZWASKR" Header="Nazwa Skr." />
+                                <dxg:GridColumn FieldName="NAZWADL" Header="Nazwa Dl." />
+                                <dxg:GridColumn FieldName="IHP_STAWKAVAT.NAZWA" Visible="true" Header="Stawka Vat" />
+                                <dxg:GridColumn FieldName="SWW" Visible="False" Header="SWW" />
+                                <dxg:GridColumn FieldName="PKWIU" Visible="False" Header="PKWIU" />
+                                <dxg:GridColumn FieldName="UWAGI" Visible="False" Header="UWAGI" />
+                                <dxg:GridColumn FieldName="KODEAN" Header="Ean" />
+                                <dxg:GridColumn FieldName="GRUPAKART" Visible="False" Header="GRUPAKART" />
+                                <dxg:GridColumn FieldName="IHP_GRUPAKART" Visible="False" Header="IHP_GRUPAKART" />
+                                <dxg:GridColumn FieldName="IHP_RODZAJKART" Visible="False" Header="IHP_RODZAJKART" />
+                                <dxg:GridColumn FieldName="IHP_STAWKAVAT" Visible="False" Header="IHP_STAWKAVAT" />
+                                <dxg:GridColumn FieldName="IHP_JM" Visible="False" Header="IHP_JM" />
+                            </dxg:GridControl>
+                        </ControlTemplate>
+                    </dxg:LookUpEdit.PopupContentTemplate>
+                </dxg:LookUpEdit>
+
+            </dxlc:LayoutItem>
+       
+            <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                <dxlc:LayoutItem Label="Data Start :" HorizontalAlignment="Stretch">
+                    <dxe:DateEdit x:Name="edtStartDate" MinWidth="150" EditValue="{Binding DisplayStartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Godzinia Start :" HorizontalAlignment="Stretch">
+                    <dxe:TextEdit x:Name="edtStartTime" MinWidth="150" MaskType="DateTime" DisplayFormatString="{Binding TimeEditMask}" 
+            			Mask="{Binding TimeEditMask}" 
+            			Margin="6,0,0,0" />
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                <dxlc:LayoutItem Label="Data Koniec :" HorizontalAlignment="Stretch">
+                  <dxe:DateEdit x:Name="edtEndDate" MinWidth="150" EditValue="{Binding DisplayEndDate, Mode=TwoWay}" />
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Godzina Koniec:" HorizontalAlignment="Stretch">
+                    <dxe:TextEdit x:Name="edtEndTime" MinWidth="150" MaskType="DateTime" DisplayFormatString="{Binding TimeEditMask}" 
+            			Mask="{Binding TimeEditMask}" Margin="6,0,0,0" />
+                </dxlc:LayoutItem>
+
+
+            </dxlc:LayoutGroup>
+            <!--<dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                <dxlc:LayoutItem Label="Ilość :" HorizontalAlignment="Stretch">
+                    <dxe:TextEdit x:Name="Ilosc" MinWidth="80" MaskType="Numeric" Mask="d" Margin="0,0,0,0" EditValue="{Binding CustomFields[ILOSC], Mode=TwoWay}" Grid.ColumnSpan="2" LostFocus="Ilosc_LostFocus" EditValueChanged="Ilosc_EditValueChanged" />
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Śr. Waga :" HorizontalAlignment="Left" Width="150">
+                    <dxe:TextEdit x:Name="srWaga" MinWidth="80" MaskType="Numeric" Mask="f" Margin="0,0,0,0" EditValue="{Binding CustomFields[WAGASR], Mode=TwoWay}" Grid.ColumnSpan="2" HorizontalAlignment="Left" LostFocus="srWaga_LostFocus" EditValueChanged="srWaga_EditValueChanged" />
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Waga :" HorizontalAlignment="Left">
+                    <dxe:TextEdit x:Name="Waga" MinWidth="80" MaskType="Numeric" Mask="d" Grid.Column="2" EditValue="{Binding CustomFields[WAGA], Mode=TwoWay}" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="300" IsReadOnly="True" EditValueChanged="Waga_EditValueChanged" />
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>-->
+            <dxlc:LayoutItem Width="220" HorizontalAlignment="Left">
+
+                <!--Buttons-->
+              
+            </dxlc:LayoutItem>
+            <dxlc:LayoutGroup  >
+                <dxlc:LayoutItem   Width="155">
+                    <dx:SimpleButton  Content="Start" FontSize="20" HorizontalAlignment="Left"  Command="{Binding TestCommand}"   VerticalAlignment="Top" Glyph="{dx:DXImage Image=Play_32x32.png}" GlyphAlignment="Left"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem   Width="185">
+                    <dx:SimpleButton  Content="Stop" FontSize="20" HorizontalAlignment="Left"  Command="{Binding TestCommand}"   VerticalAlignment="Top" Glyph="{dx:DXImage Image=Pause_32x32.png}" GlyphAlignment="Left"/>
+                </dxlc:LayoutItem>
+                <dx:SimpleButton  Content="Wyloguj"  FontSize="20" HorizontalAlignment="Right"  Command="{Binding TestCommand}"   VerticalAlignment="Top" Glyph="{dx:DXImage Image=YouTube_32x32.png}" GlyphAlignment="Left"/>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutGroup>
+
+    </dxlc:LayoutControl>
+   </dx:DXWindow>

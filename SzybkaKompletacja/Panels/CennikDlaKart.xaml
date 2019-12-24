@@ -1,0 +1,108 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+         xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+       xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys"
+             xmlns:local="clr-namespace:KpInfohelp"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="KpInfohelp.CennikDlaKart"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <Style x:Key="FocusedCellStyle" TargetType="dxg:LightweightCellEditor" BasedOn="{StaticResource {dxgt:GridRowThemeKey ResourceKey=LightweightCellStyle}}">
+            <Style.Triggers>
+                <Trigger Property="dxg:DataViewBase.IsFocusedCell" Value="True">
+                    <Setter Property="Background" Value= "#FFCADBF3" />
+                    <Setter Property="Foreground" Value="Black" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="FocusedRowStyle" TargetType="dxg:RowControl">
+            <Style.Triggers>
+                <Trigger Property="dxg:DataViewBase.IsFocusedRow" Value="True">
+                    <Setter Property="Background" Value="Gray" />
+                    <Setter Property="Foreground" Value="White" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <UserControl.DataContext>
+        <local:ViewModelCennik/>
+    </UserControl.DataContext>
+    <Grid>
+          <dxlc:LayoutControl Orientation="Vertical">
+              <dxlc:LayoutGroup Orientation="Vertical">
+                <dxg:GridControl AutoGenerateColumns="AddNew" x:Name="dgvCennik"   EnableSmartColumnsGeneration="False"  ItemsSource="{Binding LstCennikN}"  SelectedItem="{Binding SelectedCennik,UpdateSourceTrigger=PropertyChanged}" PreviewKeyDown="dgvCennik_PreviewKeyDown">
+                   <dxg:GridControl.View>
+                        <dxg:TableView AllowPerPixelScrolling="True" ShowGroupPanel="False" ShowTotalSummary="True" CellStyle="{StaticResource FocusedCellStyle}" RowStyle="{StaticResource FocusedRowStyle}" />
+                    </dxg:GridControl.View>
+                    <dxg:GridColumn FieldName="IHP_DEFCENY.NAZWACENY" Header="Def. Ceny" />
+
+                    <dxg:GridColumn FieldName="IHP_DEFCENY" Visible="False" />
+                    <dxg:GridColumn FieldName="IHP_KARTOTEKA" Visible="False" />
+                    <dxg:GridColumn FieldName="ID_IHP_CENNIK" Visible="False" />
+                    <dxg:GridColumn FieldName="ID_IHP_DEFCENY"  Visible="False" />
+                    <dxg:GridColumn FieldName="ID_IHP_GRUPAKART"  Visible="False" />
+                    <dxg:GridColumn FieldName="ID_IHP_KARTOTEKA"  Visible="False" />
+                          <dxg:GridColumn FieldName="CENAN"   Header="Cena Netto" ReadOnly="{Binding ReadonlyNetto,UpdateSourceTrigger=PropertyChanged}"/>
+                    <dxg:GridColumn FieldName="CENAB" Visible="True" Header="Cena Brutto" ReadOnly="{Binding ReadonlyBrutto,UpdateSourceTrigger=PropertyChanged}"/>
+              </dxg:GridControl>
+                <dxlc:LayoutGroup Header="Rejestr Zmiany Cen" UseLayoutRounding="True" View="GroupBox" IsCollapsed="True"  IsCollapsible="True" Orientation="Vertical" >
+                     <dxg:GridControl x:Name="drvZamowieniaHist" Grid.Row="1"  EnableSmartColumnsGeneration="True" ItemsSource="{Binding LstCennikHist}" AutoGenerateColumns="AddNew" SelectionMode="Row" AutoExpandAllGroups="True">
+                        <dxg:GridControl.View>
+                            <dxg:TableView NavigationStyle="Row" ShowFilterPanelMode="ShowAlways" ShowGroupPanel="False"/>
+                        </dxg:GridControl.View>
+
+                        <dxg:GridColumn
+									Header="Data Zmiany" 
+									AllowEditing="False" 
+									FieldName="DATAWPISU">
+                            <dxg:GridColumn.EditSettings>
+                                <dxe:TextEditSettings DisplayFormat="dd MMM yyyy HH:mm:ss"/>
+                            </dxg:GridColumn.EditSettings>
+                        </dxg:GridColumn>
+                        <dxg:GridColumn
+									Header="Użytkownik" 
+									AllowEditing="False" 
+									FieldName="UZYTKOWNIK"/>
+
+                        <dxg:GridColumn
+									Header="Cena Z" 
+									AllowEditing="False" 
+									FieldName="CENAZ"/>
+
+                        <dxg:GridColumn
+									Header="Cena Na" 
+									AllowEditing="False" 
+									FieldName="CENANA"/>
+                        <dxg:GridColumn
+									Header="Cena Na" 
+									AllowEditing="False" 
+                         Visible ="false"
+									FieldName="ID_CENNIKHISTORIA"/>
+ 
+                    <dxg:GridColumn
+									Header="Cena Na" 
+									AllowEditing="False" 
+                         Visible ="false"
+									FieldName="ID_CENNIK"/>
+
+               
+                    <dxg:GridColumn
+									Header="Cena Na" 
+									AllowEditing="False" 
+                                  Visible ="false"
+									FieldName="ID_ARIT_ZAM_USERS"/>
+
+                    </dxg:GridControl>
+       
+                </dxlc:LayoutGroup>
+          </dxlc:LayoutGroup>
+        </dxlc:LayoutControl>
+        </Grid>
+</UserControl>

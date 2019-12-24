@@ -1,0 +1,169 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x ="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+              xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+               xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+             xmlns:local="clr-namespace:KpInfohelp"
+                    x:Class="KpInfohelp.GrupaKart"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1300">
+    <UserControl.DataContext>
+        <local:ViewModelGrupaKart/>
+    </UserControl.DataContext>
+    <Grid>
+
+        <dxlc:LayoutControl Orientation="Vertical" x:Name="container" dxe:ValidationService.IsValidationContainer="True" Padding="2">
+             <dxlc:LayoutGroup  Orientation="Horizontal" VerticalAlignment="Stretch"   >
+                        <dxlc:LayoutGroup  Orientation="Horizontal" >
+                    <dxlc:LayoutGroup x:Name="layoutGroupRodzaj"  View="GroupBox"   Header="Rodzaje Grup Kartotekowych" Orientation="Vertical" VerticalAlignment="Stretch" Width="300">
+                            <dxb:BarContainerControl Grid.Row="0" VerticalAlignment="Top">
+                                <dxb:ToolBarControl Caption="Main Toolbar"  BarItemHorizontalIndent="10" AllowCollapse="True" BarItemDisplayMode="Default" UseWholeRow="False">
+                                <dxb:BarButtonItem Content="Dodaj Rodzaj Grupy" Command="{Binding AddRodzCommand}"   Glyph="{dx:DXImage Image=Add_16x16.png}" />
+                                <dxb:BarButtonItem Content="Edytuj Rodzaj Grupy"  Command="{Binding EditRodzCommand}"  Glyph="{dx:DXImage Image=Edit_16x16.png}" />
+                                <dxb:BarButtonItem Content="Aktualizuj Rodzaj Grupy"  Command="{Binding UpdateRodzCommand}" Glyph="{dx:DXImage Image=Insert_16x16.png}" />
+                                <dxb:BarButtonItem Content="Czyść Wybór" Command="{Binding ClearRodzCommand}" Glyph="{dx:DXImage Image=Clear_16x16.png}" />
+                                <dxb:BarButtonItem Content="Usuń Rodzaj Grupy"  Command="{Binding DelRodzCommand}" Glyph="{dx:DXImage Image=Delete_16x16.png}" />
+                                </dxb:ToolBarControl>
+                            </dxb:BarContainerControl>
+                            <dxlc:LayoutItem IsRequired="True" Label="Nazwa Rodzaju Grupy:" LabelPosition="Top">
+                            <dxe:TextEdit    NullText="Nazwa rodzaju"   ValidateOnEnterKeyPressed="True" ValidateOnTextInput="True" >
+                                <dxe:TextEdit.Text>
+                                    <Binding Path="NazwaRodz"  ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                        <Binding.ValidationRules>
+                                            <local:RequiredValidationRuleRodzGrKart FieldName="Nazwa rodzaju"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </dxe:TextEdit.Text>
+                                <!--<dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding NazwaRodz, Mode=OneWayToSource}"/>
+                                    </dxmvvm:Interaction.Behaviors>-->
+                                </dxe:TextEdit>
+                            </dxlc:LayoutItem>
+                        <dxlc:LayoutItem LabelPosition="Top"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                            <dxg:GridControl x:Name="dgvRodzGrupaKart"  MaxHeight="1000" AutoGenerateColumns="AddNew" ItemsSource="{Binding RodzKartLst,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding RodzGrKart,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  EnableSmartColumnsGeneration="False" PreviewKeyDown="dgvGrupaKart_PreviewKeyDown"    >
+                                <dxg:GridControl.View >
+                                    <dxg:TableView  VerticalScrollbarVisibility="Hidden"  AllowPerPixelScrolling="True" ShowTotalSummary="True" ShowGroupPanel="False" ShowColumnHeaders="False" AutoWidth="True" NavigationStyle="Row"  />
+                                </dxg:GridControl.View>
+                                <dxg:GridColumn FieldName="ID_IHP_RODZGRUPKART" Visible="False" Header="ID_JM." />
+                                <dxg:GridColumn FieldName="NAZWA">
+                                    <dxg:GridColumn.EditSettings>
+                                        <dxe:TextEditSettings VerticalContentAlignment="Stretch"/>
+                                    </dxg:GridColumn.EditSettings>
+                                </dxg:GridColumn>
+                            </dxg:GridControl>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                    </dxlc:LayoutGroup>
+           <dxlc:LayoutGroup Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" View="GroupBox" Header="Grupy Kartotekowe">
+               <dxlc:LayoutGroup x:Name="layoutGroup31" Orientation="Vertical" VerticalAlignment="Stretch"/>
+                  <dxlc:LayoutGroup x:Name="layoutGroup1" Orientation="Vertical" VerticalAlignment="Top"/>
+                    <dxlc:LayoutGroup x:Name="layoutGroup" Orientation="Vertical" VerticalAlignment="Stretch">
+                        <dxb:BarContainerControl Grid.Row="0" VerticalAlignment="Top">
+                               <dxb:ToolBarControl Caption="Main Toolbar"  BarItemHorizontalIndent="10" AllowCollapse="True" BarItemDisplayMode="Default" UseWholeRow="False">
+                                <!--    <dxb:BarButtonItem Content="Undo" Glyph="{dx:DXImage Image=Undo_16x16.png}" />
+                                    <dxb:BarButtonItem Content="Redo" Glyph="{dx:DXImage Image=Redo_16x16.png}" />
+                                    <dxb:BarItemLinkSeparator />
+                                <dxb:BarButtonItem Content="Dodaj Nadrzędną" Command="{Binding AddCommandNad}"  Glyph="{dx:DXImage Image=Up2_16x16.png}" />-->
+                                <dxb:BarButtonItem Content="Dodaj" Command="{Binding AddCommandGrKar}" Glyph="{dx:DXImage Image=Add_16x16.png}" />
+                                <dxb:BarButtonItem Content="Dodaj Podrzędną" Command="{Binding AddCommandPod}" Glyph="{dx:DXImage Image=MoveDown_16x16.png}" />
+                                <dxb:BarButtonItem Content="Aktualizuj"  Command="{Binding UpdateCommand}"  Glyph="{dx:DXImage Image=Insert_16x16.png}" />
+                                <dxb:BarButtonItem Content="Edytuj"  Command="{Binding FillDataCommand}"  Glyph="{dx:DXImage Image=Edit_16x16.png}" />
+                                <dxb:BarButtonItem Content="Czyść Wybór" Command="{Binding ClearCommand}" Glyph="{dx:DXImage Image=Clear_16x16.png}" />
+                                    <dxb:BarButtonItem Content="Usuń"  Command="{Binding DelCommand}" Glyph="{dx:DXImage Image=Delete_16x16.png}" />
+                                   </dxb:ToolBarControl>
+                            </dxb:BarContainerControl>
+                            <dxlc:LayoutItem IsRequired="True" Label="KODGRUPY:">
+                            <dxe:TextEdit NullText="Kod grupy" MinWidth="200" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="True">
+                                <dxe:TextEdit.EditValue  >
+                                    <Binding Path="KodGrupy" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" >
+                                        <Binding.ValidationRules>
+                                            <local:RequiredValidationRuleGrKart FieldName="Kod grupy"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </dxe:TextEdit.EditValue>
+                            </dxe:TextEdit>
+                            </dxlc:LayoutItem>
+                          <dxlc:LayoutItem IsRequired="True" Label="NAZWAGRUPY:" >
+                            <dxe:TextEdit NullText="Nazwa Grupu" MinWidth="200" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="True">
+                                <dxe:TextEdit.EditValue  >
+                                    <Binding Path="NazwaGrupy"  ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" >
+                                        <Binding.ValidationRules>
+                                            <local:RequiredValidationRuleGrKart FieldName="Nazwa Grupy"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </dxe:TextEdit.EditValue>
+                            </dxe:TextEdit>
+                            </dxlc:LayoutItem>
+                           <dxlc:LayoutItem Label="KODZLOZONY:" >
+                            <dxe:TextEdit NullText="Kod złożony" MinWidth="200" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="True">
+                                <dxe:TextEdit.EditValue  >
+                                    <Binding Path="KodZlozony" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" >
+                                        <Binding.ValidationRules>
+                                            <local:RequiredValidationRuleGrKart FieldName="KodZlozony"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </dxe:TextEdit.EditValue>
+                            </dxe:TextEdit>
+                          </dxlc:LayoutItem>
+                    
+                            <dxlc:LayoutItem Label="NAZWAZLOZONA:">
+                            <dxe:TextEdit NullText="Nazwa złożona" MinWidth="200" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="True" >
+                                <dxe:TextEdit.EditValue  >
+                                    <Binding Path="NazwaZlozona" ValidatesOnDataErrors="True"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" >
+                                        <Binding.ValidationRules>
+                                            <local:RequiredValidationRuleGrKart FieldName="NazwaZlozona"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </dxe:TextEdit.EditValue>
+                            </dxe:TextEdit>
+ 
+                              </dxlc:LayoutItem>
+                        <dxg:TreeListControl x:Name ="drvGurpyKart"  MaxHeight="1000" 
+                                 ItemsSource="{Binding GrupaKartLst, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                 SelectedItem="{Binding GrupaKart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                  AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="True"  HorizontalAlignment="Stretch"
+                                 VerticalAlignment ="Stretch"   >
+                            <dxg:TreeListControl.Columns>
+                                <dxg:TreeListColumn FieldName="ID_IHP_GRUPAKART" Header="Kod Grupy" ReadOnly="True"  Visible ="false" Width="50"/>
+                                <dxg:TreeListColumn FieldName="ID_IHP_GRUPAKART_NADRZ" Header="ID_IHP_GRUPAKART_NADRZ" Visible ="false" ReadOnly="True" Width="50"/>
+                                <dxg:TreeListColumn FieldName="KODGRUPY" Header="Kod Grupy" Width="20" />
+                                <dxg:TreeListColumn FieldName="NAZWAGRUPY" Header="Nazwa Grupy" />
+                                <dxg:TreeListColumn FieldName="NAZWAZLOZONA" Visible="False"/>
+                                <dxg:TreeListColumn FieldName="ID_IHP_RODZGRUPKART" Visible="False"/>
+                                <dxg:TreeListColumn FieldName="IHP_RODZGRUPKART" Visible="False"/>
+                                <dxg:TreeListColumn FieldName="KODZLOZONY" Visible="False"/>
+                                <dxg:TreeListColumn FieldName="NAZWAZLOZONA"  Visible="False"/>
+                                <dxg:TreeListColumn FieldName="LpMain"  Visible="False"/>
+                            </dxg:TreeListControl.Columns>
+                            <dxg:TreeListControl.View>
+                                <dxg:TreeListView  NavigationStyle="Row"
+                                       AutoExpandAllNodes="True" 
+                                       AllowConditionalFormattingMenu="True"  
+                                       AllowPerPixelScrolling="False"  
+                                       KeyFieldName="ID_IHP_GRUPAKART"
+                                        AutoWidth="True"
+                                         FocusedRow="{Binding Path=_grupakart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                       ParentFieldName="ID_IHP_GRUPAKART_NADRZ">
+                                    <dxmvvm:Interaction.Behaviors>
+                                        <dxg:GridDragDropManager AllowDrag="True" AllowDrop="True"  />
+                                        <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding CommandGridDoubleClick}" EventName="RowDoubleClick">
+                                            <dxmvvm:EventToCommand.EventArgsConverter>
+                                                <dx:EventArgsToDataRowConverter />
+                                            </dxmvvm:EventToCommand.EventArgsConverter>
+                                        </dxmvvm:EventToCommand>
+                                    </dxmvvm:Interaction.Behaviors>
+     </dxg:TreeListView>
+                            </dxg:TreeListControl.View>
+                        </dxg:TreeListControl>
+                    </dxlc:LayoutGroup>
+                    </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+
+        </dxlc:LayoutControl>
+    </Grid>
+</UserControl>

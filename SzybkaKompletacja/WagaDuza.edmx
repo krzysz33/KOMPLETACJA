@@ -1,0 +1,2694 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KOMPLETACJAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="IHP_CENNIK">
+          <Key>
+            <PropertyRef Name="ID_IHP_CENNIK" />
+          </Key>
+          <Property Name="ID_IHP_CENNIK" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_KARTOTEKA" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_DEFCENY" Type="int" Nullable="false" />
+          <Property Name="CENAN" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="CENAB" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_CENNIKHISTORIA">
+          <Key>
+            <PropertyRef Name="ID_IHP_CENNIKHISTORIA" />
+          </Key>
+          <Property Name="ID_IHP_CENNIKHISTORIA" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_CENNIK" Type="int" Nullable="false" />
+          <Property Name="DATAWPISU" Type="datetime" Nullable="false" />
+          <Property Name="CENAZ" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="CENANA" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="ID_IHP_ZAM_USERS" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_COMCONFIG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="VAL" Type="varchar" MaxLength="50" />
+          <Property Name="TYP" Type="int" />
+        </EntityType>
+        <EntityType Name="IHP_DANEFIRMY">
+          <Key>
+            <PropertyRef Name="ID_IHP_DANEFIRMY" />
+          </Key>
+          <Property Name="ID_IHP_DANEFIRMY" Type="int" Nullable="false" />
+          <Property Name="ODDATY" Type="datetime" Nullable="false" />
+          <Property Name="ID_URZSKARB" Type="int" />
+          <Property Name="ID_KRAJ" Type="int" />
+          <Property Name="ID_WOJEWODZTWO" Type="int" />
+          <Property Name="NAZWA_SKROCONA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="NAZWA_FIRMY" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="NIP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="REGON" Type="varchar" MaxLength="40" />
+          <Property Name="TELEFON" Type="varchar" MaxLength="50" />
+          <Property Name="TELEFON2" Type="varchar" MaxLength="50" />
+          <Property Name="FAX" Type="varchar" MaxLength="50" />
+          <Property Name="WWW" Type="varchar" MaxLength="100" />
+          <Property Name="ULICA" Type="varchar" MaxLength="60" />
+          <Property Name="NRDOMU" Type="varchar" MaxLength="10" />
+          <Property Name="NRLOKALU" Type="varchar" MaxLength="10" />
+          <Property Name="MIEJSCOWOSC" Type="varchar" MaxLength="255" />
+          <Property Name="KODPOCZTOWY" Type="varchar" MaxLength="10" />
+          <Property Name="POCZTA" Type="varchar" MaxLength="30" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="IHP_DEFCENY">
+          <Key>
+            <PropertyRef Name="ID_IHP_DEFCENY" />
+          </Key>
+          <Property Name="ID_IHP_DEFCENY" Type="int" Nullable="false" />
+          <Property Name="NAZWACENY" Type="varchar" MaxLength="20" />
+          <Property Name="ODNETTO" Type="smallint" />
+          <Property Name="AKTYWNY" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KOMPLETACJA.dbo.IHP_DEFSTATUS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="IHP_DEFSTATUS">
+          <Key>
+            <PropertyRef Name="ID_IHP_DEFSTATUS" />
+          </Key>
+          <Property Name="ID_IHP_DEFSTATUS" Type="int" Nullable="false" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="40" />
+          <Property Name="KODSKANER" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="IHP_DOSTAWA">
+          <Key>
+            <PropertyRef Name="ID_IHP_DOSTAWA" />
+          </Key>
+          <Property Name="ID_IHP_DOSTAWA" Type="int" Nullable="false" />
+          <Property Name="ILOSC" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="ILOSCAKT" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="ZREALIZOWANA" Type="smallint" />
+          <Property Name="DATADOSTAWY" Type="date" />
+          <Property Name="ID_IHP_POZDOK" Type="int" />
+        </EntityType>
+        <EntityType Name="IHP_ERPCONNECTOR">
+          <Key>
+            <PropertyRef Name="ID_IHP_ERPCONNECTOR" />
+          </Key>
+          <Property Name="ID_IHP_ERPCONNECTOR" Type="int" Nullable="false" />
+          <Property Name="ERPNAZWA" Type="varchar" MaxLength="50" />
+          <Property Name="SERWER" Type="varchar" MaxLength="100" />
+          <Property Name="BAZA" Type="varchar" MaxLength="100" />
+          <Property Name="UZYTKOWNIK" Type="varchar" MaxLength="50" />
+          <Property Name="HASLO" Type="varchar" MaxLength="50" />
+          <Property Name="KARTWSZYSTKO" Type="int" />
+          <Property Name="KARTRODZ" Type="int" />
+          <Property Name="KARTIDRODZ" Type="varchar" MaxLength="10" />
+          <Property Name="KARTGRUPA" Type="int" />
+          <Property Name="KARTIDGRUPA" Type="varchar" MaxLength="10" />
+          <Property Name="KARTCENNIKI" Type="int" />
+          <Property Name="KONTRAHWSZYSTKO" Type="int" />
+          <Property Name="KONTRAHGRUPA" Type="int" />
+          <Property Name="KONTRAHIDGRUPA" Type="varchar" MaxLength="10" />
+          <Property Name="DOKBEZPOSR" Type="int" Nullable="false" />
+          <Property Name="DOKWYDANIA" Type="int" />
+          <Property Name="ID_DEFDOK" Type="int" />
+        </EntityType>
+        <EntityType Name="IHP_FOTO">
+          <Key>
+            <PropertyRef Name="ID_IHP_FOTO" />
+          </Key>
+          <Property Name="ID_IHP_FOTO" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_KARTOTEKA" Type="int" Nullable="false" />
+          <Property Name="LP" Type="int" />
+          <Property Name="NAMEFILE" Type="varchar" MaxLength="350" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="IHP_GRUPAKART">
+          <Key>
+            <PropertyRef Name="ID_IHP_GRUPAKART" />
+          </Key>
+          <Property Name="ID_IHP_GRUPAKART" Type="int" Nullable="false" />
+          <Property Name="NAZWAGRUPY" Type="varchar" MaxLength="25" />
+          <Property Name="KODGRUPY" Type="varchar" MaxLength="6" />
+          <Property Name="KODZLOZONY" Type="varchar" MaxLength="50" />
+          <Property Name="NAZWAZLOZONA" Type="varchar" MaxLength="254" />
+          <Property Name="ID_IHP_RODZGRUPKART" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_GRUPAKART_NADRZ" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_GRUPAPARAMETRY">
+          <Key>
+            <PropertyRef Name="ID_IHP_GRUPAPARAMETRY" />
+          </Key>
+          <Property Name="ID_IHP_GRUPAPARAMETRY" Type="int" Nullable="false" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_HARMONOGRAM_DZIENNY">
+          <Key>
+            <PropertyRef Name="ID_IHP_HARMONOGRAM_DZIENNY" />
+          </Key>
+          <Property Name="ID_IHP_HARMONOGRAM_DZIENNY" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_MASZYNA" Type="int" Nullable="false" />
+          <Property Name="DATA" Type="date" />
+          <Property Name="CZASSTART" Type="datetime" />
+          <Property Name="CZASSTOP" Type="datetime" />
+          <Property Name="ILOSC" Type="int" />
+          <Property Name="WAGA" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="LABELID" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_ZAM_USERS" Type="int" Nullable="false" />
+          <Property Name="OPIS" Type="varchar" MaxLength="500" />
+          <Property Name="TEMAT" Type="varchar" MaxLength="150" />
+          <Property Name="ID_KONTRAH" Type="int" Nullable="false" />
+          <Property Name="IHP_NAGLDOK" Type="int" />
+          <Property Name="NRDOKZA" Type="varchar" MaxLength="25" />
+          <Property Name="ID_KARTOTEKA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_JM">
+          <Key>
+            <PropertyRef Name="ID_IHP_JM" />
+          </Key>
+          <Property Name="ID_IHP_JM" Type="int" Nullable="false" />
+          <Property Name="JM" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="OPISJM" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_JZ">
+          <Key>
+            <PropertyRef Name="ID_IHP_JZ" />
+          </Key>
+          <Property Name="ID_IHP_JZ" Type="int" Nullable="false" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="WARTOSC" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AKTYWNA" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_KARTOTEKA">
+          <Key>
+            <PropertyRef Name="ID_IHP_KARTOTEKA" />
+          </Key>
+          <Property Name="ID_IHP_KARTOTEKA" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_STAWKAVAT" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_RODZAJKART" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_JM" Type="int" Nullable="false" />
+          <Property Name="INDEKS" Type="varchar" MaxLength="40" />
+          <Property Name="NAZWASKR" Type="varchar" MaxLength="35" />
+          <Property Name="NAZWADL" Type="varchar" MaxLength="360" />
+          <Property Name="SWW" Type="varchar" MaxLength="15" />
+          <Property Name="PKWIU" Type="varchar" MaxLength="17" />
+          <Property Name="UWAGI" Type="varchar" MaxLength="255" />
+          <Property Name="KODEAN" Type="varchar" MaxLength="128" />
+          <Property Name="ID_TOWSUBJECT" Type="int" />
+        </EntityType>
+        <EntityType Name="IHP_KIEROWCA">
+          <Key>
+            <PropertyRef Name="ID_IHP_KIEROWCA" />
+          </Key>
+          <Property Name="ID_IHP_KIEROWCA" Type="int" Nullable="false" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TELEFON" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ID_IHP_KONTRAHENT" Type="int" />
+        </EntityType>
+        <EntityType Name="IHP_KONTRAHENT">
+          <Key>
+            <PropertyRef Name="ID_IHP_KONTRAHENT" />
+          </Key>
+          <Property Name="ID_IHP_KONTRAHENT" Type="int" Nullable="false" />
+          <Property Name="NRKONTRAH" Type="int" />
+          <Property Name="NIP" Type="nvarchar" MaxLength="15" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="50" />
+          <Property Name="MIEJSCOWOSC" Type="nvarchar" MaxLength="250" />
+          <Property Name="KODPOCZTOWY" Type="varchar" MaxLength="10" />
+          <Property Name="POCZTA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ULICA" Type="varchar" MaxLength="50" />
+          <Property Name="NRDOMU" Type="varchar" MaxLength="10" />
+          <Property Name="NRLOKALU" Type="varchar" MaxLength="10" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="TELEFON" Type="varchar" MaxLength="50" />
+          <Property Name="ID_IHP_DEFCENY" Type="int" Nullable="false" />
+          <Property Name="ID_KH_SUBJECT" Type="int" Nullable="false" />
+          <Property Name="TELKOM" Type="nvarchar" MaxLength="50" />
+          <Property Name="TYPKONTRAH" Type="smallint" />
+          <Property Name="NAZWAPELNA" Type="varchar" MaxLength="250" />
+          <Property Name="ID_IHP_RODZAJDOKDEF" Type="int" />
+        </EntityType>
+        <EntityType Name="IHP_KONTRAHENT_ARCH">
+          <Key>
+            <PropertyRef Name="ID_IHP_KONTRAHENT_ARCH" />
+          </Key>
+          <Property Name="ID_IHP_KONTRAHENT_ARCH" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_KONTRAHENT" Type="int" Nullable="false" />
+          <Property Name="NRKONTRAH" Type="int" />
+          <Property Name="NIP" Type="nvarchar" MaxLength="15" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="50" />
+          <Property Name="MIEJSCOWOSC" Type="nvarchar" MaxLength="250" />
+          <Property Name="KODPOCZTOWY" Type="varchar" MaxLength="10" />
+          <Property Name="POCZTA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ULICA" Type="varchar" MaxLength="50" />
+          <Property Name="NRDOMU" Type="varchar" MaxLength="10" />
+          <Property Name="NRLOKALU" Type="varchar" MaxLength="10" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="TELEFON" Type="varchar" MaxLength="50" />
+          <Property Name="AKTYWNY" Type="int" />
+          <Property Name="ID_IHP_DEFCENY" Type="int" Nullable="false" />
+          <Property Name="ID_KH_SUBJECT" Type="int" />
+          <Property Name="TELKOM" Type="varchar" MaxLength="50" />
+          <Property Name="TYPKONTRAH" Type="int" />
+          <Property Name="NAZWAPELNA" Type="varchar" MaxLength="250" />
+          <Property Name="ID_IHP_RODZAJDOKDEF" Type="int" />
+        </EntityType>
+        <EntityType Name="IHP_MASZYNA">
+          <Key>
+            <PropertyRef Name="ID_IHP_MASZYNA" />
+          </Key>
+          <Property Name="ID_IHP_MASZYNA" Type="int" Nullable="false" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="100" />
+          <Property Name="CENA" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="AKTYWNY" Type="smallint" />
+        </EntityType>
+        <EntityType Name="IHP_MIERNIK">
+          <Key>
+            <PropertyRef Name="ID_IHP_MIERNIK" />
+          </Key>
+          <Property Name="ID_IHP_MIERNIK" Type="int" Nullable="false" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="55" />
+        </EntityType>
+        <EntityType Name="IHP_MODEL">
+          <Key>
+            <PropertyRef Name="ID_IHP_MODEL" />
+          </Key>
+          <Property Name="ID_IHP_MODEL" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_PRODUCENT" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="IHP_NAGLDOK">
+          <Key>
+            <PropertyRef Name="ID_IHP_NAGLDOK" />
+          </Key>
+          <Property Name="ID_IHP_NAGLDOK" Type="int" Nullable="false" />
+          <Property Name="DATADOK" Type="date" Nullable="false" />
+          <Property Name="NRDOK" Type="int" Nullable="false" />
+          <Property Name="NRDOKWEW" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ID_IHP_PRIORYTET" Type="int" />
+          <Property Name="SUMAOG" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ID_DEFDOK" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_KONTRAHENT_ARCH" Type="int" Nullable="false" />
+          <Property Name="ID_RODZAJDOK" Type="int" Nullable="false" />
+          <Property Name="ID_KH_SUBJECT" Type="int" />
+          <Property Name="ID_IHP_KONTRAHENT" Type="int" Nullable="false" />
+          <Property Name="DATAWPISU" Type="datetime" />
+          <Property Name="TERMINREALIZ" Type="date" />
+          <Property Name="BLOKADA" Type="int" />
+          <Property Name="ILEPOZ" Type="int" />
+          <Property Name="STATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="IHP_NUMERACJA">
+          <Key>
+            <PropertyRef Name="ID_IHP_NUMERACJA" />
+          </Key>
+          <Property Name="ID_IHP_NUMERACJA" Type="int" Nullable="false" />
+          <Property Name="ID_TABELA" Type="int" Nullable="false" />
+          <Property Name="NUMER" Type="int" Nullable="false" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_PARAMETRY">
+          <Key>
+            <PropertyRef Name="ID_IHP_PARAMETRY" />
+          </Key>
+          <Property Name="ID_IHP_PARAMETRY" Type="int" Nullable="false" />
+          <Property Name="PARAMETR" Type="varchar" MaxLength="50" />
+          <Property Name="RODZAJ" Type="int" />
+          <Property Name="ID_GRUPAPARAMETRY" Type="int" />
+          <Property Name="WARTOSC" Type="nvarchar" MaxLength="35" />
+          <Property Name="ID_GRU_PARAMETRY" Type="int" />
+        </EntityType>
+        <EntityType Name="IHP_POZDOK">
+          <Key>
+            <PropertyRef Name="ID_IHP_POZDOK" />
+          </Key>
+          <Property Name="ID_IHP_POZDOK" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_NAGLDOK" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_KARTOTEKA" Type="int" Nullable="false" />
+          <Property Name="LP" Type="int" Nullable="false" />
+          <Property Name="ILOSC" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="ILOSCRAZEM" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="ILOSCPACZKA" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="ILOSCZW" Type="numeric" Precision="18" Scale="4" />
+          <Property Name="NAZWASKRPOZ" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="CENANETTO" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="CENABRUTTO" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="WARTVAT" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="WARTNETTO" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="WARTBRUTTO" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="DATADOK" Type="date" Nullable="false" />
+          <Property Name="CENAUSTALONA" Type="smallint" Nullable="false" />
+          <Property Name="UWAGI" Type="varchar" MaxLength="1000" />
+          <Property Name="ID_TOWSUBJECT" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_DEFSTATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="IHP_PRIORYTET">
+          <Key>
+            <PropertyRef Name="ID_IHP_PRIORYTET" />
+          </Key>
+          <Property Name="ID_IHP_PRIORYTET" Type="int" Nullable="false" />
+          <Property Name="OPIS" Type="varchar" MaxLength="50" />
+          <Property Name="SKROT" Type="varchar" MaxLength="10" />
+          <Property Name="AKTYWNY" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_PRODUCENT">
+          <Key>
+            <PropertyRef Name="ID_IHP_PRODUCENT" />
+          </Key>
+          <Property Name="ID_IHP_PRODUCENT" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="IHP_RODZAJDOK">
+          <Key>
+            <PropertyRef Name="ID_IHP_RODZAJDOK" />
+          </Key>
+          <Property Name="ID_IHP_RODZAJDOK" Type="int" Nullable="false" />
+          <Property Name="OPIS" Type="varchar" MaxLength="50" />
+          <Property Name="KIERUNEKMAG" Type="int" />
+          <Property Name="SKROTDOK" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="IHP_RODZAJKART">
+          <Key>
+            <PropertyRef Name="ID_IHP_RODZAJKART" />
+          </Key>
+          <Property Name="ID_IHP_RODZAJKART" Type="int" Nullable="false" />
+          <Property Name="OPIS" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="IHP_RODZGRUPKART">
+          <Key>
+            <PropertyRef Name="ID_IHP_RODZGRUPKART" />
+          </Key>
+          <Property Name="ID_IHP_RODZGRUPKART" Type="int" Nullable="false" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_ROZCHDOST">
+          <Key>
+            <PropertyRef Name="ID_IHP_ROZCHDOST" />
+          </Key>
+          <Property Name="ID_IHP_ROZCHDOST" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_DOSTAWA" Type="int" Nullable="false" />
+          <Property Name="ILOSCROZCH" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="DATAROZCH" Type="date" />
+          <Property Name="ID_IHP_POZDOK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_SAMOCHOD">
+          <Key>
+            <PropertyRef Name="ID_IHP_SAMOCHOD" />
+          </Key>
+          <Property Name="ID_IHP_SAMOCHOD" Type="int" Nullable="false" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="50" />
+          <Property Name="NRREJ" Type="varchar" MaxLength="10" />
+          <Property Name="ID_IHP_KIEROWCA" Type="int" />
+          <Property Name="TARA" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KOMPLETACJA.dbo.IHP_STATUSHISTORIA' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="IHP_STATUSHISTORIA">
+          <Key>
+            <PropertyRef Name="ID_IHP_STATUSHISTORIA" />
+            <PropertyRef Name="ID_IHP_DEFSTATUS" />
+            <PropertyRef Name="DATAWPISU" />
+            <PropertyRef Name="ID_IHP_POZ" />
+            <PropertyRef Name="ID_ARIT_ZAM_USERS" />
+            <PropertyRef Name="ID_IHP_DEFSTATUSZ" />
+          </Key>
+          <Property Name="ID_IHP_STATUSHISTORIA" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_DEFSTATUS" Type="int" Nullable="false" />
+          <Property Name="DATAWPISU" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="OPIS" Type="varchar" MaxLength="300" />
+          <Property Name="ID_IHP_POZ" Type="int" Nullable="false" />
+          <Property Name="ID_ARIT_ZAM_USERS" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_DEFSTATUSZ" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_STAWKAVAT">
+          <Key>
+            <PropertyRef Name="ID_IHP_STAWKAVAT" />
+          </Key>
+          <Property Name="ID_IHP_STAWKAVAT" Type="int" Nullable="false" />
+          <Property Name="WARTOSC" Type="int" Nullable="false" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="AKTYWNY" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_TRASY">
+          <Key>
+            <PropertyRef Name="ID_IHP_TRASY" />
+          </Key>
+          <Property Name="ID_IHP_TRASY" Type="int" Nullable="false" />
+          <Property Name="NAZWA" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="IHP_WAZENIE_USLUGA">
+          <Key>
+            <PropertyRef Name="ID_IHP_WAZENIE_USLUGA" />
+          </Key>
+          <Property Name="ID_IHP_WAZENIE_USLUGA" Type="int" Nullable="false" />
+          <Property Name="DATACZAS" Type="datetime" />
+          <Property Name="ID_IHP_KIEROWCA" Type="int" />
+          <Property Name="ID_IHP_SAMOCHOD" Type="int" />
+          <Property Name="WAGA" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ID_IHP_KONTRAHENT_ARCH" Type="int" />
+          <Property Name="STATUS" Type="int" />
+          <Property Name="NRKWIT" Type="int" />
+          <Property Name="NRKWITWEW" Type="varchar" MaxLength="25" />
+          <Property Name="KIEROWCA_NAZWA" Type="varchar" MaxLength="50" />
+          <Property Name="KONTRAHENT_NAZWA" Type="varchar" MaxLength="50" />
+          <Property Name="NRREJ_NAZWA" Type="varchar" MaxLength="10" />
+          <Property Name="UWAGI" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KOMPLETACJA.dbo.IHP_WYST_GRUPAPARAM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="IHP_WYST_GRUPAPARAM">
+          <Key>
+            <PropertyRef Name="ID_IHP_WYST_GRUPAPARAM" />
+            <PropertyRef Name="ID_IHP_GRUPAPARAMETRY" />
+            <PropertyRef Name="ID_IHP_PARAMETRY" />
+          </Key>
+          <Property Name="ID_IHP_WYST_GRUPAPARAM" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_GRUPAPARAMETRY" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_PARAMETRY" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_WYST_JZ">
+          <Key>
+            <PropertyRef Name="ID_IHP_WYST_JZ" />
+          </Key>
+          <Property Name="ID_IHP_WYST_JZ" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_JZ" Type="int" Nullable="false" />
+          <Property Name="ID_KARTOTEKA" Type="int" />
+          <Property Name="AKTYWNA" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KOMPLETACJA.dbo.IHP_WYSTCECHKART' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="IHP_WYSTCECHKART">
+          <Key>
+            <PropertyRef Name="ID_WYSTCECHKART" />
+            <PropertyRef Name="ID_KARTOTEKA" />
+            <PropertyRef Name="ID_CECHAKART" />
+          </Key>
+          <Property Name="ID_WYSTCECHKART" Type="int" Nullable="false" />
+          <Property Name="ID_KARTOTEKA" Type="int" Nullable="false" />
+          <Property Name="ID_CECHAKART" Type="int" Nullable="false" />
+          <Property Name="WARTOSC" Type="varchar" MaxLength="35" />
+        </EntityType>
+        <EntityType Name="IHP_WYSTGRKART">
+          <Key>
+            <PropertyRef Name="ID_IHP_WYSTGRKART" />
+          </Key>
+          <Property Name="ID_IHP_WYSTGRKART" Type="int" Nullable="false" />
+          <Property Name="ID_KARTOTEKA" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_GRUPAKART" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_WYSTTRASAKONTRAH">
+          <Key>
+            <PropertyRef Name="ID_IHP_WYSTTRASAKONTRAH" />
+          </Key>
+          <Property Name="ID_IHP_WYSTTRASAKONTRAH" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_KONTRAHENT" Type="int" Nullable="false" />
+          <Property Name="ID_IHP_TRASY" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_ZAM_USERS">
+          <Key>
+            <PropertyRef Name="ID_IHP_ZAM_USERS" />
+          </Key>
+          <Property Name="ID_IHP_ZAM_USERS" Type="int" Nullable="false" />
+          <Property Name="ID_UZYTKOWNIK" Type="int" />
+          <Property Name="LOGIN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HASLO" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="NAZWISKO_IMIE" Type="varchar" MaxLength="100" />
+          <Property Name="AKTYWNY" Type="smallint" Nullable="false" />
+          <Property Name="RESET_HASLA" Type="smallint" Nullable="false" />
+          <Property Name="REJWAGA" Type="smallint" />
+          <Property Name="USLUGA" Type="smallint" />
+          <Property Name="KIEROWCY" Type="smallint" />
+          <Property Name="KARTOTEKI" Type="smallint" />
+          <Property Name="POJAZDY" Type="smallint" />
+          <Property Name="KONTRAHENT" Type="smallint" />
+          <Property Name="DANEFIRMY" Type="smallint" />
+          <Property Name="REJZAM" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'KOMPLETACJA.dbo.sysdiagrams' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="principal_id" />
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_IHP_CENNIK_IHP_DEFCENY">
+          <End Role="IHP_DEFCENY" Type="Self.IHP_DEFCENY" Multiplicity="1" />
+          <End Role="IHP_CENNIK" Type="Self.IHP_CENNIK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_DEFCENY">
+              <PropertyRef Name="ID_IHP_DEFCENY" />
+            </Principal>
+            <Dependent Role="IHP_CENNIK">
+              <PropertyRef Name="ID_IHP_DEFCENY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_CENNIK_IHP_KARTOTEKA">
+          <End Role="IHP_KARTOTEKA" Type="Self.IHP_KARTOTEKA" Multiplicity="1" />
+          <End Role="IHP_CENNIK" Type="Self.IHP_CENNIK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Principal>
+            <Dependent Role="IHP_CENNIK">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_CENNIKHISTORIA_IHP_CENNIK">
+          <End Role="IHP_CENNIK" Type="Self.IHP_CENNIK" Multiplicity="1" />
+          <End Role="IHP_CENNIKHISTORIA" Type="Self.IHP_CENNIKHISTORIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_CENNIK">
+              <PropertyRef Name="ID_IHP_CENNIK" />
+            </Principal>
+            <Dependent Role="IHP_CENNIKHISTORIA">
+              <PropertyRef Name="ID_IHP_CENNIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_CENNIKHISTORIA_IHP_ZAM_USERS">
+          <End Role="IHP_ZAM_USERS" Type="Self.IHP_ZAM_USERS" Multiplicity="1" />
+          <End Role="IHP_CENNIKHISTORIA" Type="Self.IHP_CENNIKHISTORIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_ZAM_USERS">
+              <PropertyRef Name="ID_IHP_ZAM_USERS" />
+            </Principal>
+            <Dependent Role="IHP_CENNIKHISTORIA">
+              <PropertyRef Name="ID_IHP_ZAM_USERS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_FOTO_IHP_FOTO">
+          <End Role="IHP_KARTOTEKA" Type="Self.IHP_KARTOTEKA" Multiplicity="1" />
+          <End Role="IHP_FOTO" Type="Self.IHP_FOTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Principal>
+            <Dependent Role="IHP_FOTO">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_GRUPAKART_IHP_RODZGRUPKART">
+          <End Role="IHP_RODZGRUPKART" Type="Self.IHP_RODZGRUPKART" Multiplicity="1" />
+          <End Role="IHP_GRUPAKART" Type="Self.IHP_GRUPAKART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_RODZGRUPKART">
+              <PropertyRef Name="ID_IHP_RODZGRUPKART" />
+            </Principal>
+            <Dependent Role="IHP_GRUPAKART">
+              <PropertyRef Name="ID_IHP_RODZGRUPKART" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_HARMONOGRAM_DZIENNY_IHP_MASZYNA">
+          <End Role="IHP_MASZYNA" Type="Self.IHP_MASZYNA" Multiplicity="1" />
+          <End Role="IHP_HARMONOGRAM_DZIENNY" Type="Self.IHP_HARMONOGRAM_DZIENNY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_MASZYNA">
+              <PropertyRef Name="ID_IHP_MASZYNA" />
+            </Principal>
+            <Dependent Role="IHP_HARMONOGRAM_DZIENNY">
+              <PropertyRef Name="ID_IHP_MASZYNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KARTOTEKA_IHP_JM">
+          <End Role="IHP_JM" Type="Self.IHP_JM" Multiplicity="1" />
+          <End Role="IHP_KARTOTEKA" Type="Self.IHP_KARTOTEKA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_JM">
+              <PropertyRef Name="ID_IHP_JM" />
+            </Principal>
+            <Dependent Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_JM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KARTOTEKA_IHP_RODZAJKART">
+          <End Role="IHP_RODZAJKART" Type="Self.IHP_RODZAJKART" Multiplicity="1" />
+          <End Role="IHP_KARTOTEKA" Type="Self.IHP_KARTOTEKA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_RODZAJKART">
+              <PropertyRef Name="ID_IHP_RODZAJKART" />
+            </Principal>
+            <Dependent Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_RODZAJKART" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KARTOTEKA_IHP_STAWKAVAT">
+          <End Role="IHP_STAWKAVAT" Type="Self.IHP_STAWKAVAT" Multiplicity="1" />
+          <End Role="IHP_KARTOTEKA" Type="Self.IHP_KARTOTEKA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_STAWKAVAT">
+              <PropertyRef Name="ID_IHP_STAWKAVAT" />
+            </Principal>
+            <Dependent Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_STAWKAVAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KIEROWCA_IHP_KONTRAHENT_ARCH">
+          <End Role="IHP_KONTRAHENT" Type="Self.IHP_KONTRAHENT" Multiplicity="0..1" />
+          <End Role="IHP_KIEROWCA" Type="Self.IHP_KIEROWCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KONTRAHENT">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Principal>
+            <Dependent Role="IHP_KIEROWCA">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT">
+          <End Role="IHP_KONTRAHENT" Type="Self.IHP_KONTRAHENT" Multiplicity="1" />
+          <End Role="IHP_KONTRAHENT_ARCH" Type="Self.IHP_KONTRAHENT_ARCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KONTRAHENT">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Principal>
+            <Dependent Role="IHP_KONTRAHENT_ARCH">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT_ARCH">
+          <End Role="IHP_KONTRAHENT_ARCH" Type="Self.IHP_KONTRAHENT_ARCH" Multiplicity="1" />
+          <End Role="IHP_KONTRAHENT_ARCH1" Type="Self.IHP_KONTRAHENT_ARCH" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KONTRAHENT_ARCH">
+              <PropertyRef Name="ID_IHP_KONTRAHENT_ARCH" />
+            </Principal>
+            <Dependent Role="IHP_KONTRAHENT_ARCH1">
+              <PropertyRef Name="ID_IHP_KONTRAHENT_ARCH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KONTRAHENT_IHP_DEFCENY">
+          <End Role="IHP_DEFCENY" Type="Self.IHP_DEFCENY" Multiplicity="1" />
+          <End Role="IHP_KONTRAHENT" Type="Self.IHP_KONTRAHENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_DEFCENY">
+              <PropertyRef Name="ID_IHP_DEFCENY" />
+            </Principal>
+            <Dependent Role="IHP_KONTRAHENT">
+              <PropertyRef Name="ID_IHP_DEFCENY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_MODEL_IHP_PRODUCENT">
+          <End Role="IHP_PRODUCENT" Type="Self.IHP_PRODUCENT" Multiplicity="1" />
+          <End Role="IHP_MODEL" Type="Self.IHP_MODEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_PRODUCENT">
+              <PropertyRef Name="ID_IHP_PRODUCENT" />
+            </Principal>
+            <Dependent Role="IHP_MODEL">
+              <PropertyRef Name="ID_IHP_PRODUCENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_NAGLDOK_IHP_KONTRAHENT">
+          <End Role="IHP_KONTRAHENT" Type="Self.IHP_KONTRAHENT" Multiplicity="1" />
+          <End Role="IHP_NAGLDOK" Type="Self.IHP_NAGLDOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KONTRAHENT">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Principal>
+            <Dependent Role="IHP_NAGLDOK">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_NAGLDOK_IHP_KONTRAHENT_ARCH">
+          <End Role="IHP_KONTRAHENT_ARCH" Type="Self.IHP_KONTRAHENT_ARCH" Multiplicity="1" />
+          <End Role="IHP_NAGLDOK" Type="Self.IHP_NAGLDOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KONTRAHENT_ARCH">
+              <PropertyRef Name="ID_IHP_KONTRAHENT_ARCH" />
+            </Principal>
+            <Dependent Role="IHP_NAGLDOK">
+              <PropertyRef Name="ID_IHP_KONTRAHENT_ARCH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_NAGLDOK_IHP_RODZAJDOK">
+          <End Role="IHP_RODZAJDOK" Type="Self.IHP_RODZAJDOK" Multiplicity="1" />
+          <End Role="IHP_NAGLDOK" Type="Self.IHP_NAGLDOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_RODZAJDOK">
+              <PropertyRef Name="ID_IHP_RODZAJDOK" />
+            </Principal>
+            <Dependent Role="IHP_NAGLDOK">
+              <PropertyRef Name="ID_RODZAJDOK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_POZDOK_IHP_KARTOTEKA">
+          <End Role="IHP_KARTOTEKA" Type="Self.IHP_KARTOTEKA" Multiplicity="1" />
+          <End Role="IHP_POZDOK" Type="Self.IHP_POZDOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Principal>
+            <Dependent Role="IHP_POZDOK">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_POZDOK_IHP_NAGLDOK">
+          <End Role="IHP_NAGLDOK" Type="Self.IHP_NAGLDOK" Multiplicity="1" />
+          <End Role="IHP_POZDOK" Type="Self.IHP_POZDOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_NAGLDOK">
+              <PropertyRef Name="ID_IHP_NAGLDOK" />
+            </Principal>
+            <Dependent Role="IHP_POZDOK">
+              <PropertyRef Name="ID_IHP_NAGLDOK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_ROZCHDOST_IHP_DOSTAWA">
+          <End Role="IHP_DOSTAWA" Type="Self.IHP_DOSTAWA" Multiplicity="1" />
+          <End Role="IHP_ROZCHDOST" Type="Self.IHP_ROZCHDOST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_DOSTAWA">
+              <PropertyRef Name="ID_IHP_DOSTAWA" />
+            </Principal>
+            <Dependent Role="IHP_ROZCHDOST">
+              <PropertyRef Name="ID_IHP_DOSTAWA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_SAMOCHOD_IHP_SAMOCHOD">
+          <End Role="IHP_KIEROWCA" Type="Self.IHP_KIEROWCA" Multiplicity="0..1" />
+          <End Role="IHP_SAMOCHOD" Type="Self.IHP_SAMOCHOD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KIEROWCA">
+              <PropertyRef Name="ID_IHP_KIEROWCA" />
+            </Principal>
+            <Dependent Role="IHP_SAMOCHOD">
+              <PropertyRef Name="ID_IHP_KIEROWCA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_WYST_JZ_IHP_JZ">
+          <End Role="IHP_JZ" Type="Self.IHP_JZ" Multiplicity="1" />
+          <End Role="IHP_WYST_JZ" Type="Self.IHP_WYST_JZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_JZ">
+              <PropertyRef Name="ID_IHP_JZ" />
+            </Principal>
+            <Dependent Role="IHP_WYST_JZ">
+              <PropertyRef Name="ID_IHP_JZ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_WYSTGRKART_IHP_GRUPAKART">
+          <End Role="IHP_GRUPAKART" Type="Self.IHP_GRUPAKART" Multiplicity="1" />
+          <End Role="IHP_WYSTGRKART" Type="Self.IHP_WYSTGRKART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_GRUPAKART">
+              <PropertyRef Name="ID_IHP_GRUPAKART" />
+            </Principal>
+            <Dependent Role="IHP_WYSTGRKART">
+              <PropertyRef Name="ID_IHP_GRUPAKART" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_WYSTGRKART_IHP_KARTOTEKA">
+          <End Role="IHP_KARTOTEKA" Type="Self.IHP_KARTOTEKA" Multiplicity="1" />
+          <End Role="IHP_WYSTGRKART" Type="Self.IHP_WYSTGRKART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Principal>
+            <Dependent Role="IHP_WYSTGRKART">
+              <PropertyRef Name="ID_KARTOTEKA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_WYSTTRASAKONTRAH_IHP_KONTRAHENT">
+          <End Role="IHP_KONTRAHENT" Type="Self.IHP_KONTRAHENT" Multiplicity="1" />
+          <End Role="IHP_WYSTTRASAKONTRAH" Type="Self.IHP_WYSTTRASAKONTRAH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KONTRAHENT">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Principal>
+            <Dependent Role="IHP_WYSTTRASAKONTRAH">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_WYSTTRASAKONTRAH_IHP_TRASY">
+          <End Role="IHP_TRASY" Type="Self.IHP_TRASY" Multiplicity="1" />
+          <End Role="IHP_WYSTTRASAKONTRAH" Type="Self.IHP_WYSTTRASAKONTRAH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_TRASY">
+              <PropertyRef Name="ID_IHP_TRASY" />
+            </Principal>
+            <Dependent Role="IHP_WYSTTRASAKONTRAH">
+              <PropertyRef Name="ID_IHP_TRASY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KOMPLETACJAModelStoreContainer">
+          <EntitySet Name="IHP_CENNIK" EntityType="Self.IHP_CENNIK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_CENNIKHISTORIA" EntityType="Self.IHP_CENNIKHISTORIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_COMCONFIG" EntityType="Self.IHP_COMCONFIG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_DANEFIRMY" EntityType="Self.IHP_DANEFIRMY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_DEFCENY" EntityType="Self.IHP_DEFCENY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_DOSTAWA" EntityType="Self.IHP_DOSTAWA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_ERPCONNECTOR" EntityType="Self.IHP_ERPCONNECTOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_FOTO" EntityType="Self.IHP_FOTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_GRUPAKART" EntityType="Self.IHP_GRUPAKART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_GRUPAPARAMETRY" EntityType="Self.IHP_GRUPAPARAMETRY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_HARMONOGRAM_DZIENNY" EntityType="Self.IHP_HARMONOGRAM_DZIENNY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_JM" EntityType="Self.IHP_JM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_JZ" EntityType="Self.IHP_JZ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_KARTOTEKA" EntityType="Self.IHP_KARTOTEKA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_KIEROWCA" EntityType="Self.IHP_KIEROWCA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_KONTRAHENT" EntityType="Self.IHP_KONTRAHENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_KONTRAHENT_ARCH" EntityType="Self.IHP_KONTRAHENT_ARCH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_MASZYNA" EntityType="Self.IHP_MASZYNA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_MIERNIK" EntityType="Self.IHP_MIERNIK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_MODEL" EntityType="Self.IHP_MODEL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_NAGLDOK" EntityType="Self.IHP_NAGLDOK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_NUMERACJA" EntityType="Self.IHP_NUMERACJA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_PARAMETRY" EntityType="Self.IHP_PARAMETRY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_POZDOK" EntityType="Self.IHP_POZDOK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_PRIORYTET" EntityType="Self.IHP_PRIORYTET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_PRODUCENT" EntityType="Self.IHP_PRODUCENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_RODZAJDOK" EntityType="Self.IHP_RODZAJDOK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_RODZAJKART" EntityType="Self.IHP_RODZAJKART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_RODZGRUPKART" EntityType="Self.IHP_RODZGRUPKART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_ROZCHDOST" EntityType="Self.IHP_ROZCHDOST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_SAMOCHOD" EntityType="Self.IHP_SAMOCHOD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_STAWKAVAT" EntityType="Self.IHP_STAWKAVAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_TRASY" EntityType="Self.IHP_TRASY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_WAZENIE_USLUGA" EntityType="Self.IHP_WAZENIE_USLUGA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_WYST_JZ" EntityType="Self.IHP_WYST_JZ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_WYSTGRKART" EntityType="Self.IHP_WYSTGRKART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_WYSTTRASAKONTRAH" EntityType="Self.IHP_WYSTTRASAKONTRAH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_ZAM_USERS" EntityType="Self.IHP_ZAM_USERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IHP_DEFSTATUS" EntityType="Self.IHP_DEFSTATUS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [IHP_DEFSTATUS].[ID_IHP_DEFSTATUS] AS [ID_IHP_DEFSTATUS], 
+    [IHP_DEFSTATUS].[NAZWA] AS [NAZWA], 
+    [IHP_DEFSTATUS].[KODSKANER] AS [KODSKANER]
+    FROM [dbo].[IHP_DEFSTATUS] AS [IHP_DEFSTATUS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="IHP_STATUSHISTORIA" EntityType="Self.IHP_STATUSHISTORIA" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [IHP_STATUSHISTORIA].[ID_IHP_STATUSHISTORIA] AS [ID_IHP_STATUSHISTORIA], 
+    [IHP_STATUSHISTORIA].[ID_IHP_DEFSTATUS] AS [ID_IHP_DEFSTATUS], 
+    [IHP_STATUSHISTORIA].[DATAWPISU] AS [DATAWPISU], 
+    [IHP_STATUSHISTORIA].[OPIS] AS [OPIS], 
+    [IHP_STATUSHISTORIA].[ID_IHP_POZ] AS [ID_IHP_POZ], 
+    [IHP_STATUSHISTORIA].[ID_ARIT_ZAM_USERS] AS [ID_ARIT_ZAM_USERS], 
+    [IHP_STATUSHISTORIA].[ID_IHP_DEFSTATUSZ] AS [ID_IHP_DEFSTATUSZ]
+    FROM [dbo].[IHP_STATUSHISTORIA] AS [IHP_STATUSHISTORIA]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="IHP_WYST_GRUPAPARAM" EntityType="Self.IHP_WYST_GRUPAPARAM" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [IHP_WYST_GRUPAPARAM].[ID_IHP_WYST_GRUPAPARAM] AS [ID_IHP_WYST_GRUPAPARAM], 
+    [IHP_WYST_GRUPAPARAM].[ID_IHP_GRUPAPARAMETRY] AS [ID_IHP_GRUPAPARAMETRY], 
+    [IHP_WYST_GRUPAPARAM].[ID_IHP_PARAMETRY] AS [ID_IHP_PARAMETRY]
+    FROM [dbo].[IHP_WYST_GRUPAPARAM] AS [IHP_WYST_GRUPAPARAM]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="IHP_WYSTCECHKART" EntityType="Self.IHP_WYSTCECHKART" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [IHP_WYSTCECHKART].[ID_WYSTCECHKART] AS [ID_WYSTCECHKART], 
+    [IHP_WYSTCECHKART].[ID_KARTOTEKA] AS [ID_KARTOTEKA], 
+    [IHP_WYSTCECHKART].[ID_CECHAKART] AS [ID_CECHAKART], 
+    [IHP_WYSTCECHKART].[WARTOSC] AS [WARTOSC]
+    FROM [dbo].[IHP_WYSTCECHKART] AS [IHP_WYSTCECHKART]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sysdiagrams].[name] AS [name], 
+    [sysdiagrams].[principal_id] AS [principal_id], 
+    [sysdiagrams].[diagram_id] AS [diagram_id], 
+    [sysdiagrams].[version] AS [version], 
+    [sysdiagrams].[definition] AS [definition]
+    FROM [dbo].[sysdiagrams] AS [sysdiagrams]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_IHP_CENNIK_IHP_DEFCENY" Association="Self.FK_IHP_CENNIK_IHP_DEFCENY">
+            <End Role="IHP_DEFCENY" EntitySet="IHP_DEFCENY" />
+            <End Role="IHP_CENNIK" EntitySet="IHP_CENNIK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_CENNIK_IHP_KARTOTEKA" Association="Self.FK_IHP_CENNIK_IHP_KARTOTEKA">
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+            <End Role="IHP_CENNIK" EntitySet="IHP_CENNIK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_CENNIKHISTORIA_IHP_CENNIK" Association="Self.FK_IHP_CENNIKHISTORIA_IHP_CENNIK">
+            <End Role="IHP_CENNIK" EntitySet="IHP_CENNIK" />
+            <End Role="IHP_CENNIKHISTORIA" EntitySet="IHP_CENNIKHISTORIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_CENNIKHISTORIA_IHP_ZAM_USERS" Association="Self.FK_IHP_CENNIKHISTORIA_IHP_ZAM_USERS">
+            <End Role="IHP_ZAM_USERS" EntitySet="IHP_ZAM_USERS" />
+            <End Role="IHP_CENNIKHISTORIA" EntitySet="IHP_CENNIKHISTORIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_FOTO_IHP_FOTO" Association="Self.FK_IHP_FOTO_IHP_FOTO">
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+            <End Role="IHP_FOTO" EntitySet="IHP_FOTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_GRUPAKART_IHP_RODZGRUPKART" Association="Self.FK_IHP_GRUPAKART_IHP_RODZGRUPKART">
+            <End Role="IHP_RODZGRUPKART" EntitySet="IHP_RODZGRUPKART" />
+            <End Role="IHP_GRUPAKART" EntitySet="IHP_GRUPAKART" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_HARMONOGRAM_DZIENNY_IHP_MASZYNA" Association="Self.FK_IHP_HARMONOGRAM_DZIENNY_IHP_MASZYNA">
+            <End Role="IHP_MASZYNA" EntitySet="IHP_MASZYNA" />
+            <End Role="IHP_HARMONOGRAM_DZIENNY" EntitySet="IHP_HARMONOGRAM_DZIENNY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KARTOTEKA_IHP_JM" Association="Self.FK_IHP_KARTOTEKA_IHP_JM">
+            <End Role="IHP_JM" EntitySet="IHP_JM" />
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KARTOTEKA_IHP_RODZAJKART" Association="Self.FK_IHP_KARTOTEKA_IHP_RODZAJKART">
+            <End Role="IHP_RODZAJKART" EntitySet="IHP_RODZAJKART" />
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KARTOTEKA_IHP_STAWKAVAT" Association="Self.FK_IHP_KARTOTEKA_IHP_STAWKAVAT">
+            <End Role="IHP_STAWKAVAT" EntitySet="IHP_STAWKAVAT" />
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KIEROWCA_IHP_KONTRAHENT_ARCH" Association="Self.FK_IHP_KIEROWCA_IHP_KONTRAHENT_ARCH">
+            <End Role="IHP_KONTRAHENT" EntitySet="IHP_KONTRAHENT" />
+            <End Role="IHP_KIEROWCA" EntitySet="IHP_KIEROWCA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT" Association="Self.FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT">
+            <End Role="IHP_KONTRAHENT" EntitySet="IHP_KONTRAHENT" />
+            <End Role="IHP_KONTRAHENT_ARCH" EntitySet="IHP_KONTRAHENT_ARCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT_ARCH" Association="Self.FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT_ARCH">
+            <End Role="IHP_KONTRAHENT_ARCH" EntitySet="IHP_KONTRAHENT_ARCH" />
+            <End Role="IHP_KONTRAHENT_ARCH1" EntitySet="IHP_KONTRAHENT_ARCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KONTRAHENT_IHP_DEFCENY" Association="Self.FK_IHP_KONTRAHENT_IHP_DEFCENY">
+            <End Role="IHP_DEFCENY" EntitySet="IHP_DEFCENY" />
+            <End Role="IHP_KONTRAHENT" EntitySet="IHP_KONTRAHENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_MODEL_IHP_PRODUCENT" Association="Self.FK_IHP_MODEL_IHP_PRODUCENT">
+            <End Role="IHP_PRODUCENT" EntitySet="IHP_PRODUCENT" />
+            <End Role="IHP_MODEL" EntitySet="IHP_MODEL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_NAGLDOK_IHP_KONTRAHENT" Association="Self.FK_IHP_NAGLDOK_IHP_KONTRAHENT">
+            <End Role="IHP_KONTRAHENT" EntitySet="IHP_KONTRAHENT" />
+            <End Role="IHP_NAGLDOK" EntitySet="IHP_NAGLDOK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_NAGLDOK_IHP_KONTRAHENT_ARCH" Association="Self.FK_IHP_NAGLDOK_IHP_KONTRAHENT_ARCH">
+            <End Role="IHP_KONTRAHENT_ARCH" EntitySet="IHP_KONTRAHENT_ARCH" />
+            <End Role="IHP_NAGLDOK" EntitySet="IHP_NAGLDOK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_NAGLDOK_IHP_RODZAJDOK" Association="Self.FK_IHP_NAGLDOK_IHP_RODZAJDOK">
+            <End Role="IHP_RODZAJDOK" EntitySet="IHP_RODZAJDOK" />
+            <End Role="IHP_NAGLDOK" EntitySet="IHP_NAGLDOK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_POZDOK_IHP_KARTOTEKA" Association="Self.FK_IHP_POZDOK_IHP_KARTOTEKA">
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+            <End Role="IHP_POZDOK" EntitySet="IHP_POZDOK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_POZDOK_IHP_NAGLDOK" Association="Self.FK_IHP_POZDOK_IHP_NAGLDOK">
+            <End Role="IHP_NAGLDOK" EntitySet="IHP_NAGLDOK" />
+            <End Role="IHP_POZDOK" EntitySet="IHP_POZDOK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_ROZCHDOST_IHP_DOSTAWA" Association="Self.FK_IHP_ROZCHDOST_IHP_DOSTAWA">
+            <End Role="IHP_DOSTAWA" EntitySet="IHP_DOSTAWA" />
+            <End Role="IHP_ROZCHDOST" EntitySet="IHP_ROZCHDOST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_SAMOCHOD_IHP_SAMOCHOD" Association="Self.FK_IHP_SAMOCHOD_IHP_SAMOCHOD">
+            <End Role="IHP_KIEROWCA" EntitySet="IHP_KIEROWCA" />
+            <End Role="IHP_SAMOCHOD" EntitySet="IHP_SAMOCHOD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_WYST_JZ_IHP_JZ" Association="Self.FK_IHP_WYST_JZ_IHP_JZ">
+            <End Role="IHP_JZ" EntitySet="IHP_JZ" />
+            <End Role="IHP_WYST_JZ" EntitySet="IHP_WYST_JZ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_WYSTGRKART_IHP_GRUPAKART" Association="Self.FK_IHP_WYSTGRKART_IHP_GRUPAKART">
+            <End Role="IHP_GRUPAKART" EntitySet="IHP_GRUPAKART" />
+            <End Role="IHP_WYSTGRKART" EntitySet="IHP_WYSTGRKART" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_WYSTGRKART_IHP_KARTOTEKA" Association="Self.FK_IHP_WYSTGRKART_IHP_KARTOTEKA">
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+            <End Role="IHP_WYSTGRKART" EntitySet="IHP_WYSTGRKART" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_WYSTTRASAKONTRAH_IHP_KONTRAHENT" Association="Self.FK_IHP_WYSTTRASAKONTRAH_IHP_KONTRAHENT">
+            <End Role="IHP_KONTRAHENT" EntitySet="IHP_KONTRAHENT" />
+            <End Role="IHP_WYSTTRASAKONTRAH" EntitySet="IHP_WYSTTRASAKONTRAH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_WYSTTRASAKONTRAH_IHP_TRASY" Association="Self.FK_IHP_WYSTTRASAKONTRAH_IHP_TRASY">
+            <End Role="IHP_TRASY" EntitySet="IHP_TRASY" />
+            <End Role="IHP_WYSTTRASAKONTRAH" EntitySet="IHP_WYSTTRASAKONTRAH" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KOMPLETACJAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="IHP_CENNIK">
+          <Key>
+            <PropertyRef Name="ID_IHP_CENNIK" />
+          </Key>
+          <Property Name="ID_IHP_CENNIK" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_KARTOTEKA" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_DEFCENY" Type="Int32" Nullable="false" />
+          <Property Name="CENAN" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="CENAB" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <NavigationProperty Name="IHP_DEFCENY" Relationship="Self.FK_IHP_CENNIK_IHP_DEFCENY" FromRole="IHP_CENNIK" ToRole="IHP_DEFCENY" />
+          <NavigationProperty Name="IHP_CENNIKHISTORIA" Relationship="Self.FK_IHP_CENNIKHISTORIA_IHP_CENNIK" FromRole="IHP_CENNIK" ToRole="IHP_CENNIKHISTORIA" />
+          <NavigationProperty Name="IHP_KARTOTEKA" Relationship="KOMPLETACJAModel.FK_IHP_CENNIK_IHP_KARTOTEKA" FromRole="IHP_CENNIK" ToRole="IHP_KARTOTEKA" />
+        </EntityType>
+        <EntityType Name="IHP_CENNIKHISTORIA">
+          <Key>
+            <PropertyRef Name="ID_IHP_CENNIKHISTORIA" />
+          </Key>
+          <Property Name="ID_IHP_CENNIKHISTORIA" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_CENNIK" Type="Int32" Nullable="false" />
+          <Property Name="DATAWPISU" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CENAZ" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="CENANA" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="ID_IHP_ZAM_USERS" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IHP_CENNIK" Relationship="Self.FK_IHP_CENNIKHISTORIA_IHP_CENNIK" FromRole="IHP_CENNIKHISTORIA" ToRole="IHP_CENNIK" />
+          <NavigationProperty Name="IHP_ZAM_USERS" Relationship="KOMPLETACJAModel.FK_IHP_CENNIKHISTORIA_IHP_ZAM_USERS" FromRole="IHP_CENNIKHISTORIA" ToRole="IHP_ZAM_USERS" />
+        </EntityType>
+        <EntityType Name="IHP_COMCONFIG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="VAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TYP" Type="Int32" />
+        </EntityType>
+        <EntityType Name="IHP_DANEFIRMY">
+          <Key>
+            <PropertyRef Name="ID_IHP_DANEFIRMY" />
+          </Key>
+          <Property Name="ID_IHP_DANEFIRMY" Type="Int32" Nullable="false" />
+          <Property Name="ODDATY" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_URZSKARB" Type="Int32" />
+          <Property Name="ID_KRAJ" Type="Int32" />
+          <Property Name="ID_WOJEWODZTWO" Type="Int32" />
+          <Property Name="NAZWA_SKROCONA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAZWA_FIRMY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="REGON" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFON" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFON2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FAX" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WWW" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ULICA" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="NRDOMU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NRLOKALU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MIEJSCOWOSC" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KODPOCZTOWY" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="POCZTA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="IHP_DEFCENY">
+          <Key>
+            <PropertyRef Name="ID_IHP_DEFCENY" />
+          </Key>
+          <Property Name="ID_IHP_DEFCENY" Type="Int32" Nullable="false" />
+          <Property Name="NAZWACENY" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ODNETTO" Type="Int16" />
+          <Property Name="AKTYWNY" Type="Int16" />
+          <NavigationProperty Name="IHP_CENNIK" Relationship="Self.FK_IHP_CENNIK_IHP_DEFCENY" FromRole="IHP_DEFCENY" ToRole="IHP_CENNIK" />
+          <NavigationProperty Name="IHP_KONTRAHENT" Relationship="Self.FK_IHP_KONTRAHENT_IHP_DEFCENY" FromRole="IHP_DEFCENY" ToRole="IHP_KONTRAHENT" />
+        </EntityType>
+        <EntityType Name="IHP_DOSTAWA">
+          <Key>
+            <PropertyRef Name="ID_IHP_DOSTAWA" />
+          </Key>
+          <Property Name="ID_IHP_DOSTAWA" Type="Int32" Nullable="false" />
+          <Property Name="ILOSC" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ILOSCAKT" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ZREALIZOWANA" Type="Int16" />
+          <Property Name="DATADOSTAWY" Type="DateTime" Precision="0" />
+          <Property Name="ID_IHP_POZDOK" Type="Int32" />
+          <NavigationProperty Name="IHP_ROZCHDOST" Relationship="Self.FK_IHP_ROZCHDOST_IHP_DOSTAWA" FromRole="IHP_DOSTAWA" ToRole="IHP_ROZCHDOST" />
+        </EntityType>
+        <EntityType Name="IHP_ERPCONNECTOR">
+          <Key>
+            <PropertyRef Name="ID_IHP_ERPCONNECTOR" />
+          </Key>
+          <Property Name="ID_IHP_ERPCONNECTOR" Type="Int32" Nullable="false" />
+          <Property Name="ERPNAZWA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SERWER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BAZA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UZYTKOWNIK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HASLO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KARTWSZYSTKO" Type="Int32" />
+          <Property Name="KARTRODZ" Type="Int32" />
+          <Property Name="KARTIDRODZ" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="KARTGRUPA" Type="Int32" />
+          <Property Name="KARTIDGRUPA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="KARTCENNIKI" Type="Int32" />
+          <Property Name="KONTRAHWSZYSTKO" Type="Int32" />
+          <Property Name="KONTRAHGRUPA" Type="Int32" />
+          <Property Name="KONTRAHIDGRUPA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DOKBEZPOSR" Type="Int32" Nullable="false" />
+          <Property Name="DOKWYDANIA" Type="Int32" />
+          <Property Name="ID_DEFDOK" Type="Int32" />
+        </EntityType>
+        <EntityType Name="IHP_GRUPAPARAMETRY">
+          <Key>
+            <PropertyRef Name="ID_IHP_GRUPAPARAMETRY" />
+          </Key>
+          <Property Name="ID_IHP_GRUPAPARAMETRY" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_KIEROWCA">
+          <Key>
+            <PropertyRef Name="ID_IHP_KIEROWCA" />
+          </Key>
+          <Property Name="ID_IHP_KIEROWCA" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TELEFON" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_IHP_KONTRAHENT" Type="Int32" />
+          <NavigationProperty Name="IHP_KONTRAHENT" Relationship="Self.FK_IHP_KIEROWCA_IHP_KONTRAHENT_ARCH" FromRole="IHP_KIEROWCA" ToRole="IHP_KONTRAHENT" />
+          <NavigationProperty Name="IHP_SAMOCHOD" Relationship="Self.FK_IHP_SAMOCHOD_IHP_SAMOCHOD" FromRole="IHP_KIEROWCA" ToRole="IHP_SAMOCHOD" />
+        </EntityType>
+        <EntityType Name="IHP_KONTRAHENT">
+          <Key>
+            <PropertyRef Name="ID_IHP_KONTRAHENT" />
+          </Key>
+          <Property Name="ID_IHP_KONTRAHENT" Type="Int32" Nullable="false" />
+          <Property Name="NRKONTRAH" Type="Int32" />
+          <Property Name="NIP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NAZWA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MIEJSCOWOSC" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="KODPOCZTOWY" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="POCZTA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ULICA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NRDOMU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NRLOKALU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFON" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_IHP_DEFCENY" Type="Int32" Nullable="false" />
+          <Property Name="ID_KH_SUBJECT" Type="Int32" Nullable="false" />
+          <Property Name="TELKOM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TYPKONTRAH" Type="Int16" />
+          <Property Name="NAZWAPELNA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ID_IHP_RODZAJDOKDEF" Type="Int32" />
+          <NavigationProperty Name="IHP_DEFCENY" Relationship="Self.FK_IHP_KONTRAHENT_IHP_DEFCENY" FromRole="IHP_KONTRAHENT" ToRole="IHP_DEFCENY" />
+          <NavigationProperty Name="IHP_KIEROWCA" Relationship="Self.FK_IHP_KIEROWCA_IHP_KONTRAHENT_ARCH" FromRole="IHP_KONTRAHENT" ToRole="IHP_KIEROWCA" />
+          <NavigationProperty Name="IHP_KONTRAHENT_ARCH" Relationship="Self.FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT" FromRole="IHP_KONTRAHENT" ToRole="IHP_KONTRAHENT_ARCH" />
+          <NavigationProperty Name="IHP_WYSTTRASAKONTRAH" Relationship="KOMPLETACJAModel.FK_IHP_WYSTTRASAKONTRAH_IHP_KONTRAHENT" FromRole="IHP_KONTRAHENT" ToRole="IHP_WYSTTRASAKONTRAH" />
+          <NavigationProperty Name="IHP_NAGLDOK" Relationship="KOMPLETACJAModel.FK_IHP_NAGLDOK_IHP_KONTRAHENT" FromRole="IHP_KONTRAHENT" ToRole="IHP_NAGLDOK" />
+        </EntityType>
+        <EntityType Name="IHP_KONTRAHENT_ARCH">
+          <Key>
+            <PropertyRef Name="ID_IHP_KONTRAHENT_ARCH" />
+          </Key>
+          <Property Name="ID_IHP_KONTRAHENT_ARCH" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_KONTRAHENT" Type="Int32" Nullable="false" />
+          <Property Name="NRKONTRAH" Type="Int32" />
+          <Property Name="NIP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NAZWA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MIEJSCOWOSC" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="KODPOCZTOWY" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="POCZTA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ULICA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NRDOMU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NRLOKALU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFON" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AKTYWNY" Type="Int32" />
+          <Property Name="ID_IHP_DEFCENY" Type="Int32" Nullable="false" />
+          <Property Name="ID_KH_SUBJECT" Type="Int32" />
+          <Property Name="TELKOM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TYPKONTRAH" Type="Int32" />
+          <Property Name="NAZWAPELNA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ID_IHP_RODZAJDOKDEF" Type="Int32" />
+          <NavigationProperty Name="IHP_KONTRAHENT" Relationship="Self.FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT" FromRole="IHP_KONTRAHENT_ARCH" ToRole="IHP_KONTRAHENT" />
+          <NavigationProperty Name="IHP_KONTRAHENT_ARCH1" Relationship="KOMPLETACJAModel.FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT_ARCH" FromRole="IHP_KONTRAHENT_ARCH" ToRole="IHP_KONTRAHENT_ARCH1" />
+          <NavigationProperty Name="IHP_KONTRAHENT_ARCH2" Relationship="KOMPLETACJAModel.FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT_ARCH" FromRole="IHP_KONTRAHENT_ARCH1" ToRole="IHP_KONTRAHENT_ARCH" />
+          <NavigationProperty Name="IHP_NAGLDOK" Relationship="KOMPLETACJAModel.FK_IHP_NAGLDOK_IHP_KONTRAHENT_ARCH" FromRole="IHP_KONTRAHENT_ARCH" ToRole="IHP_NAGLDOK" />
+        </EntityType>
+        <EntityType Name="IHP_MIERNIK">
+          <Key>
+            <PropertyRef Name="ID_IHP_MIERNIK" />
+          </Key>
+          <Property Name="ID_IHP_MIERNIK" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA" Type="String" MaxLength="55" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="IHP_MODEL">
+          <Key>
+            <PropertyRef Name="ID_IHP_MODEL" />
+          </Key>
+          <Property Name="ID_IHP_MODEL" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_PRODUCENT" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="IHP_PRODUCENT" Relationship="Self.FK_IHP_MODEL_IHP_PRODUCENT" FromRole="IHP_MODEL" ToRole="IHP_PRODUCENT" />
+        </EntityType>
+        <EntityType Name="IHP_NUMERACJA">
+          <Key>
+            <PropertyRef Name="ID_IHP_NUMERACJA" />
+          </Key>
+          <Property Name="ID_IHP_NUMERACJA" Type="Int32" Nullable="false" />
+          <Property Name="ID_TABELA" Type="Int32" Nullable="false" />
+          <Property Name="NUMER" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_PRODUCENT">
+          <Key>
+            <PropertyRef Name="ID_IHP_PRODUCENT" />
+          </Key>
+          <Property Name="ID_IHP_PRODUCENT" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="IHP_MODEL" Relationship="Self.FK_IHP_MODEL_IHP_PRODUCENT" FromRole="IHP_PRODUCENT" ToRole="IHP_MODEL" />
+        </EntityType>
+        <EntityType Name="IHP_RODZAJKART">
+          <Key>
+            <PropertyRef Name="ID_IHP_RODZAJKART" />
+          </Key>
+          <Property Name="ID_IHP_RODZAJKART" Type="Int32" Nullable="false" />
+          <Property Name="OPIS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="IHP_KARTOTEKA" Relationship="KOMPLETACJAModel.FK_IHP_KARTOTEKA_IHP_RODZAJKART" FromRole="IHP_RODZAJKART" ToRole="IHP_KARTOTEKA" />
+        </EntityType>
+        <EntityType Name="IHP_ROZCHDOST">
+          <Key>
+            <PropertyRef Name="ID_IHP_ROZCHDOST" />
+          </Key>
+          <Property Name="ID_IHP_ROZCHDOST" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_DOSTAWA" Type="Int32" Nullable="false" />
+          <Property Name="ILOSCROZCH" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DATAROZCH" Type="DateTime" Precision="0" />
+          <Property Name="ID_IHP_POZDOK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IHP_DOSTAWA" Relationship="Self.FK_IHP_ROZCHDOST_IHP_DOSTAWA" FromRole="IHP_ROZCHDOST" ToRole="IHP_DOSTAWA" />
+        </EntityType>
+        <EntityType Name="IHP_SAMOCHOD">
+          <Key>
+            <PropertyRef Name="ID_IHP_SAMOCHOD" />
+          </Key>
+          <Property Name="ID_IHP_SAMOCHOD" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NRREJ" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ID_IHP_KIEROWCA" Type="Int32" />
+          <Property Name="TARA" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="IHP_KIEROWCA" Relationship="Self.FK_IHP_SAMOCHOD_IHP_SAMOCHOD" FromRole="IHP_SAMOCHOD" ToRole="IHP_KIEROWCA" />
+        </EntityType>
+        <EntityType Name="IHP_STAWKAVAT">
+          <Key>
+            <PropertyRef Name="ID_IHP_STAWKAVAT" />
+          </Key>
+          <Property Name="ID_IHP_STAWKAVAT" Type="Int32" Nullable="false" />
+          <Property Name="WARTOSC" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AKTYWNY" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="IHP_KARTOTEKA" Relationship="KOMPLETACJAModel.FK_IHP_KARTOTEKA_IHP_STAWKAVAT" FromRole="IHP_STAWKAVAT" ToRole="IHP_KARTOTEKA" />
+        </EntityType>
+        <EntityType Name="IHP_WAZENIE_USLUGA">
+          <Key>
+            <PropertyRef Name="ID_IHP_WAZENIE_USLUGA" />
+          </Key>
+          <Property Name="ID_IHP_WAZENIE_USLUGA" Type="Int32" Nullable="false" />
+          <Property Name="DATACZAS" Type="DateTime" Precision="3" />
+          <Property Name="ID_IHP_KIEROWCA" Type="Int32" />
+          <Property Name="ID_IHP_SAMOCHOD" Type="Int32" />
+          <Property Name="WAGA" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ID_IHP_KONTRAHENT_ARCH" Type="Int32" />
+          <Property Name="STATUS" Type="Int32" />
+          <Property Name="NRKWIT" Type="Int32" />
+          <Property Name="NRKWITWEW" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="KIEROWCA_NAZWA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KONTRAHENT_NAZWA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NRREJ_NAZWA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UWAGI" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="IHP_WYST_GRUPAPARAM">
+          <Key>
+            <PropertyRef Name="ID_IHP_WYST_GRUPAPARAM" />
+            <PropertyRef Name="ID_IHP_GRUPAPARAMETRY" />
+            <PropertyRef Name="ID_IHP_PARAMETRY" />
+          </Key>
+          <Property Name="ID_IHP_WYST_GRUPAPARAM" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_GRUPAPARAMETRY" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_PARAMETRY" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="principal_id" />
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_IHP_CENNIK_IHP_DEFCENY">
+          <End Role="IHP_DEFCENY" Type="Self.IHP_DEFCENY" Multiplicity="1" />
+          <End Role="IHP_CENNIK" Type="Self.IHP_CENNIK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_DEFCENY">
+              <PropertyRef Name="ID_IHP_DEFCENY" />
+            </Principal>
+            <Dependent Role="IHP_CENNIK">
+              <PropertyRef Name="ID_IHP_DEFCENY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_CENNIKHISTORIA_IHP_CENNIK">
+          <End Role="IHP_CENNIK" Type="Self.IHP_CENNIK" Multiplicity="1" />
+          <End Role="IHP_CENNIKHISTORIA" Type="Self.IHP_CENNIKHISTORIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_CENNIK">
+              <PropertyRef Name="ID_IHP_CENNIK" />
+            </Principal>
+            <Dependent Role="IHP_CENNIKHISTORIA">
+              <PropertyRef Name="ID_IHP_CENNIK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KONTRAHENT_IHP_DEFCENY">
+          <End Role="IHP_DEFCENY" Type="Self.IHP_DEFCENY" Multiplicity="1" />
+          <End Role="IHP_KONTRAHENT" Type="Self.IHP_KONTRAHENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_DEFCENY">
+              <PropertyRef Name="ID_IHP_DEFCENY" />
+            </Principal>
+            <Dependent Role="IHP_KONTRAHENT">
+              <PropertyRef Name="ID_IHP_DEFCENY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_ROZCHDOST_IHP_DOSTAWA">
+          <End Role="IHP_DOSTAWA" Type="Self.IHP_DOSTAWA" Multiplicity="1" />
+          <End Role="IHP_ROZCHDOST" Type="Self.IHP_ROZCHDOST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_DOSTAWA">
+              <PropertyRef Name="ID_IHP_DOSTAWA" />
+            </Principal>
+            <Dependent Role="IHP_ROZCHDOST">
+              <PropertyRef Name="ID_IHP_DOSTAWA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KIEROWCA_IHP_KONTRAHENT_ARCH">
+          <End Role="IHP_KONTRAHENT" Type="Self.IHP_KONTRAHENT" Multiplicity="0..1" />
+          <End Role="IHP_KIEROWCA" Type="Self.IHP_KIEROWCA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KONTRAHENT">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Principal>
+            <Dependent Role="IHP_KIEROWCA">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_SAMOCHOD_IHP_SAMOCHOD">
+          <End Role="IHP_KIEROWCA" Type="Self.IHP_KIEROWCA" Multiplicity="0..1" />
+          <End Role="IHP_SAMOCHOD" Type="Self.IHP_SAMOCHOD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KIEROWCA">
+              <PropertyRef Name="ID_IHP_KIEROWCA" />
+            </Principal>
+            <Dependent Role="IHP_SAMOCHOD">
+              <PropertyRef Name="ID_IHP_KIEROWCA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT">
+          <End Role="IHP_KONTRAHENT" Type="Self.IHP_KONTRAHENT" Multiplicity="1" />
+          <End Role="IHP_KONTRAHENT_ARCH" Type="Self.IHP_KONTRAHENT_ARCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KONTRAHENT">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Principal>
+            <Dependent Role="IHP_KONTRAHENT_ARCH">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_MODEL_IHP_PRODUCENT">
+          <End Role="IHP_PRODUCENT" Type="Self.IHP_PRODUCENT" Multiplicity="1" />
+          <End Role="IHP_MODEL" Type="Self.IHP_MODEL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_PRODUCENT">
+              <PropertyRef Name="ID_IHP_PRODUCENT" />
+            </Principal>
+            <Dependent Role="IHP_MODEL">
+              <PropertyRef Name="ID_IHP_PRODUCENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KOMPLETACJAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="IHP_CENNIK" EntityType="Self.IHP_CENNIK" />
+          <EntitySet Name="IHP_CENNIKHISTORIA" EntityType="Self.IHP_CENNIKHISTORIA" />
+          <EntitySet Name="IHP_COMCONFIG" EntityType="Self.IHP_COMCONFIG" />
+          <EntitySet Name="IHP_DANEFIRMY" EntityType="Self.IHP_DANEFIRMY" />
+          <EntitySet Name="IHP_DEFCENY" EntityType="Self.IHP_DEFCENY" />
+          <EntitySet Name="IHP_DOSTAWA" EntityType="Self.IHP_DOSTAWA" />
+          <EntitySet Name="IHP_ERPCONNECTOR" EntityType="Self.IHP_ERPCONNECTOR" />
+          <EntitySet Name="IHP_GRUPAPARAMETRY" EntityType="Self.IHP_GRUPAPARAMETRY" />
+          <EntitySet Name="IHP_KIEROWCA" EntityType="Self.IHP_KIEROWCA" />
+          <EntitySet Name="IHP_KONTRAHENT" EntityType="Self.IHP_KONTRAHENT" />
+          <EntitySet Name="IHP_KONTRAHENT_ARCH" EntityType="Self.IHP_KONTRAHENT_ARCH" />
+          <EntitySet Name="IHP_MIERNIK" EntityType="Self.IHP_MIERNIK" />
+          <EntitySet Name="IHP_MODEL" EntityType="Self.IHP_MODEL" />
+          <EntitySet Name="IHP_NUMERACJA" EntityType="Self.IHP_NUMERACJA" />
+          <EntitySet Name="IHP_PRODUCENT" EntityType="Self.IHP_PRODUCENT" />
+          <EntitySet Name="IHP_RODZAJKART" EntityType="Self.IHP_RODZAJKART" />
+          <EntitySet Name="IHP_ROZCHDOST" EntityType="Self.IHP_ROZCHDOST" />
+          <EntitySet Name="IHP_SAMOCHOD" EntityType="Self.IHP_SAMOCHOD" />
+          <EntitySet Name="IHP_STAWKAVAT" EntityType="Self.IHP_STAWKAVAT" />
+          <EntitySet Name="IHP_WAZENIE_USLUGA" EntityType="Self.IHP_WAZENIE_USLUGA" />
+          <EntitySet Name="IHP_WYST_GRUPAPARAM" EntityType="Self.IHP_WYST_GRUPAPARAM" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_IHP_CENNIK_IHP_DEFCENY" Association="Self.FK_IHP_CENNIK_IHP_DEFCENY">
+            <End Role="IHP_DEFCENY" EntitySet="IHP_DEFCENY" />
+            <End Role="IHP_CENNIK" EntitySet="IHP_CENNIK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_CENNIKHISTORIA_IHP_CENNIK" Association="Self.FK_IHP_CENNIKHISTORIA_IHP_CENNIK">
+            <End Role="IHP_CENNIK" EntitySet="IHP_CENNIK" />
+            <End Role="IHP_CENNIKHISTORIA" EntitySet="IHP_CENNIKHISTORIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KONTRAHENT_IHP_DEFCENY" Association="Self.FK_IHP_KONTRAHENT_IHP_DEFCENY">
+            <End Role="IHP_DEFCENY" EntitySet="IHP_DEFCENY" />
+            <End Role="IHP_KONTRAHENT" EntitySet="IHP_KONTRAHENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_ROZCHDOST_IHP_DOSTAWA" Association="Self.FK_IHP_ROZCHDOST_IHP_DOSTAWA">
+            <End Role="IHP_DOSTAWA" EntitySet="IHP_DOSTAWA" />
+            <End Role="IHP_ROZCHDOST" EntitySet="IHP_ROZCHDOST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KIEROWCA_IHP_KONTRAHENT_ARCH" Association="Self.FK_IHP_KIEROWCA_IHP_KONTRAHENT_ARCH">
+            <End Role="IHP_KONTRAHENT" EntitySet="IHP_KONTRAHENT" />
+            <End Role="IHP_KIEROWCA" EntitySet="IHP_KIEROWCA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_SAMOCHOD_IHP_SAMOCHOD" Association="Self.FK_IHP_SAMOCHOD_IHP_SAMOCHOD">
+            <End Role="IHP_KIEROWCA" EntitySet="IHP_KIEROWCA" />
+            <End Role="IHP_SAMOCHOD" EntitySet="IHP_SAMOCHOD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT" Association="Self.FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT">
+            <End Role="IHP_KONTRAHENT" EntitySet="IHP_KONTRAHENT" />
+            <End Role="IHP_KONTRAHENT_ARCH" EntitySet="IHP_KONTRAHENT_ARCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_MODEL_IHP_PRODUCENT" Association="Self.FK_IHP_MODEL_IHP_PRODUCENT">
+            <End Role="IHP_PRODUCENT" EntitySet="IHP_PRODUCENT" />
+            <End Role="IHP_MODEL" EntitySet="IHP_MODEL" />
+          </AssociationSet>
+          <EntitySet Name="IHP_ZAM_USERS" EntityType="KOMPLETACJAModel.IHP_ZAM_USERS" />
+          <AssociationSet Name="FK_IHP_CENNIKHISTORIA_IHP_ZAM_USERS" Association="KOMPLETACJAModel.FK_IHP_CENNIKHISTORIA_IHP_ZAM_USERS">
+            <End Role="IHP_ZAM_USERS" EntitySet="IHP_ZAM_USERS" />
+            <End Role="IHP_CENNIKHISTORIA" EntitySet="IHP_CENNIKHISTORIA" />
+          </AssociationSet>
+          <EntitySet Name="IHP_PARAMETRY" EntityType="KOMPLETACJAModel.IHP_PARAMETRY" />
+          <EntitySet Name="IHP_DEFSTATUS" EntityType="KOMPLETACJAModel.IHP_DEFSTATUS" />
+          <EntitySet Name="IHP_STATUSHISTORIA" EntityType="KOMPLETACJAModel.IHP_STATUSHISTORIA" />
+          <EntitySet Name="IHP_RODZGRUPKART" EntityType="KOMPLETACJAModel.IHP_RODZGRUPKART" />
+          <EntitySet Name="IHP_GRUPAKART" EntityType="KOMPLETACJAModel.IHP_GRUPAKART" />
+          <AssociationSet Name="FK_IHP_GRUPAKART_IHP_RODZGRUPKART" Association="KOMPLETACJAModel.FK_IHP_GRUPAKART_IHP_RODZGRUPKART">
+            <End Role="IHP_RODZGRUPKART" EntitySet="IHP_RODZGRUPKART" />
+            <End Role="IHP_GRUPAKART" EntitySet="IHP_GRUPAKART" />
+          </AssociationSet>
+          <EntitySet Name="IHP_FOTO" EntityType="KOMPLETACJAModel.IHP_FOTO" />
+          <EntitySet Name="IHP_TRASY" EntityType="KOMPLETACJAModel.IHP_TRASY" />
+          <EntitySet Name="IHP_JZ" EntityType="KOMPLETACJAModel.IHP_JZ" />
+          <EntitySet Name="IHP_WYST_JZ" EntityType="KOMPLETACJAModel.IHP_WYST_JZ" />
+          <AssociationSet Name="FK_IHP_WYST_JZ_IHP_JZ" Association="KOMPLETACJAModel.FK_IHP_WYST_JZ_IHP_JZ">
+            <End Role="IHP_JZ" EntitySet="IHP_JZ" />
+            <End Role="IHP_WYST_JZ" EntitySet="IHP_WYST_JZ" />
+          </AssociationSet>
+          <EntitySet Name="IHP_HARMONOGRAM_DZIENNY" EntityType="KOMPLETACJAModel.IHP_HARMONOGRAM_DZIENNY" />
+          <EntitySet Name="IHP_MASZYNA" EntityType="KOMPLETACJAModel.IHP_MASZYNA" />
+          <AssociationSet Name="FK_IHP_HARMONOGRAM_DZIENNY_IHP_MASZYNA" Association="KOMPLETACJAModel.FK_IHP_HARMONOGRAM_DZIENNY_IHP_MASZYNA">
+            <End Role="IHP_MASZYNA" EntitySet="IHP_MASZYNA" />
+            <End Role="IHP_HARMONOGRAM_DZIENNY" EntitySet="IHP_HARMONOGRAM_DZIENNY" />
+          </AssociationSet>
+          <EntitySet Name="IHP_JM" EntityType="KOMPLETACJAModel.IHP_JM" />
+          <EntitySet Name="IHP_KARTOTEKA" EntityType="KOMPLETACJAModel.IHP_KARTOTEKA" />
+          <AssociationSet Name="FK_IHP_CENNIK_IHP_KARTOTEKA" Association="KOMPLETACJAModel.FK_IHP_CENNIK_IHP_KARTOTEKA">
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+            <End Role="IHP_CENNIK" EntitySet="IHP_CENNIK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_FOTO_IHP_FOTO" Association="KOMPLETACJAModel.FK_IHP_FOTO_IHP_FOTO">
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+            <End Role="IHP_FOTO" EntitySet="IHP_FOTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KARTOTEKA_IHP_JM" Association="KOMPLETACJAModel.FK_IHP_KARTOTEKA_IHP_JM">
+            <End Role="IHP_JM" EntitySet="IHP_JM" />
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KARTOTEKA_IHP_RODZAJKART" Association="KOMPLETACJAModel.FK_IHP_KARTOTEKA_IHP_RODZAJKART">
+            <End Role="IHP_RODZAJKART" EntitySet="IHP_RODZAJKART" />
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KARTOTEKA_IHP_STAWKAVAT" Association="KOMPLETACJAModel.FK_IHP_KARTOTEKA_IHP_STAWKAVAT">
+            <End Role="IHP_STAWKAVAT" EntitySet="IHP_STAWKAVAT" />
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+          </AssociationSet>
+          <EntitySet Name="IHP_WYSTGRKART" EntityType="KOMPLETACJAModel.IHP_WYSTGRKART" />
+          <AssociationSet Name="FK_IHP_WYSTGRKART_IHP_GRUPAKART" Association="KOMPLETACJAModel.FK_IHP_WYSTGRKART_IHP_GRUPAKART">
+            <End Role="IHP_GRUPAKART" EntitySet="IHP_GRUPAKART" />
+            <End Role="IHP_WYSTGRKART" EntitySet="IHP_WYSTGRKART" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_WYSTGRKART_IHP_KARTOTEKA" Association="KOMPLETACJAModel.FK_IHP_WYSTGRKART_IHP_KARTOTEKA">
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+            <End Role="IHP_WYSTGRKART" EntitySet="IHP_WYSTGRKART" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT_ARCH" Association="KOMPLETACJAModel.FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT_ARCH">
+            <End Role="IHP_KONTRAHENT_ARCH" EntitySet="IHP_KONTRAHENT_ARCH" />
+            <End Role="IHP_KONTRAHENT_ARCH1" EntitySet="IHP_KONTRAHENT_ARCH" />
+          </AssociationSet>
+          <EntitySet Name="IHP_RODZAJDOK" EntityType="KOMPLETACJAModel.IHP_RODZAJDOK" />
+          <EntitySet Name="IHP_WYSTCECHKART" EntityType="KOMPLETACJAModel.IHP_WYSTCECHKART" />
+          <EntitySet Name="IHP_PRIORYTET" EntityType="KOMPLETACJAModel.IHP_PRIORYTET" />
+          <EntitySet Name="IHP_WYSTTRASAKONTRAH" EntityType="KOMPLETACJAModel.IHP_WYSTTRASAKONTRAH" />
+          <AssociationSet Name="FK_IHP_WYSTTRASAKONTRAH_IHP_KONTRAHENT" Association="KOMPLETACJAModel.FK_IHP_WYSTTRASAKONTRAH_IHP_KONTRAHENT">
+            <End Role="IHP_KONTRAHENT" EntitySet="IHP_KONTRAHENT" />
+            <End Role="IHP_WYSTTRASAKONTRAH" EntitySet="IHP_WYSTTRASAKONTRAH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_WYSTTRASAKONTRAH_IHP_TRASY" Association="KOMPLETACJAModel.FK_IHP_WYSTTRASAKONTRAH_IHP_TRASY">
+            <End Role="IHP_TRASY" EntitySet="IHP_TRASY" />
+            <End Role="IHP_WYSTTRASAKONTRAH" EntitySet="IHP_WYSTTRASAKONTRAH" />
+          </AssociationSet>
+          <EntitySet Name="IHP_NAGLDOK" EntityType="KOMPLETACJAModel.IHP_NAGLDOK" />
+          <AssociationSet Name="FK_IHP_NAGLDOK_IHP_KONTRAHENT" Association="KOMPLETACJAModel.FK_IHP_NAGLDOK_IHP_KONTRAHENT">
+            <End Role="IHP_KONTRAHENT" EntitySet="IHP_KONTRAHENT" />
+            <End Role="IHP_NAGLDOK" EntitySet="IHP_NAGLDOK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_NAGLDOK_IHP_KONTRAHENT_ARCH" Association="KOMPLETACJAModel.FK_IHP_NAGLDOK_IHP_KONTRAHENT_ARCH">
+            <End Role="IHP_KONTRAHENT_ARCH" EntitySet="IHP_KONTRAHENT_ARCH" />
+            <End Role="IHP_NAGLDOK" EntitySet="IHP_NAGLDOK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_NAGLDOK_IHP_RODZAJDOK" Association="KOMPLETACJAModel.FK_IHP_NAGLDOK_IHP_RODZAJDOK">
+            <End Role="IHP_RODZAJDOK" EntitySet="IHP_RODZAJDOK" />
+            <End Role="IHP_NAGLDOK" EntitySet="IHP_NAGLDOK" />
+          </AssociationSet>
+          <EntitySet Name="IHP_POZDOK" EntityType="KOMPLETACJAModel.IHP_POZDOK" />
+          <AssociationSet Name="FK_IHP_POZDOK_IHP_KARTOTEKA" Association="KOMPLETACJAModel.FK_IHP_POZDOK_IHP_KARTOTEKA">
+            <End Role="IHP_KARTOTEKA" EntitySet="IHP_KARTOTEKA" />
+            <End Role="IHP_POZDOK" EntitySet="IHP_POZDOK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IHP_POZDOK_IHP_NAGLDOK" Association="KOMPLETACJAModel.FK_IHP_POZDOK_IHP_NAGLDOK">
+            <End Role="IHP_NAGLDOK" EntitySet="IHP_NAGLDOK" />
+            <End Role="IHP_POZDOK" EntitySet="IHP_POZDOK" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="IHP_ZAM_USERS">
+          <Key>
+            <PropertyRef Name="ID_IHP_ZAM_USERS" />
+          </Key>
+          <Property Name="ID_IHP_ZAM_USERS" Type="Int32" Nullable="false" />
+          <Property Name="ID_UZYTKOWNIK" Type="Int32" />
+          <Property Name="LOGIN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HASLO" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="NAZWISKO_IMIE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AKTYWNY" Type="Int16" Nullable="false" />
+          <Property Name="RESET_HASLA" Type="Int16" Nullable="false" />
+          <Property Name="REJWAGA" Type="Int16" />
+          <Property Name="USLUGA" Type="Int16" />
+          <Property Name="KIEROWCY" Type="Int16" />
+          <Property Name="KARTOTEKI" Type="Int16" />
+          <Property Name="POJAZDY" Type="Int16" />
+          <Property Name="KONTRAHENT" Type="Int16" />
+          <Property Name="DANEFIRMY" Type="Int16" />
+          <Property Name="REJZAM" Type="Int16" />
+          <NavigationProperty Name="IHP_CENNIKHISTORIA" Relationship="KOMPLETACJAModel.FK_IHP_CENNIKHISTORIA_IHP_ZAM_USERS" FromRole="IHP_ZAM_USERS" ToRole="IHP_CENNIKHISTORIA" />
+        </EntityType>
+        <Association Name="FK_IHP_CENNIKHISTORIA_IHP_ZAM_USERS">
+          <End Type="KOMPLETACJAModel.IHP_ZAM_USERS" Role="IHP_ZAM_USERS" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_CENNIKHISTORIA" Role="IHP_CENNIKHISTORIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_ZAM_USERS">
+              <PropertyRef Name="ID_IHP_ZAM_USERS" />
+            </Principal>
+            <Dependent Role="IHP_CENNIKHISTORIA">
+              <PropertyRef Name="ID_IHP_ZAM_USERS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IHP_PARAMETRY">
+          <Key>
+            <PropertyRef Name="ID_IHP_PARAMETRY" />
+          </Key>
+          <Property Name="ID_IHP_PARAMETRY" Type="Int32" Nullable="false" />
+          <Property Name="PARAMETR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RODZAJ" Type="Int32" />
+          <Property Name="ID_GRUPAPARAMETRY" Type="Int32" />
+          <Property Name="WARTOSC" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="ID_GRU_PARAMETRY" Type="Int32" />
+        </EntityType>
+        <EntityType Name="IHP_DEFSTATUS">
+          <Key>
+            <PropertyRef Name="ID_IHP_DEFSTATUS" />
+          </Key>
+          <Property Name="ID_IHP_DEFSTATUS" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="KODSKANER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="IHP_STATUSHISTORIA">
+          <Key>
+            <PropertyRef Name="ID_IHP_STATUSHISTORIA" />
+            <PropertyRef Name="ID_IHP_DEFSTATUS" />
+            <PropertyRef Name="DATAWPISU" />
+            <PropertyRef Name="ID_IHP_POZ" />
+            <PropertyRef Name="ID_ARIT_ZAM_USERS" />
+            <PropertyRef Name="ID_IHP_DEFSTATUSZ" />
+          </Key>
+          <Property Name="ID_IHP_STATUSHISTORIA" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_DEFSTATUS" Type="Int32" Nullable="false" />
+          <Property Name="DATAWPISU" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="OPIS" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ID_IHP_POZ" Type="Int32" Nullable="false" />
+          <Property Name="ID_ARIT_ZAM_USERS" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_DEFSTATUSZ" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_RODZGRUPKART">
+          <Key>
+            <PropertyRef Name="ID_IHP_RODZGRUPKART" />
+          </Key>
+          <Property Name="ID_IHP_RODZGRUPKART" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="IHP_GRUPAKART" Relationship="KOMPLETACJAModel.FK_IHP_GRUPAKART_IHP_RODZGRUPKART" FromRole="IHP_RODZGRUPKART" ToRole="IHP_GRUPAKART" />
+        </EntityType>
+        <EntityType Name="IHP_GRUPAKART">
+          <Key>
+            <PropertyRef Name="ID_IHP_GRUPAKART" />
+          </Key>
+          <Property Name="ID_IHP_GRUPAKART" Type="Int32" Nullable="false" />
+          <Property Name="NAZWAGRUPY" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="KODGRUPY" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="KODZLOZONY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NAZWAZLOZONA" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="ID_IHP_RODZGRUPKART" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_GRUPAKART_NADRZ" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IHP_RODZGRUPKART" Relationship="KOMPLETACJAModel.FK_IHP_GRUPAKART_IHP_RODZGRUPKART" FromRole="IHP_GRUPAKART" ToRole="IHP_RODZGRUPKART" />
+          <NavigationProperty Name="IHP_WYSTGRKART" Relationship="KOMPLETACJAModel.FK_IHP_WYSTGRKART_IHP_GRUPAKART" FromRole="IHP_GRUPAKART" ToRole="IHP_WYSTGRKART" />
+        </EntityType>
+        <Association Name="FK_IHP_GRUPAKART_IHP_RODZGRUPKART">
+          <End Type="KOMPLETACJAModel.IHP_RODZGRUPKART" Role="IHP_RODZGRUPKART" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_GRUPAKART" Role="IHP_GRUPAKART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_RODZGRUPKART">
+              <PropertyRef Name="ID_IHP_RODZGRUPKART" />
+            </Principal>
+            <Dependent Role="IHP_GRUPAKART">
+              <PropertyRef Name="ID_IHP_RODZGRUPKART" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IHP_FOTO">
+          <Key>
+            <PropertyRef Name="ID_IHP_FOTO" />
+          </Key>
+          <Property Name="ID_IHP_FOTO" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_KARTOTEKA" Type="Int32" Nullable="false" />
+          <Property Name="LP" Type="Int32" />
+          <Property Name="NAMEFILE" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="NAZWA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="IHP_KARTOTEKA" Relationship="KOMPLETACJAModel.FK_IHP_FOTO_IHP_FOTO" FromRole="IHP_FOTO" ToRole="IHP_KARTOTEKA" />
+        </EntityType>
+        <EntityType Name="IHP_TRASY">
+          <Key>
+            <PropertyRef Name="ID_IHP_TRASY" />
+          </Key>
+          <Property Name="ID_IHP_TRASY" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="IHP_WYSTTRASAKONTRAH" Relationship="KOMPLETACJAModel.FK_IHP_WYSTTRASAKONTRAH_IHP_TRASY" FromRole="IHP_TRASY" ToRole="IHP_WYSTTRASAKONTRAH" />
+        </EntityType>
+        <EntityType Name="IHP_JZ">
+          <Key>
+            <PropertyRef Name="ID_IHP_JZ" />
+          </Key>
+          <Property Name="ID_IHP_JZ" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="WARTOSC" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="AKTYWNA" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="IHP_WYST_JZ" Relationship="KOMPLETACJAModel.FK_IHP_WYST_JZ_IHP_JZ" FromRole="IHP_JZ" ToRole="IHP_WYST_JZ" />
+        </EntityType>
+        <EntityType Name="IHP_WYST_JZ">
+          <Key>
+            <PropertyRef Name="ID_IHP_WYST_JZ" />
+          </Key>
+          <Property Name="ID_IHP_WYST_JZ" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_JZ" Type="Int32" Nullable="false" />
+          <Property Name="ID_KARTOTEKA" Type="Int32" />
+          <Property Name="AKTYWNA" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="IHP_JZ" Relationship="KOMPLETACJAModel.FK_IHP_WYST_JZ_IHP_JZ" FromRole="IHP_WYST_JZ" ToRole="IHP_JZ" />
+        </EntityType>
+        <Association Name="FK_IHP_WYST_JZ_IHP_JZ">
+          <End Type="KOMPLETACJAModel.IHP_JZ" Role="IHP_JZ" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_WYST_JZ" Role="IHP_WYST_JZ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_JZ">
+              <PropertyRef Name="ID_IHP_JZ" />
+            </Principal>
+            <Dependent Role="IHP_WYST_JZ">
+              <PropertyRef Name="ID_IHP_JZ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IHP_HARMONOGRAM_DZIENNY">
+          <Key>
+            <PropertyRef Name="ID_IHP_HARMONOGRAM_DZIENNY" />
+          </Key>
+          <Property Name="ID_IHP_HARMONOGRAM_DZIENNY" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_MASZYNA" Type="Int32" Nullable="false" />
+          <Property Name="DATA" Type="DateTime" Precision="0" />
+          <Property Name="CZASSTART" Type="DateTime" Precision="3" />
+          <Property Name="CZASSTOP" Type="DateTime" Precision="3" />
+          <Property Name="ILOSC" Type="Int32" />
+          <Property Name="WAGA" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="LABELID" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_ZAM_USERS" Type="Int32" Nullable="false" />
+          <Property Name="OPIS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TEMAT" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ID_KONTRAH" Type="Int32" Nullable="false" />
+          <Property Name="IHP_NAGLDOK" Type="Int32" />
+          <Property Name="NRDOKZA" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ID_KARTOTEKA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IHP_MASZYNA" Relationship="KOMPLETACJAModel.FK_IHP_HARMONOGRAM_DZIENNY_IHP_MASZYNA" FromRole="IHP_HARMONOGRAM_DZIENNY" ToRole="IHP_MASZYNA" />
+        </EntityType>
+        <EntityType Name="IHP_MASZYNA">
+          <Key>
+            <PropertyRef Name="ID_IHP_MASZYNA" />
+          </Key>
+          <Property Name="ID_IHP_MASZYNA" Type="Int32" Nullable="false" />
+          <Property Name="NAZWA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CENA" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AKTYWNY" Type="Int16" />
+          <NavigationProperty Name="IHP_HARMONOGRAM_DZIENNY" Relationship="KOMPLETACJAModel.FK_IHP_HARMONOGRAM_DZIENNY_IHP_MASZYNA" FromRole="IHP_MASZYNA" ToRole="IHP_HARMONOGRAM_DZIENNY" />
+        </EntityType>
+        <Association Name="FK_IHP_HARMONOGRAM_DZIENNY_IHP_MASZYNA">
+          <End Type="KOMPLETACJAModel.IHP_MASZYNA" Role="IHP_MASZYNA" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_HARMONOGRAM_DZIENNY" Role="IHP_HARMONOGRAM_DZIENNY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_MASZYNA">
+              <PropertyRef Name="ID_IHP_MASZYNA" />
+            </Principal>
+            <Dependent Role="IHP_HARMONOGRAM_DZIENNY">
+              <PropertyRef Name="ID_IHP_MASZYNA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IHP_JM">
+          <Key>
+            <PropertyRef Name="ID_IHP_JM" />
+          </Key>
+          <Property Name="ID_IHP_JM" Type="Int32" Nullable="false" />
+          <Property Name="JM" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="OPISJM" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="IHP_KARTOTEKA" Relationship="KOMPLETACJAModel.FK_IHP_KARTOTEKA_IHP_JM" FromRole="IHP_JM" ToRole="IHP_KARTOTEKA" />
+        </EntityType>
+        <EntityType Name="IHP_KARTOTEKA">
+          <Key>
+            <PropertyRef Name="ID_IHP_KARTOTEKA" />
+          </Key>
+          <Property Name="ID_IHP_KARTOTEKA" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_STAWKAVAT" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_RODZAJKART" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_JM" Type="Int32" Nullable="false" />
+          <Property Name="INDEKS" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="NAZWASKR" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="NAZWADL" Type="String" MaxLength="360" FixedLength="false" Unicode="false" />
+          <Property Name="SWW" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PKWIU" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="UWAGI" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="KODEAN" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TOWSUBJECT" Type="Int32" />
+          <NavigationProperty Name="IHP_CENNIK" Relationship="KOMPLETACJAModel.FK_IHP_CENNIK_IHP_KARTOTEKA" FromRole="IHP_KARTOTEKA" ToRole="IHP_CENNIK" />
+          <NavigationProperty Name="IHP_FOTO" Relationship="KOMPLETACJAModel.FK_IHP_FOTO_IHP_FOTO" FromRole="IHP_KARTOTEKA" ToRole="IHP_FOTO" />
+          <NavigationProperty Name="IHP_JM" Relationship="KOMPLETACJAModel.FK_IHP_KARTOTEKA_IHP_JM" FromRole="IHP_KARTOTEKA" ToRole="IHP_JM" />
+          <NavigationProperty Name="IHP_RODZAJKART" Relationship="KOMPLETACJAModel.FK_IHP_KARTOTEKA_IHP_RODZAJKART" FromRole="IHP_KARTOTEKA" ToRole="IHP_RODZAJKART" />
+          <NavigationProperty Name="IHP_STAWKAVAT" Relationship="KOMPLETACJAModel.FK_IHP_KARTOTEKA_IHP_STAWKAVAT" FromRole="IHP_KARTOTEKA" ToRole="IHP_STAWKAVAT" />
+          <NavigationProperty Name="IHP_WYSTGRKART" Relationship="KOMPLETACJAModel.FK_IHP_WYSTGRKART_IHP_KARTOTEKA" FromRole="IHP_KARTOTEKA" ToRole="IHP_WYSTGRKART" />
+          <NavigationProperty Name="IHP_POZDOK" Relationship="KOMPLETACJAModel.FK_IHP_POZDOK_IHP_KARTOTEKA" FromRole="IHP_KARTOTEKA" ToRole="IHP_POZDOK" />
+        </EntityType>
+        <Association Name="FK_IHP_CENNIK_IHP_KARTOTEKA">
+          <End Type="KOMPLETACJAModel.IHP_KARTOTEKA" Role="IHP_KARTOTEKA" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_CENNIK" Role="IHP_CENNIK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Principal>
+            <Dependent Role="IHP_CENNIK">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_FOTO_IHP_FOTO">
+          <End Type="KOMPLETACJAModel.IHP_KARTOTEKA" Role="IHP_KARTOTEKA" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_FOTO" Role="IHP_FOTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Principal>
+            <Dependent Role="IHP_FOTO">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KARTOTEKA_IHP_JM">
+          <End Type="KOMPLETACJAModel.IHP_JM" Role="IHP_JM" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_KARTOTEKA" Role="IHP_KARTOTEKA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_JM">
+              <PropertyRef Name="ID_IHP_JM" />
+            </Principal>
+            <Dependent Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_JM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KARTOTEKA_IHP_RODZAJKART">
+          <End Type="KOMPLETACJAModel.IHP_RODZAJKART" Role="IHP_RODZAJKART" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_KARTOTEKA" Role="IHP_KARTOTEKA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_RODZAJKART">
+              <PropertyRef Name="ID_IHP_RODZAJKART" />
+            </Principal>
+            <Dependent Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_RODZAJKART" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KARTOTEKA_IHP_STAWKAVAT">
+          <End Type="KOMPLETACJAModel.IHP_STAWKAVAT" Role="IHP_STAWKAVAT" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_KARTOTEKA" Role="IHP_KARTOTEKA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_STAWKAVAT">
+              <PropertyRef Name="ID_IHP_STAWKAVAT" />
+            </Principal>
+            <Dependent Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_STAWKAVAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IHP_WYSTGRKART">
+          <Key>
+            <PropertyRef Name="ID_IHP_WYSTGRKART" />
+          </Key>
+          <Property Name="ID_IHP_WYSTGRKART" Type="Int32" Nullable="false" />
+          <Property Name="ID_KARTOTEKA" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_GRUPAKART" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IHP_GRUPAKART" Relationship="KOMPLETACJAModel.FK_IHP_WYSTGRKART_IHP_GRUPAKART" FromRole="IHP_WYSTGRKART" ToRole="IHP_GRUPAKART" />
+          <NavigationProperty Name="IHP_KARTOTEKA" Relationship="KOMPLETACJAModel.FK_IHP_WYSTGRKART_IHP_KARTOTEKA" FromRole="IHP_WYSTGRKART" ToRole="IHP_KARTOTEKA" />
+        </EntityType>
+        <Association Name="FK_IHP_WYSTGRKART_IHP_GRUPAKART">
+          <End Type="KOMPLETACJAModel.IHP_GRUPAKART" Role="IHP_GRUPAKART" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_WYSTGRKART" Role="IHP_WYSTGRKART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_GRUPAKART">
+              <PropertyRef Name="ID_IHP_GRUPAKART" />
+            </Principal>
+            <Dependent Role="IHP_WYSTGRKART">
+              <PropertyRef Name="ID_IHP_GRUPAKART" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_WYSTGRKART_IHP_KARTOTEKA">
+          <End Type="KOMPLETACJAModel.IHP_KARTOTEKA" Role="IHP_KARTOTEKA" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_WYSTGRKART" Role="IHP_WYSTGRKART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Principal>
+            <Dependent Role="IHP_WYSTGRKART">
+              <PropertyRef Name="ID_KARTOTEKA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT_ARCH">
+          <End Type="KOMPLETACJAModel.IHP_KONTRAHENT_ARCH" Role="IHP_KONTRAHENT_ARCH" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_KONTRAHENT_ARCH" Role="IHP_KONTRAHENT_ARCH1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KONTRAHENT_ARCH">
+              <PropertyRef Name="ID_IHP_KONTRAHENT_ARCH" />
+            </Principal>
+            <Dependent Role="IHP_KONTRAHENT_ARCH1">
+              <PropertyRef Name="ID_IHP_KONTRAHENT_ARCH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IHP_RODZAJDOK">
+          <Key>
+            <PropertyRef Name="ID_IHP_RODZAJDOK" />
+          </Key>
+          <Property Name="ID_IHP_RODZAJDOK" Type="Int32" Nullable="false" />
+          <Property Name="OPIS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KIERUNEKMAG" Type="Int32" />
+          <Property Name="SKROTDOK" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="IHP_NAGLDOK" Relationship="KOMPLETACJAModel.FK_IHP_NAGLDOK_IHP_RODZAJDOK" FromRole="IHP_RODZAJDOK" ToRole="IHP_NAGLDOK" />
+        </EntityType>
+        <EntityType Name="IHP_WYSTCECHKART">
+          <Key>
+            <PropertyRef Name="ID_WYSTCECHKART" />
+            <PropertyRef Name="ID_KARTOTEKA" />
+            <PropertyRef Name="ID_CECHAKART" />
+          </Key>
+          <Property Name="ID_WYSTCECHKART" Type="Int32" Nullable="false" />
+          <Property Name="ID_KARTOTEKA" Type="Int32" Nullable="false" />
+          <Property Name="ID_CECHAKART" Type="Int32" Nullable="false" />
+          <Property Name="WARTOSC" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="IHP_PRIORYTET">
+          <Key>
+            <PropertyRef Name="ID_IHP_PRIORYTET" />
+          </Key>
+          <Property Name="ID_IHP_PRIORYTET" Type="Int32" Nullable="false" />
+          <Property Name="OPIS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SKROT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AKTYWNY" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IHP_WYSTTRASAKONTRAH">
+          <Key>
+            <PropertyRef Name="ID_IHP_WYSTTRASAKONTRAH" />
+          </Key>
+          <Property Name="ID_IHP_WYSTTRASAKONTRAH" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_KONTRAHENT" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_TRASY" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IHP_KONTRAHENT" Relationship="KOMPLETACJAModel.FK_IHP_WYSTTRASAKONTRAH_IHP_KONTRAHENT" FromRole="IHP_WYSTTRASAKONTRAH" ToRole="IHP_KONTRAHENT" />
+          <NavigationProperty Name="IHP_TRASY" Relationship="KOMPLETACJAModel.FK_IHP_WYSTTRASAKONTRAH_IHP_TRASY" FromRole="IHP_WYSTTRASAKONTRAH" ToRole="IHP_TRASY" />
+        </EntityType>
+        <Association Name="FK_IHP_WYSTTRASAKONTRAH_IHP_KONTRAHENT">
+          <End Type="KOMPLETACJAModel.IHP_KONTRAHENT" Role="IHP_KONTRAHENT" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_WYSTTRASAKONTRAH" Role="IHP_WYSTTRASAKONTRAH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KONTRAHENT">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Principal>
+            <Dependent Role="IHP_WYSTTRASAKONTRAH">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_WYSTTRASAKONTRAH_IHP_TRASY">
+          <End Type="KOMPLETACJAModel.IHP_TRASY" Role="IHP_TRASY" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_WYSTTRASAKONTRAH" Role="IHP_WYSTTRASAKONTRAH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_TRASY">
+              <PropertyRef Name="ID_IHP_TRASY" />
+            </Principal>
+            <Dependent Role="IHP_WYSTTRASAKONTRAH">
+              <PropertyRef Name="ID_IHP_TRASY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IHP_NAGLDOK">
+          <Key>
+            <PropertyRef Name="ID_IHP_NAGLDOK" />
+          </Key>
+          <Property Name="ID_IHP_NAGLDOK" Type="Int32" Nullable="false" />
+          <Property Name="DATADOK" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NRDOK" Type="Int32" Nullable="false" />
+          <Property Name="NRDOKWEW" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ID_IHP_PRIORYTET" Type="Int32" />
+          <Property Name="SUMAOG" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ID_DEFDOK" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_KONTRAHENT_ARCH" Type="Int32" Nullable="false" />
+          <Property Name="ID_RODZAJDOK" Type="Int32" Nullable="false" />
+          <Property Name="ID_KH_SUBJECT" Type="Int32" />
+          <Property Name="ID_IHP_KONTRAHENT" Type="Int32" Nullable="false" />
+          <Property Name="DATAWPISU" Type="DateTime" Precision="3" />
+          <Property Name="TERMINREALIZ" Type="DateTime" Precision="0" />
+          <Property Name="BLOKADA" Type="Int32" />
+          <Property Name="STATUS" Type="Int32" />
+          <NavigationProperty Name="IHP_KONTRAHENT" Relationship="KOMPLETACJAModel.FK_IHP_NAGLDOK_IHP_KONTRAHENT" FromRole="IHP_NAGLDOK" ToRole="IHP_KONTRAHENT" />
+          <NavigationProperty Name="IHP_KONTRAHENT_ARCH" Relationship="KOMPLETACJAModel.FK_IHP_NAGLDOK_IHP_KONTRAHENT_ARCH" FromRole="IHP_NAGLDOK" ToRole="IHP_KONTRAHENT_ARCH" />
+          <NavigationProperty Name="IHP_RODZAJDOK" Relationship="KOMPLETACJAModel.FK_IHP_NAGLDOK_IHP_RODZAJDOK" FromRole="IHP_NAGLDOK" ToRole="IHP_RODZAJDOK" />
+          <Property Name="ILEPOZ" Type="Int32" />
+          <NavigationProperty Name="IHP_POZDOK" Relationship="KOMPLETACJAModel.FK_IHP_POZDOK_IHP_NAGLDOK" FromRole="IHP_NAGLDOK" ToRole="IHP_POZDOK" />
+        </EntityType>
+        <Association Name="FK_IHP_NAGLDOK_IHP_KONTRAHENT">
+          <End Type="KOMPLETACJAModel.IHP_KONTRAHENT" Role="IHP_KONTRAHENT" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_NAGLDOK" Role="IHP_NAGLDOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KONTRAHENT">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Principal>
+            <Dependent Role="IHP_NAGLDOK">
+              <PropertyRef Name="ID_IHP_KONTRAHENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_NAGLDOK_IHP_KONTRAHENT_ARCH">
+          <End Type="KOMPLETACJAModel.IHP_KONTRAHENT_ARCH" Role="IHP_KONTRAHENT_ARCH" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_NAGLDOK" Role="IHP_NAGLDOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KONTRAHENT_ARCH">
+              <PropertyRef Name="ID_IHP_KONTRAHENT_ARCH" />
+            </Principal>
+            <Dependent Role="IHP_NAGLDOK">
+              <PropertyRef Name="ID_IHP_KONTRAHENT_ARCH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_NAGLDOK_IHP_RODZAJDOK">
+          <End Type="KOMPLETACJAModel.IHP_RODZAJDOK" Role="IHP_RODZAJDOK" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_NAGLDOK" Role="IHP_NAGLDOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_RODZAJDOK">
+              <PropertyRef Name="ID_IHP_RODZAJDOK" />
+            </Principal>
+            <Dependent Role="IHP_NAGLDOK">
+              <PropertyRef Name="ID_RODZAJDOK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IHP_POZDOK">
+          <Key>
+            <PropertyRef Name="ID_IHP_POZDOK" />
+          </Key>
+          <Property Name="ID_IHP_POZDOK" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_NAGLDOK" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_KARTOTEKA" Type="Int32" Nullable="false" />
+          <Property Name="LP" Type="Int32" Nullable="false" />
+          <Property Name="ILOSC" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="ILOSCRAZEM" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="ILOSCPACZKA" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="ILOSCZW" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="NAZWASKRPOZ" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="CENANETTO" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="CENABRUTTO" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="WARTVAT" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="WARTNETTO" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="WARTBRUTTO" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="DATADOK" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CENAUSTALONA" Type="Int16" Nullable="false" />
+          <Property Name="UWAGI" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ID_TOWSUBJECT" Type="Int32" Nullable="false" />
+          <Property Name="ID_IHP_DEFSTATUS" Type="Int32" />
+          <NavigationProperty Name="IHP_KARTOTEKA" Relationship="KOMPLETACJAModel.FK_IHP_POZDOK_IHP_KARTOTEKA" FromRole="IHP_POZDOK" ToRole="IHP_KARTOTEKA" />
+          <NavigationProperty Name="IHP_NAGLDOK" Relationship="KOMPLETACJAModel.FK_IHP_POZDOK_IHP_NAGLDOK" FromRole="IHP_POZDOK" ToRole="IHP_NAGLDOK" />
+        </EntityType>
+        <Association Name="FK_IHP_POZDOK_IHP_KARTOTEKA">
+          <End Type="KOMPLETACJAModel.IHP_KARTOTEKA" Role="IHP_KARTOTEKA" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_POZDOK" Role="IHP_POZDOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_KARTOTEKA">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Principal>
+            <Dependent Role="IHP_POZDOK">
+              <PropertyRef Name="ID_IHP_KARTOTEKA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IHP_POZDOK_IHP_NAGLDOK">
+          <End Type="KOMPLETACJAModel.IHP_NAGLDOK" Role="IHP_NAGLDOK" Multiplicity="1" />
+          <End Type="KOMPLETACJAModel.IHP_POZDOK" Role="IHP_POZDOK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IHP_NAGLDOK">
+              <PropertyRef Name="ID_IHP_NAGLDOK" />
+            </Principal>
+            <Dependent Role="IHP_POZDOK">
+              <PropertyRef Name="ID_IHP_NAGLDOK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KOMPLETACJAModelStoreContainer" CdmEntityContainer="KOMPLETACJAEntities">
+          <EntitySetMapping Name="IHP_CENNIK">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_CENNIK">
+              <MappingFragment StoreEntitySet="IHP_CENNIK">
+                <ScalarProperty Name="ID_IHP_CENNIK" ColumnName="ID_IHP_CENNIK" />
+                <ScalarProperty Name="ID_IHP_KARTOTEKA" ColumnName="ID_IHP_KARTOTEKA" />
+                <ScalarProperty Name="ID_IHP_DEFCENY" ColumnName="ID_IHP_DEFCENY" />
+                <ScalarProperty Name="CENAN" ColumnName="CENAN" />
+                <ScalarProperty Name="CENAB" ColumnName="CENAB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_CENNIKHISTORIA">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_CENNIKHISTORIA">
+              <MappingFragment StoreEntitySet="IHP_CENNIKHISTORIA">
+                <ScalarProperty Name="ID_IHP_CENNIKHISTORIA" ColumnName="ID_IHP_CENNIKHISTORIA" />
+                <ScalarProperty Name="ID_IHP_CENNIK" ColumnName="ID_IHP_CENNIK" />
+                <ScalarProperty Name="DATAWPISU" ColumnName="DATAWPISU" />
+                <ScalarProperty Name="CENAZ" ColumnName="CENAZ" />
+                <ScalarProperty Name="CENANA" ColumnName="CENANA" />
+                <ScalarProperty Name="ID_IHP_ZAM_USERS" ColumnName="ID_IHP_ZAM_USERS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_COMCONFIG">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_COMCONFIG">
+              <MappingFragment StoreEntitySet="IHP_COMCONFIG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VAL" ColumnName="VAL" />
+                <ScalarProperty Name="TYP" ColumnName="TYP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_DANEFIRMY">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_DANEFIRMY">
+              <MappingFragment StoreEntitySet="IHP_DANEFIRMY">
+                <ScalarProperty Name="ID_IHP_DANEFIRMY" ColumnName="ID_IHP_DANEFIRMY" />
+                <ScalarProperty Name="ODDATY" ColumnName="ODDATY" />
+                <ScalarProperty Name="ID_URZSKARB" ColumnName="ID_URZSKARB" />
+                <ScalarProperty Name="ID_KRAJ" ColumnName="ID_KRAJ" />
+                <ScalarProperty Name="ID_WOJEWODZTWO" ColumnName="ID_WOJEWODZTWO" />
+                <ScalarProperty Name="NAZWA_SKROCONA" ColumnName="NAZWA_SKROCONA" />
+                <ScalarProperty Name="NAZWA_FIRMY" ColumnName="NAZWA_FIRMY" />
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+                <ScalarProperty Name="REGON" ColumnName="REGON" />
+                <ScalarProperty Name="TELEFON" ColumnName="TELEFON" />
+                <ScalarProperty Name="TELEFON2" ColumnName="TELEFON2" />
+                <ScalarProperty Name="FAX" ColumnName="FAX" />
+                <ScalarProperty Name="WWW" ColumnName="WWW" />
+                <ScalarProperty Name="ULICA" ColumnName="ULICA" />
+                <ScalarProperty Name="NRDOMU" ColumnName="NRDOMU" />
+                <ScalarProperty Name="NRLOKALU" ColumnName="NRLOKALU" />
+                <ScalarProperty Name="MIEJSCOWOSC" ColumnName="MIEJSCOWOSC" />
+                <ScalarProperty Name="KODPOCZTOWY" ColumnName="KODPOCZTOWY" />
+                <ScalarProperty Name="POCZTA" ColumnName="POCZTA" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_DEFCENY">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_DEFCENY">
+              <MappingFragment StoreEntitySet="IHP_DEFCENY">
+                <ScalarProperty Name="ID_IHP_DEFCENY" ColumnName="ID_IHP_DEFCENY" />
+                <ScalarProperty Name="NAZWACENY" ColumnName="NAZWACENY" />
+                <ScalarProperty Name="ODNETTO" ColumnName="ODNETTO" />
+                <ScalarProperty Name="AKTYWNY" ColumnName="AKTYWNY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_DOSTAWA">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_DOSTAWA">
+              <MappingFragment StoreEntitySet="IHP_DOSTAWA">
+                <ScalarProperty Name="ID_IHP_DOSTAWA" ColumnName="ID_IHP_DOSTAWA" />
+                <ScalarProperty Name="ILOSC" ColumnName="ILOSC" />
+                <ScalarProperty Name="ILOSCAKT" ColumnName="ILOSCAKT" />
+                <ScalarProperty Name="ZREALIZOWANA" ColumnName="ZREALIZOWANA" />
+                <ScalarProperty Name="DATADOSTAWY" ColumnName="DATADOSTAWY" />
+                <ScalarProperty Name="ID_IHP_POZDOK" ColumnName="ID_IHP_POZDOK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_ERPCONNECTOR">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_ERPCONNECTOR">
+              <MappingFragment StoreEntitySet="IHP_ERPCONNECTOR">
+                <ScalarProperty Name="ID_IHP_ERPCONNECTOR" ColumnName="ID_IHP_ERPCONNECTOR" />
+                <ScalarProperty Name="ERPNAZWA" ColumnName="ERPNAZWA" />
+                <ScalarProperty Name="SERWER" ColumnName="SERWER" />
+                <ScalarProperty Name="BAZA" ColumnName="BAZA" />
+                <ScalarProperty Name="UZYTKOWNIK" ColumnName="UZYTKOWNIK" />
+                <ScalarProperty Name="HASLO" ColumnName="HASLO" />
+                <ScalarProperty Name="KARTWSZYSTKO" ColumnName="KARTWSZYSTKO" />
+                <ScalarProperty Name="KARTRODZ" ColumnName="KARTRODZ" />
+                <ScalarProperty Name="KARTIDRODZ" ColumnName="KARTIDRODZ" />
+                <ScalarProperty Name="KARTGRUPA" ColumnName="KARTGRUPA" />
+                <ScalarProperty Name="KARTIDGRUPA" ColumnName="KARTIDGRUPA" />
+                <ScalarProperty Name="KARTCENNIKI" ColumnName="KARTCENNIKI" />
+                <ScalarProperty Name="KONTRAHWSZYSTKO" ColumnName="KONTRAHWSZYSTKO" />
+                <ScalarProperty Name="KONTRAHGRUPA" ColumnName="KONTRAHGRUPA" />
+                <ScalarProperty Name="KONTRAHIDGRUPA" ColumnName="KONTRAHIDGRUPA" />
+                <ScalarProperty Name="DOKBEZPOSR" ColumnName="DOKBEZPOSR" />
+                <ScalarProperty Name="DOKWYDANIA" ColumnName="DOKWYDANIA" />
+                <ScalarProperty Name="ID_DEFDOK" ColumnName="ID_DEFDOK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_GRUPAPARAMETRY">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_GRUPAPARAMETRY">
+              <MappingFragment StoreEntitySet="IHP_GRUPAPARAMETRY">
+                <ScalarProperty Name="ID_IHP_GRUPAPARAMETRY" ColumnName="ID_IHP_GRUPAPARAMETRY" />
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_KIEROWCA">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_KIEROWCA">
+              <MappingFragment StoreEntitySet="IHP_KIEROWCA">
+                <ScalarProperty Name="ID_IHP_KIEROWCA" ColumnName="ID_IHP_KIEROWCA" />
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+                <ScalarProperty Name="TELEFON" ColumnName="TELEFON" />
+                <ScalarProperty Name="ID_IHP_KONTRAHENT" ColumnName="ID_IHP_KONTRAHENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_KONTRAHENT">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_KONTRAHENT">
+              <MappingFragment StoreEntitySet="IHP_KONTRAHENT">
+                <ScalarProperty Name="ID_IHP_KONTRAHENT" ColumnName="ID_IHP_KONTRAHENT" />
+                <ScalarProperty Name="NRKONTRAH" ColumnName="NRKONTRAH" />
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+                <ScalarProperty Name="MIEJSCOWOSC" ColumnName="MIEJSCOWOSC" />
+                <ScalarProperty Name="KODPOCZTOWY" ColumnName="KODPOCZTOWY" />
+                <ScalarProperty Name="POCZTA" ColumnName="POCZTA" />
+                <ScalarProperty Name="ULICA" ColumnName="ULICA" />
+                <ScalarProperty Name="NRDOMU" ColumnName="NRDOMU" />
+                <ScalarProperty Name="NRLOKALU" ColumnName="NRLOKALU" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TELEFON" ColumnName="TELEFON" />
+                <ScalarProperty Name="ID_IHP_DEFCENY" ColumnName="ID_IHP_DEFCENY" />
+                <ScalarProperty Name="ID_KH_SUBJECT" ColumnName="ID_KH_SUBJECT" />
+                <ScalarProperty Name="TELKOM" ColumnName="TELKOM" />
+                <ScalarProperty Name="TYPKONTRAH" ColumnName="TYPKONTRAH" />
+                <ScalarProperty Name="NAZWAPELNA" ColumnName="NAZWAPELNA" />
+                <ScalarProperty Name="ID_IHP_RODZAJDOKDEF" ColumnName="ID_IHP_RODZAJDOKDEF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_KONTRAHENT_ARCH">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_KONTRAHENT_ARCH">
+              <MappingFragment StoreEntitySet="IHP_KONTRAHENT_ARCH">
+                <ScalarProperty Name="ID_IHP_KONTRAHENT_ARCH" ColumnName="ID_IHP_KONTRAHENT_ARCH" />
+                <ScalarProperty Name="ID_IHP_KONTRAHENT" ColumnName="ID_IHP_KONTRAHENT" />
+                <ScalarProperty Name="NRKONTRAH" ColumnName="NRKONTRAH" />
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+                <ScalarProperty Name="MIEJSCOWOSC" ColumnName="MIEJSCOWOSC" />
+                <ScalarProperty Name="KODPOCZTOWY" ColumnName="KODPOCZTOWY" />
+                <ScalarProperty Name="POCZTA" ColumnName="POCZTA" />
+                <ScalarProperty Name="ULICA" ColumnName="ULICA" />
+                <ScalarProperty Name="NRDOMU" ColumnName="NRDOMU" />
+                <ScalarProperty Name="NRLOKALU" ColumnName="NRLOKALU" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="TELEFON" ColumnName="TELEFON" />
+                <ScalarProperty Name="AKTYWNY" ColumnName="AKTYWNY" />
+                <ScalarProperty Name="ID_IHP_DEFCENY" ColumnName="ID_IHP_DEFCENY" />
+                <ScalarProperty Name="ID_KH_SUBJECT" ColumnName="ID_KH_SUBJECT" />
+                <ScalarProperty Name="TELKOM" ColumnName="TELKOM" />
+                <ScalarProperty Name="TYPKONTRAH" ColumnName="TYPKONTRAH" />
+                <ScalarProperty Name="NAZWAPELNA" ColumnName="NAZWAPELNA" />
+                <ScalarProperty Name="ID_IHP_RODZAJDOKDEF" ColumnName="ID_IHP_RODZAJDOKDEF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_MIERNIK">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_MIERNIK">
+              <MappingFragment StoreEntitySet="IHP_MIERNIK">
+                <ScalarProperty Name="ID_IHP_MIERNIK" ColumnName="ID_IHP_MIERNIK" />
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_MODEL">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_MODEL">
+              <MappingFragment StoreEntitySet="IHP_MODEL">
+                <ScalarProperty Name="ID_IHP_MODEL" ColumnName="ID_IHP_MODEL" />
+                <ScalarProperty Name="ID_IHP_PRODUCENT" ColumnName="ID_IHP_PRODUCENT" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_NUMERACJA">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_NUMERACJA">
+              <MappingFragment StoreEntitySet="IHP_NUMERACJA">
+                <ScalarProperty Name="ID_IHP_NUMERACJA" ColumnName="ID_IHP_NUMERACJA" />
+                <ScalarProperty Name="ID_TABELA" ColumnName="ID_TABELA" />
+                <ScalarProperty Name="NUMER" ColumnName="NUMER" />
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_PRODUCENT">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_PRODUCENT">
+              <MappingFragment StoreEntitySet="IHP_PRODUCENT">
+                <ScalarProperty Name="ID_IHP_PRODUCENT" ColumnName="ID_IHP_PRODUCENT" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_RODZAJKART">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_RODZAJKART">
+              <MappingFragment StoreEntitySet="IHP_RODZAJKART">
+                <ScalarProperty Name="ID_IHP_RODZAJKART" ColumnName="ID_IHP_RODZAJKART" />
+                <ScalarProperty Name="OPIS" ColumnName="OPIS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_ROZCHDOST">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_ROZCHDOST">
+              <MappingFragment StoreEntitySet="IHP_ROZCHDOST">
+                <ScalarProperty Name="ID_IHP_ROZCHDOST" ColumnName="ID_IHP_ROZCHDOST" />
+                <ScalarProperty Name="ID_IHP_DOSTAWA" ColumnName="ID_IHP_DOSTAWA" />
+                <ScalarProperty Name="ILOSCROZCH" ColumnName="ILOSCROZCH" />
+                <ScalarProperty Name="DATAROZCH" ColumnName="DATAROZCH" />
+                <ScalarProperty Name="ID_IHP_POZDOK" ColumnName="ID_IHP_POZDOK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_SAMOCHOD">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_SAMOCHOD">
+              <MappingFragment StoreEntitySet="IHP_SAMOCHOD">
+                <ScalarProperty Name="ID_IHP_SAMOCHOD" ColumnName="ID_IHP_SAMOCHOD" />
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+                <ScalarProperty Name="NRREJ" ColumnName="NRREJ" />
+                <ScalarProperty Name="ID_IHP_KIEROWCA" ColumnName="ID_IHP_KIEROWCA" />
+                <ScalarProperty Name="TARA" ColumnName="TARA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_STAWKAVAT">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_STAWKAVAT">
+              <MappingFragment StoreEntitySet="IHP_STAWKAVAT">
+                <ScalarProperty Name="ID_IHP_STAWKAVAT" ColumnName="ID_IHP_STAWKAVAT" />
+                <ScalarProperty Name="WARTOSC" ColumnName="WARTOSC" />
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+                <ScalarProperty Name="AKTYWNY" ColumnName="AKTYWNY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_WAZENIE_USLUGA">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_WAZENIE_USLUGA">
+              <MappingFragment StoreEntitySet="IHP_WAZENIE_USLUGA">
+                <ScalarProperty Name="ID_IHP_WAZENIE_USLUGA" ColumnName="ID_IHP_WAZENIE_USLUGA" />
+                <ScalarProperty Name="DATACZAS" ColumnName="DATACZAS" />
+                <ScalarProperty Name="ID_IHP_KIEROWCA" ColumnName="ID_IHP_KIEROWCA" />
+                <ScalarProperty Name="ID_IHP_SAMOCHOD" ColumnName="ID_IHP_SAMOCHOD" />
+                <ScalarProperty Name="WAGA" ColumnName="WAGA" />
+                <ScalarProperty Name="ID_IHP_KONTRAHENT_ARCH" ColumnName="ID_IHP_KONTRAHENT_ARCH" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="NRKWIT" ColumnName="NRKWIT" />
+                <ScalarProperty Name="NRKWITWEW" ColumnName="NRKWITWEW" />
+                <ScalarProperty Name="KIEROWCA_NAZWA" ColumnName="KIEROWCA_NAZWA" />
+                <ScalarProperty Name="KONTRAHENT_NAZWA" ColumnName="KONTRAHENT_NAZWA" />
+                <ScalarProperty Name="NRREJ_NAZWA" ColumnName="NRREJ_NAZWA" />
+                <ScalarProperty Name="UWAGI" ColumnName="UWAGI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_WYST_GRUPAPARAM">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_WYST_GRUPAPARAM">
+              <MappingFragment StoreEntitySet="IHP_WYST_GRUPAPARAM">
+                <ScalarProperty Name="ID_IHP_WYST_GRUPAPARAM" ColumnName="ID_IHP_WYST_GRUPAPARAM" />
+                <ScalarProperty Name="ID_IHP_GRUPAPARAMETRY" ColumnName="ID_IHP_GRUPAPARAMETRY" />
+                <ScalarProperty Name="ID_IHP_PARAMETRY" ColumnName="ID_IHP_PARAMETRY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_ZAM_USERS">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_ZAM_USERS">
+              <MappingFragment StoreEntitySet="IHP_ZAM_USERS">
+                <ScalarProperty Name="REJZAM" ColumnName="REJZAM" />
+                <ScalarProperty Name="DANEFIRMY" ColumnName="DANEFIRMY" />
+                <ScalarProperty Name="KONTRAHENT" ColumnName="KONTRAHENT" />
+                <ScalarProperty Name="POJAZDY" ColumnName="POJAZDY" />
+                <ScalarProperty Name="KARTOTEKI" ColumnName="KARTOTEKI" />
+                <ScalarProperty Name="KIEROWCY" ColumnName="KIEROWCY" />
+                <ScalarProperty Name="USLUGA" ColumnName="USLUGA" />
+                <ScalarProperty Name="REJWAGA" ColumnName="REJWAGA" />
+                <ScalarProperty Name="RESET_HASLA" ColumnName="RESET_HASLA" />
+                <ScalarProperty Name="AKTYWNY" ColumnName="AKTYWNY" />
+                <ScalarProperty Name="NAZWISKO_IMIE" ColumnName="NAZWISKO_IMIE" />
+                <ScalarProperty Name="HASLO" ColumnName="HASLO" />
+                <ScalarProperty Name="LOGIN" ColumnName="LOGIN" />
+                <ScalarProperty Name="ID_UZYTKOWNIK" ColumnName="ID_UZYTKOWNIK" />
+                <ScalarProperty Name="ID_IHP_ZAM_USERS" ColumnName="ID_IHP_ZAM_USERS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_PARAMETRY">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_PARAMETRY">
+              <MappingFragment StoreEntitySet="IHP_PARAMETRY">
+                <ScalarProperty Name="ID_GRU_PARAMETRY" ColumnName="ID_GRU_PARAMETRY" />
+                <ScalarProperty Name="WARTOSC" ColumnName="WARTOSC" />
+                <ScalarProperty Name="ID_GRUPAPARAMETRY" ColumnName="ID_GRUPAPARAMETRY" />
+                <ScalarProperty Name="RODZAJ" ColumnName="RODZAJ" />
+                <ScalarProperty Name="PARAMETR" ColumnName="PARAMETR" />
+                <ScalarProperty Name="ID_IHP_PARAMETRY" ColumnName="ID_IHP_PARAMETRY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_DEFSTATUS">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_DEFSTATUS">
+              <MappingFragment StoreEntitySet="IHP_DEFSTATUS">
+                <ScalarProperty Name="KODSKANER" ColumnName="KODSKANER" />
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+                <ScalarProperty Name="ID_IHP_DEFSTATUS" ColumnName="ID_IHP_DEFSTATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_STATUSHISTORIA">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_STATUSHISTORIA">
+              <MappingFragment StoreEntitySet="IHP_STATUSHISTORIA">
+                <ScalarProperty Name="ID_IHP_DEFSTATUSZ" ColumnName="ID_IHP_DEFSTATUSZ" />
+                <ScalarProperty Name="ID_ARIT_ZAM_USERS" ColumnName="ID_ARIT_ZAM_USERS" />
+                <ScalarProperty Name="ID_IHP_POZ" ColumnName="ID_IHP_POZ" />
+                <ScalarProperty Name="OPIS" ColumnName="OPIS" />
+                <ScalarProperty Name="DATAWPISU" ColumnName="DATAWPISU" />
+                <ScalarProperty Name="ID_IHP_DEFSTATUS" ColumnName="ID_IHP_DEFSTATUS" />
+                <ScalarProperty Name="ID_IHP_STATUSHISTORIA" ColumnName="ID_IHP_STATUSHISTORIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_RODZGRUPKART">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_RODZGRUPKART">
+              <MappingFragment StoreEntitySet="IHP_RODZGRUPKART">
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+                <ScalarProperty Name="ID_IHP_RODZGRUPKART" ColumnName="ID_IHP_RODZGRUPKART" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_GRUPAKART">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_GRUPAKART">
+              <MappingFragment StoreEntitySet="IHP_GRUPAKART">
+                <ScalarProperty Name="ID_IHP_GRUPAKART_NADRZ" ColumnName="ID_IHP_GRUPAKART_NADRZ" />
+                <ScalarProperty Name="ID_IHP_RODZGRUPKART" ColumnName="ID_IHP_RODZGRUPKART" />
+                <ScalarProperty Name="NAZWAZLOZONA" ColumnName="NAZWAZLOZONA" />
+                <ScalarProperty Name="KODZLOZONY" ColumnName="KODZLOZONY" />
+                <ScalarProperty Name="KODGRUPY" ColumnName="KODGRUPY" />
+                <ScalarProperty Name="NAZWAGRUPY" ColumnName="NAZWAGRUPY" />
+                <ScalarProperty Name="ID_IHP_GRUPAKART" ColumnName="ID_IHP_GRUPAKART" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_FOTO">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_FOTO">
+              <MappingFragment StoreEntitySet="IHP_FOTO">
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+                <ScalarProperty Name="NAMEFILE" ColumnName="NAMEFILE" />
+                <ScalarProperty Name="LP" ColumnName="LP" />
+                <ScalarProperty Name="ID_IHP_KARTOTEKA" ColumnName="ID_IHP_KARTOTEKA" />
+                <ScalarProperty Name="ID_IHP_FOTO" ColumnName="ID_IHP_FOTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_TRASY">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_TRASY">
+              <MappingFragment StoreEntitySet="IHP_TRASY">
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+                <ScalarProperty Name="ID_IHP_TRASY" ColumnName="ID_IHP_TRASY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_JZ">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_JZ">
+              <MappingFragment StoreEntitySet="IHP_JZ">
+                <ScalarProperty Name="AKTYWNA" ColumnName="AKTYWNA" />
+                <ScalarProperty Name="WARTOSC" ColumnName="WARTOSC" />
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+                <ScalarProperty Name="ID_IHP_JZ" ColumnName="ID_IHP_JZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_WYST_JZ">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_WYST_JZ">
+              <MappingFragment StoreEntitySet="IHP_WYST_JZ">
+                <ScalarProperty Name="AKTYWNA" ColumnName="AKTYWNA" />
+                <ScalarProperty Name="ID_KARTOTEKA" ColumnName="ID_KARTOTEKA" />
+                <ScalarProperty Name="ID_IHP_JZ" ColumnName="ID_IHP_JZ" />
+                <ScalarProperty Name="ID_IHP_WYST_JZ" ColumnName="ID_IHP_WYST_JZ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_HARMONOGRAM_DZIENNY">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_HARMONOGRAM_DZIENNY">
+              <MappingFragment StoreEntitySet="IHP_HARMONOGRAM_DZIENNY">
+                <ScalarProperty Name="ID_KARTOTEKA" ColumnName="ID_KARTOTEKA" />
+                <ScalarProperty Name="NRDOKZA" ColumnName="NRDOKZA" />
+                <ScalarProperty Name="IHP_NAGLDOK" ColumnName="IHP_NAGLDOK" />
+                <ScalarProperty Name="ID_KONTRAH" ColumnName="ID_KONTRAH" />
+                <ScalarProperty Name="TEMAT" ColumnName="TEMAT" />
+                <ScalarProperty Name="OPIS" ColumnName="OPIS" />
+                <ScalarProperty Name="ID_IHP_ZAM_USERS" ColumnName="ID_IHP_ZAM_USERS" />
+                <ScalarProperty Name="LABELID" ColumnName="LABELID" />
+                <ScalarProperty Name="WAGA" ColumnName="WAGA" />
+                <ScalarProperty Name="ILOSC" ColumnName="ILOSC" />
+                <ScalarProperty Name="CZASSTOP" ColumnName="CZASSTOP" />
+                <ScalarProperty Name="CZASSTART" ColumnName="CZASSTART" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="ID_IHP_MASZYNA" ColumnName="ID_IHP_MASZYNA" />
+                <ScalarProperty Name="ID_IHP_HARMONOGRAM_DZIENNY" ColumnName="ID_IHP_HARMONOGRAM_DZIENNY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_MASZYNA">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_MASZYNA">
+              <MappingFragment StoreEntitySet="IHP_MASZYNA">
+                <ScalarProperty Name="AKTYWNY" ColumnName="AKTYWNY" />
+                <ScalarProperty Name="CENA" ColumnName="CENA" />
+                <ScalarProperty Name="NAZWA" ColumnName="NAZWA" />
+                <ScalarProperty Name="ID_IHP_MASZYNA" ColumnName="ID_IHP_MASZYNA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_JM">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_JM">
+              <MappingFragment StoreEntitySet="IHP_JM">
+                <ScalarProperty Name="OPISJM" ColumnName="OPISJM" />
+                <ScalarProperty Name="JM" ColumnName="JM" />
+                <ScalarProperty Name="ID_IHP_JM" ColumnName="ID_IHP_JM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_KARTOTEKA">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_KARTOTEKA">
+              <MappingFragment StoreEntitySet="IHP_KARTOTEKA">
+                <ScalarProperty Name="ID_TOWSUBJECT" ColumnName="ID_TOWSUBJECT" />
+                <ScalarProperty Name="KODEAN" ColumnName="KODEAN" />
+                <ScalarProperty Name="UWAGI" ColumnName="UWAGI" />
+                <ScalarProperty Name="PKWIU" ColumnName="PKWIU" />
+                <ScalarProperty Name="SWW" ColumnName="SWW" />
+                <ScalarProperty Name="NAZWADL" ColumnName="NAZWADL" />
+                <ScalarProperty Name="NAZWASKR" ColumnName="NAZWASKR" />
+                <ScalarProperty Name="INDEKS" ColumnName="INDEKS" />
+                <ScalarProperty Name="ID_IHP_JM" ColumnName="ID_IHP_JM" />
+                <ScalarProperty Name="ID_IHP_RODZAJKART" ColumnName="ID_IHP_RODZAJKART" />
+                <ScalarProperty Name="ID_IHP_STAWKAVAT" ColumnName="ID_IHP_STAWKAVAT" />
+                <ScalarProperty Name="ID_IHP_KARTOTEKA" ColumnName="ID_IHP_KARTOTEKA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_WYSTGRKART">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_WYSTGRKART">
+              <MappingFragment StoreEntitySet="IHP_WYSTGRKART">
+                <ScalarProperty Name="ID_IHP_GRUPAKART" ColumnName="ID_IHP_GRUPAKART" />
+                <ScalarProperty Name="ID_KARTOTEKA" ColumnName="ID_KARTOTEKA" />
+                <ScalarProperty Name="ID_IHP_WYSTGRKART" ColumnName="ID_IHP_WYSTGRKART" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_RODZAJDOK">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_RODZAJDOK">
+              <MappingFragment StoreEntitySet="IHP_RODZAJDOK">
+                <ScalarProperty Name="SKROTDOK" ColumnName="SKROTDOK" />
+                <ScalarProperty Name="KIERUNEKMAG" ColumnName="KIERUNEKMAG" />
+                <ScalarProperty Name="OPIS" ColumnName="OPIS" />
+                <ScalarProperty Name="ID_IHP_RODZAJDOK" ColumnName="ID_IHP_RODZAJDOK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_WYSTCECHKART">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_WYSTCECHKART">
+              <MappingFragment StoreEntitySet="IHP_WYSTCECHKART">
+                <ScalarProperty Name="WARTOSC" ColumnName="WARTOSC" />
+                <ScalarProperty Name="ID_CECHAKART" ColumnName="ID_CECHAKART" />
+                <ScalarProperty Name="ID_KARTOTEKA" ColumnName="ID_KARTOTEKA" />
+                <ScalarProperty Name="ID_WYSTCECHKART" ColumnName="ID_WYSTCECHKART" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_PRIORYTET">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_PRIORYTET">
+              <MappingFragment StoreEntitySet="IHP_PRIORYTET">
+                <ScalarProperty Name="AKTYWNY" ColumnName="AKTYWNY" />
+                <ScalarProperty Name="SKROT" ColumnName="SKROT" />
+                <ScalarProperty Name="OPIS" ColumnName="OPIS" />
+                <ScalarProperty Name="ID_IHP_PRIORYTET" ColumnName="ID_IHP_PRIORYTET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_WYSTTRASAKONTRAH">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_WYSTTRASAKONTRAH">
+              <MappingFragment StoreEntitySet="IHP_WYSTTRASAKONTRAH">
+                <ScalarProperty Name="ID_IHP_TRASY" ColumnName="ID_IHP_TRASY" />
+                <ScalarProperty Name="ID_IHP_KONTRAHENT" ColumnName="ID_IHP_KONTRAHENT" />
+                <ScalarProperty Name="ID_IHP_WYSTTRASAKONTRAH" ColumnName="ID_IHP_WYSTTRASAKONTRAH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_NAGLDOK">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_NAGLDOK">
+              <MappingFragment StoreEntitySet="IHP_NAGLDOK">
+                <ScalarProperty Name="ILEPOZ" ColumnName="ILEPOZ" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="BLOKADA" ColumnName="BLOKADA" />
+                <ScalarProperty Name="TERMINREALIZ" ColumnName="TERMINREALIZ" />
+                <ScalarProperty Name="DATAWPISU" ColumnName="DATAWPISU" />
+                <ScalarProperty Name="ID_IHP_KONTRAHENT" ColumnName="ID_IHP_KONTRAHENT" />
+                <ScalarProperty Name="ID_KH_SUBJECT" ColumnName="ID_KH_SUBJECT" />
+                <ScalarProperty Name="ID_RODZAJDOK" ColumnName="ID_RODZAJDOK" />
+                <ScalarProperty Name="ID_IHP_KONTRAHENT_ARCH" ColumnName="ID_IHP_KONTRAHENT_ARCH" />
+                <ScalarProperty Name="ID_DEFDOK" ColumnName="ID_DEFDOK" />
+                <ScalarProperty Name="SUMAOG" ColumnName="SUMAOG" />
+                <ScalarProperty Name="ID_IHP_PRIORYTET" ColumnName="ID_IHP_PRIORYTET" />
+                <ScalarProperty Name="NRDOKWEW" ColumnName="NRDOKWEW" />
+                <ScalarProperty Name="NRDOK" ColumnName="NRDOK" />
+                <ScalarProperty Name="DATADOK" ColumnName="DATADOK" />
+                <ScalarProperty Name="ID_IHP_NAGLDOK" ColumnName="ID_IHP_NAGLDOK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IHP_POZDOK">
+            <EntityTypeMapping TypeName="KOMPLETACJAModel.IHP_POZDOK">
+              <MappingFragment StoreEntitySet="IHP_POZDOK">
+                <ScalarProperty Name="ID_IHP_DEFSTATUS" ColumnName="ID_IHP_DEFSTATUS" />
+                <ScalarProperty Name="ID_TOWSUBJECT" ColumnName="ID_TOWSUBJECT" />
+                <ScalarProperty Name="UWAGI" ColumnName="UWAGI" />
+                <ScalarProperty Name="CENAUSTALONA" ColumnName="CENAUSTALONA" />
+                <ScalarProperty Name="DATADOK" ColumnName="DATADOK" />
+                <ScalarProperty Name="WARTBRUTTO" ColumnName="WARTBRUTTO" />
+                <ScalarProperty Name="WARTNETTO" ColumnName="WARTNETTO" />
+                <ScalarProperty Name="WARTVAT" ColumnName="WARTVAT" />
+                <ScalarProperty Name="CENABRUTTO" ColumnName="CENABRUTTO" />
+                <ScalarProperty Name="CENANETTO" ColumnName="CENANETTO" />
+                <ScalarProperty Name="NAZWASKRPOZ" ColumnName="NAZWASKRPOZ" />
+                <ScalarProperty Name="ILOSCZW" ColumnName="ILOSCZW" />
+                <ScalarProperty Name="ILOSCPACZKA" ColumnName="ILOSCPACZKA" />
+                <ScalarProperty Name="ILOSCRAZEM" ColumnName="ILOSCRAZEM" />
+                <ScalarProperty Name="ILOSC" ColumnName="ILOSC" />
+                <ScalarProperty Name="LP" ColumnName="LP" />
+                <ScalarProperty Name="ID_IHP_KARTOTEKA" ColumnName="ID_IHP_KARTOTEKA" />
+                <ScalarProperty Name="ID_IHP_NAGLDOK" ColumnName="ID_IHP_NAGLDOK" />
+                <ScalarProperty Name="ID_IHP_POZDOK" ColumnName="ID_IHP_POZDOK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

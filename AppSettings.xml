@@ -1,0 +1,1720 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlStatmentCollection>
+<defaultThemeName>Office2016</defaultThemeName>
+ <SequenceEvents>
+     <Item>
+		<Lp>1</Lp>
+		<IdZdarzenia>1</IdZdarzenia>
+	 </Item>
+	 <Item>
+		<Lp>2</Lp>
+		<IdZdarzenia>2</IdZdarzenia>
+	 </Item>
+  </SequenceEvents>
+   <EventsConfig>
+   <Upadki>  
+      <ItemUpadki>
+     	<Lp>1</Lp>
+   		<IdZdarzenia>5</IdZdarzenia>
+	  </ItemUpadki>
+     <ItemUpadki>
+		<Lp>2</Lp>
+		<IdZdarzenia>3</IdZdarzenia>
+	 </ItemUpadki>
+    </Upadki>
+   <Selekcja>
+	   <ItemSelekcja>
+      	<Lp>1</Lp>
+ 		<IdZdarzenia>4</IdZdarzenia>
+ 	 </ItemSelekcja>
+   </Selekcja>
+ </EventsConfig>
+   <SqlStatments>
+    <SqlStatment>
+      <Name>Kontrah</Name>
+      <DefoultSearching>NazwaSkr</DefoultSearching>
+      <Sql>
+      SELECT k.id_kontrah, k.id_defceny, k.nrkontrah, k.nazwaskr, dk.nazwadl, dk.nip, 0 as Zazn FROM kontrah k
+        JOIN danekontrah dk ON (k.id_kontrah = dk.id_kontrah AND dk.bazadanekontrah = 1)
+        JOIN wystgrktr WG on WG.id_kontrah = K.id_kontrah and Wg.id_rodzgrupktr = 1
+        join grupakontrah gk on gk.id_grupakontrah = wg.id_grupakontrah
+        where gk.id_grupakontrah  = 10003
+      </Sql>
+      <Label1>Numer Kontrahenta</Label1>
+      <Info1>NrKontrah</Info1>
+      <Label2>Nazwa</Label2>
+      <Info2>NazwaSkr</Info2>
+      <Label3>NIP</Label3>
+      <Info3>NIP</Info3>
+      <Label4></Label4>
+      <Info4></Info4>
+      <Label5></Label5>
+      <Info5></Info5>
+      <Mapping>
+        <Column>
+          <Binding>NrKontrah</Binding>
+          <Name>nrkontrah</Name>
+          <Visable>true</Visable>
+          <Text>Numer Kontrahenta</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>150</Width>
+        </Column>
+        <Column>
+          <Binding>NazwaSkr</Binding>
+          <Name>nazwaskr</Name>
+          <Visable>true</Visable>
+          <Text>Nazwa</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>300</Width>
+        </Column>
+        <Column>
+          <Binding>NIP</Binding>
+          <Name>nip</Name>
+          <Visable>false</Visable>
+          <Text></Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>0</Width>
+        </Column>
+        <Column>
+          <Binding>IdDefCeny</Binding>
+          <Name>id_defceny</Name>
+          <Visable>false</Visable>
+          <Text></Text>
+		   <TypDanych>TEXT</TypDanych>
+		   <Width>0</Width>
+        </Column>
+		    <Column>
+          <Binding>Zazn</Binding>
+          <Name>zazn</Name>
+          <Visable>true</Visable>
+          <Text>Zaznaczenie</Text>
+		   <TypDanych>Bool</TypDanych>
+		   <Width>200</Width>
+        </Column>
+      </Mapping>
+    </SqlStatment>
+	<SqlStatment>
+      <Name>KartGatunek</Name>
+      <DefoultSearching>Indeks</DefoultSearching>
+       <Sql>
+         SELECT k.id_kartoteka, k.indeks, k.nazwaskr, k.nazwadl FROM kartoteka k where k.id_kartoteka in(10351,10360)
+       </Sql>
+      <Label1></Label1>
+      <Info1></Info1>
+      <Label2></Label2>
+      <Info2></Info2>
+      <Label3></Label3>
+      <Info3></Info3>
+      <Label4></Label4>
+      <Info4></Info4>
+      <Label5></Label5>
+      <Info5></Info5>
+      <Mapping>
+        <Column>
+          <Binding>Indeks</Binding>
+          <Name>indeks</Name>
+          <Visable>true</Visable>
+          <Text>Indeks</Text>
+          <Width>150</Width>
+        </Column>
+        <Column>
+          <Binding>NazwaSkr</Binding>
+          <Name>nazwaskr</Name>
+          <Visable>true</Visable>
+          <Text>Nazwa</Text>
+          <Width>300</Width>
+        </Column>
+        <Column>
+          <Binding>NazwaDl</Binding>
+          <Name>nazwadl</Name>
+          <Visable>false</Visable>
+          <Text></Text>
+          <Width>0</Width>
+        </Column>
+        <Column>
+          <Binding>JM</Binding>
+          <Name>jm</Name>
+          <Visable>true</Visable>
+          <Text>JM</Text>
+          <Width>50</Width>
+        </Column>
+        <Column>
+          <Binding>Cena</Binding>
+          <Name>cenab</Name>
+          <Visable>true</Visable>
+          <Text>Cena</Text>
+          <Width>80</Width>
+        </Column>
+      </Mapping>
+    </SqlStatment>
+	<SqlStatment>
+    <Name>SzablonChowuKh</Name>
+      <DefoultSearching></DefoultSearching>
+      <Sql>
+         select ID_ARIT_HARMONOGRAM_SLOWNIKKH,ID_ARIT_HARMONOGRAM_SLOWNIK,ID_KARTOTEKA,ID_KONTRAH,DZIEN,TYDZIEN,WAGA,WAGATYDZIEN,PASZATYDZIEN,PASZATYDZIENSZT,PASZADZIENNIE,PASZADZIENNIESZT,
+		 WODADZIENNIE,WODADZIENNIESZT,WODATYDZIEN,WODATYDZIENSZT from  ARIT_HARMONOGRAM_SLOWNIKKH where ID_KARTOTEKA={0} and ID_KONTRAH={1}
+      </Sql>
+      <Mapping>
+        <Column>
+          <Binding>IdAritHarmonogramSlownik</Binding>
+          <Name>ID_ARIT_HARMONOGRAM_SLOWNIK</Name>
+          <Visable>false</Visable>
+          <Text>ID_ARIT_HARMONOGRAM_SLOWNIK</Text>
+          <Width>120</Width>
+        </Column>
+		
+	    <Column>
+          <Binding>IdAritHarmonogramSlownikKh</Binding>
+          <Name>ID_ARIT_HARMONOGRAM_SLOWNIKKH</Name>
+          <Visable>false</Visable>
+          <Text>ID_ARIT_HARMONOGRAM_SLOWNIKKH</Text>
+          <Width>120</Width>
+        </Column>
+			
+        <Column>
+          <Binding>Dzien</Binding>
+          <Name>DZIEN</Name>
+          <Visable>true</Visable>
+          <Text>Dzien</Text>
+          <Width>150</Width>
+        </Column>
+
+	    <Column>
+          <Binding>idKartoteka</Binding>
+          <Name>ID_KARTOTEKA</Name>
+          <Visable>false</Visable>
+          <Text>ID_KARTOTEKA</Text>
+          <Width>150</Width>
+        </Column>	
+		
+	    <Column>
+          <Binding>idKontrah</Binding>
+          <Name>ID_KONTRAH</Name>
+          <Visable>false</Visable>
+          <Text>ID_KONTRAH</Text>
+          <Width>150</Width>
+        </Column>	
+			
+        <Column>
+          <Binding>Rok</Binding>
+          <Name>Rok</Name>
+          <Visable>true</Visable>
+          <Text>Rok</Text>
+          <Width>150</Width>
+        </Column>
+      
+       <Column>
+          <Binding>Tydzien</Binding>
+          <Name>Tydzien</Name>
+          <Visable>true</Visable>
+          <Text>Tydzień</Text>
+          <Width>150</Width>
+       </Column>
+
+        
+          <Column>
+          <Binding>Waga</Binding>
+          <Name>WAGA</Name>
+          <Visable>true</Visable>
+          <Text>Waga</Text>
+          <Width>150</Width>
+        </Column>
+        
+		<Column>
+          <Binding>WagaTydzien</Binding>
+          <Name>WAGATYDZIEN</Name>
+          <Visable>true</Visable>
+          <Text>Waga Tydzień</Text>
+          <Width>150</Width>
+        </Column>
+		<Column>
+          <Binding>WodaTydzien</Binding>
+          <Name>WODATYDZIEN</Name>
+          <Visable>false</Visable>
+          <Text>Woda Tydzień</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		<Column>
+          <Binding>WodaTydzienSzt</Binding>
+          <Name>WODATYDZIENSZT</Name>
+          <Visable>false</Visable>
+          <Text>Woda Tydzień SZt.</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+	   <Column>
+          <Binding>PaszaDzienne</Binding>
+          <Name>PASZADZIENNIE</Name>
+          <Visable>true</Visable>
+          <Text>Pasza Dziennie</Text>
+          <Width>150</Width>
+        </Column>
+		
+		<Column>
+          <Binding>PaszaDzienneSzt</Binding>
+          <Name>PASZADZIENNIESZT</Name>
+          <Visable>true</Visable>
+          <Text>Dziennie na Kurczaka</Text>
+          <Width>150</Width>
+        </Column>
+		
+		<Column>
+          <Binding>PaszaTydzien</Binding>
+          <Name>PASZATYDZIEN</Name>
+          <Visable>true</Visable>
+          <Text>Pasza Tydzien</Text>
+          <Width>150</Width>
+        </Column>
+		
+	   <Column>
+          <Binding>PaszaTydzienSzt</Binding>
+          <Name>PASZATYDZIENSZT</Name>
+          <Visable>true</Visable>
+          <Text>Pasza Tydzien Szt</Text>
+          <Width>150</Width>
+        </Column>	
+		<Column>
+          <Binding>WodaDzienne</Binding>
+          <Name>WODADZIENNIE</Name>
+          <Visable>true</Visable>
+          <Text>Woda Dzienne</Text>
+          <Width>150</Width>
+        </Column>
+	
+     	<Column>
+          <Binding>WodaDzienneSzt</Binding>
+          <Name>WODADZIENNIESZT</Name>
+          <Visable>true</Visable>
+          <Text>Woda Dzienne Szt.</Text>
+          <Width>150</Width>
+      
+        </Column>
+
+		
+       </Mapping>
+    </SqlStatment>
+	 <SqlStatment>
+      <Name>SzablonChowuTydzien</Name>
+      <DefoultSearching></DefoultSearching>
+      <Sql>
+        select TYDZIEN,  ID_KARTOTEKA , ROK,   INDEKS ,PLEC ,WAGATYDZIEN,PASZATYDZIEN, PASZATYDZIENSZT,WODATYDZIEN,WODATYDZIENSZT  from  ARIT_HARMONOGRAM_SLOWNIK
+            where INDEKS={0}
+            group by   TYDZIEN ,ID_KARTOTEKA   , ROK,   INDEKS ,PLEC ,WAGATYDZIEN,PASZATYDZIEN, PASZATYDZIENSZT,WODATYDZIEN,WODATYDZIENSZT 
+	 </Sql>
+      <Mapping>
+         <Column>
+          <Binding>idKartoteka</Binding>
+          <Name>ID_KARTOTEKA</Name>
+          <Visable>false</Visable>
+          <Text>ID_KARTOTEKA</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+         <Column>
+          <Binding>Rok</Binding>
+          <Name>Rok</Name>
+          <Visable>false</Visable>
+          <Text>Rok</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+		
+         <Column>
+          <Binding>Plec</Binding>
+          <Name>PLEC</Name>
+          <Visable>true</Visable>
+          <Text>Płeć</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+        <Column>
+          <Binding>Tydzien</Binding>
+          <Name>Tydzien</Name>
+          <Visable>true</Visable>
+          <Text>Tydzień</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>50</Width>
+        </Column>
+        <Column>
+          <Binding>Indeks</Binding>
+          <Name>Indeks</Name>
+          <Visable>true</Visable>
+          <Text>Indeks</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>90</Width>
+        </Column>
+     
+		
+		<Column>
+          <Binding>PaszaTydzien</Binding>
+          <Name>PASZATYDZIEN</Name>
+          <Visable>false</Visable>
+          <Text>Pasza Tydzień</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+		<Column>
+          <Binding>PaszaTydzienSzt</Binding>
+          <Name>PASZATYDZIENSZT</Name>
+          <Visable>false</Visable>
+          <Text>Pasza Tydzień Szt.</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+		<Column>
+          <Binding>WodaTydzien</Binding>
+          <Name>WODATYDZIEN</Name>
+          <Visable>false</Visable>
+          <Text>Woda Tydzień</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+		<Column>
+          <Binding>WodaTydzienSzt</Binding>
+          <Name>WODATYDZIENSZT</Name>
+          <Visable>false</Visable>
+          <Text>Woda Tydzień Szt.</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+	  	
+		<Column>
+          <Binding>WagaTydzien</Binding>
+          <Name>WAGATYDZIEN</Name>
+          <Visable>true</Visable>
+          <Text>Waga Tydzień</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+	  </Mapping>
+    </SqlStatment>
+     <SqlStatment>
+      <Name>SzablonChowuKhTydzien</Name>
+      <DefoultSearching></DefoultSearching>
+      <Sql>
+ 
+          select TYDZIEN,  ID_KARTOTEKA ,WAGATYDZIEN,PASZATYDZIEN,WODATYDZIEN ,ID_KONTRAH from  ARIT_HARMONOGRAM_SLOWNIKKH
+            where ID_KARTOTEKA={0}   and ID_KONTRAH={1}
+            group by   TYDZIEN ,ID_KARTOTEKA ,WAGATYDZIEN,PASZATYDZIEN,WODATYDZIEN,ID_KONTRAH
+	 </Sql>
+      <Mapping>
+         <Column>
+          <Binding>idKartoteka</Binding>
+          <Name>ID_KARTOTEKA</Name>
+          <Visable>false</Visable>
+          <Text>ID_KARTOTEKA</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		
+		<Column>
+          <Binding>idKontrah</Binding>
+          <Name>ID_KONTRAH</Name>
+          <Visable>false</Visable>
+          <Text>ID_KONTRAH</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		
+
+	
+        <Column>
+          <Binding>Tydzien</Binding>
+          <Name>Tydzien</Name>
+          <Visable>true</Visable>
+          <Text>Tydzień</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>50</Width>
+        </Column>
+
+		
+		<Column>
+          <Binding>PaszaTydzien</Binding>
+          <Name>PASZATYDZIEN</Name>
+          <Visable>false</Visable>
+          <Text>Pasza Tydzień</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+	
+		
+		<Column>
+          <Binding>WodaTydzien</Binding>
+          <Name>WODATYDZIEN</Name>
+          <Visable>true</Visable>
+          <Text>Woda Tydzień</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+		<Column>
+          <Binding>WodaTydzienSzt</Binding>
+          <Name>WODATYDZIENSZT</Name>
+          <Visable>true</Visable>
+          <Text>Woda Tydzień Szt.</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+	  	
+		<Column>
+          <Binding>WagaTydzien</Binding>
+          <Name>WAGATYDZIEN</Name>
+          <Visable>true</Visable>
+          <Text>Waga Tydzień</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+	  </Mapping>
+    </SqlStatment>
+	 <SqlStatment>
+      <Name>SzablonChowu</Name>
+      <DefoultSearching></DefoultSearching>
+      <Sql>
+       select ID_ARIT_HARMONOGRAM_SLOWNIK ,ID_KARTOTEKA , ROK, DZIEN , TYDZIEN, INDEKS ,PLEC ,WAGA,WAGATYDZIEN,
+			PASZADZIENNIE, PASZADZIENNIESZT, WODADZIENNIE,WODADZIENNIESZT, PASZATYDZIEN, PASZATYDZIENSZT,WODATYDZIEN,
+			WODADZIENNIESZT  from  ARIT_HARMONOGRAM_SLOWNIK where INDEKS='{0}'
+	 </Sql>
+      <Mapping>
+        <Column>
+          <Binding>IdAritHarmonogramSlownik</Binding>
+          <Name>ID_ARIT_HARMONOGRAM_SLOWNIK</Name>
+          <Visable>false</Visable>
+          <Text>ID_ARIT_HARMONOGRAM_SLOWNIK</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+	
+	     <Column>
+          <Binding>Dzien</Binding>
+          <Name>DZIEN</Name>
+          <Visable>true</Visable>
+          <Text>Dzień</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+			<Column>
+          <Binding>idKartoteka</Binding>
+          <Name>ID_KARTOTEKA</Name>
+          <Visable>false</Visable>
+          <Text>ID_KARTOTEKA</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+         <Column>
+          <Binding>Rok</Binding>
+          <Name>Rok</Name>
+          <Visable>false</Visable>
+          <Text>Rok</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+		
+         <Column>
+          <Binding>Plec</Binding>
+          <Name>PLEC</Name>
+          <Visable>true</Visable>
+          <Text>Płeć</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+        <Column>
+          <Binding>Tydzien</Binding>
+          <Name>Tydzien</Name>
+          <Visable>true</Visable>
+          <Text>Tydzień</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>50</Width>
+        </Column>
+        <Column>
+          <Binding>Indeks</Binding>
+          <Name>Indeks</Name>
+          <Visable>true</Visable>
+          <Text>Indeks</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>90</Width>
+        </Column>
+         <Column>
+          <Binding>Waga</Binding>
+          <Name>Waga</Name>
+          <Visable>true</Visable>
+          <Text>Waga Dziennie</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+	     <Column>
+          <Binding>PaszaDzienne</Binding>
+          <Name>PASZADZIENNIE</Name>
+          <Visable>true</Visable>
+          <Text>Pasza Dziennie</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+        <Column>
+          <Binding>PaszaDzienneSzt</Binding>
+          <Name>PASZADZIENNIESZT</Name>
+          <Visable>true</Visable>
+          <Text>Pasza Dziennie Szt.</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column> 
+	  
+	  		  <Column>
+          <Binding>WodaDzienne</Binding>
+          <Name>WODADZIENNIE</Name>
+          <Visable>true</Visable>
+          <Text>Woda Dziennie</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+		<Column>
+          <Binding>WodaDzienneSz</Binding>
+          <Name>WODADZIENNIESZT</Name>
+          <Visable>true</Visable>
+          <Text>Woda Dziennie Szt.</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+		<Column>
+          <Binding>PaszaTydzien</Binding>
+          <Name>PASZATYDZIEN</Name>
+          <Visable>false</Visable>
+          <Text>Pasza Tydzień</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+		<Column>
+          <Binding>PaszaTydzienSzt</Binding>
+          <Name>PASZATYDZIENSZT</Name>
+          <Visable>false</Visable>
+          <Text>Pasza Tydzień Szt.</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+		<Column>
+          <Binding>WodaTydzien</Binding>
+          <Name>WODATYDZIEN</Name>
+          <Visable>false</Visable>
+          <Text>Woda Tydzień</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+		<Column>
+          <Binding>WodaTydzienSzt</Binding>
+          <Name>WODADZIENNIESZT</Name>
+          <Visable>false</Visable>
+          <Text>Woda Tydzień Szt.</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+	  	
+		<Column>
+          <Binding>WagaTydzien</Binding>
+          <Name>WAGATYDZIEN</Name>
+          <Visable>false</Visable>
+          <Text>Waga Tydzień</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		
+	  </Mapping>
+    </SqlStatment>
+	<SqlStatment>
+      <Name>SzablonChowDlaKontrah</Name>
+      <DefoultSearching></DefoultSearching>
+      <Sql>
+            select  ID_ARIT_HARM_SLO_DLA_CHOWU,ID_ARIT_HARMONOGRAM_SLOWNIK,ID_ARIT_PARAMETRY_CHOWU,ID_KONTRAH,ID_KARTOTEKA,ID_ARIT_PARAMETRY_CHOWU,
+                    ROK,TYDZIEN,INDEKS,DATATYGODNIA,DATADNIA,DZIEN,WAGA,WAGASZABLON,PASZADZIENNIE,PASZADZIENNIESZ,PASZASZABLON,WODADZIENNIE,WODADZIENNIESZ,WODASZABLON, UPADKI,SELNOGI,SELMALE,
+					SELINNE,ILOSC,ID_ZDARZENIE,ID_ARIT_PARAMETRY_CHOWU_POZ,ID_ARIT_PARAMETRY_CHOWU_POZ_UPA,AKTILOSC FROM ARIT_HARM_SLO_DLA_CHOWU  WHERE ID_ARIT_PARAMETRY_CHOWU={0} and ID_KONTRAH={1} order by DZIEN
+     </Sql>
+      <Mapping>
+    	<Column>
+          <Binding>IdAritHarmonogramSlownik</Binding>
+          <Name>ID_ARIT_HARMONOGRAM_SLOWNIK</Name>
+          <Visable>false</Visable>
+          <Text>ID_ARIT_HARMONOGRAM_SLOWNIK</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+	  	<Column>
+          <Binding>IdZdarzenie</Binding>
+          <Name>ID_ZDARZENIE</Name>
+          <Visable>false</Visable>
+          <Text>IdZdarzenie</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+        <Column>
+          <Binding>IdArItParametryChowuPoz</Binding>
+          <Name>ID_ARIT_PARAMETRY_CHOWU_POZ</Name>
+          <Visable>false</Visable>
+          <Text>IdArItParametryChowuPoz</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		 <Column>
+          <Binding>IdArItParametryChowuPozUpa</Binding>
+          <Name>ID_ARIT_PARAMETRY_CHOWU_POZ_UPA</Name>
+          <Visable>false</Visable>
+          <Text>IdArItParametryChowuPozUpa</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		
+        <Column>
+          <Binding>IdArItHarmSloDlaChowu</Binding>
+          <Name>ARIT_HARM_SLO_DLA_CHOWU</Name>
+          <Visable>false</Visable>
+          <Text>ARIT_HARM_SLO_DLA_CHOWU</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+	    <Column>
+          <Binding>IdArItParametryChowu</Binding>
+          <Name>ID_ARIT_PARAMETRY_CHOWU</Name>
+          <Visable>false</Visable>
+          <Text>ID_ARIT_PARAMETRY_CHOWU</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+	    <Column>
+          <Binding>IdKartoteka</Binding>
+          <Name>ID_KARTOTEKA</Name>
+          <Visable>false</Visable>
+          <Text>ID_KARTOTEKA</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		<Column>
+          <Binding>IdKontrah</Binding>
+          <Name>ID_KONTRAH</Name>
+          <Visable>false</Visable>
+          <Text>ID_KONTRAH</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+	    <Column>
+          <Binding>Rok</Binding>
+          <Name>Rok</Name>
+          <Visable>true</Visable>
+          <Text>Rok</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+        <Column>
+          <Binding>Tydzien</Binding>
+          <Name>Tydzien</Name>
+          <Visable>true</Visable>
+          <Text>Tydzień</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>50</Width>
+        </Column>
+	    <Column>
+          <Binding>Dzien</Binding>
+          <Name>DZIEN</Name>
+          <Visable>true</Visable>
+          <Text>Dzień</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>50</Width>
+        </Column>
+	    <Column>
+          <Binding>Indeks</Binding>
+          <Name>Indeks</Name>
+          <Visable>true</Visable>
+          <Text>Indeks</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>90</Width>
+        </Column>
+        <Column>
+          <Binding>Waga</Binding>
+          <Name>Waga</Name>
+          <Visable>true</Visable>
+          <Text>Waga</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>60</Width>
+        </Column>
+	  <Column>
+          <Binding>WagaSzablon</Binding>
+          <Name>WagaSzablon</Name>
+          <Visable>true</Visable>
+          <Text>Waga wg szablonu</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>60</Width>
+        </Column>
+		
+         <Column>
+          <Binding>DataTygodnia</Binding>
+          <Name>DATATYGODNIA</Name>
+          <Visable>false</Visable>
+          <Text>DataTygodnia</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>110</Width>
+        </Column>
+       
+	   <Column>
+          <Binding>DataDnia</Binding>
+          <Name>DATADNIA</Name>
+          <Visable>true</Visable>
+          <Text>DataDnia</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>110</Width>
+        </Column>
+		
+	   <Column>
+          <Binding>PaszaDziennie</Binding>
+          <Name>PASZADZIENNIE</Name>
+          <Visable>true</Visable>
+          <Text>Pasza Dziennie</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+		
+		 <Column>
+          <Binding>PaszaDziennieNorma</Binding>
+          <Name>PASZASZABLON</Name>
+          <Visable>true</Visable>
+          <Text>Pasza Dziennie</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+		
+		<Column>
+          <Binding>Dzien</Binding>
+          <Name>PASZADZIENNIE</Name>
+          <Visable>true</Visable>
+          <Text>Pasza Dziennie</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+	    <Column>
+          <Binding>Wodadziennie</Binding>
+          <Name>WODADZIENNIE</Name>
+          <Visable>true</Visable>
+          <Text>Woda Dziennie</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		 <Column>
+          <Binding>WodaDziennieNorma</Binding>
+          <Name>WODASZABLON</Name>
+          <Visable>true</Visable>
+          <Text>WOda Dziennie norma</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+		
+     	<Column>
+          <Binding>PaszaDziennieSzt</Binding>
+          <Name>PASZADZIENNIESZ</Name>
+          <Visable>true</Visable>
+          <Text>Pasza Dziennie na Szt.</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+	    <Column>
+          <Binding>WodadziennieSzt</Binding>
+          <Name>WODADZIENNIESZ</Name>
+          <Visable>true</Visable>
+          <Text>Woda Dziennie na Szt.</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>	
+     	<Column>
+          <Binding>Upadki</Binding>
+          <Name>UPADKI</Name>
+          <Visable>true</Visable>
+          <Text>Upadki</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+		<Column>
+          <Binding>SelNogi</Binding>
+          <Name>SELNOGI</Name>
+          <Visable>true</Visable>
+          <Text>Selekcja Nogi</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+        <Column>
+          <Binding>SelMale</Binding>
+          <Name>SELMALE</Name>
+          <Visable>true</Visable>
+          <Text>Selekcja Małe</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+        <Column>
+          <Binding>SelInne</Binding>
+          <Name>SELINNE</Name>
+          <Visable>true</Visable>
+          <Text>Selekcja Inne</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>140</Width>
+        </Column>
+	   <Column>
+          <Binding>AktIlosc</Binding>
+          <Name>AktIlosc</Name>
+          <Visable>true</Visable>
+          <Text>Ilosc</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+	    <Column>
+          <Binding>Ilosc</Binding>
+          <Name>ILOSC</Name>
+          <Visable>true</Visable>
+          <Text>Ilosc sztuk</Text>
+		    <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+        </Mapping>
+    </SqlStatment>
+    <SqlStatment>
+      <Name>ParametryChowu</Name>
+      <DefoultSearching></DefoultSearching>
+      <Sql>
+           select AP.ID_ARIT_PARAMETRY_CHOWU,AP.ID_KONTRAH,AP.DATAWPISU,AP.ID_KARTOTEKA,AP.STATUS,k.nazwaskr,kt.indeks,AP.ILOSC,AP.NUMERRZUTU from  ARIT_PARAMETRY_CHOWU AP
+               JOIN kontrah K ON K.id_kontrah = ap.id_kontrah
+               JOIN kartoteka KT ON KT.id_kartoteka = AP.ID_KARTOTEKA
+               WHERE K.id_kontrah={0}
+      </Sql>
+      <Mapping>
+        <Column>
+          <Binding>IdParametryChowuModel</Binding>
+          <Name>ID_ARIT_PARAMETRY_CHOWU</Name>
+          <Visable>false</Visable>
+          <Text>ID_ARIT_PARAMETRY_CHOWU</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+        <Column>
+          <Binding>IdKontrah</Binding>
+          <Name>id_kontrah</Name>
+          <Visable>false</Visable>
+          <Text>Rok</Text>
+		   <TypDanych>TEXT</TypDanych>
+          <Width>150</Width>
+        </Column>
+	  <Column>
+          <Binding>idKartoteka</Binding>
+          <Name>ID_KARTOTEKA</Name>
+          <Visable>false</Visable>
+          <Text>ID_KARTOTEKA</Text>
+		   <TypDanych>TEXT</TypDanych>
+          <Width>150</Width>
+        </Column>
+		
+		  <Column>
+          <Binding>Ilosc</Binding>
+          <Name>ILOSC</Name>
+          <Visable>true</Visable>
+          <Text>ILOSC</Text>
+		   <TypDanych>TEXT</TypDanych>
+          <Width>150</Width>
+        </Column>
+		
+        <Column>
+          <Binding>DataWpisu</Binding>
+          <Name>DataWpisu</Name>
+          <Visable>true</Visable>
+          <Text>DATA WPISU</Text>
+		  <TypDanych>DATE</TypDanych>
+          <Width>150</Width>
+        </Column>
+	
+        <Column>
+          <Binding>Tydzien</Binding>
+          <Name>Tydzien</Name>
+          <Visable>true</Visable>
+          <Text>Tydzień</Text>
+		   <TypDanych>TEXT</TypDanych>
+          <Width>150</Width>
+        </Column>
+        <Column>
+          <Binding>Indeks</Binding>
+          <Name>Indeks</Name>
+          <Visable>true</Visable>
+          <Text>INDEKS</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>100</Width>
+        </Column>
+		
+	     <Column>
+          <Binding>NumerRzutu</Binding>
+          <Name>NUMERRZUTU</Name>
+          <Visable>true</Visable>
+          <Text>Numer Rzutu</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>100</Width>
+        </Column>	
+		
+	  <Column>
+          <Binding>status</Binding>
+          <Name>status</Name>
+          <Visable>false</Visable>
+          <Text>status</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+	    <Column>
+          <Binding>NazwaSkr</Binding>
+          <Name>NazwaSkr</Name>
+          <Visable>true</Visable>
+          <Text>KONTRAHENT</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>300</Width>
+        </Column>	
+      </Mapping>
+    </SqlStatment>
+    <SqlStatment>
+      <Name>ParametryChowuPoz</Name>
+      <DefoultSearching></DefoultSearching>
+      <Sql>
+       select ID_ARIT_PARAMETRY_CHOWU_POZ,ID_ARIT_PARAMETRY_CHOWU,NAZWA,DATAZD,DATADO,ILOSC,ID_ARIT_ZDARZENIA from ARIT_PARAMETRY_CHOWUPOZ  where ID_ARIT_PARAMETRY_CHOWU={0}
+	   order by DATADO
+      </Sql>
+      <Mapping>
+        <Column>
+          <Binding>IdParametryChowuModelPoz</Binding>
+          <Name>ID_ARIT_PARAMETRY_CHOWU_POZ</Name>
+          <Visable>false</Visable>
+          <Text>ID_ARIT_PARAMETRY_CHOWU_POZ</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+        <Column>
+          <Binding>IdParametryChowuModel</Binding>
+          <Name>ID_ARIT_PARAMETRY_CHOWU</Name>
+          <Visable>false</Visable>
+          <Text>Rok</Text>
+		   <TypDanych>TEXT</TypDanych>
+          <Width>150</Width>
+        </Column>
+		
+		 <Column>
+          <Binding>IdZdarzenie</Binding>
+          <Name>ID_ARIT_ZDARZENIA</Name>
+          <Visable>false</Visable>
+          <Text>Id_zdarzenia</Text>
+		   <TypDanych>TEXT</TypDanych>
+          <Width>150</Width>
+        </Column>
+		
+	  <Column>
+          <Binding>Nazwa</Binding>
+          <Name>NAZWA</Name>
+          <Visable>true</Visable>
+          <Text>NAZWA ZD.</Text>
+		   <TypDanych>TEXT</TypDanych>
+          <Width>150</Width>
+        </Column>
+        <Column>
+          <Binding>Datazd</Binding>
+          <Name>DATAZD</Name>
+          <Visable>true</Visable>
+          <Text>DATA WPISU</Text>
+		  <TypDanych>DATE</TypDanych>
+          <Width>80</Width>
+        </Column>
+		
+		<Column>
+          <Binding>DataDo</Binding>
+          <Name>DATADO</Name>
+          <Visable>true</Visable>
+          <Text>DATA DO</Text>
+		  <TypDanych>DATE</TypDanych>
+          <Width>120</Width>
+        </Column>
+		
+      <Column>
+          <Binding>Ilosc</Binding>
+          <Name>ILOSC</Name>
+          <Visable>true</Visable>
+          <Text>ILOSC</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>100</Width>
+        </Column>
+	  <Column>
+          <Binding>status</Binding>
+          <Name>status</Name>
+          <Visable>true</Visable>
+          <Text>status</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+     </Mapping>
+    </SqlStatment>
+	<SqlStatment>
+	    <Name>HarmonogramGridSzablon</Name>
+      <DefoultSearching></DefoultSearching>
+      <Sql>
+	   
+	  select  AH.ID_HARMONOGRAM,AH.LPDLADATY,AH.DATA,AH.NRTYGODNIA,AH.DZIENTYGODNIA,AH.HODOWCA,AH.ID_KONTRAH,AH.ILOSCZESTAWOW,AH.ILOSSZTUK,AH.WAGAKG,AH.UWAGI,AH.DZIENWOLNY,AH.DZIENWROKU,AH.ID_HARMONOGRAM_PARENT,AH.ID_KARTOTEKA,AH.ID_ZDARZENIE from  ARIT_HARMONOGRAM AH  
+				where AH.ROK={0}
+      </Sql>
+	 
+
+      <Mapping>
+        <Column>
+          <Binding>Id</Binding>
+          <Name>ID_HARMONOGRAM</Name>
+          <Visable>false</Visable>
+          <Text>ID_HARMONOGRAM</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+	   <Column>
+          <Binding>IdKartoteka</Binding>
+          <Name>ID_KARTOTEKA</Name>
+          <Visable>false</Visable>
+          <Text>ID_KARTOTEKA</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		
+		 <Column>
+          <Binding>IdZdarzenie</Binding>
+          <Name>ID_ZDARZENIE</Name>
+          <Visable>false</Visable>
+          <Text>ID_ZDARZENIE</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+
+		   <Column>
+          <Binding>ParentId</Binding>
+          <Name>ID_HARMONOGRAM_PARENT</Name>
+          <Visable>false</Visable>
+          <Text>ID_HARMONOGRAM_PARENT</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+  
+	    <Column>
+          <Binding>Data</Binding>
+          <Name>DATA</Name>
+          <Visable>true</Visable>
+          <Text>Data</Text>
+		   <TypDanych>DateTime</TypDanych>
+          <Width>150</Width>
+        </Column>
+
+    	<Column>
+          <Binding>Dzientygodnia</Binding>
+          <Name>DZIENTYGODNIA</Name>
+          <Visable>false</Visable>
+          <Text>Dzień Tygodnia</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		    	<Column>
+          <Binding>DzienTygodniaStr</Binding>
+          <Name>DZIENTYGODNIA</Name>
+          <Visable>true</Visable>
+          <Text>Dzień Tygodnia</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+
+	    <Column>
+          <Binding>Hodowca</Binding>
+          <Name>HODOWCA</Name>
+          <Visable>true</Visable>
+          <Text>HODOWCA</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>100</Width>
+        </Column>
+		
+		<Column>
+          <Binding>Ilosczestawow</Binding>
+          <Name>ILOSCZESTAWOW</Name>
+          <Visable>true</Visable>
+          <Text>Ilość Zestawów</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>100</Width>
+        </Column>
+	
+		<Column>
+          <Binding>Iloscsztuk</Binding>
+          <Name>ILOSSZTUK</Name>
+          <Visable>true</Visable>
+          <Text>Ilość Sztuk</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>100</Width>
+        </Column>
+ 
+	
+	    <Column>
+	      <Binding>IdKontrah</Binding>
+          <Name>ID_KONTRAH</Name>
+          <Visable>false</Visable>
+          <Text>status</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+		
+		<Column>
+          <Binding>NrTygodnia</Binding>
+          <Name>NRTYGODNIA</Name>
+          <Visable>true</Visable>
+          <Text>Nr. Tygodnia</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>80</Width>
+        </Column>
+		
+		<Column>
+          <Binding>LpdlaDaty</Binding>
+          <Name>LPDLADATY</Name>
+          <Visable>false</Visable>
+          <Text>Lp Dnia</Text>
+		   <TypDanych>TEXT</TypDanych>
+          <Width>50</Width>
+        </Column>
+	    <Column>
+          <Binding>wagakg</Binding>
+          <Name>WAGAKG</Name>
+          <Visable>true</Visable>
+          <Text>Ilość KG</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>70</Width>
+        </Column>
+		
+		<Column>
+          <Binding>Uwagi</Binding>
+          <Name>UWAGI</Name>
+          <Visable>true</Visable>
+          <Text>UWAGI</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>440</Width>
+        </Column>
+		
+		<Column>
+          <Binding>Dzienwolny</Binding>
+          <Name>DZIENWOLNY</Name>
+          <Visable>false</Visable>
+          <Text>Dzien Wolny</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+				
+		<Column>
+          <Binding>Dzienwroku</Binding>
+          <Name>DZIENWROKU</Name>
+          <Visable>false</Visable>
+          <Text>Dzien w Roku</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+	     </Mapping>
+    </SqlStatment>
+       <SqlStatment>
+      <Name>HarmonogramGridWgDnia</Name>
+      <DefoultSearching></DefoultSearching>
+      <Sql>
+	   select  AH.ID_HARMONOGRAM,AH.LPDLADATY,AH.DATA,AH.NRTYGODNIA,AH.DZIENTYGODNIA,AH.HODOWCA,AH.ID_KONTRAH,AH.ILOSCZESTAWOW,AH.ILOSSZTUK,AH.WAGAKG,AH.UWAGI,AH.DZIENWOLNY,AH.DZIENWROKU,AH.ID_HARMONOGRAM_PARENT,AH.ID_KARTOTEKA,AH.ID_ZDARZENIE from  ARIT_HARMONOGRAM AH  
+				where AH.DATA='{0}' and AH.ID_HARMONOGRAM_PARENT>0
+      </Sql>
+     <Mapping>
+        <Column>
+          <Binding>ID</Binding>
+          <Name>ID_HARMONOGRAM</Name>
+          <Visable>false</Visable>
+          <Text>ID_HARMONOGRAM</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+	   <Column>
+          <Binding>IdKartoteka</Binding>
+          <Name>ID_KARTOTEKA</Name>
+          <Visable>false</Visable>
+          <Text>ID_KARTOTEKA</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		
+		 <Column>
+          <Binding>IdZdarzenie</Binding>
+          <Name>ID_ZDARZENIE</Name>
+          <Visable>false</Visable>
+          <Text>ID_ZDARZENIE</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+
+		   <Column>
+          <Binding>ParentID</Binding>
+          <Name>ID_HARMONOGRAM_PARENT</Name>
+          <Visable>false</Visable>
+          <Text>ID_HARMONOGRAM_PARENT</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+  
+	    <Column>
+          <Binding>Data</Binding>
+          <Name>DATA</Name>
+          <Visable>true</Visable>
+          <Text>Data</Text>
+		   <TypDanych>DateTime</TypDanych>
+          <Width>90</Width>
+        </Column>
+
+    	<Column>
+          <Binding>Dzientygodnia</Binding>
+          <Name>DZIENTYGODNIA</Name>
+          <Visable>false</Visable>
+          <Text>Dzień Tygodnia</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		
+		<Column>
+          <Binding>DzienTygodniaStr</Binding>
+          <Name>DZIENTYGODNIA</Name>
+          <Visable>false</Visable>
+          <Text>Dzień Tygodnia</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+
+	    <Column>
+          <Binding>Hodowca</Binding>
+          <Name>HODOWCA</Name>
+          <Visable>true</Visable>
+          <Text>HODOWCA</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>100</Width>
+        </Column>
+		
+		<Column>
+          <Binding>Ilosczestawow</Binding>
+          <Name>ILOSCZESTAWOW</Name>
+          <Visable>false</Visable>
+          <Text>Ilość Zestawów</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>100</Width>
+        </Column>
+	
+		<Column>
+          <Binding>Iloscsztuk</Binding>
+          <Name>ILOSSZTUK</Name>
+          <Visable>true</Visable>
+          <Text>Ilość Sztuk</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>100</Width>
+        </Column>
+ 
+	
+	    <Column>
+	      <Binding>IdKontrah</Binding>
+          <Name>ID_KONTRAH</Name>
+          <Visable>false</Visable>
+          <Text>status</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+		
+		<Column>
+          <Binding>NrTygodnia</Binding>
+          <Name>NRTYGODNIA</Name>
+          <Visable>false</Visable>
+          <Text>Nr. Tygodnia</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>80</Width>
+        </Column>
+		
+		<Column>
+          <Binding>LpdlaDaty</Binding>
+          <Name>LPDLADATY</Name>
+          <Visable>false</Visable>
+          <Text>Lp Dnia</Text>
+		   <TypDanych>TEXT</TypDanych>
+          <Width>50</Width>
+        </Column>
+		
+	    <Column>
+          <Binding>wagakg</Binding>
+          <Name>WAGAKG</Name>
+          <Visable>true</Visable>
+          <Text>Ilość KG</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>80</Width>
+        </Column>
+		
+		<Column>
+          <Binding>Uwagi</Binding>
+          <Name>UWAGI</Name>
+          <Visable>true</Visable>
+          <Text>UWAGI</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>80</Width>
+        </Column>
+		
+		<Column>
+          <Binding>Dzienwolny</Binding>
+          <Name>DZIENWOLNY</Name>
+          <Visable>false</Visable>
+          <Text>Dzien Wolny</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+				
+		<Column>
+          <Binding>Dzienwroku</Binding>
+          <Name>DZIENWROKU</Name>
+          <Visable>false</Visable>
+          <Text>Dzien w Roku</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+		
+     </Mapping>
+    </SqlStatment>
+	
+	<SqlStatment>
+      <Name>HarmonogramGrid</Name>
+      <DefoultSearching></DefoultSearching>
+      <Sql>
+	   
+	  select  AH.ID_HARMONOGRAM,AH.LPDLADATY,AH.DATA,AH.NRTYGODNIA,AH.DZIENTYGODNIA,AH.HODOWCA,AH.ID_KONTRAH,AH.ILOSCZESTAWOW,AH.ILOSSZTUK,AH.WAGAKG,AH.UWAGI,AH.DZIENWOLNY,AH.DZIENWROKU,AH.ID_HARMONOGRAM_PARENT,AH.ID_KARTOTEKA,AH.ID_ZDARZENIE,AH.ID_ARIT_PARAMETRY_CHOWU_POZ from  ARIT_HARMONOGRAM AH  
+				where EXTRACT (YEAR FROM DATA) =  EXTRACT (YEAR FROM current_date)
+      </Sql>
+	 
+
+      <Mapping>
+        <Column>
+          <Binding>Id</Binding>
+          <Name>ID_HARMONOGRAM</Name>
+          <Visable>false</Visable>
+          <Text>ID_HARMONOGRAM</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+      <Column>
+          <Binding>IdArItParametryChowuPoz</Binding>
+          <Name>ID_ARIT_PARAMETRY_CHOWU_POZ</Name>
+          <Visable>false</Visable>
+          <Text>ID_ARIT_PARAMETRY_CHOWU_POZ</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+			
+	   <Column>
+          <Binding>IdKartoteka</Binding>
+          <Name>ID_KARTOTEKA</Name>
+          <Visable>false</Visable>
+          <Text>ID_KARTOTEKA</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		
+		 <Column>
+          <Binding>IdZdarzenie</Binding>
+          <Name>ID_ZDARZENIE</Name>
+          <Visable>false</Visable>
+          <Text>ID_ZDARZENIE</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+
+		   <Column>
+          <Binding>ParentId</Binding>
+          <Name>ID_HARMONOGRAM_PARENT</Name>
+          <Visable>false</Visable>
+          <Text>ID_HARMONOGRAM_PARENT</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+  
+	    <Column>
+          <Binding>Data</Binding>
+          <Name>DATA</Name>
+          <Visable>true</Visable>
+          <Text>Data</Text>
+		   <TypDanych>DateTime</TypDanych>
+          <Width>150</Width>
+        </Column>
+
+    	<Column>
+          <Binding>Dzientygodnia</Binding>
+          <Name>DZIENTYGODNIA</Name>
+          <Visable>true</Visable>
+          <Text>Dzień Tygodnia</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		    	<Column>
+          <Binding>DzienTygodniaStr</Binding>
+          <Name>DZIENTYGODNIA</Name>
+          <Visable>true</Visable>
+          <Text>Dzień Tygodnia</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+
+	    <Column>
+          <Binding>Hodowca</Binding>
+          <Name>HODOWCA</Name>
+          <Visable>true</Visable>
+          <Text>HODOWCA</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>100</Width>
+        </Column>
+		
+		<Column>
+          <Binding>Ilosczestawow</Binding>
+          <Name>ILOSCZESTAWOW</Name>
+          <Visable>true</Visable>
+          <Text>Ilość Zestawów</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>100</Width>
+        </Column>
+	
+		<Column>
+          <Binding>Iloscsztuk</Binding>
+          <Name>ILOSSZTUK</Name>
+          <Visable>true</Visable>
+          <Text>Ilość Sztuk</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>100</Width>
+        </Column>
+ 
+	
+	    <Column>
+	      <Binding>IdKontrah</Binding>
+          <Name>ID_KONTRAH</Name>
+          <Visable>false</Visable>
+          <Text>status</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+		
+		<Column>
+          <Binding>NrTygodnia</Binding>
+          <Name>NRTYGODNIA</Name>
+          <Visable>true</Visable>
+          <Text>Nr. Tygodnia</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>80</Width>
+        </Column>
+		
+		<Column>
+          <Binding>LpdlaDaty</Binding>
+          <Name>LPDLADATY</Name>
+          <Visable>true</Visable>
+          <Text>Lp Dnia</Text>
+		   <TypDanych>TEXT</TypDanych>
+          <Width>50</Width>
+        </Column>
+	    <Column>
+          <Binding>wagakg</Binding>
+          <Name>WAGAKG</Name>
+          <Visable>true</Visable>
+          <Text>Ilość KG</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>70</Width>
+        </Column>
+		
+		<Column>
+          <Binding>Uwagi</Binding>
+          <Name>UWAGI</Name>
+          <Visable>true</Visable>
+          <Text>UWAGI</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>440</Width>
+        </Column>
+		
+		<Column>
+          <Binding>Dzienwolny</Binding>
+          <Name>DZIENWOLNY</Name>
+          <Visable>true</Visable>
+          <Text>Dzien Wolny</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+				
+		<Column>
+          <Binding>Dzienwroku</Binding>
+          <Name>DZIENWROKU</Name>
+          <Visable>true</Visable>
+          <Text>Dzien w Roku</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>40</Width>
+        </Column>
+		
+     </Mapping>
+    </SqlStatment>
+    <SqlStatment>
+	
+      <Name>TabelaUzyskow</Name>
+      <DefoultSearching></DefoultSearching>
+      <Sql>
+	    select ATU.ID_ARIT_TABELA_UZYSKOW,ATU.ID_KARTOTEKA,K.indeks, ATU.ID_ARIT_HARMONOGRAM_SLOWNIK,
+                ATU.WAGA,ATU.ID_GRUPAKART,ATU.WAGAGR,GK.nazwagrupy,Gk.NAZWAZLOZONA from  ARIT_TABELA_UZYSKOW   ATU
+                join KARTOTEKA K on K.id_kartoteka = ATU.id_kartoteka
+		join GRUPAKART GK on GK.id_grupakart = ATU.id_grupakart where ATU.ID_KARTOTEKA ={0}
+      </Sql>
+      <Mapping>
+        <Column>
+          <Binding>IdTabelaUzyskow</Binding>
+          <Name>ID_ARIT_TABELA_UZYSKOW</Name>
+          <Visable>false</Visable>
+          <Text>ID_ARIT_TABELA_UZYSKOW</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		   <Column>
+          <Binding>IdKartoteka</Binding>
+          <Name>ID_KARTOTEKA</Name>
+          <Visable>false</Visable>
+          <Text>ID_KARTOTEKA</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+  
+	    <Column>
+          <Binding>NazwaTuszki</Binding>
+          <Name>indeks</Name>
+          <Visable>true</Visable>
+          <Text>Nazwa Tuszki</Text>
+		   <TypDanych>TEXT</TypDanych>
+          <Width>150</Width>
+        </Column>
+	<Column>
+          <Binding>NazwaGrupy</Binding>
+          <Name>nazwagrupy</Name>
+          <Visable>false</Visable>
+          <Text>Nazwa Grupy</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>220</Width>
+        </Column>	
+    	<Column>
+          <Binding>IdArItHarmonogramSlownik</Binding>
+          <Name>ID_ARIT_HARMONOGRAM_SLOWNIK</Name>
+          <Visable>false</Visable>
+          <Text>IdArItHarmonogramSlownik</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+	    
+		<Column>
+          <Binding>Waga</Binding>
+          <Name>WAGA</Name>
+          <Visable>true</Visable>
+          <Text>Waga</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		
+     	<Column>
+          <Binding>IdGrupaKart</Binding>
+          <Name>IdGrupaKart</Name>
+          <Visable>false</Visable>
+          <Text>IdGrupaKart</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>  
+
+     	<Column>
+          <Binding>WagaGr</Binding>
+          <Name>WAGAGR</Name>
+          <Visable>true</Visable>
+          <Text>Waga Produktu</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+
+     		
+			<Column>
+          <Binding>NazwaZlozona</Binding>
+          <Name>NAZWAZLOZONA</Name>
+          <Visable>true</Visable>
+          <Text>Nazwa Grupy</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>420</Width>
+        </Column>
+		
+     </Mapping>
+    </SqlStatment>
+    <SqlStatment>
+	
+      <Name>TabelaUzyskowPoz</Name>
+      <DefoultSearching></DefoultSearching>
+      <Sql>
+				select ADP.ID_ARIT_UZYSKI_DROBIU_POZ, ADP.ID_ARIT_UZYSKI_DROBIU,  AD.waga, AD.nazwa,ADP.waga_p,ADP.nazwa as NAZWA1 from  ARIT_UZYSKI_DROBIU_POZ  ADP
+                         join ARIT_UZYSKI_DROBIU AD on AD.id_arit_uzyski_drobiu = ADP.id_arit_uzyski_drobiu
+                         order by ADP.ID_ARIT_UZYSKI_DROBIU
+      </Sql>
+      <Mapping>
+        <Column>
+          <Binding>Id</Binding>
+          <Name>ID_ARIT_UZYSKI_DROBIU_POZ</Name>
+          <Visable>false</Visable>
+          <Text>ID_HARMONOGRAM</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		   <Column>
+          <Binding>ParentId</Binding>
+          <Name>ID_ARIT_UZYSKI_DROBIU</Name>
+          <Visable>false</Visable>
+          <Text>ID_HARMONOGRAM_PARENT</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+  
+	    <Column>
+          <Binding>Data</Binding>
+          <Name>waga</Name>
+          <Visable>true</Visable>
+          <Text>Data</Text>
+		   <TypDanych>DateTime</TypDanych>
+          <Width>150</Width>
+        </Column>
+
+    	<Column>
+          <Binding>Dzientygodnia</Binding>
+          <Name>nazwa</Name>
+          <Visable>false</Visable>
+          <Text>Dzień Tygodnia</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+	    
+		<Column>
+          <Binding>DzienTygodniaStr</Binding>
+          <Name>NAZWA1</Name>
+          <Visable>true</Visable>
+          <Text>Dzień Tygodnia</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>
+		
+     	<Column>
+          <Binding>DzienTygodniaStr</Binding>
+          <Name>waga_p</Name>
+          <Visable>true</Visable>
+          <Text>Dzień Tygodnia</Text>
+		  <TypDanych>TEXT</TypDanych>
+          <Width>120</Width>
+        </Column>   
+     </Mapping>
+    </SqlStatment>
+   </SqlStatments>
+ 
+</SqlStatmentCollection>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AppSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BazaDanych>
+    <NazwaBazyDanych>INFOHELP\SQLEXPRESS</NazwaBazyDanych>
+    <KatalogBazyDanych>KMS_TEST</KatalogBazyDanych>
+    <RodzajAutoryzacji>1</RodzajAutoryzacji>
+    <UzytkownikBazy>SA</UzytkownikBazy>
+    <Haslo>krzysz33123</Haslo>
+    <LokalnySerwerBazyDanych>1</LokalnySerwerBazyDanych>
+    <HostZdalny>localhost</HostZdalny>
+    <provider>System.Data.SqlClient</provider>
+  </BazaDanych>
+</AppSettings>

@@ -1,0 +1,129 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+               xmlns:local="clr-namespace:KpInfohelp"
+              xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"  
+              xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v17.1"
+              x:Class="KpInfohelp.Kierowcy"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="600">
+   
+    <UserControl.DataContext>
+        <local:ViewModelKierowcy />
+    </UserControl.DataContext>
+
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService />
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxlc:LayoutControl Orientation="Vertical">
+            <!--<dxlc:LayoutItem HorizontalAlignment="Stretch">
+                <dxb:BarContainerControl Grid.Row="0">
+                    <dxb:ToolBarControl Caption="Main Toolbar" BarItemHorizontalIndent="10" AllowCollapse="True" BarItemDisplayMode="Default" UseWholeRow="False" IsCollapsed="False">
+                       <dxb:BarButtonItem Content="Dodaj" Command="{Binding AddNewProgCommand}" Glyph="{dx:DXImage Image=Add_16x16.png}" />
+                        <dxb:BarButtonItem Content="Aktualizuj" Command="{Binding UpdateCommand}" Glyph="{dx:DXImage Image=Insert_16x16.png}" />
+                        <dxb:BarButtonItem Content="Czyść Wybór" Command="{Binding ClearCommand}" Glyph="{dx:DXImage Image=Clear_16x16.png}" />
+                        <dxb:BarButtonItem Content="Usuñ" Command="{Binding DeleteCommand}" Glyph="{dx:DXImage Image=Delete_16x16.png}" />
+                        <dxb:BarButtonItem Content="Wystaw Zamówienie" Command="{Binding CreateDokCommand}" Glyph="{dx:DXImage Image=InsertHeader_16x16.png}" />
+                    </dxb:ToolBarControl>
+                </dxb:BarContainerControl>
+            </dxlc:LayoutItem>-->
+            <dxlc:LayoutItem HorizontalAlignment="Stretch">
+                <dxb:BarContainerControl Grid.Row="0">
+                    <dxb:ToolBarControl Caption="Main Toolbar" BarItemHorizontalIndent="10" AllowCollapse="False" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                        <dxb:BarButtonItem Content="Dodaj" Command="{Binding AddNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Add-16.png" />
+                        <dxb:BarButtonItem Content="Aktualizuj" Command="{Binding UpdateCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Edit-16.png" />
+                        <dxb:BarButtonItem Content="Czyść Wybór" Command="{Binding ClearCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Erase-16.png" />
+                        <dxb:BarButtonItem Content="Popraw" Command="{Binding FillDataCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-uncheck-all-16.png" />
+                        <dxb:BarButtonItem Content="Usuń" Command="{Binding DeleteCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Delete-16.png" />
+                    </dxb:ToolBarControl>
+                </dxb:BarContainerControl>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutItem HorizontalAlignment="Stretch"/>
+            <dxlc:LayoutGroup x:Name="layoutGroup" VerticalAlignment="Top" Orientation="Vertical"   HorizontalAlignment="Stretch">
+                <dxlc:LayoutGroup Header="Dane Kierowcy" UseLayoutRounding="True" View="GroupBox" Orientation="Vertical" Name="FormKh" IsCollapsible="True">
+
+                    <dxlc:LayoutItem  Label="Imię i Nazwisko:">
+                        <dxe:TextEdit    Text="{Binding Nazwa, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnExceptions=True}" />
+                        <!--<dxmvvm:Interaction.Behaviors>
+                                <local:DisplayTextHelper TextToBind="{Binding Nazwa, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                            </dxmvvm:Interaction.Behaviors>
+                        </dxe:TextEdit>-->
+                    </dxlc:LayoutItem>
+
+                    <dxlc:LayoutItem  Label="telefon:">
+                        <dxe:TextEdit  Text="{Binding Telefon, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnExceptions=True}"/>
+                        <!--<dxmvvm:Interaction.Behaviors>
+                            <local:DisplayTextHelper TextToBind="{Binding Telefon, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                        </dxmvvm:Interaction.Behaviors>-->
+
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Kontrahnet :" HorizontalAlignment="Left" Width="400">
+                        <dxg:LookUpEdit x:Name="luegrupaKart"
+            				DisplayMember="NAZWA"
+            				ValueMember="ID_IHP_KONTRAHENT"
+            				AutoPopulateColumns="False"
+            				AutoComplete="True"
+            				IncrementalFiltering="True"
+            				ImmediatePopup="True"
+            				IsPopupAutoWidth="False"
+                            IsEnabled="{Binding  NewRec}"
+                            IsSynchronizedWithCurrentItem="False" SelectedItem="{Binding Kontrah, UpdateSourceTrigger=PropertyChanged}"  ItemsSource="{Binding  Kontrahs}"  EditValue="{Binding IdKontrahent, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+                            <dxg:LookUpEdit.StyleSettings>
+                                <dxg:SearchLookUpEditStyleSettings />
+                            </dxg:LookUpEdit.StyleSettings>
+                            <dxg:LookUpEdit.PopupContentTemplate>
+                                <ControlTemplate>
+                                    <dxg:GridControl Width="625" x:Name="PART_GridControl">
+                                        <dxg:GridControl.View>
+                                            <dxg:TableView   />
+                                        </dxg:GridControl.View>
+                                        <dxg:GridColumn FieldName="NAZWA" Header="Nazwa Firmy" />
+                                        <dxg:GridColumn FieldName="EMAIL"  Visible="False" Header="E-Mail" />
+                                        <dxg:GridColumn FieldName="TELEFON"  Visible="False" Header="Tel. Stac." />
+                                        <dxg:GridColumn FieldName="TELKOM"  Visible="False"  Header="Tel. Kom." />
+                                        <dxg:GridColumn FieldName="NRKONTRAH" Visible="False" Header="Numer Kontrah." />
+                                        <dxg:GridColumn FieldName="NIP"  Visible="False" Header="Nip" />
+                                        <dxg:GridColumn FieldName="IHP_DEFCENY.NAZWACENY" Visible="True" Header="Cennik Domyślny" />
+                                        <dxg:GridColumn FieldName="MIEJSCOWOSC" Header="Miejscowość" />
+                                        <dxg:GridColumn FieldName="KODPOCZTOWY" Header="Kod Pocztowy"/>
+                                        <dxg:GridColumn FieldName="POCZTA"  Visible="False" Header="Poczta" />
+                                        <dxg:GridColumn FieldName="ULICA" Header="Ulica" />
+                                        <dxg:GridColumn FieldName="NRDOMU" Header="Nr Domu" />
+                                        <dxg:GridColumn FieldName="NRLOKALU" Header="Nr Lokalu" />
+                                        <dxg:GridColumn FieldName="ID_IHP_KONTRAHENT" Visible="False" Header="ID_IHP_KONTRAHENT" />
+                                        <dxg:GridColumn FieldName="TELEFON" Header="Telefon Stacjonarny" />
+                                        <dxg:GridColumn FieldName="ID_IHP_DEFCENY"  Visible="False" Header="ID_IHP_DEFCENY" />
+                                        <dxg:GridColumn FieldName="ID_KH_SUBJECT" Visible="False" Header="ID_KH_SUBJECT" />
+                                        <dxg:GridColumn FieldName="TELKOM"  Visible="False" Header="Telefon Kom." />
+                                        <dxg:GridColumn FieldName="TYPKONTRAH" Visible="False" Header="Typ kontrah" />
+                                        <dxg:GridColumn FieldName="IHP_DEFCENY" Visible="false" Header="IHP_DEFCENY" />
+                                        <dxg:GridColumn FieldName="UWAGI" Header="Uwagi" />
+                                    </dxg:GridControl>
+                                </ControlTemplate>
+                            </dxg:LookUpEdit.PopupContentTemplate>
+                        </dxg:LookUpEdit>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+
+            </dxlc:LayoutGroup>
+            <dxg:GridControl x:Name="dgvKontrah" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="False" ItemsSource="{Binding Kierowcy}" SelectedItem="{Binding Kierowca}"  >
+                <dxg:GridControl.View>
+                    <dxg:TableView AllowPerPixelScrolling="True" ShowSearchPanelMode="Always" ShowGroupPanel="False" ShowTotalSummary="True" AllowEditing="False" NavigationStyle="Row" />
+                </dxg:GridControl.View>
+                <dxg:GridColumn FieldName="ID_IHP_KIEROWCA" Visible="False" Header="ID_IHP_KIEROWCA" />
+                <dxg:GridColumn FieldName="NAZWA" Header="Imię i Nazwisko"  Width="280"/>
+                <dxg:GridColumn FieldName="TELEFON" Header="Telefon" />
+                <dxg:GridColumn FieldName="IHP_KONTRAHENT.NAZWA"  Header="Kontrahent" />
+                <dxg:GridColumn FieldName="IHP_KONTRAHENT" Visible="False"  Header="IHP_KONTRAHENT" />
+                <dxg:GridColumn FieldName="ID_IHP_KONTRAHENT" Visible="False"  Header="ID_IHP_KONTRAHENT" />
+            </dxg:GridControl>
+        </dxlc:LayoutControl>
+    </Grid>
+</UserControl>

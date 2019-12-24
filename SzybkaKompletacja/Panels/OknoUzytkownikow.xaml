@@ -1,0 +1,101 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KpInfohelp"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+       xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+               xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v17.1" x:Class="KpInfohelp.OknoUzytkownikow"
+             mc:Ignorable="d"
+            d:DesignHeight="800" d:DesignWidth="1200">
+
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService />
+    </dxmvvm:Interaction.Behaviors>
+    <UserControl.DataContext>
+        <local:ViewModelOknoUzytkownikow />
+    </UserControl.DataContext>
+    <Grid>
+        <dxlc:LayoutControl HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Orientation="Vertical">
+            <dxlc:LayoutGroup Header="Zarządanie Uprawnieniami" UseLayoutRounding="True" View="GroupBox" Orientation="Vertical" HorizontalAlignment="Stretch">
+
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+
+                    <dxlc:LayoutGroup x:Name="lgGenerujSlownik" Header="Edycja Uytkownika" View="GroupBox" Orientation="Vertical" HorizontalAlignment="Stretch" >
+                        <dxb:BarContainerControl Grid.Row="0" VerticalAlignment="Top" Height="22"   >
+                            <dxb:ToolBarControl Caption="Main Toolbar" AllowQuickCustomization="False" BarItemHorizontalIndent="10" AllowCollapse="True" UseWholeRow="False">
+                                <dxb:BarButtonItem Content="Dodaj" Glyph="{dx:DXImage Image=Add_16x16.png}" BarItemDisplayMode="ContentAndGlyph" Command="{Binding AddUserCommand}" />
+                                <dxb:BarButtonItem Content="Aktualizuj" Glyph="{dx:DXImage Image=Insert_16x16.png}" BarItemDisplayMode="ContentAndGlyph" Command="{Binding UpdateUserCommand}" />
+                                <dxb:BarButtonItem Content="Czyść Wybór" Glyph="{dx:DXImage Image=Clear_16x16.png}" BarItemDisplayMode="ContentAndGlyph" Command="{Binding ClearCommand}" />
+                                <dxb:BarButtonItem Content="Usuń" Glyph="{dx:DXImage Image=Delete_16x16.png}" BarItemDisplayMode="ContentAndGlyph" />
+                            </dxb:ToolBarControl>
+                        </dxb:BarContainerControl>
+                        <dxlc:LayoutItem Label="Nazwisko Imię Użytkownika:" IsRequired="True" Width="400" HorizontalAlignment="Left">
+                            <!--<dxe:TextEdit x:Name="txtNazwa" EditValueChanged="txtNazwa_EditValueChanged" Validate="txtNazwa_Validate"/> -->
+                            <dxe:TextEdit x:Name="txtNazwa" Text="{Binding CurrentUser.NAZWISKO_IMIE, UpdateSourceTrigger=PropertyChanged}" MaxLength="12">
+                                <dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding NazwaUser, Mode=OneWayToSource}" />
+                                </dxmvvm:Interaction.Behaviors>
+                            </dxe:TextEdit>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Użytkownik:" IsRequired="True" Width="400" HorizontalAlignment="Left">
+                            <!--    <dxe:TextEdit x:Name="txtUser" Validate="txtUser_Validate" EditValueChanged="txtUser_EditValueChanged"/> -->
+                            <dxe:TextEdit x:Name="txtUser" Text="{Binding CurrentUser.LOGIN, UpdateSourceTrigger=PropertyChanged}" MaxLength="12">
+                                <dxmvvm:Interaction.Behaviors>
+                                    <local:DisplayTextHelper TextToBind="{Binding User, Mode=OneWayToSource}" />
+                                </dxmvvm:Interaction.Behaviors>
+                            </dxe:TextEdit>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutGroup Header="Edycja Uytkownika"  Orientation="Horizontal" HorizontalAlignment="Stretch" >
+                            <dxlc:LayoutItem Label="Hasło:" dxlc:LayoutControl.AllowHorizontalSizing="True" IsRequired="True" Width="400" HorizontalAlignment="Left">
+                            <!--  <dxe:PasswordBoxEdit x:Name="txtPassword" Validate="txtPassword_Validate" EditValueChanged="txtPassword_EditValueChanged"/>-->
+                                <dxe:PasswordBoxEdit x:Name="txtPassword"  Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"  MaxLength="12"/>
+                            </dxlc:LayoutItem>
+                        <dxlc:LayoutItem>
+                            <CheckBox IsEnabled="{Binding Path=IsEnabledSelection, Mode=OneTime}" IsChecked="{Binding Path=IsChangePass, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                    </dxlc:LayoutGroup>
+
+                </dxlc:LayoutGroup>
+
+                <dxlc:LayoutItem LabelPosition="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <dxg:GridControl x:Name="dgvTabelaUprawnien" AutoGenerateColumns="AddNew" ItemsSource="{Binding ObservlstUsersSl,UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding CurrentUser,UpdateSourceTrigger=PropertyChanged}" EnableSmartColumnsGeneration="False" MouseDoubleClick="dgvTabelaUprawnien_MouseDoubleClick" PreviewKeyDown="dgvTabelaUprawnien_PreviewKeyDown">
+                        <dxg:GridControl.View>
+                            <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True" ShowGroupPanel="False" ShowColumnHeaders="True" AutoWidth="False" />
+                        </dxg:GridControl.View>
+                        
+                        <dxg:GridColumn FieldName="ID_IHP_SAMOCHOD" Visible="False" Header="ID_IHP_SAMOCHOD" />
+                        <dxg:GridColumn FieldName="REJWAGAEX" Visible="True" Header="Okno Wazenia" />
+                        <dxg:GridColumn FieldName="NAZWISKO_IMIE" Visible="True" Header="Nazwa Użytkownika" />
+                        <dxg:GridColumn FieldName="LOGIN" Visible="True" Header="Użytkownik" ReadOnly="True" />
+                        <dxg:GridColumn FieldName="REJWAGA" Visible="False"  />
+                        <dxg:GridColumn FieldName="USLUGAEX" Visible="True" Header="Oko Ważenie Usługowe" />
+                        <dxg:GridColumn FieldName="USLUGA" Visible="false"/> 
+                        <dxg:GridColumn FieldName="KIEROWCYEX" Visible="true" Header="Definicje Kierowców" />
+                        <dxg:GridColumn FieldName="KIEROWCY" Visible="false" Header="Definicje Kierowców" />
+                        <dxg:GridColumn FieldName="KARTOTEKIEX" Visible="True" Header="Definicje Kartotek" />
+                        <dxg:GridColumn FieldName="KARTOTEKI" Visible="False" Header="Definicje Kartotek" />
+                        <dxg:GridColumn FieldName="POJAZDYEX" Visible="True " Header="Definicje Samochodów" />
+                        <dxg:GridColumn FieldName="POJAZDY" Visible="False" Header="ID_IHP_SAMOCHOD" />
+                        <dxg:GridColumn FieldName="KONTRAHENTEX" Visible="True" Header="Definicje Kontrahentów"/>
+                        <dxg:GridColumn FieldName="KONTRAHENT" Visible="False"  />
+                        <dxg:GridColumn FieldName="DANEFIRMYEX" Visible="True" Header="Okno Dane Firmy" />
+                        <dxg:GridColumn FieldName="DANEFIRMY" Visible="False" Header="ID_IHP_SAMOCHOD" />
+                        <dxg:GridColumn FieldName="ID_IHP_ZAM_USERS" Visible="False"/>
+                        <dxg:GridColumn FieldName="ID_UZYTKOWNIK" Visible="False"/>
+                        <dxg:GridColumn FieldName="AKTYWNY" Visible="False"/>
+                        <dxg:GridColumn FieldName="RESET_HASLA" Visible="False"/>
+                        <dxg:GridColumn FieldName="HASLO" Visible="False"/>
+                    </dxg:GridControl>
+                </dxlc:LayoutItem>
+
+            </dxlc:LayoutGroup>
+
+        </dxlc:LayoutControl>
+    </Grid>
+</UserControl>

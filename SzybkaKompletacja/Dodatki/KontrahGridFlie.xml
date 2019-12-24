@@ -1,0 +1,162 @@
+﻿<XtraSerializer version="1.0" application="GridControl">
+  <property name="#LayoutVersion" isnull="true" />
+  <property name="$GridControl" iskey="true" value="GridControl">
+    <property name="UseFieldNameForSerialization">true</property>
+    <property name="GroupCount">0</property>
+    <property name="GroupSummary" iskey="true" value="0" />
+    <property name="SortInfo" iskey="true" value="0" />
+    <property name="Columns" iskey="true" value="23">
+      <property name="Item1" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">NAZWA</property>
+        <property name="VisibleIndex">0</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item2" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">EMAIL</property>
+        <property name="VisibleIndex">1</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item3" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">TELEFON</property>
+        <property name="VisibleIndex">2</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item4" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">TELKOM</property>
+        <property name="VisibleIndex">3</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item5" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">NRKONTRAH</property>
+        <property name="Visible">false</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item6" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">NIP</property>
+        <property name="VisibleIndex">4</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item7" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">IHP_DEFCENY.NAZWACENY</property>
+        <property name="Visible">true</property>
+        <property name="VisibleIndex">5</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item8" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">MIEJSCOWOSC</property>
+        <property name="VisibleIndex">6</property>
+        <property name="Width">42</property>
+        <property name="ActualWidth">42</property>
+      </property>
+      <property name="Item9" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">KODPOCZTOWY</property>
+        <property name="VisibleIndex">7</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item10" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">POCZTA</property>
+        <property name="VisibleIndex">8</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item11" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">ULICA</property>
+        <property name="VisibleIndex">9</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item12" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">NRDOMU</property>
+        <property name="VisibleIndex">10</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item13" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">NRLOKALU</property>
+        <property name="VisibleIndex">11</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item14" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">ID_IHP_KONTRAHENT</property>
+        <property name="Visible">false</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item15" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">TELEFON</property>
+        <property name="VisibleIndex">12</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item16" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">ID_IHP_DEFCENY</property>
+        <property name="Visible">false</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item17" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">ID_KH_SUBJECT</property>
+        <property name="Visible">false</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item18" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">TELKOM</property>
+        <property name="VisibleIndex">13</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item19" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">TYPKONTRAH</property>
+        <property name="Visible">false</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item20" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">IHP_DEFCENY</property>
+        <property name="Visible">false</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item21" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">UWAGI</property>
+        <property name="VisibleIndex">14</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item22" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">NAZWAPELNA</property>
+        <property name="VisibleIndex">15</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item23" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">ID_IHP_RODZAJDOKDEF</property>
+        <property name="VisibleIndex">16</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+    </property>
+    <property name="View" isnull="true" iskey="true">
+      <property name="FormatConditions" iskey="true" value="0" />
+      <property name="ShowGroupPanel">false</property>
+      <property name="ColumnChooserState" isnull="true" iskey="true">
+        <property name="Location">705,269</property>
+        <property name="Size">220,250</property>
+      </property>
+    </property>
+    <property name="TotalSummary" iskey="true" value="0" />
+    <property name="MRUFilters" iskey="true" value="0" />
+    <property name="GroupSummarySortInfo" iskey="true" value="0" />
+  </property>
+</XtraSerializer>

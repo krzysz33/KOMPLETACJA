@@ -1,0 +1,73 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KpInfohelp"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="KpInfohelp.BazaDanych"
+              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+                xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="600">
+
+    <UserControl.DataContext>
+        <local:ViewModelBazyDanych />
+    </UserControl.DataContext>
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService />
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxlc:LayoutControl Orientation="Vertical" Background="AntiqueWhite">
+            <dxlc:LayoutItem>
+                <dxb:BarContainerControl Grid.Row="0">
+            <dxb:ToolBarControl Caption="Main Toolbar"  Width="500" BarItemHorizontalIndent="10" AllowCollapse="False" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False" >
+                 <dxb:BarButtonItem Content="Zapisz" Command="{Binding UpdateCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Edit-16.png" />
+                 <dxb:BarButtonItem Content="Ustawienia Domyślne" Command="{Binding ClearCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Erase-16.png" />
+                 <dxb:BarButtonItem Content="Testuj Połaczenie" Command="{Binding TestCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-test-passed-40.png" />
+          </dxb:ToolBarControl>
+        </dxb:BarContainerControl>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutGroup Header="Parametry Połaczenia" Orientation="Vertical" UseLayoutRounding="True" View="GroupBox">
+                <dxlc:LayoutItem Label="Nazwa Bazy Danych">
+                    <dxe:TextEdit NullText="INFOHELP\SQLEXPRESS"  EditValue="{Binding DatabaseName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaskType="Simple"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Katalog Bazy Danych">
+                    <dxe:TextEdit NullText="INFOHELP"  EditValue="{Binding DatabaseCatalog, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaskType="Simple"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Rodzaj Autoryzacji">
+                    <dxlc:FlowLayoutControl Orientation="Horizontal" MaximizedElementPosition="Top">
+                        <RadioButton   Content="Autoryzacja Windows" IsChecked="{Binding IntegratedSecurityWin, UpdateSourceTrigger=PropertyChanged}"/>
+                        <RadioButton   Content="Autoryzacja MS SQL" IsChecked="{Binding IntegratedSecuritySql, UpdateSourceTrigger=PropertyChanged}"/>
+                    </dxlc:FlowLayoutControl>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Użytkownik Bazy">
+                    <dxe:TextEdit NullText="SA" EditValue="{Binding DatabaseUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaskType="Simple"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Hasło">
+                    <dxe:PasswordBoxEdit NullText=""   EditValue="{Binding DatabasePass, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </dxlc:LayoutItem>
+                <dxe:CheckEdit x:Name="chkLocal" IsChecked= "{Binding LocalSerwer,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Content="Lokalny Serwer Bazy Danych"  HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="180"/>
+                <dxlc:LayoutItem Label="Host Zdalny" IsEnabled="{Binding LayOutIsEnabledRemoteHost,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <dxe:TextEdit NullText="127.0.0.1" EditValue="{Binding RemoteAdrr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaskType="Simple"/>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup Header="Kopia Zapasowa" Orientation="Vertical" UseLayoutRounding="True" View="GroupBox">
+                <dxe:CheckEdit x:Name="chkKopiaBaza" IsChecked= "{Binding KopiaBazy,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Content="Wykonaj kopię bazy przy zamknięciu systemu" 
+                                HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="280"/>
+                <dxe:CheckEdit x:Name="chkKopiaWysylka" IsChecked= "{Binding WysylkaFtp,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Content="Wyślij kopię na zewnęrzny serwer FTP" 
+                                HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="280"/>
+                <dxlc:LayoutItem Label="Nazwa Hosta">
+                    <dxe:TextEdit NullText="np.: ftp.kpinfohelp.pl"  EditValue="{Binding FtpHost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaskType="Simple"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Użytkownik">
+                    <dxe:TextEdit NullText="użytkownik..."  EditValue="{Binding FtpUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaskType="Simple"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Hasło">
+                    <dxe:TextEdit NullText="hasło...."  EditValue="{Binding FtpPass, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaskType="Simple"/>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutControl>
+    </Grid>
+</UserControl>

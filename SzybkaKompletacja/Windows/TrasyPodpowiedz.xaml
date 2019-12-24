@@ -1,0 +1,40 @@
+﻿<dx:DXWindow
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:local="clr-namespace:KpInfohelp"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="KpInfohelp.TrasyPodpowiedz"
+             x:Name="PozWindow" WindowStartupLocation="CenterOwner"    
+        Width="250" Height="400"
+             mc:Ignorable="d">
+    <dx:DXWindow.DataContext>
+        <local:ViewModelTrasy/>
+    </dx:DXWindow.DataContext>
+    <Grid>
+        <dxlc:LayoutControl Orientation="Vertical">
+               <dxg:GridControl AutoGenerateColumns="AddNew" x:Name="dgvCechy"   EnableSmartColumnsGeneration="False"  SelectedItem="{Binding TrasaUpdate,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding LstTrasy,UpdateSourceTrigger=PropertyChanged}" >
+                    <dxg:GridControl.View>
+                        <dxg:TableView AllowPerPixelScrolling="False" VerticalScrollbarVisibility="Hidden" HorizontalScrollbarVisibility ="Hidden"  ShowGroupPanel="False" ShowTotalSummary="True" AutoScrollOnSorting="False" AllowHorizontalScrollingVirtualization="False" AllowScrollHeaders="False" UseExtendedMouseScrolling="False" ScrollingMode="Smart" ScrollStep="20" WheelScrollLines="0.1" >
+                            <dxmvvm:Interaction.Behaviors>
+                                <dxg:GridDragDropManager AllowDrag="True" AllowDrop="True"  />
+                                <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding CloseCommand}" EventName="RowDoubleClick"  CommandParameter="{Binding ElementName=PozWindow}">
+                                    <dxmvvm:EventToCommand.EventArgsConverter>
+                                        <dx:EventArgsToDataRowConverter />
+                                    </dxmvvm:EventToCommand.EventArgsConverter>
+                                </dxmvvm:EventToCommand>
+                            </dxmvvm:Interaction.Behaviors>
+                         </dxg:TableView>  
+                    </dxg:GridControl.View>
+                    <dxg:GridColumn FieldName="ID_IHP_TRASY" Visible="False" Header="ID_IHP_TRASY" />
+                    <dxg:GridColumn FieldName="NAZWA" Width="250"  Header="Nazwa trasy" />
+                </dxg:GridControl>
+          
+        </dxlc:LayoutControl>
+    </Grid>
+</dx:DXWindow>

@@ -1,0 +1,140 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KpInfohelp"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"         
+              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+            xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+           xmlns:i="http://schemas.microsoft.com/expression/2010/"
+            xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+            xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v17.1" 
+             x:Class="KpInfohelp.PozDok"
+             mc:Ignorable="d" 
+              x:Name="PozWindow"
+              Height="600" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <!--A custom style to paint labels in red-->
+        <Style x:Key="MyLabelStyle" TargetType="{x:Type dxlc:LayoutItemLabel}">
+            <Setter Property="Foreground" Value="Chocolate" />
+        </Style>
+    </Window.Resources>
+    <Window.DataContext>
+        <local:ViewModelPozDok />
+    </Window.DataContext>
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService />
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxlc:LayoutControl >
+            <dxlc:LayoutGroup  Orientation="Vertical" VerticalAlignment="Stretch">
+            <dxlc:LayoutGroup Header="Grupa: Dokumenty Magazynowe Dokument: (PZ) - Przychód Zewnętrzny Operator :Administrator" 
+                              Background="AliceBlue" dx:ScrollViewerTouchBehavior.IsEnabled="True" HorizontalAlignment="Stretch" View="GroupBox" Orientation="Vertical"   Height="180" >
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutItem  HorizontalAlignment="Right" HorizontalContentAlignment="Center">
+                        <dxe:TextEdit ShowBorder="False" Text="Data Wystawienia:" FontSize="12"  Background="AliceBlue" BorderBrush="AliceBlue" BorderThickness="0"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem  HorizontalAlignment="Right" HorizontalContentAlignment="Center">
+                        <dxe:TextEdit ShowBorder="False" Text="{Binding Dokument.DATADOK}" FontSize="12"  Background="AliceBlue" BorderBrush="AliceBlue" BorderThickness="0"/>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutItem HorizontalAlignment="Stretch" Height="40">
+                    <dxlc:Tile Header="Przyjęcie Zewnętrzne"  HorizontalHeaderAlignment="Center" Foreground="Black" FontSize="25"   Background="AliceBlue"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem  HorizontalAlignment="Center" HorizontalContentAlignment="Center">
+                    <dxe:TextEdit ShowBorder="False" Text="{Binding NumerDok}" FontSize="20" Margin="0,-10,0,0" Background="AliceBlue" FontWeight="Bold" BorderBrush="AliceBlue" BorderThickness="0"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem  HorizontalAlignment="Left"  Margin="0,-20,0,0" HorizontalContentAlignment="Center">
+                    <dxe:TextEdit ShowBorder="False" Text="Kontrahent:" FontSize="20"  Background="AliceBlue" BorderBrush="AliceBlue" BorderThickness="0"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem  Margin="0,-5,0,0" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top">
+                    <dxe:TextEdit ShowBorder="False" Text="{Binding Dokument.IHP_KONTRAHENT_ARCH.NAZWA}" FontSize="20"  Background="AliceBlue" BorderBrush="AliceBlue" BorderThickness="0"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem  HorizontalAlignment="Left" HorizontalContentAlignment="Center">
+                    <dxe:TextEdit Margin="0,-4,0,0" ShowBorder="False" Text="{Binding Adres}" FontSize="15"  Background="AliceBlue" BorderBrush="AliceBlue" BorderThickness="0"/>
+                </dxlc:LayoutItem>
+             </dxlc:LayoutGroup>
+
+                <dxlc:LayoutGroup VerticalAlignment="Stretch">
+                    <dxlc:LayoutItem  VerticalAlignment="Stretch">
+                        <dxg:GridControl AutoGenerateColumns="AddNew" x:Name="dgvCennik"  ItemsSource="{Binding PozycjeDok }"  SelectedItem="{Binding PozycjaDok,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" EnableSmartColumnsGeneration="False" SelectionMode="Row" >
+                            <dxg:GridControl.View>
+                                <dxg:TableView AllowPerPixelScrolling="True" ShowGroupPanel="False" ShowTotalSummary="False"  NavigationStyle="Row" />
+                            </dxg:GridControl.View>
+                            <dxg:GridColumn FieldName="ID_IHP_POZDOK"  Header="Lp" Visible="false" Width="35"/>
+                            <dxg:GridColumn FieldName="ID_IHP_KARTOTEKA"  Header="Lp" Visible="false" Width="35"/>
+                            <dxg:GridColumn FieldName="ID_IHP_NAGLDOK"  Header="Lp" Visible="false" Width="35"/>
+                            <dxg:GridColumn FieldName="LP"  Header="LP" Visible="true" Width="35"/>
+                            <dxg:GridColumn FieldName="NAZWASKRPOZ"  Header="Nazwa Towaru" Visible="true" Width="125"/>
+                            <dxg:GridColumn FieldName="ILOSC"  Header="Ilość" Visible="True" Width="85"/>
+                            <dxg:GridColumn FieldName="CENANETTO"  Header="Cena Netto" Visible="true" Width="75">
+                                     <dxg:GridColumn.EditSettings>
+                                    <dxe:TextEditSettings  Mask="N2" MaskType="Numeric"  MaskUseAsDisplayFormat="True" NullValue=''  />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="WARTVAT"  Header="Vat" Visible="true" Width="45">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:TextEditSettings  Mask="N2" MaskType="Numeric"  MaskUseAsDisplayFormat="True" NullValue=''  />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="CENABRUTTO"  Header="Cena Brutto" Visible="true" Width="75">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:TextEditSettings  Mask="N2" MaskType="Numeric"  MaskUseAsDisplayFormat="True" NullValue=''  />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="WARTNETTO"  Header="Wart. Netto" Visible="true" Width="75">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:TextEditSettings  Mask="N2" MaskType="Numeric"  MaskUseAsDisplayFormat="True" NullValue=''  />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="WARTBRUTTO"  Header="Wart. Brutto" Visible="true" Width="75">
+                                <dxg:GridColumn.EditSettings>
+                                    <dxe:TextEditSettings  Mask="N2" MaskType="Numeric"  MaskUseAsDisplayFormat="True" NullValue=''  />
+                                </dxg:GridColumn.EditSettings>
+                            </dxg:GridColumn>
+                            <dxg:GridColumn FieldName="DATADOK"  Header="Lp" Visible="false" Width="65"/>
+                            <dxg:GridColumn FieldName="UWAGI"  Header="Lp" Visible="false" Width="35"/>
+                            <dxg:GridColumn FieldName="CENAUSTALONA"  Header="Lp" Visible="false" Width="35"/>
+                            <dxg:GridColumn FieldName="ID_TOWSUBJECT"  Header="Lp" Visible="false" Width="35"/>
+                            <dxg:GridColumn FieldName="IHP_KARTOTEKA"  Header="Lp" Visible="false" Width="35"/>
+                            <dxg:GridColumn FieldName="IHP_NAGLDOK"  Header="Lp" Visible="false" Width="35"/>
+                            <dxg:GridColumn FieldName="IHP_POWIAZANIE_WAGA"  Header="Lp" Visible="false" Width="35"/>
+
+                        </dxg:GridControl>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+
+
+                <dxlc:LayoutGroup   Background="AliceBlue" >
+                <dxlc:LayoutGroup  >
+                    <dxlc:LayoutItem  HorizontalAlignment="Center" HorizontalContentAlignment="Center"  Margin="0,11,0,0">
+                <dx:SimpleButton x:Name="simpleButton" Content="Zapisz" HorizontalAlignment="left"  Height="30" Width="130"  Command="{Binding AddWazenieCommand}" />
+               </dxlc:LayoutItem>
+                    <dxlc:LayoutItem  HorizontalAlignment="Center" HorizontalContentAlignment="Center"   Margin="30,11,0,0">
+                <dx:SimpleButton x:Name="btnAnuluj" Content="Anuluj" HorizontalAlignment="left" Height="30" Width="130"  Command="{Binding CloseCommand}"      CommandParameter="{Binding ElementName=PozWindow}"/>
+            </dxlc:LayoutItem>
+          </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup HorizontalAlignment="Right" Orientation="Vertical">
+                <dxlc:LayoutItem>
+                     <dxb:BarContainerControl Grid.Row="0">
+                          <dxb:ToolBarControl Caption="Main Toolbar" BarItemHorizontalIndent="10" AllowCollapse="False" BarItemDisplayMode="Default" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                         <dxb:BarButtonItem Content="Dodaj" Command="{Binding AddNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Add-16.png" />
+                        <!--<dxb:BarButtonItem Content="Generuj dokument" Command="{Binding UpdNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Edit-16.png" />-->
+                            <dxb:BarButtonItem Content="Usuń Pozycję" Command="{Binding DeleteCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Delete-16.png" />
+                            <dxb:BarButtonItem Content="Edytuj Pozycje" Command="{Binding EditCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Edit-16.png" />
+                                    <dxb:BarButtonItem Content="Drukuj Dokument"  Command="{Binding PrintCommand}"  Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Print-16.png" />
+                                </dxb:ToolBarControl>
+                   </dxb:BarContainerControl>
+                </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label=" Razem:">
+                            <dxe:TextEdit EditValue="{Binding SumaNagl,UpdateSourceTrigger=PropertyChanged}"  FontSize="15" IsReadOnly="True" 
+                                          DisplayFormatString="c" Background="#FFCADBF3" Foreground="White" HorizontalContentAlignment="Center"/>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutControl>
+    </Grid>
+</Window>

@@ -1,0 +1,115 @@
+﻿<dx:DXWindow
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+ 
+             xmlns:mvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:local="clr-namespace:KpInfohelp"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="KpInfohelp.JaednDodatPodpowiedz"
+             x:Name="PozWindow" WindowStartupLocation="CenterOwner"    
+        Width="430" Height="500"   Title="Słownik jednostek dodatkowych"
+             mc:Ignorable="d" DataContext="{dxmvvm:ViewModelSource Type=local:ViewModelKartoteki}" >
+    <!--<dx:DXWindow.DataContext>
+        <local:ViewModelKartoteki/>
+    </dx:DXWindow.DataContext>-->
+
+    <dxmvvm:Interaction.Triggers>
+            <dxmvvm:EventToCommand EventName="Loaded" Command="{Binding OnViewLoadedCommand}" />
+        </dxmvvm:Interaction.Triggers>
+
+    <Grid>
+     
+            <dxlc:LayoutControl Orientation="Vertical">
+            <dxb:BarContainerControl Height="25"  >
+                <dxb:ToolBarControl Caption="Main Toolbar" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                    <dxb:BarButtonItem  Content="Dodaj" Command="{Binding AddCommandJz}" Glyph="{dx:DXImage Image=Add_16x16.png}" />
+                    <dxb:BarButtonItem Content="Czyść wybór" Command="{Binding ClearCommandJz}"  Glyph="{dx:DXImage Image=Clear_16x16.png}"/>
+                    <dxb:BarButtonItem Content="Aktualizuj"  Command="{Binding UpdateCommandJz}" Glyph="{dx:DXImage Image=Insert_16x16.png}" />
+                    <dxb:BarButtonItem Content="Edytuj" Command="{Binding EditCommandJz}" Glyph="{dx:DXImage Image=SelectAll2_16x16.png}"  />
+                    <dxb:BarButtonItem  Content="Usuń" Command="{Binding DeleteCommand}" Glyph="{dx:DXImage Image=Cancel_16x16.png}" />
+                </dxb:ToolBarControl>
+                </dxb:BarContainerControl  >
+                    <dxlc:LayoutGroup Orientation="Vertical" >
+         
+                <dxlc:LayoutGroup>
+                    <dxlc:LayoutItem HorizontalAlignment="Stretch" x:Name="lblNazwa" Label="Nazwa:"  >
+          
+                        <dxe:TextEdit NullText="Nazwa jednostki dodatkowej" MinWidth="200" ValidateOnEnterKeyPressed="True" ValidateOnTextInput="True">
+                            
+                            <mvvm:Interaction.Behaviors>
+                                <mvvm:FocusBehavior SourceObject="{Binding}" PropertyName="NazwaJednDodat"/>
+                            </mvvm:Interaction.Behaviors>
+                            
+                            <dxe:TextEdit.Text  >
+                                <Binding Path="NazwaJednDodat" ValidatesOnDataErrors="True"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" >
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRuleJednDodat FieldName="Nazwa"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </dxe:TextEdit.Text>
+                        </dxe:TextEdit>
+                    </dxlc:LayoutItem>
+                 </dxlc:LayoutGroup>
+                 <dxlc:LayoutGroup>
+                     <dxlc:LayoutItem HorizontalAlignment="Left" x:Name="lblIlosc" Label="Ilość w paczce:" Width="200"  >
+                    <!--<dxe:TextEdit x:Name="txtIloscObr"  Text="{Binding Ilosc, UpdateSourceTrigger=PropertyChanged}">
+                        <mvvm:Interaction.Behaviors>
+                            <mvvm:FocusBehavior SourceObject="{Binding}" PropertyName="Ilosc"/>
+                        </mvvm:Interaction.Behaviors>
+                        <dxe:TextEdit.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding CalcValCommand}" />
+                        </dxe:TextEdit.InputBindings>
+                    </dxe:TextEdit>-->
+                        <dxe:TextEdit NullText="Ilość w paczce"   ValidateOnEnterKeyPressed="True" ValidateOnTextInput="True"   MaskType="Numeric" Mask="n">
+                            <dxe:TextEdit.Text  >
+                                <Binding Path="IloscDodat" ValidatesOnDataErrors="True"  UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" >
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRuleJednDodat FieldName="IloscDodat"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </dxe:TextEdit.Text>
+                        </dxe:TextEdit>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem  HorizontalAlignment="Left"   Label="Aktywny" >
+                        <dxe:CheckEdit HorizontalAlignment="Center" Height="22" IsChecked="{Binding IsAktywny, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  />
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+                <dxg:GridControl AutoGenerateColumns="AddNew" x:Name="dgvCechy"   EnableSmartColumnsGeneration="False"  SelectedItem="{Binding JednDodat,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding LstJednDodat,UpdateSourceTrigger=PropertyChanged}" >
+                    <dxg:GridControl.View>
+                        <dxg:TableView AllowPerPixelScrolling="False"   VerticalScrollbarVisibility="Hidden" HorizontalScrollbarVisibility ="Hidden"  ShowGroupPanel="False" ShowTotalSummary="True" AutoScrollOnSorting="False" AllowHorizontalScrollingVirtualization="False" AllowScrollHeaders="False"   ScrollStep="20" WheelScrollLines="0.1"  NavigationStyle="Row" >
+                            <dxmvvm:Interaction.Behaviors>
+                                <dxg:GridDragDropManager AllowDrag="True" AllowDrop="True"  />
+                                <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding CloseCommand}" EventName="RowDoubleClick"  CommandParameter="{Binding ElementName=PozWindow}">
+                                    <dxmvvm:EventToCommand.EventArgsConverter>
+                                        <dx:EventArgsToDataRowConverter />
+                                    </dxmvvm:EventToCommand.EventArgsConverter>
+                                </dxmvvm:EventToCommand>
+                            </dxmvvm:Interaction.Behaviors>
+                         </dxg:TableView>  
+                    </dxg:GridControl.View>
+                    <dxg:GridColumn FieldName="ID_IHP_JZ" Visible="False" Header="ID_IHP_JZ" ReadOnly="True"   />
+                    <dxg:GridColumn FieldName="NAZWA" Width="180"  Header="Nazwa" ReadOnly="True"/>
+
+                    <dxg:GridColumn FieldName="WARTOSC" Header="Ilość" HorizontalHeaderContentAlignment="Center"  ReadOnly="True" >
+                        <dxg:GridColumn.EditSettings>
+                          
+                            <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn FieldName="AKTYWNA" Visible="true"  Header="Domyślny"  Width="80"    AllowSorting="False"   AllowColumnFiltering="False" AllowEditing="True">
+                        <dxg:GridColumn.EditSettings    >
+                            <dxe:CheckEditSettings DataContext="{Binding RowData.Row.AKTYWNA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={local:Converter}}" />
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                </dxg:GridControl>
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutControl>
+ 
+    </Grid>
+</dx:DXWindow>

@@ -1,0 +1,174 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+           xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+          xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+       xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+      xmlns:dxet="http://schemas.devexpress.com/winfx/2008/xaml/editors/themekeys"
+      xmlns:local="clr-namespace:KpInfohelp"
+    xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v17.1"
+              x:Class="KpInfohelp.SystemErp" 
+    mc:Ignorable="d"
+             d:DesignHeight="900" d:DesignWidth="420">
+
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService />
+    </dxmvvm:Interaction.Behaviors>
+    
+    <UserControl.DataContext>
+        <local:ViewModelERPConnector />
+    </UserControl.DataContext>
+      
+    <Grid>
+        <dxlc:LayoutControl Orientation="Vertical">
+            <dxlc:LayoutItem  >
+                <dxb:BarContainerControl Grid.Row="0">
+                    <dxb:ToolBarControl Caption="Main Toolbar" BarItemHorizontalIndent="10" AllowCollapse="False" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                        <!--<dxb:BarButtonItem Content="Dodaj" Command="{Binding AddNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Add-16.png" />-->
+                        <dxb:BarButtonItem Content="Aktualizuj" Command="{Binding UpdateCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Edit-16.png" />
+                        <dxb:BarButtonItem Content="Czyść Wybór" Command="{Binding ClearNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Erase-16.png" />
+                    </dxb:ToolBarControl>
+                </dxb:BarContainerControl>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutGroup Header="Dane systemu EPR" HorizontalAlignment="Left" UseLayoutRounding="True" View="GroupBox" Orientation="Vertical" Width="400">
+                <dxlc:LayoutItem Label="Wybierz system ERP"   HorizontalAlignment="Stretch">
+                        <dxg:LookUpEdit 
+                				DisplayMember="ERPNAZWA"
+                				ValueMember="ID_IHP_ERPCONNECTOR"
+                           		AutoPopulateColumns="False"
+							AutoComplete="True"
+							IncrementalFiltering="True"
+							ImmediatePopup="True"
+							IsPopupAutoWidth="False"
+							IsSynchronizedWithCurrentItem="False"
+                                ItemsSource="{Binding ErpConnects, UpdateSourceTrigger=PropertyChanged}" 
+                				SelectedItem="{Binding ErpConnect, UpdateSourceTrigger=PropertyChanged}">
+                        <dxg:LookUpEdit.PopupContentTemplate>
+                            <ControlTemplate>
+                                <dxg:GridControl Width="400" x:Name="PART_GridControl">
+                                    <dxg:GridColumn FieldName="ERPNAZWA" Header="Wybierz system" Width="400" />
+                                </dxg:GridControl>
+                            </ControlTemplate>
+                        </dxg:LookUpEdit.PopupContentTemplate>
+                        <dxmvvm:Interaction.Triggers>
+                            <dxmvvm:EventToCommand EventName="SelectedIndexChanged" Command="{Binding ItemSelERPCommand}" PassEventArgsToCommand="True">
+                                <dxmvvm:EventToCommand.EventArgsConverter>
+                                    <dx:EventArgsToDataRowConverter />
+                                </dxmvvm:EventToCommand.EventArgsConverter>
+                            </dxmvvm:EventToCommand>
+                        </dxmvvm:Interaction.Triggers>
+                    </dxg:LookUpEdit>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutGroup Header="Konfiguracja połączenia z serwerem bazy danych" UseLayoutRounding="True" View="GroupBox" Orientation="Vertical">
+                    <dxlc:LayoutItem/>
+                    <dxlc:LayoutItem Label="Serwer :" HorizontalContentAlignment="Left">
+                        <dxe:TextEdit Width="200"  EditValue="{Binding ErpConnect.SERWER, Mode=TwoWay}">
+                            <dxmvvm:Interaction.Behaviors>
+                                <local:DisplayTextHelper TextToBind="{Binding Serwer, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                            </dxmvvm:Interaction.Behaviors>
+                            </dxe:TextEdit>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Katalog bazy danych :" HorizontalContentAlignment="Left">
+                        <dxe:TextEdit Width="200"  EditValue="{Binding ErpConnect.BAZA, Mode=TwoWay}">
+                            <dxmvvm:Interaction.Behaviors>
+                                <local:DisplayTextHelper TextToBind="{Binding KatalogBazy, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                            </dxmvvm:Interaction.Behaviors>
+                        </dxe:TextEdit>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Użytkownik :" HorizontalContentAlignment="Left">
+                        <dxe:TextEdit Width="200"  EditValue="{Binding ErpConnect.UZYTKOWNIK, Mode=TwoWay}">
+                            <dxmvvm:Interaction.Behaviors>
+                                <local:DisplayTextHelper TextToBind="{Binding Uzytkownik, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                            </dxmvvm:Interaction.Behaviors>
+                        </dxe:TextEdit>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="Hasło :" HorizontalContentAlignment="Left">
+                        <dxe:TextEdit Width="200"  EditValue="{Binding ErpConnect.HASLO, Mode=TwoWay}">
+                            <dxmvvm:Interaction.Behaviors>
+                                <local:DisplayTextHelper TextToBind="{Binding Haslo, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                            </dxmvvm:Interaction.Behaviors>
+                        </dxe:TextEdit>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label=" " HorizontalContentAlignment="Left">
+                        <dx:SimpleButton x:Name="btnWaga" Content="Testuj Połączenie" HorizontalAlignment="Left" Height="25" Width="200" Command="{Binding AddWazenieCommand}"   VerticalAlignment="Top"/>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutGroup>
+
+            <dxlc:LayoutGroup Header="Dane Integracji" UseLayoutRounding="True" View="GroupBox" HorizontalAlignment="Left"  Orientation="Vertical" Width="400">
+                <dxlc:LayoutGroup Header="Synchronizacja Kartotek" UseLayoutRounding="True" View="GroupBox" Orientation="Vertical">
+                    <dxlc:LayoutItem>
+                        <dxe:CheckEdit x:Name="chkKartotekiAll" IsChecked="{Binding KartAll, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Content="Synchr. Wszystkie Kartoteki"  HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="180" Checked="chkKartotekiAll_Checked"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                        <dxlc:LayoutItem>
+                            <dxe:CheckEdit x:Name="chkRodzKart" IsChecked="{Binding KartRodz, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Content="Synchr. z Rodzaju Gr. Kart."  HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="180" Checked="chkRodzKart_Checked"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="ID Rodaj Gr. Kart.">
+                            <dxe:TextEdit Width="50" Text="{Binding IdGrKartRodz, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                        <dxlc:LayoutItem>
+                            <dxe:CheckEdit x:Name="chkKartoteki" IsChecked="{Binding KartGrupa, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Content="Synchr. z Grupy Kart."  HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="180" Checked="chkKartoteki_Checked"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="ID Grupa Kart.">
+                            <dxe:TextEdit Width="50" Text="{Binding IdGrKart, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                    <dxlc:LayoutItem>
+                        <dxe:CheckEdit x:Name="chkCenniki"  IsChecked="{Binding KartCenniki, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Content="Synchr. Cenniki" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="180" Checked="chkCenniki_Checked"/>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup Header="Synchronizacja Kontrahentów" UseLayoutRounding="True" View="GroupBox" Orientation="Vertical">
+                    <dxlc:LayoutItem>
+                        <dxe:CheckEdit x:Name="chkKontrahAll"   IsChecked="{Binding KontrahAll, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Content="Synchr. Wszystkich Kontrahentów"  HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="200" Checked="chkKontrahAll_Checked"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                        <dxlc:LayoutItem>
+                            <dxe:CheckEdit x:Name="chkKontrahGrupa"   IsChecked="{Binding KontrahGrupa, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  Content="Synchr. z Grupy Kontrh"  HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="180" Checked="chkKontrahGrupa_Checked"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="Id. Grupa Kontrah.">
+                            <dxe:TextEdit Width="50" Text="{Binding IdGrKontrah, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+
+                    <dxlc:LayoutGroup Header="Synchronizacja Dokumentów" UseLayoutRounding="True" View="GroupBox" Orientation="Vertical">
+                        <dxlc:LayoutItem>
+                            <dxe:CheckEdit x:Name="chkDokDirect"   IsChecked="{Binding DockDirect, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Content="Wystaw Dok. Bezpośrednio"  HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="190" Checked="chkDokDirect_Checked"/>
+                        </dxlc:LayoutItem>
+
+                        <dxlc:LayoutItem Label="Dokument Wydania" LabelPosition="Top">
+                            <!--<dxlc:FlowLayoutControl Orientation="Vertical" MaximizedElementPosition="Top">
+                                <RadioButton GroupName="Gender" Content="Faktura" IsChecked="{Binding IsKierunek, UpdateSourceTrigger=PropertyChanged}"/>
+                                <RadioButton GroupName="Gender" Content="Wydanie Magazynowe" IsChecked="{Binding IsKierunek, Converter={dx:NegationConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                                <RadioButton GroupName="Gender" Content="Wg Listy Wyboru" IsChecked="{Binding IsKierunek, Converter={dx:NegationConverter}, UpdateSourceTrigger=PropertyChanged}"/>
+                            </dxlc:FlowLayoutControl>-->
+                            <dxe:ListBoxEdit ItemsSource="{Binding DokDoWystLst}"  SelectedItem="{Binding DokDoWyst,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" DisplayMember="Nazwa" ValueMember="Id" ShowCustomItems="False">
+                                <dxe:ListBoxEdit.ItemContainerStyle>
+                                    <Style TargetType="dxe:ListBoxEditItem" BasedOn="{StaticResource {dxet:EditorListBoxThemeKey ResourceKey=RadioButtonItemStyle}}">
+                                        <Setter Property="Width" Value="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}, 
+                                                             Converter={local:ItemWidthConverter}, ConverterParameter=3}" />
+                                    </Style>
+                                </dxe:ListBoxEdit.ItemContainerStyle>
+                                <dxe:ListBoxEdit.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Vertical" 
+                               Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"/>
+                                    </ItemsPanelTemplate>
+                                </dxe:ListBoxEdit.ItemsPanel>
+                            </dxe:ListBoxEdit>
+                        </dxlc:LayoutItem>
+
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
+
+            </dxlc:LayoutGroup>
+        </dxlc:LayoutControl>
+    </Grid>
+</UserControl>

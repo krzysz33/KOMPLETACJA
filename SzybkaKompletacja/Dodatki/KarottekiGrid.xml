@@ -1,0 +1,269 @@
+﻿<XtraSerializer version="1.0" application="GridControl">
+  <property name="#LayoutVersion" isnull="true" />
+  <property name="$GridControl" iskey="true" value="GridControl">
+    <property name="UseFieldNameForSerialization">true</property>
+    <property name="GroupCount">0</property>
+    <property name="GroupSummary" iskey="true" value="0" />
+    <property name="SortInfo" iskey="true" value="1">
+      <property name="Item1" isnull="true" iskey="true">
+        <property name="FieldName">DATAWJAZD</property>
+        <property name="SortOrder">Descending</property>
+        <property name="MergeWithPreviousGroup">false</property>
+      </property>
+    </property>
+    <property name="Columns" iskey="true" value="27">
+      <property name="Item1" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">DATAWJAZD</property>
+        <property name="ReadOnly">true</property>
+        <property name="AllowEditing">False</property>
+        <property name="Header" type="System.String">Data/Godzina Wjazdu</property>
+        <property name="VisibleIndex">1</property>
+        <property name="Width">145</property>
+        <property name="ActualWidth">145</property>
+      </property>
+      <property name="Item2" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">DATAWYJAZD</property>
+        <property name="ReadOnly">true</property>
+        <property name="AllowEditing">False</property>
+        <property name="Header" type="System.String">Data/Godzina Wyjazdu</property>
+        <property name="Visible">true</property>
+        <property name="VisibleIndex">2</property>
+        <property name="Width">140</property>
+        <property name="ActualWidth">140</property>
+      </property>
+      <property name="Item3" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">IHP_KIEROWCA.NAZWA</property>
+        <property name="ReadOnly">true</property>
+        <property name="Header" type="System.String">Kierowca</property>
+        <property name="Visible">true</property>
+        <property name="VisibleIndex">3</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item4" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">IHP_SAMOCHOD.NRREJ</property>
+        <property name="ReadOnly">true</property>
+        <property name="Header" type="System.String">NrRej.</property>
+        <property name="VisibleIndex">5</property>
+        <property name="Width">83</property>
+        <property name="ActualWidth">83</property>
+      </property>
+      <property name="Item5" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">WAGAWJAZD</property>
+        <property name="ReadOnly">true</property>
+        <property name="Header" type="System.String">Waga Wjazd</property>
+        <property name="VisibleIndex">6</property>
+        <property name="Width">90</property>
+        <property name="ActualWidth">90</property>
+      </property>
+      <property name="Item6" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">WAGAWYJAZD</property>
+        <property name="ReadOnly">true</property>
+        <property name="Header" type="System.String">Waga Wyjazd</property>
+        <property name="VisibleIndex">7</property>
+        <property name="Width">95</property>
+        <property name="ActualWidth">95</property>
+      </property>
+      <property name="Item7" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">WAGA</property>
+        <property name="ReadOnly">true</property>
+        <property name="Header" type="System.String">Waga</property>
+        <property name="Visible">true</property>
+        <property name="VisibleIndex">8</property>
+        <property name="Width">67</property>
+        <property name="ActualWidth">67</property>
+      </property>
+      <property name="Item8" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">IHP_KONTRAHENT_ARCH.NAZWA</property>
+        <property name="Header" type="System.String">Kontrahent</property>
+        <property name="Visible">true</property>
+        <property name="VisibleIndex">4</property>
+        <property name="Width">109</property>
+        <property name="ActualWidth">109</property>
+      </property>
+      <property name="Item9" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">IHP_KONTRAHENT_ARCH</property>
+        <property name="Header" type="System.String">IHP_KONTRAHENT_ARCH</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">-1</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item10" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">ID_IHP_WAZENIE</property>
+        <property name="Header" type="System.String">ID_IHP_WAZENIE</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">-1</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item11" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">IHP_KIEROWCA</property>
+        <property name="Header" type="System.String">IHP_KIEROWCA</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">-1</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item12" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">ID_IHP_KIEROWCA</property>
+        <property name="Header" type="System.String">ID_IHP_KIEROWCA</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">-1</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item13" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">ID_IHP_SAMOCHOD</property>
+        <property name="Header" type="System.String">ID_IHP_SAMOCHOD</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">-1</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item14" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">IHP_SAMOCHOD</property>
+        <property name="Header" type="System.String">ID_IHP_SAMOCHOD</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">-1</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item15" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">ID_IHP_KONTRAHENT_ARCH</property>
+        <property name="Header" type="System.String">ID_IHP_KONTRAHENT_ARCH</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">-1</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item16" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">ID_IHP_KONTRAHENT</property>
+        <property name="Header" type="System.String">ID_IHP_KONTRAHENT</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">-1</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item17" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">IHP_KARTOTEKA</property>
+        <property name="Header" type="System.String">IHP_KARTOTEKA</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">-1</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item18" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">NRKWIT</property>
+        <property name="Header" type="System.String">Nr. Kwitu</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">10</property>
+        <property name="Width">74</property>
+        <property name="ActualWidth">74</property>
+      </property>
+      <property name="Item19" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">NRKWITWEW</property>
+        <property name="Header" type="System.String">Nr. Kwitu Wew.</property>
+        <property name="Visible">true</property>
+        <property name="VisibleIndex">0</property>
+        <property name="Width">103</property>
+        <property name="ActualWidth">103</property>
+      </property>
+      <property name="Item20" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">IHP_KARTOTEKA.INDEKS</property>
+        <property name="ReadOnly">true</property>
+        <property name="Header" type="System.String">Towar Indeks</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">10</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item21" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">ID_IHP_KARTOTEKA</property>
+        <property name="Header" type="System.String">ID_IHP_KARTOTEKA</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">6</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item22" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">ID_IHP_RODZAJDOK</property>
+        <property name="Header" type="System.String">ID_IHP_RODZAJDOK</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">-1</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item23" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">STATUS</property>
+        <property name="Header" type="System.String">STATUS</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">12</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item24" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">IHP_RODZAJDOK</property>
+        <property name="Header" type="System.String">IHP_RODZAJDOK</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">-1</property>
+        <property name="ActualWidth">NaN</property>
+      </property>
+      <property name="Item25" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">IHP_RODZAJDOK.SKROTDOK</property>
+        <property name="ReadOnly">true</property>
+        <property name="Header" type="System.String">Skrót Dok.</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">10</property>
+        <property name="Width">85</property>
+        <property name="ActualWidth">85</property>
+      </property>
+      <property name="Item26" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">NRDOKWEW</property>
+        <property name="ReadOnly">true</property>
+        <property name="Header" type="System.String">Dokument Powiązany</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">10</property>
+        <property name="Width">135</property>
+        <property name="ActualWidth">135</property>
+      </property>
+      <property name="Item27" isnull="true" iskey="true">
+        <property name="GridRow">0</property>
+        <property name="FieldName">PokazDane</property>
+        <property name="Header" type="System.String">PokazDane</property>
+        <property name="Visible">false</property>
+        <property name="VisibleIndex">-1</property>
+        <property name="Width">180</property>
+        <property name="ActualWidth">180</property>
+      </property>
+    </property>
+    <property name="View" isnull="true" iskey="true">
+      <property name="FormatConditions" iskey="true" value="0" />
+      <property name="AllowPerPixelScrolling">true</property>
+      <property name="ShowGroupPanel">false</property>
+      <property name="AllowEditing">true</property>
+      <property name="NavigationStyle">Row</property>
+      <property name="ColumnChooserState" isnull="true" iskey="true">
+        <property name="Location">511,14</property>
+        <property name="Size">220,250</property>
+      </property>
+      <property name="ShowTotalSummary">true</property>
+    </property>
+    <property name="TotalSummary" iskey="true" value="0" />
+    <property name="SelectionMode">Row</property>
+    <property name="MRUFilters" iskey="true" value="0" />
+    <property name="GroupSummarySortInfo" iskey="true" value="0" />
+  </property>
+</XtraSerializer>

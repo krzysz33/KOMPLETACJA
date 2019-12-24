@@ -1,0 +1,125 @@
+﻿<UserControl
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+             xmlns:dxsch="http://schemas.devexpress.com/winfx/2008/xaml/scheduler" 
+             xmlns:dxschi="http://schemas.devexpress.com/winfx/2008/xaml/scheduler/internal" 
+                xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        xmlns:local="clr-namespace:PlanowanieDostaw"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v16.2" x:Class="PlanowanieDostaw.PokazDaneHarmonogram"
+        mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800" >
+    <UserControl.Resources>
+        <dxsch:SchedulerControlStringIdConverter x:Key="SchedulerControlStringIdConverter"/>
+        <dxschi:TimeSpanToDateTimeConverter x:Key="timeSpanToDateTimeConverter"/>
+        <dxschi:InvertedBoolConverter x:Key="invertedBoolConverter"/>
+
+        <DataTemplate x:Key="RecTypeTemplate">
+            <TextBlock Text="{Binding Description}" VerticalAlignment="Center"/>
+        </DataTemplate>
+        <DataTemplate x:Key="ResourceItemTemplate">
+            <TextBlock Text ="{Binding Caption}" VerticalAlignment="Center"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ResourceTemplate">
+            <dxsch:AppointmentResourceEdit HorizontalAlignment="Stretch"  SchedulerControl="{Binding Control}" EditValue="{Binding ResourceId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        		Padding="4,0,0,0" Margin="0,0,0,4" VerticalAlignment="Center" MinHeight="22"
+        		AutomationProperties.Name="{Binding ConverterParameter=Form_Resource, Converter={StaticResource SchedulerControlStringIdConverter}, Source={StaticResource SchedulerControlStringIdConverter}}"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ResourcesTemplate">
+            <dxsch:AppointmentResourcesEdit SchedulerControl="{Binding Control}" ResourceIds="{Binding AppointmentResourceIds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        		Padding="4,0,0,0" Margin="0,0,0,4" VerticalAlignment="Center" MinHeight="22"
+        		AutomationProperties.Name="{Binding ConverterParameter=Form_Resource, Converter={StaticResource SchedulerControlStringIdConverter}, Source={StaticResource SchedulerControlStringIdConverter}}"/>
+        </DataTemplate>
+
+        <dxschi:BoolToDataTemplateConverter x:Key="boolToDataTemplateConverter" NormalTemplate="{StaticResource ResourcesTemplate}" AlternateTemplate="{StaticResource ResourceTemplate}"/>
+
+
+    </UserControl.Resources>
+
+    <dxlc:LayoutControl HorizontalAlignment="Stretch" Background="AliceBlue"   VerticalAlignment="Stretch"   Orientation="Vertical">
+        <dxlc:LayoutGroup Header="Harmonogram Dzienny Szczegóły"  View="GroupBox" Orientation="Vertical" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch">
+
+            <dxlc:LayoutItem  Label="Kurnik :" HorizontalAlignment="Stretch">
+
+                <dxe:TextEdit x:Name="subjectEdit"
+        				AutomationProperties.Name="{Binding ConverterParameter=Form_Subject, Converter={StaticResource SchedulerControlStringIdConverter}, Source={StaticResource SchedulerControlStringIdConverter}}"
+        				EditValue="{Binding Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="{Binding IsReadOnly}"/>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutItem  Label="Transport :" HorizontalAlignment="Stretch">
+                <dxsch:AppointmentResourceEdit  Margin="0,0,0,8" Grid.Column="1" SchedulerControl="{Binding Control}" 
+            		EditValue="{Binding ResourceId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinHeight="22"/>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutItem HorizontalAlignment="Stretch"    LabelPosition="Left"  Label="Rodzaj żywca:" >
+                <dxe:ListBoxEdit EditValue="{Binding CustomFields[RODZZYWCA], Mode=TwoWay}">
+                    <dxe:ListBoxEdit.StyleSettings>
+                        <dxe:RadioListBoxEditStyleSettings/>
+                    </dxe:ListBoxEdit.StyleSettings>
+                    <dxe:ListBoxEdit.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </dxe:ListBoxEdit.ItemsPanel>
+                    <dxe:ListBoxEditItem  Selected="selekcja_selected" Content="Selekcja"/>
+                    <dxe:ListBoxEditItem  Selected="reprodukcja_selected" Content="Reprodukcja"/>
+                    <dxe:ListBoxEditItem  Selected="brojler_selected" Content="Brojler"/>
+                    <dxe:ListBoxEditItem  Selected="mindyk_selected" Content="Młody Indyk"/>
+                </dxe:ListBoxEdit>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                <dxlc:LayoutItem   Label="Data Start :" HorizontalAlignment="Stretch">
+                    <dxe:DateEdit x:Name="edtStartDate" MinWidth="150"  EditValue ="{Binding DisplayStartDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem    Label="Godzinia Start :" HorizontalAlignment="Stretch">
+                    <dxe:TextEdit x:Name="edtStartTime" MinWidth="150" MaskType="DateTime" DisplayFormatString="{Binding TimeEditMask}" 
+            			Mask="{Binding TimeEditMask}"  Margin="6,0,0,0" 
+            			EditValue ="{Binding DisplayStartTime, Converter={StaticResource timeSpanToDateTimeConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                <dxlc:LayoutItem  Label="Data Koniec :" HorizontalAlignment="Stretch">
+
+                    <dxe:DateEdit x:Name="edtEndDate" MinWidth="150"  EditValue="{Binding DisplayEndDate, Mode=TwoWay}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem   Label="Godzina Koniec:" HorizontalAlignment="Stretch">
+                    <dxe:TextEdit x:Name="edtEndTime" MinWidth="150" MaskType="DateTime" DisplayFormatString="{Binding TimeEditMask}" Mask="{Binding TimeEditMask}" 
+            			Margin="6,0,0,0" EditValue ="{Binding DisplayEndTime, Converter={StaticResource timeSpanToDateTimeConverter}, Mode=TwoWay}"/>
+                </dxlc:LayoutItem>
+
+
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                <dxlc:LayoutItem   Label="Ilość :" HorizontalAlignment="Stretch">
+                    <dxe:TextEdit x:Name="Ilosc"  MinWidth="80" MaskType="Numeric"   Mask="d" Margin="0,0,0,0" EditValue ="{Binding CustomFields[ILOSC], Mode=TwoWay}" Grid.ColumnSpan="2" LostFocus="Ilosc_LostFocus" EditValueChanged="Ilosc_EditValueChanged" />
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem   Label="Śr. Waga :" HorizontalAlignment="Left" Width="150">
+                    <dxe:TextEdit x:Name="srWaga"  MinWidth="80" MaskType="Numeric"    Mask="f" Margin="0,0,0,0" EditValue ="{Binding CustomFields[WAGASR], Mode=TwoWay}" Grid.ColumnSpan="2"  HorizontalAlignment="Left" LostFocus="srWaga_LostFocus" EditValueChanged="srWaga_EditValueChanged"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem   Label="Waga :" HorizontalAlignment="Left">
+                    <dxe:TextEdit x:Name="Waga" MinWidth="80" MaskType="Numeric"   Mask="d" Grid.Column="2" EditValue ="{Binding CustomFields[WAGA], Mode=TwoWay}" Grid.ColumnSpan="2" HorizontalAlignment="Right"  Width="300" IsReadOnly="True" EditValueChanged="Waga_EditValueChanged" />
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutItem    Label="Notatka :" HorizontalAlignment="Stretch">
+                <dxe:TextEdit   MinHeight="220" Margin="0,0,0,8" EditValue ="{Binding Description, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap" 
+            		VerticalScrollBarVisibility="Visible" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutItem Width="220"   HorizontalAlignment="Left">
+
+                <!--Buttons-->
+                <StackPanel Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" 
+            		Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="btnOk" 
+            			Content="OK" 
+            			Command="{Binding SaveAndCloseAppointmentCommand}" MinWidth="75" Margin="6,0,0,0" Click="btnOk_Click"/>
+                    <Button x:Name="btnCancel" 
+            			Content="Cancel" 
+            			Command="{Binding CancelEditingCommand}" MinWidth="75" Margin="6,0,0,0"/>
+                </StackPanel>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+
+    </dxlc:LayoutControl>
+</UserControl>

@@ -1,0 +1,70 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KpInfohelp"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"         
+              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+            xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+           xmlns:i="http://schemas.microsoft.com/expression/2010/"
+            xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+            xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v17.1" x:Class="KpInfohelp.DefCeny"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="900">
+    <UserControl.DataContext>
+        <local:ViewModelDefCeny />
+    </UserControl.DataContext>
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService />
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxlc:LayoutControl Orientation="Vertical"  >
+            <dxlc:LayoutItem HorizontalAlignment="Stretch">
+                <dxb:BarContainerControl Grid.Row="0">
+                    <dxb:ToolBarControl Caption="Main Toolbar" BarItemHorizontalIndent="10" AllowCollapse="False" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                        <dxb:BarButtonItem Content="Dodaj" Command="{Binding AddDefCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Add-16.png" />
+                        <dxb:BarButtonItem Content="Aktualizuj" Command="{Binding UpdateCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Edit-16.png" />
+                        <dxb:BarButtonItem Content="Popraw" Command="{Binding FillDataCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-uncheck-all-16.png" />
+                        <dxb:BarButtonItem Content="Czyść Wybór" Command="{Binding ClearCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Erase-16.png" />
+                        <dxb:BarButtonItem Content="Usuń" Command="{Binding DelNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Delete-16.png" />
+                    </dxb:ToolBarControl>
+                </dxb:BarContainerControl>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutGroup Header="Defincja Cennika" Serialization:SerializableItem.TypeName="LayoutGroup" View="GroupBox"  IsCollapsible="True" Orientation="Vertical" >
+                <dxlc:LayoutGroup   x:Name="layoutGroup1" Orientation="Vertical" VerticalAlignment="Top"/>
+                <dxlc:LayoutItem  Width="400" Label="Nazwa Definicji:" HorizontalAlignment="Left">
+                    <dxe:TextEdit VerticalAlignment="Center" HorizontalAlignment="Left" MaxLength="60" Width="180" Text="{Binding NazwaDef, UpdateSourceTrigger=PropertyChanged}" DisplayFormatString="{}{0}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Aktywny">
+                    <CheckBox  IsChecked="{Binding IsAktywny, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="Od Netto">
+                    <CheckBox  IsChecked="{Binding OdNetto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </dxlc:LayoutItem>
+            </dxlc:LayoutGroup>
+            <dxg:GridControl x:Name="dgvListaDef" HorizontalAlignment="Stretch" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="False" ItemsSource="{Binding DefCenyLst}"  SelectedItem="{Binding DefCeny,UpdateSourceTrigger=PropertyChanged}" PreviewKeyDown="dgvListaPoz_PreviewKeyDown" CustomUnboundColumnData="dgvListaPoz_CustomUnboundColumnData">
+                <dxg:GridControl.View>
+                    <dxg:TableView AllowPerPixelScrolling="True" ShowGroupPanel="False" ShowTotalSummary="True" NavigationStyle="Row" />
+                </dxg:GridControl.View>
+
+                <dxg:GridColumn FieldName="ID_IHP_DEFCENY" Visible="False" Header="ID_KARTOTEKA" />
+                <dxg:GridColumn FieldName="NAZWACENY" Visible="True" Header="Nazwa" />
+               
+                <dxg:GridColumn FieldName="ODNETTO" Header="Od Netto"  UnboundType="Boolean" ReadOnly="True">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:CheckEditSettings  />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+            
+                <dxg:GridColumn FieldName="AKTYWNY" Header="Aktywna"  UnboundType="Boolean" ReadOnly="True">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:CheckEditSettings  />
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+             </dxg:GridControl>
+        </dxlc:LayoutControl>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,106 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+        xmlns:local="clr-namespace:KpInfohelp"
+         xmlns:mvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+          x:Class="KpInfohelp.LoginWindow"
+                xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        mc:Ignorable="d"  WindowStyle="None"
+       Height="171.88" Width="300"  Loaded="Window_Loaded"  WindowStartupLocation="CenterScreen" 
+              DataContext="{mvvm:ViewModelSource Type=local:ViewModelLogin}">
+
+<mvvm:Interaction.Behaviors>
+    <dx:DXMessageBoxService />
+    <mvvm:CurrentWindowService/>
+    <local:MainWindowService/>
+</mvvm:Interaction.Behaviors>
+ 
+    <!--<Window.DataContext>
+        <local:ViewModelLogin/>
+    </Window.DataContext>
+    
+    <mvvm:Interaction.Behaviors>
+        <mvvm:CurrentWindowService/>
+        <local:MainWindowService/>
+    </mvvm:Interaction.Behaviors>-->
+<Grid Margin="0,0,0,2">
+
+    <!--      
+        <TextBlock x:Name="lblLogin" HorizontalAlignment="Left" Margin="50,101,0,0" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lblHaslo" HorizontalAlignment="Left" Margin="49,131,0,0" TextWrapping="Wrap" Text="Hasło:" VerticalAlignment="Top"/>
+        <dxe:TextEdit x:Name="txtLogin" HorizontalAlignment="Left" Margin="87,98,0,0" VerticalAlignment="Top" Width="150" PreviewKeyDown="txtLogin_PreviewKeyDown"/>
+        <dxe:PasswordBoxEdit x:Name="txtHaslo" HorizontalAlignment="Left" Margin="87,130,0,0" VerticalAlignment="Top" Width="150" PreviewKeyDown="txtLogin_PreviewKeyDown"/>
+        <TextBlock x:Name="lblLabel" HorizontalAlignment="Left" Margin="87,65,0,0" TextWrapping="Wrap" Text="ZARZĄDZANIE ZLECENIAMI" VerticalAlignment="Top"/>
+  
+        <dxlc:LayoutGroup  Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,30,0,0">
+            <dxlc:LayoutItem  HorizontalAlignment="Center" Height="35">
+                <Image x:Name="image" HorizontalAlignment="Left"    Height="35" Margin="0,0,0,0" Width="154" Source="logo.png"/>
+            </dxlc:LayoutItem> 
+        
+            <dxlc:LayoutItem Label="Użytkownik:" IsRequired="True" Width="180" HorizontalAlignment="Center">
+                <dxe:TextEdit x:Name="txtLogin" Validate="txtUser_Validate"/>
+        </dxlc:LayoutItem>
+            <dxlc:LayoutItem Label="Hasło:"  IsRequired="True" LabelPosition="Left"  Width="180"  HorizontalAlignment="Center">
+                <dxe:PasswordBoxEdit x:Name="txtHaslo"  PreviewKeyDown="txtHaslo_PreviewKeyDown" Text="{Binding ElementName=Password, Path=ViewModelLogin.Password, UpdateSourceTrigger=PropertyChanged}"  Validate="txtPassword_Validate"/>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutItem  Width="180">
+                <Button Click="ButtonAdd_Click" Margin="0,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{dx:DXImage Image=BOPerson_16x16.png}" Stretch="Uniform"/>
+                        <TextBlock Text="Zaloguj" VerticalAlignment="Center" Margin="0 0 0 0"/>
+                    </StackPanel>
+                </Button>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+          -->
+    <dxlc:LayoutGroup Header="Logowanie"    Orientation="Vertical" UseLayoutRounding="True"  Margin="0,5,0,0"  View="GroupBox">
+        <dxlc:LayoutGroup.GroupBoxStyle>
+            <Style TargetType="dxlc:GroupBox">
+                <Setter Property="TitleBackground" Value="AliceBlue"/>
+
+            </Style>
+        </dxlc:LayoutGroup.GroupBoxStyle>
+        <dxlc:LayoutItem  HorizontalAlignment="Center" Height="45" Margin="22,-10,0,0">
+                <Image x:Name="image" HorizontalAlignment="Left"    Height="45" Margin="0,0,0,0" Width="220" Source="IMAGES\Info_help_bez_tla250.png" Stretch="Fill"/>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutItem Label="Login:">
+            <dxe:TextEdit  x:Name="txtLogin" Validate="txtUser_Validate"  Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"  />
+        </dxlc:LayoutItem>
+        <dxlc:LayoutItem  Label="Hasło:">
+            <dxe:PasswordBoxEdit x:Name="txtHaslo"  Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"  Validate="txtPassword_Validate">
+                <dxmvvm:Interaction.Behaviors>
+                    <dxmvvm:EventToCommand EventName="KeyDown" 
+                               Command="{Binding SearchByKeyCommand}" 
+                                 PassEventArgsToCommand="True" />
+                </dxmvvm:Interaction.Behaviors>
+            </dxe:PasswordBoxEdit>
+        </dxlc:LayoutItem>
+        <dxlc:LayoutGroup >
+
+            <dxlc:LayoutItem  >
+                <Button  x:Name="btnZaloguj"   Command="{Binding OpenMainWindowCommand}"  Margin="0,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{dx:DXImage Image=BOPerson_16x16.png}" Stretch="Uniform"/>
+                        <TextBlock Text="Zaloguj" VerticalAlignment="Center" Margin="0 0 0 0"/>
+                    </StackPanel>
+                </Button>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutItem  >
+                <Button Click="ButtonClose_Click" Margin="0,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="{dx:DXImage Image=DeleteList_16x16.png}" Stretch="Uniform"/>
+                        <TextBlock Text="Zamknij" VerticalAlignment="Center" Margin="0 0 0 0"/>
+                    </StackPanel>
+                </Button>
+            </dxlc:LayoutItem>
+        </dxlc:LayoutGroup>
+    </dxlc:LayoutGroup>
+</Grid>
+</Window>
+

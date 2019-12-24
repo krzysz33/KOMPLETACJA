@@ -1,0 +1,139 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+               xmlns:local="clr-namespace:KpInfohelp"
+              xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"  
+              xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v17.1"
+              x:Class="KpInfohelp.Pojazdy"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="600">
+    <UserControl.DataContext>
+        <local:ViewModelPojazdy />
+    </UserControl.DataContext>
+
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService />
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxlc:LayoutControl Orientation="Vertical">
+             <dxlc:LayoutItem HorizontalAlignment="Stretch">
+                <dxb:BarContainerControl Grid.Row="0">
+                    <dxb:ToolBarControl Caption="Main Toolbar" BarItemHorizontalIndent="10" AllowCollapse="False" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                        <dxb:BarButtonItem Content="Dodaj" Command="{Binding AddPojazdCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Add-16.png" />
+                        <dxb:BarButtonItem Content="Aktualizuj" Command="{Binding UpdateCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Edit-16.png" />
+                        <dxb:BarButtonItem Content="Popraw" Command="{Binding FillDataCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-uncheck-all-16.png" />
+                        <dxb:BarButtonItem Content="Czyść Wybór" Command="{Binding ClearNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Erase-16.png" />
+                        <dxb:BarButtonItem Content="Usuń" Command="{Binding DelNewProgCommand}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Delete-16.png" />
+                    </dxb:ToolBarControl>
+                </dxb:BarContainerControl>
+            </dxlc:LayoutItem>
+            <dxlc:LayoutGroup x:Name="layoutGroup" VerticalAlignment="Top" Orientation="Vertical"   HorizontalAlignment="Stretch">
+                <dxlc:LayoutGroup Header="Dane Pojazdu " UseLayoutRounding="True" View="GroupBox" Orientation="Vertical" Name="FormKh" IsCollapsible="True">
+                    <dxlc:LayoutItem IsRequired="True" Label="Marka Pojazdu:" HorizontalAlignment="Left" Width="400">
+                        <dxe:TextEdit MinWidth="200" NullText="Marka" CharacterCasing="Upper"  MaxLength="15"      ValidateOnEnterKeyPressed="True" ValidateOnTextInput="True" >
+                            <dxe:TextEdit.EditValue  >
+                                <Binding Path="Nazwa" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"  >
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRulePojazdy FieldName="Nazwa"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </dxe:TextEdit.EditValue>
+                        </dxe:TextEdit>
+                   
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem IsRequired="True" Label="Numer Rejestracyjny:" HorizontalAlignment="Left" Width="400"    >
+                        <dxe:TextEdit NullText="Nr Rej." MinWidth="200"  AllowNullInput="True"
+                                            CharacterCasing="Upper" MaxLength="7"
+                                            ValidateOnEnterKeyPressed="True" ValidateOnTextInput="True" IsReadOnly="{Binding IsReadOnlyNrRej,UpdateSourceTrigger=PropertyChanged}">
+                 
+                            <dxe:TextEdit.EditValue  >
+                                <Binding Path="NrRej" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"  >
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidationRulePojazdy FieldName="NrRej"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </dxe:TextEdit.EditValue>
+                        </dxe:TextEdit>
+                    
+                    </dxlc:LayoutItem>
+                      <dxlc:LayoutItem Label="Domyślny kierowca :" HorizontalAlignment="Left" Width="400">
+                        <dxg:LookUpEdit x:Name="luekierowca"
+                			DisplayMember="NAZWA"
+                			ValueMember="ID_IHP_KIEROWCA"
+                			AutoPopulateColumns="False"
+                			AutoComplete="True"
+                			IncrementalFiltering="True"
+                			ImmediatePopup="True"
+                			IsPopupAutoWidth="False"
+                			IsEnabled="{Binding NewRec}"
+                			IsSynchronizedWithCurrentItem="False"  ItemsSource="{Binding Kierowcy}" SelectedItem="{Binding Kierowca}"  EditValue="{Binding IdKierowca, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <dxg:LookUpEdit.StyleSettings>
+                                <dxg:SearchLookUpEditStyleSettings />
+                            </dxg:LookUpEdit.StyleSettings>
+                            <dxg:LookUpEdit.PopupContentTemplate>
+                                <ControlTemplate>
+                                    <dxg:GridControl Width="625" x:Name="PART_GridControl">
+                                        <dxg:GridControl.View>
+                                            <dxg:TableView AutoWidth="True" />
+                                        </dxg:GridControl.View>
+                                        <dxg:GridColumn FieldName="ID_IHP_KIEROWCA" Visible="False" Header="ID_IHP_KIEROWCA" />
+                                        <dxg:GridColumn FieldName="NAZWA" Header="Imię i Nazwisko" />
+                                        <dxg:GridColumn FieldName="TELEFON" Header="Telefon" />
+                                        <dxg:GridColumn FieldName="IHP_KONTRAHENT.NAZWA"  Header="Kontrahent" />
+                                        <dxg:GridColumn FieldName="IHP_KONTRAHENT" Visible="False"  Header="IHP_KONTRAHENT" />
+                                    </dxg:GridControl>
+                                </ControlTemplate>
+                            </dxg:LookUpEdit.PopupContentTemplate>
+                        </dxg:LookUpEdit>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutGroup Orientation="Horizontal">
+                    <dxlc:LayoutItem IsRequired="True" Label="Wpisz tarę ręcznie:" HorizontalAlignment="Left" Width="400">
+                            <dxe:TextEdit NullText="Tara Ręcznie" MinWidth="200"  AllowNullInput="True" CharacterCasing="Upper" MaxLength="7">
+
+                                <dxe:TextEdit.EditValue  >
+                                    <Binding Path="WagaReczna" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" >
+                                        <Binding.ValidationRules>
+                                            <local:RequiredValidationRulePojazdy FieldName="WagaReczna"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </dxe:TextEdit.EditValue>
+                            </dxe:TextEdit> 
+                    
+                    </dxlc:LayoutItem>
+                         <dxlc:LayoutItem >
+                            <CheckBox  IsChecked="{Binding Path=IsTaraRecznie, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                            </dxlc:LayoutItem>
+                      
+                    </dxlc:LayoutGroup>
+
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                        <dxlc:LayoutItem   HorizontalAlignment="Stretch" Width="400">
+                            <dxe:TextEdit Width="280" FontSize="30" Text="{Binding WagaKgLocal,UpdateSourceTrigger=PropertyChanged}"  Background="#FFCADBF3" HorizontalAlignment="Right" HorizontalContentAlignment="Center"  Foreground="White" IsReadOnly="True"  FontFamily="Tahoma" AllowNullInput="True"/>
+                        </dxlc:LayoutItem>
+                        <!--<dx:SimpleButton x:Name="simpleButton" Content="Zapisz Tarę" Command ="{Binding AddPojazdCommand}"  HorizontalAlignment="Left" Height="45" Width="150"   VerticalAlignment="Top"  />-->
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
+
+            </dxlc:LayoutGroup>
+            <dxg:GridControl x:Name="dgvKontrah" AutoGenerateColumns="AddNew" EnableSmartColumnsGeneration="False" ItemsSource="{Binding Samochody}" SelectedItem="{Binding Samochod}" SelectionMode="Row"  >
+                <dxg:GridControl.View>
+                    <dxg:TableView AllowPerPixelScrolling="True"  ShowGroupPanel="False" ShowTotalSummary="True" AllowEditing="True" ShowEditFormUpdateCancelButtons="False" NavigationStyle="Row" />
+                </dxg:GridControl.View>
+                <dxg:GridColumn FieldName="ID_IHP_SAMOCHOD" Visible="False" Header="ID_IHP_SAMOCHOD" />
+                <dxg:GridColumn FieldName="NRREJ" Header="Nr. Rejestracyjny" />
+                <dxg:GridColumn FieldName="NAZWA" Header="Model" />
+                <dxg:GridColumn FieldName="TARA" Header="Tara" />
+                 <dxg:GridColumn FieldName="IHP_KIEROWCA" Visible="False" Header="IHP_KIEROWCA" />
+                <dxg:GridColumn FieldName="ID_IHP_KIEROWCA" Visible="False" Header="IHP_KIEROWCA" />
+                <dxg:GridColumn FieldName="IHP_KIEROWCA.NAZWA"   Header="Kierowca" />
+                <dxg:GridColumn FieldName="IHP_WAZENIE" Visible="False" Header="IHP_WAZENIE" />
+             </dxg:GridControl>
+        </dxlc:LayoutControl>
+    </Grid>
+</UserControl>

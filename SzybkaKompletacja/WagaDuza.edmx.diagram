@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="299154c64bfc4e149264abf268d20d48" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_CENNIK" Width="1.5" PointX="0.5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_CENNIKHISTORIA" Width="1.5" PointX="2.625" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_COMCONFIG" Width="1.5" PointX="4.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_DANEFIRMY" Width="1.5" PointX="8.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_DEFCENY" Width="1.5" PointX="0.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_DOSTAWA" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_ERPCONNECTOR" Width="1.5" PointX="11.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_GRUPAPARAMETRY" Width="1.5" PointX="6.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_KIEROWCA" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_KONTRAHENT" Width="1.5" PointX="2.625" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_KONTRAHENT_ARCH" Width="1.5" PointX="4.625" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_MIERNIK" Width="1.5" PointX="13.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_MODEL" Width="1.5" PointX="6.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_NUMERACJA" Width="1.5" PointX="11.125" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_PRODUCENT" Width="1.5" PointX="4.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_RODZAJKART" Width="1.5" PointX="1.125" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_ROZCHDOST" Width="1.5" PointX="2.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_SAMOCHOD" Width="1.5" PointX="7.125" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_STAWKAVAT" Width="1.5" PointX="1.125" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_WAZENIE_USLUGA" Width="1.5" PointX="7.375" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_WYST_GRUPAPARAM" Width="1.5" PointX="14" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.sysdiagrams" Width="1.5" PointX="16.25" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_CENNIK_IHP_DEFCENY" ManuallyRouted="false" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_CENNIKHISTORIA_IHP_CENNIK" ManuallyRouted="false" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_KONTRAHENT_IHP_DEFCENY" ManuallyRouted="false" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_ROZCHDOST_IHP_DOSTAWA" ManuallyRouted="false" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_KIEROWCA_IHP_KONTRAHENT_ARCH" ManuallyRouted="false" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_SAMOCHOD_IHP_SAMOCHOD" ManuallyRouted="false" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT" ManuallyRouted="false" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_MODEL_IHP_PRODUCENT" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_ZAM_USERS" Width="1.5" PointX="16.125" PointY="3" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_CENNIKHISTORIA_IHP_ZAM_USERS" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_PARAMETRY" Width="1.5" PointX="11.75" PointY="9" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_DEFSTATUS" Width="1.5" PointX="12.75" PointY="5.75" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_STATUSHISTORIA" Width="1.5" PointX="9.75" PointY="8.75" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_RODZGRUPKART" Width="1.5" PointX="0.5" PointY="9" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_GRUPAKART" Width="1.5" PointX="3.375" PointY="15" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_GRUPAKART_IHP_RODZGRUPKART" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_FOTO" Width="1.5" PointX="0.5" PointY="12.75" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_TRASY" Width="1.5" PointX="16.125" PointY="10.625" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_JZ" Width="1.5" PointX="7.125" PointY="15.25" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_WYST_JZ" Width="1.5" PointX="10.625" PointY="12.375" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_WYST_JZ_IHP_JZ" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_HARMONOGRAM_DZIENNY" Width="1.5" PointX="18.875" PointY="0.875" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_MASZYNA" Width="1.5" PointX="21.75" PointY="5.25" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_HARMONOGRAM_DZIENNY_IHP_MASZYNA" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_JM" Width="1.5" PointX="13.875" PointY="13.125" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_KARTOTEKA" Width="1.5" PointX="17.5" PointY="13" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_CENNIK_IHP_KARTOTEKA" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_FOTO_IHP_FOTO" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_KARTOTEKA_IHP_JM" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_KARTOTEKA_IHP_RODZAJKART" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_KARTOTEKA_IHP_STAWKAVAT" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_WYSTGRKART" Width="2" PointX="14.875" PointY="16.875" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_WYSTGRKART_IHP_GRUPAKART" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_WYSTGRKART_IHP_KARTOTEKA" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_KONTRAHENT_ARCH_IHP_KONTRAHENT_ARCH" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_RODZAJDOK" Width="1.5" PointX="9" PointY="6.5" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_WYSTCECHKART" Width="1.5" PointX="2.5" PointY="12.375" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_PRIORYTET" Width="1.5" PointX="3.375" PointY="18.75" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_WYSTTRASAKONTRAH" Width="1.5" PointX="17.625" PointY="7.5" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_WYSTTRASAKONTRAH_IHP_KONTRAHENT" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_WYSTTRASAKONTRAH_IHP_TRASY" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_NAGLDOK" Width="1.5" PointX="11.25" PointY="15.25" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_NAGLDOK_IHP_KONTRAHENT" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_NAGLDOK_IHP_KONTRAHENT_ARCH" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_NAGLDOK_IHP_RODZAJDOK" />
+        <EntityTypeShape EntityType="KOMPLETACJAModel.IHP_POZDOK" Width="1.5" PointX="19.75" PointY="14" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_POZDOK_IHP_KARTOTEKA" />
+        <AssociationConnector Association="KOMPLETACJAModel.FK_IHP_POZDOK_IHP_NAGLDOK" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

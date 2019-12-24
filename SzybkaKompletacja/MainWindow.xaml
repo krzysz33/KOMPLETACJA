@@ -1,0 +1,568 @@
+﻿<dx:DXWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+       xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
+        xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" 
+        xmlns:dxwuin="http://schemas.devexpress.com/winfx/2008/xaml/windowsui/navigation"
+        xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui"
+        xmlns:mvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+         xmlns:local="clr-namespace:KpInfohelp"
+         x:Class="KpInfohelp.MainWindow"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
+    mc:Ignorable="d"   
+        Title="KP INFOHELP SYSTEM WAGOWY"  d:DesignWidth="2400"  d:DesignHeight="800"  WindowStartupLocation="CenterScreen" WindowState="Maximized" PreviewKeyDown="DXRibbonWindow_PreviewKeyDown"     
+    DataContext="{mvvm:ViewModelSource Type=local:ViewModelMain}">
+ 
+  
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:KeyToCommand KeyGesture="CTRL+K"  Command="{Binding ICommandKontrah}"/>
+        <dx:DXMessageBoxService />
+        <mvvm:CurrentWindowService/>
+        <local:MainLoginService/>
+    </dxmvvm:Interaction.Behaviors>
+    <Window.Resources>
+        <ResourceDictionary>
+            <!--<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>-->
+            <DataTemplate DataType="{x:Type local:View1ViewModel}">
+                <local:View1/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:ViewModelUsluga}">
+                <local:Usluga/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:ViewModelBazyDanych}">
+                <local:BazaDanych/>
+            </DataTemplate>
+ 
+            <DataTemplate DataType="{x:Type local:ViewModelKamera1}">
+                <local:Kamera1/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:ViewModelKamera2}">
+                <local:Kamera2/>
+            </DataTemplate>
+             <DataTemplate DataType="{x:Type local:ViewModelKamera3}">
+                <local:Kamera3/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:ViewModelKontrahent}">
+                <local:Kontrahent/>
+            </DataTemplate>
+        
+            <DataTemplate DataType="{x:Type local:ViewModelPojazdy}">
+                <local:Pojazdy/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:ViewModelKartoteki}">
+                <local:Kartoteki/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:ViewModelDokumnetySettings}">
+                <local:DokumentySettings/>
+            </DataTemplate>
+             <DataTemplate DataType="{x:Type local:ViewModelKierowcy}">
+                <local:Kierowcy/>
+            </DataTemplate>
+             <DataTemplate DataType="{x:Type local:ViewModelProgramSettings}">
+                <local:ProgramSettings/>
+            </DataTemplate>
+             <DataTemplate DataType="{x:Type local:ViewModelERPConnector}">
+                <local:SystemErp/>
+            </DataTemplate>
+             <DataTemplate DataType="{x:Type local:ViewModelImport}">
+                <local:Import/>
+            </DataTemplate>
+             <DataTemplate DataType="{x:Type local:ViewModelCennik}">
+                <local:Cennik/>
+            </DataTemplate>
+             <DataTemplate DataType="{x:Type local:ViewModelDefCeny}">
+                <local:DefCeny />
+            </DataTemplate>
+    
+            <DataTemplate DataType="{x:Type local:ViewModelZamowienie}">
+                <local:ZamowieniaLista />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type local:ViewModelGrupaKart}">
+                <local:GrupaKart />
+            </DataTemplate>
+
+
+            <DataTemplate DataType="{x:Type local:ViewModelKafelki}">
+                <local:Kafelki />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type local:ViewModelTrasy}">
+                <local:Trasy />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type local:ViewModelOferta}">
+                <local:Oferta />
+            </DataTemplate>
+            <!--<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>-->
+            <DataTemplate DataType="{x:Type local:ViewModelHarmonogramDzienny}">
+                <local:HarmonogramDzienny/>
+            </DataTemplate>
+
+  
+        </ResourceDictionary>
+    </Window.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closing">
+            <i:InvokeCommandAction Command="{Binding WindowClosing}" CommandParameter="{Binding}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+      
+        <Grid.RowDefinitions>
+            <RowDefinition Height="43"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <dxb:MainMenuControl DockPanel.Dock="Top" Visibility="Visible" Caption="MainMenu" AllowCustomizationMenu="False"   Grid.ColumnSpan="2">
+              <dxb:BarSubItem Content="Program" Glyph="{dx:DXImage Image=InitialState_16x16.png}" BarItemDisplayMode="ContentAndGlyph" LargeGlyph="{dx:DXImage Image=InitialState_32x32.png}" >
+                <!-- <dxb:BarCheckItem x:Name="Wyloguj" GroupIndex="1" Content="Wyloguj" ItemClick="zaloguj_click"/> -->
+                <dxb:BarCheckItem x:Name="Zamknij" GroupIndex="1" Content="Zamknij" />
+            </dxb:BarSubItem>
+              <dxb:BarSubItem Content="Zamówienia" x:Name="OknaAplikacji"  Glyph="{dx:DXImage Image=TextBox_16x16.png}" BarItemDisplayMode="ContentAndGlyph" LargeGlyph="{dx:DXImage Image=TextBox_32x32.png}" >
+                <dxb:BarButtonItem x:Name="mDodajZam" Content="Dodaj Zamówienie"  Command="{Binding ICommandZamowienieSprzedaz}"   IsVisible="{Binding IsVisibleRejZam}"/>
+                <dxb:BarButtonItem x:Name="mnListaZam" Content="Lista Zamówień"   Command="{Binding ICommandZamowienieLista}" IsVisible="{Binding IsZamowienieLista}"/>
+                <dxb:BarButtonItem x:Name="mnDodajKafelki" Content="Dodaj Zamówienie Panel"   Command="{Binding ICommandZamowieniePanel}" IsVisible="{Binding IsZamowienieLista}"/>
+                <dxb:BarButtonItem x:Name="mListaKontrah"  Content="Lista Kontrahentów"   Command="{Binding ICommandKontrah}" IsEnabled="{Binding IsKontrahMenu,UpdateSourceTrigger=PropertyChanged}" IsVisible="{Binding IsKontrahMenu,UpdateSourceTrigger=PropertyChanged}"/>
+                <dxb:BarButtonItem x:Name="mListaTras"  Content="Lista Tras"   Command="{Binding ICommandTrasa}" IsEnabled="{Binding IsTrasaMenu,UpdateSourceTrigger=PropertyChanged}" IsVisible="{Binding IsKontrahMenu,UpdateSourceTrigger=PropertyChanged}"/>
+                <dxb:BarButtonItem x:Name="mKarototeka" Content="Lista Towarów" Command="{Binding ICommandKartoteki}" LargeGlyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Warehouse-50.png"/>
+                <dxb:BarButtonItem x:Name="mGrupaKart" Content="Grupy Kartotekowe"  IsVisible="{Binding IsKontrahMenu,UpdateSourceTrigger=PropertyChanged}" Command="{Binding ICommandGrupaKart}" LargeGlyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Warehouse-50.png"/>
+                <dxb:BarButtonItem x:Name="mJednDodat" Content="Słownik Jednostek Dodatowych" Command="{Binding ICommandJednostkiDodat}" LargeGlyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Warehouse-50.png"/>
+                <dxb:BarButtonItem x:Name="mJednMiaty" Content="Słwnik Jednostek Miary" Command="{Binding ICommandJednostkiMiary}" LargeGlyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Warehouse-50.png"/>
+                <dxb:BarButtonItem x:Name="mCennik" Content="Cenniki" Command="{Binding ICommandCennik}" LargeGlyph="{dx:DXImageOffice2013 Image=Currency2_32x32.png}" Glyph="{dx:DXImage Image=Currency2_16x16.png}"/>
+
+            </dxb:BarSubItem>
+              <dxb:BarSubItem Content="Kompletacja" x:Name="OknaKompletacji"  Glyph="{dx:DXImage Image=GradientBlueDataBar_16x16.png}" BarItemDisplayMode="ContentAndGlyph" >
+                <dxb:BarButtonItem x:Name="mPanelWazenia" Content="Kompletacja Zamówień"   IsVisible="{Binding IsVisibleRejZam}"/>
+                <dxb:BarButtonItem x:Name="mPanelWystDok" Content="Lista Zamówień"   Command="{Binding ICommandZamowienieLista}" IsVisible="{Binding IsZamowienieLista}"/>
+             </dxb:BarSubItem>
+              <dxb:BarSubItem Content="Ustawienia" x:Name="mUstawienia"  Glyph="{dx:DXImage Image=ChartXAxisSettings_16x16.png}" BarItemDisplayMode="ContentAndGlyph" LargeGlyph="{dx:DXImage Image=ChartXAxisSettings_32x32.png}" >
+
+                <dxb:BarButtonItem x:Name="Ustawienia" Content="Ustawienia Programu"  Command="{Binding ICommandUstawienia}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Services-50.png" LargeGlyph="pack://application:,,,/WagaDuza;component/Resources/icons8-Services-50.png"/>
+                <dxb:BarItemSeparator/>
+                <dxb:BarButtonItem x:Name="ErpConnector"   Content="Erp Connector" IsVisible="{Binding IsVisibleIntegracja}"  Command="{Binding ICommandConnector}" Glyph="pack://application:,,,/WagaDuza;component/Resources/icons8-disconnected.png" LargeGlyph="pack://application:,,,/WagaDuza;component/Resources/icons8-disconnected.png"/>
+                <dxb:BarItemSeparator/>
+                <dxb:BarButtonItem x:Name="Wyloguj"   Content="Wyloguj" IsVisible="True"  Command="{Binding ICommandLogout}" LargeGlyph="pack://application:,,,/WagaDuza;component/icons8-exit-50.png"/>
+                <dxb:BarItemSeparator/>
+                
+            </dxb:BarSubItem>
+              <dxb:BarButtonItem x:Name="menuLoginLabel"  Content=" Zalogowano jako: " IsEnabled="False"/>
+        </dxb:MainMenuControl>
+
+        <dxdo:LayoutGroup   DestroyOnClosingChildren="False" Grid.Row="1" Grid.RowSpan="2">
+            <dxdo:LayoutGroup>
+                <dxdo:LayoutPanel ShowBorder="False" ShowCaption="False"  AllowClose="False" AllowDock="False" AllowActivate="False" AllowDrag="False"  AllowDockToCurrentItem="False" AllowDockToDocumentGroup="False" AllowFloat="False" AllowMaximize="False" AllowMove="False" AllowSizing="False">
+                    <dxn:NavBarControl HorizontalAlignment="Left" VerticalAlignment="Stretch" >
+                        <dxn:NavBarGroup x:Name="navBarGroup" Header="Magazyn" DisplayMode="ImageAndText" ImageSource="{dx:DXImage Image=Database_16x16.png}">
+                            <dxn:NavBarItem x:Name="nlicencja" Content="Kontrahenci" Command="{Binding ICommandKontrah}" CommandParameter="12"/>
+                            <dxn:NavBarItem x:Name="npoloacz6" Content="Ceny" Command="{Binding ICommandCennik}" CommandParameter="7"/>
+                            <dxn:NavBarItem x:Name="npoloacz" Content="Towary" Command="{Binding ICommandKartoteki}" CommandParameter="1"/>
+                            <dxn:NavBarItem x:Name="npoloacz3" Content="Grupy kartotekowe" IsVisible="{Binding IsKontrahMenu,UpdateSourceTrigger=PropertyChanged}" Command="{Binding ICommandGrupaKart}" />
+                        
+                        </dxn:NavBarGroup>
+                        <dxn:NavBarGroup x:Name="navBarGroup1" Header="Wydawanie" DisplayMode="ImageAndText" ImageSource="{dx:DXImage Image=EditComment_32x32.png}">
+                            <dxn:NavBarItem x:Name="navBarItem1" Content="Aktualne Zamówienia"   Command="{Binding ICommandZamowienieLista}" CommandParameter="6"/>
+                            <dxn:NavBarItem x:Name="navBarItem2" Content="Wystawione Dokumenty" Command="{Binding UstawPanel}" CommandParameter="13" />
+                            <dxn:NavBarItem x:Name="navBarItem3" Content="Listy przewozowe" Command="{Binding UstawPanel}" CommandParameter="14"/>
+                        </dxn:NavBarGroup>
+                        <dxn:NavBarGroup x:Name="navBarGroup2" Header="Słowniki" DisplayMode="ImageAndText" ImageSource="{dx:DXImage Image=MoreFunctions_32x32.png}">
+                            <dxn:NavBarItem x:Name="dane" Content="Dane Firmy"  Command="{Binding UstawPanel}" CommandParameter="11"/>
+                            <dxn:NavBarItem x:Name="trasy" Content="Trasy"  Command="{Binding ICommandTrasa}"/>
+                            <dxn:NavBarItem x:Name="xom2" Content="Stanowiska wagowe"/>
+                            <dxn:NavBarItem x:Name="xom3" Content="Wagi"/>
+                        </dxn:NavBarGroup>
+                    </dxn:NavBarControl>
+                </dxdo:LayoutPanel>
+
+            </dxdo:LayoutGroup>
+            <dxdo:LayoutGroup Orientation="Horizontal" DestroyOnClosingChildren="False">
+                <dxdo:LayoutGroup x:Name="LayoutGroupLeft" Orientation="Horizontal" DestroyOnClosingChildren="False"/>
+            </dxdo:LayoutGroup>
+        </dxdo:LayoutGroup>
+
+        <dxdo:DockLayoutManager 
+			x:Name="docManager"
+			FloatingMode="Window"
+			ItemsSource="{Binding ChildViews,UpdateSourceTrigger=PropertyChanged}"	
+			DockItemEndDocking="dockLayoutManager_DockItemEndDocking"
+			DockItemStartDocking="dockLayoutManager_DockItemStartDocking" Grid.Row="1" Grid.Column="1"  Grid.RowSpan="2" Grid.ColumnSpan="2" >
+            <dxdo:DockLayoutManager.Resources>
+                <DataTemplate x:Key="DokumentySettingsTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="DokumentySettings"
+	                 	AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                        Caption="Definicje Dokumentów" 
+                        Closed="{Binding IsClosed}"
+                        Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="UslugaTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="Usluga"
+						AllowHide="False" 
+						AllowMaximize="False"
+						AllowContextMenu="False" 
+						FloatOnDoubleClick="False" 
+						AllowDockToDocumentGroup="False"
+                         Caption="Ważenie Usługowe " 
+                        Closed="{Binding IsClosed}"/>
+                </DataTemplate>
+                <DataTemplate x:Key="KartotekiTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="Kartoteka"
+	                	AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                         Caption ="Definicja Kartoteki" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="RejWagaTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="RejWaga"
+						AllowHide="False" 
+						AllowMaximize="False"
+						AllowContextMenu="False" 
+						FloatOnDoubleClick="False" 
+						AllowDockToDocumentGroup="False"
+                        Caption="Rejestracja Ważeń"
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="PojazdyTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="Pojazdy"
+						AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                        Caption="Lista Pojazdów"
+                        Closed="{Binding IsClosed}"	/>
+                </DataTemplate>
+                <DataTemplate x:Key="KierowcyTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="Kierowcy"
+				     	AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                        Caption ="Kierowcy" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="BazaDanychTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="BazaDanych"
+						AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="False" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                       Caption ="Ustawienie Bazy" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="Kamera1Template">
+                    <dxdo:LayoutPanel   
+						x:Name="Kamera1"
+						AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="False" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                         Caption="Kamera 1" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="Kamera2Template">
+                    <dxdo:LayoutPanel   
+						x:Name="Kamera2"
+						AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="False" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                         Caption="Kamera 2" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="Kamera3Template">
+                    <dxdo:LayoutPanel   
+						x:Name="Kamera3"
+						AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="False" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                         Caption="Kamera 3" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="KontrahentTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="Kontrahent"
+			     	    AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                        Caption="Kontrahenci" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="DokumentyTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="Dokumenty"
+						AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="False" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        Caption="Dokumenty"
+                        Closed="{Binding IsClosed}"/>
+                </DataTemplate>
+                <DataTemplate x:Key="ProgramSettingsTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="ProgramSettings"
+						AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="False" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                         Caption ="Konfiguracja Programu" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="SystemErpTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="SystemErp"
+					AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                         Caption ="Integracje z ERP" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="ImportTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="Import"
+	   	      	    	AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                         Caption ="Synchronizacja Danych" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="CennikTemplate">
+                    <dxdo:LayoutPanel   MaxWidth ="370"
+						x:Name="Cennik"
+			    		AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                         Caption ="Obsługa Cenników" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="DefCenyTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="DefCeny"
+						AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                         Caption ="Definicje Cen" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="RejZamTemplate">
+                    <dxdo:LayoutPanel   
+						x:Name="RejZam"
+	            		AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                         Caption ="Rejestracja Zamówienia" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="ZamowienieListaTemplate">
+                    <dxdo:LayoutPanel  
+						x:Name="ZamowienieLista"
+		    			AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                          Closed="{Binding IsClosed}"
+						/>
+                 </DataTemplate>
+                <DataTemplate x:Key="GrupaKartTemplate">
+                    <dxdo:LayoutPanel     MaxWidth ="900" 
+						x:Name="ZamowienieLista"
+						AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                         Caption ="Grupy Kartotekowe" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="ZamowieniaDotykTemplate">
+                    <dxdo:LayoutPanel   MaxWidth ="900"
+              		    x:Name="ZamowienieLista"
+					        AllowHide="False" 
+						    AllowFloat="False"
+						    AllowMaximize="False"
+						    AllowContextMenu="True" 
+						    FloatOnDoubleClick="False"
+						    AllowDockToDocumentGroup="False"
+                            ShowCaption="False"
+                         Caption ="Zamowienia Dotyk" 
+                        Closed="{Binding IsClosed}"
+						/>
+                </DataTemplate>
+                <DataTemplate x:Key="TrasyTemplate">
+                    <dxdo:LayoutPanel           MaxWidth ="370"
+             			 Name="Trasy"
+						AllowHide="True" 
+						AllowFloat="True"
+						AllowMaximize="True"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="True"
+						AllowDockToDocumentGroup="True"
+                         Caption ="Lista Tras" 
+                
+                        Closed="{Binding IsClosed}"
+                       />
+              </DataTemplate>
+                <DataTemplate x:Key="OfertaTemplate">
+                    <dxdo:LayoutPanel   
+             			 Name="Oferta"
+						AllowHide="False" 
+						AllowFloat="False"
+						AllowMaximize="False"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="False"
+						AllowDockToDocumentGroup="False"
+                        ShowCaption="False"
+                        Closed="{Binding IsClosed}"
+                        
+						/>
+                </DataTemplate>
+                 <DataTemplate x:Key="HarmonogramDziennyTemplate">
+                    <dxdo:LayoutPanel   
+             			 Name="Trasy"
+						AllowHide="True" 
+						AllowFloat="True"
+						AllowMaximize="True"
+						AllowContextMenu="True" 
+						FloatOnDoubleClick="True"
+						AllowDockToDocumentGroup="True"
+                         Caption ="Harmonogram" 
+                        Closed="{Binding IsClosed}"
+                        
+						/>
+                </DataTemplate>
+            </dxdo:DockLayoutManager.Resources>
+            
+            <dxdo:DockLayoutManager.ItemTemplateSelector>
+                <local:TemplateSelector 
+				     UslugaTemplate="{StaticResource UslugaTemplate}"
+                     RejWagaTemplate="{StaticResource RejWagaTemplate}"
+					 BazaDanychTemplate="{StaticResource BazaDanychTemplate}"
+                     Kamera1Template ="{StaticResource Kamera1Template}"
+                     Kamera2Template ="{StaticResource Kamera2Template}"
+                     Kamera3Template="{StaticResource Kamera3Template}"
+                    KontrahentTemplate="{StaticResource KontrahentTemplate}"
+                    DokumentyTemplate="{StaticResource DokumentyTemplate}"
+                    PojazdyTemplate ="{StaticResource PojazdyTemplate}"
+                    KartotekiTemplate ="{StaticResource KartotekiTemplate}"
+                    DokumentySettingsTemplate="{StaticResource DokumentySettingsTemplate}"
+                    KierowcyTemplate="{StaticResource KierowcyTemplate}"
+                    ProgramSettingsTemplate="{StaticResource ProgramSettingsTemplate}"
+                    ImportTemplate ="{StaticResource ImportTemplate}"
+                    SystemErpTemplate ="{StaticResource SystemErpTemplate}"
+                    CennikTemplate ="{StaticResource CennikTemplate}"
+                    DefCenyTemplate ="{StaticResource DefCenyTemplate}"
+                    RejZamTemplate ="{StaticResource RejZamTemplate}"
+                    ZamowienieListaTemplate ="{StaticResource ZamowienieListaTemplate}"
+                    GrupaKartTemplate ="{StaticResource GrupaKartTemplate}"
+                    ZamowieniaDotykTemplate ="{StaticResource ZamowieniaDotykTemplate}"
+                    TrasyTemplate ="{StaticResource TrasyTemplate}"
+                    OfertaTemplate ="{StaticResource OfertaTemplate}"
+                     HarmonogramDziennyTemplate="{StaticResource HarmonogramDziennyTemplate}"
+                    />
+            </dxdo:DockLayoutManager.ItemTemplateSelector>
+
+
+            <dxdo:DockLayoutManager.FloatGroups>
+                <dxdo:FloatGroup FloatSize="200,200" FloatLocation="200,100">
+                    <dxdo:LayoutPanel x:Name="paneMessages" Caption="Messages" >
+                        <RichTextBox />
+                    </dxdo:LayoutPanel>
+                </dxdo:FloatGroup>
+            </dxdo:DockLayoutManager.FloatGroups>
+        </dxdo:DockLayoutManager>
+    </Grid>
+</dx:DXWindow>
+    

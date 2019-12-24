@@ -1,0 +1,462 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KpInfohelp"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"         
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/"
+             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:mvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+               xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking" 
+             
+             xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v17.1" 
+             x:Class="KpInfohelp.Oferta"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="2000" >
+
+    <UserControl.Resources>
+ 
+        <Style x:Key="MyLabelStyle" TargetType="{x:Type dxlc:LayoutItemLabel}">
+            <Setter Property="Foreground" Value="Chocolate" />
+        </Style>
+    
+        
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <local:ViewModelOferta />
+    </UserControl.DataContext>
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:KeyToCommand KeyGesture="CTRL+F"  Command="{Binding FocusToSearch}"/>
+        <dxmvvm:KeyToCommand KeyGesture="CTRL+Z"  Command="{Binding Zatwierdz}"/>
+        
+      <dx:DXMessageBoxService />
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxlc:LayoutControl Orientation="Vertical" >
+            <dxlc:LayoutGroup.InputBindings>
+
+                <KeyBinding Key="F1" Command="{Binding OpenCloseKontrahCommand}"/>
+                <KeyBinding Key="F3" Command="{Binding ZapiszObr}"/>
+                <KeyBinding Key="F5" Command="{Binding Zatwierdz}"/>
+                <KeyBinding Key="Esc" Command="{Binding DeleteCommand}"/>
+           
+            </dxlc:LayoutGroup.InputBindings>
+
+           <dxdo:DockLayoutManager Name="RejDokWaga">
+                <dxdo:LayoutGroup Caption="LayoutRoot" Orientation="Vertical">
+                    <dxdo:LayoutGroup Orientation="Horizontal" Grid.Row="2">
+                        <dxdo:LayoutPanel  ShowBorder="False" ShowCaption="False" ItemWidth="600">
+                     
+                 
+                                    
+                            <dxlc:LayoutGroup Orientation="Vertical">
+                           
+                                    <!--<dxlc:LayoutItem HorizontalAlignment="Stretch" BorderBrush="Aqua" Background="Aqua">
+                                        <dxb:BarContainerControl  >
+                                            <dxb:ToolBarControl Caption="Main Toolbar" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                                                <dxb:BarButtonItem Content="Zatwierdź" Command="{Binding Zatwierdz}" Glyph="{dx:DXImage Image=Add_16x16.png}" />
+                                                <dxb:BarButtonItem  Content="Porzuć" Command="{Binding DeleteCommand}" Glyph="{dx:DXImage Image=DeleteGroupHeader_16x16.png}" />
+                                             </dxb:ToolBarControl>
+                                        </dxb:BarContainerControl>
+                                    </dxlc:LayoutItem>-->
+                               
+                                
+                                <dxlc:LayoutGroup HorizontalAlignment="Stretch" Height="156"  dx:ScrollViewerTouchBehavior.IsEnabled="True" >
+                                    <dxlc:LayoutGroup Header="Dane Zamówienia" Height="135" Width="170" dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup" View="GroupBox" Orientation="Vertical" HorizontalAlignment="Stretch">
+                                        <dxlc:LayoutItem HorizontalAlignment="Left" Width="140" x:Name="NumerOferty" LabelPosition="Top" LabelStyle="{StaticResource MyLabelStyle}">
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="DarkCyan" Text="{Binding NrDokWew, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="22" />
+                                        </dxlc:LayoutItem>
+                                        <dxlc:LayoutItem HorizontalAlignment="Left" Width="130" Label="Nazwisko:" FontSize="8" LabelPosition="Top" LabelStyle="{StaticResource MyLabelStyle}">
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="Blue" Text="{Binding Nagl.IHP_KONTRAHENT_ARCH.NAZWA, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="9" FontFamily="Tahoma" />
+                                        </dxlc:LayoutItem>
+                              
+                                        <dxlc:LayoutItem HorizontalAlignment="Left" Width="140" Label="Telefon Kom:" FontSize="8" LabelPosition="Top" LabelStyle="{StaticResource MyLabelStyle}">
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Stretch" Foreground="Blue" Text="{Binding Nagl.IHP_KONTRAHENT_ARCH.TELKOM, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="9" FontFamily="Tahoma" />
+                                        </dxlc:LayoutItem>
+                    
+                                    </dxlc:LayoutGroup>
+                                    <dxlc:LayoutGroup Header="Dane Podstawowe" Height="135" Serialization:SerializableItem.TypeName="LayoutGroup" View="GroupBox" Orientation="Vertical" HorizontalAlignment="Stretch">
+                                        <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                                            <dxlc:LayoutItem HorizontalAlignment="Stretch" Width="175" x:Name="DataOferty" Label="Data Zam.:" LabelPosition="Top">
+                                                <dxe:DateEdit x:Name="dtOferty" HorizontalAlignment="Stretch" ShowWeekNumbers="True" DateTime="{Binding Nagl.DATADOK, UpdateSourceTrigger=PropertyChanged,NotifyOnValidationError=True,ValidatesOnExceptions=True}" />
+                                            </dxlc:LayoutItem>
+                                            <dxlc:LayoutItem x:Name="lblData2" Width="175" HorizontalAlignment="Stretch" Label="Termin Realiz.:" LabelPosition="Top">
+                                                <dxe:DateEdit x:Name="dtDataDo" DateTime="{Binding Nagl.TERMINREALIZ, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" HorizontalAlignment="Stretch" />
+                                            </dxlc:LayoutItem>
+
+                                        </dxlc:LayoutGroup>
+                                        <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                                            <dxlc:LayoutItem HorizontalAlignment="Left" Width="175" x:Name="lblRodzajDok" Label="Rodzaj Dok." LabelPosition="Top">
+                                                <dxe:ComboBoxEdit ValueMember="ID_IHP_RODZAJDOK" DisplayMember="SKROTDOK" EditValue="{Binding Nagl.ID_RODZAJDOK, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" SelectedItem="{Binding RodzajDokSel}"  ItemsSource="{Binding RodzajDokLst, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                						VerticalAlignment="Top"   
+                						x:Name="ComboBoxRodz" />
+                                            </dxlc:LayoutItem>
+                                            <dxlc:LayoutItem HorizontalAlignment="Left" Width="175" x:Name="lblPriorytet1" Label="Priorytet" LabelPosition="Top">
+                                                <dxe:ComboBoxEdit ValueMember="ID_IHP_PRIORYTET" DisplayMember="OPIS" EditValue="{Binding Nagl.ID_IHP_PRIORYTET, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" SelectedItem="{Binding Priorytet,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Priorytety,UpdateSourceTrigger=PropertyChanged}"
+                							VerticalAlignment="Top"  Width="175"  x:Name="ComboBoxPriorytet1" />
+                                            </dxlc:LayoutItem>
+                                        </dxlc:LayoutGroup>
+                                        <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup"/>
+                                    </dxlc:LayoutGroup>
+                                </dxlc:LayoutGroup>
+                                <dxlc:LayoutGroup Orientation="Vertical">
+                          
+                                <dxlc:LayoutItem HorizontalAlignment="Stretch"  >
+ 
+                          <dxlc:LayoutItem Label="Wybierz Kontrahenta:" LabelPosition="Top" HorizontalAlignment="Stretch">
+                                    <dxg:LookUpEdit x:Name="lueKartotekaMat" Width="570"
+                        				DisplayMember="NAZWA"
+                        				ValueMember="ID_IHP_KONTRAHENT" 
+                        				AutoPopulateColumns="False"
+                        				AutoComplete="True"
+                        				ImmediatePopup="True"
+                                        IsPopupOpen ="{Binding IsPopupOpenKontrah,Mode =TwoWay ,UpdateSourceTrigger=PropertyChanged}"
+                                        EditValue="{Binding Kontrahent.ID_IHP_KONTRAHENT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ItemsSource="{Binding Kontrahs, UpdateSourceTrigger=PropertyChanged}"
+                                        IsPopupAutoWidth="False"
+                        				IsSynchronizedWithCurrentItem="False" 
+                                         IsEnabled="{Binding IsEnabledMaterial,Mode =TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                         SelectedItem="{Binding Kontrahent,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                     
+                                                    <dxg:LookUpEdit.StyleSettings>
+                                                        <dxg:SearchLookUpEditStyleSettings IsTextEditable="True"   HighlightedTextBackground="GreenYellow"/>
+                                                    </dxg:LookUpEdit.StyleSettings>
+                                                    <dxg:LookUpEdit.PopupContentTemplate>
+                                                        <ControlTemplate>
+                                                        <dxg:GridControl x:Name="PART_GridControl"  ItemsSource = "{Binding Kontrahs,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                                                <dxg:GridControl.View>
+                                                                    <dxg:TableView AutoWidth="True"  Name="ViewMat"  />
+                                                                </dxg:GridControl.View>
+                                                            <dxg:GridColumn FieldName="ID_IHP_KONTRAHENT" Width="40"  Visible="False" />
+                                                            <dxg:GridColumn FieldName="NAZWA" Width="240" Header="Nazwa " />
+                                                            <dxg:GridColumn FieldName="MIEJSCOWOSC" Width="150" Header="Miasto " />
+                                                            <dxg:GridColumn FieldName="TELEFON" Width="120" Header="Telefon " />
+                                                       </dxg:GridControl>
+                                                        </ControlTemplate>
+                                                    </dxg:LookUpEdit.PopupContentTemplate>
+                                                    <dxmvvm:Interaction.Triggers>
+                                                    <dxmvvm:EventToCommand EventName="SelectedIndexChanged" Command="{Binding SetFocusCommand}" CommandParameter="3" PassEventArgsToCommand="True">
+                                                            <dxmvvm:EventToCommand.EventArgsConverter>
+                                                                <dx:EventArgsToDataRowConverter />
+                                                            </dxmvvm:EventToCommand.EventArgsConverter>
+                                                        </dxmvvm:EventToCommand>
+                                                    </dxmvvm:Interaction.Triggers>
+                                                    <dxmvvm:Interaction.Behaviors>
+                                                        <dxmvvm:FocusBehavior   SourceObject="{Binding}" PropertyName="ComboMat" />
+                                                    </dxmvvm:Interaction.Behaviors>
+                                                </dxg:LookUpEdit>
+                                            </dxlc:LayoutItem>
+                                 
+                                    </dxlc:LayoutItem>
+                            </dxlc:LayoutGroup>
+
+                    
+                                <dxlc:LayoutGroup Header="Dane Kartoteki" Serialization:SerializableItem.TypeName="LayoutGroup" View="GroupBox" Orientation="Vertical" VerticalAlignment="Stretch"  IsCollapsed="True">
+                                 <dxlc:LayoutItem   Width="260" x:Name="lblSearchtext"   HorizontalAlignment="Left">
+                                        <dxe:TextEdit x:Name="txtIloscSearchtext" CharacterCasing="Upper"  NullText="Znajdź kartotekę" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"  >
+                                            <mvvm:Interaction.Behaviors>
+                                                <mvvm:FocusBehavior SourceObject="{Binding}" PropertyName="SearchText"/>
+                                            </mvvm:Interaction.Behaviors>
+                                            <dxe:TextEdit.InputBindings>
+                                                <KeyBinding Key="Enter" Command="{Binding SetFocusCommand}" CommandParameter="4"  />
+                                                <KeyBinding Key="Tab" Command="{Binding SetFocusCommand}" CommandParameter="5"  />
+                                            </dxe:TextEdit.InputBindings>
+                                        </dxe:TextEdit>
+                                    </dxlc:LayoutItem>
+                                  <dxlc:LayoutItem VerticalAlignment="Stretch">
+                          
+                                    
+                                    <dxg:GridControl AutoGenerateColumns="AddNew"  x:Name="dgvTowary" SelectionMode="Row"  EnableSmartColumnsGeneration="False" SelectedItem="{Binding KartotekaSel,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Kartoteki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                          <dxg:GridControl.View>
+                                            <dxg:TableView   ShowSearchPanelMode="Never"  ShowGroupPanel="False"   Name="view" NavigationStyle="Row">
+                                           
+                                                <dxg:TableView.InputBindings>
+                                                    <KeyBinding Key="Enter" Command="{Binding EditPozCommand}"/>
+                                                </dxg:TableView.InputBindings>
+                                            </dxg:TableView>
+                                        </dxg:GridControl.View>
+                                        <dxg:GridColumn FieldName="ID_IHP_KARTOTEKA" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="INDEKS" Visible="true"  Header="Indeks " Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="NAZWASKR" Visible="true"  Header="Nazwa skrócona" Width="150" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="NAZWADL" Visible="true"  Header="Nazwa długa" Width="280" ReadOnly="True"/>
+
+                                        <dxg:GridColumn FieldName="ID_IHP_STAWKAVAT" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="ID_IHP_RODZAJKART" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="ID_IHP_JM" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="SWW" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="PKWIU" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="UWAGI" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="KODEAN" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="ID_IHP_GRUPAKART" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="ID_TOWSUBJECT" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="IHP_CENNIK" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="IHP_JM" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="IHP_RODZAJKART" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="IHP_STAWKAVAT" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="IHP_WAZENIE" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="IHP_POZDOK" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="IHP_GRUPAKART" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="CenaUzgodniona" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName=" NrDokPow" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="Zaznaczenie" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+                                        <dxg:GridColumn FieldName="NrDokPow" Visible="false"  Header="Numer Dok." Width="100" ReadOnly="True"/>
+
+                                    </dxg:GridControl>
+
+                                        </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+                                
+                            </dxlc:LayoutGroup>
+                        </dxdo:LayoutPanel>
+
+                        <dxdo:LayoutPanel   ShowBorder="False" ShowCaption="False"  ItemHeight="180">
+                            <dxlc:LayoutGroup Header="Dodaj Pozycję" UseLayoutRounding="True" View="GroupBox" HorizontalAlignment="Stretch" Orientation="Vertical">
+                                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+
+                                    <dxlc:LayoutItem HorizontalAlignment="Stretch">
+                                        <dxb:BarContainerControl  >
+                                            <dxb:ToolBarControl Caption="Main Toolbar" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                                                <dxb:BarButtonItem Content="Dodaj" Command="{Binding ZapiszObr}" Glyph="{dx:DXImage Image=Add_16x16.png}" />
+                                                <dxb:BarButtonItem  Content="Usuń" Command="{Binding DeletePozCommand}" Glyph="{dx:DXImage Image=Cancel_16x16.png}" />
+                                                <dxb:BarButtonItem Content="Edytuj" Command="{Binding EditCommand}" Glyph="{dx:DXImage Image=SelectAll2_16x16.png}"  />
+                                            </dxb:ToolBarControl>
+
+                                            <dxb:ToolBarControl Caption="Main Toolbar" BarItemHorizontalIndent="10" AllowCollapse="False" BarItemDisplayMode="ContentAndGlyph" UseWholeRow="False" AllowCustomizationMenu="False" AllowHide="False" AllowQuickCustomization="False" ShowDragWidget="False">
+                                                <dxb:BarButtonItem Content="Wędliny"  Command="{Binding DayCommand}" Glyph="{dx:DXImage Image=Calendar_16x16.png}"  >
+                                                    <dxb:BarButtonItem.GlyphTemplate>
+                                                        <DataTemplate>
+                                                            <Border  Width="12" Height="12"   />
+                                                        </DataTemplate>
+                                                    </dxb:BarButtonItem.GlyphTemplate>
+                                                </dxb:BarButtonItem>
+                                                <dxb:BarButtonItem Content="Drób" Command="{Binding WeekCommand}" Glyph="{dx:DXImage Image=Calendar_16x16.png}" >
+                                                    <dxb:BarButtonItem.GlyphTemplate>
+                                                        <DataTemplate>
+                                                            <Border Width="12" Height="12"  />
+                                                        </DataTemplate>
+                                                    </dxb:BarButtonItem.GlyphTemplate>
+                                                </dxb:BarButtonItem>
+                                                <dxb:BarButtonItem Content="Mięso"  Command="{Binding DayCommand}" Glyph="{dx:DXImage Image=Calendar_16x16.png}"  >
+                                                    <dxb:BarButtonItem.GlyphTemplate>
+                                                        <DataTemplate>
+                                                            <Border  Width="12"  Height="12"   />
+                                                        </DataTemplate>
+                                                    </dxb:BarButtonItem.GlyphTemplate>
+                                                </dxb:BarButtonItem>
+
+                                            </dxb:ToolBarControl>
+                                        </dxb:BarContainerControl>
+                                    </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+
+                                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                                    <!--<dxlc:LayoutItem HorizontalAlignment="Left" Width="50" x:Name="lblCenaObr" LabelPosition="Top" Label="Ceny.:">
+                                            <dxe:CheckEdit HorizontalAlignment="Center" Height="22" IsChecked="{Binding IsUzgodnioneObr, Mode=TwoWay}" />
+                                        </dxlc:LayoutItem>-->
+
+                                    <dxlc:LayoutItem HorizontalAlignment="Left" Width="50" x:Name="lblCenaUzgodniona2" LabelPosition="Top" Label="Cena Uzg.:">
+                                        <dxe:CheckEdit HorizontalAlignment="Center" Height="22" IsChecked="{Binding IsUzgodnione, Mode=TwoWay}"  />
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem HorizontalAlignment="Left" Width="60" x:Name="lblIlosc" Label="Ilość" LabelPosition="Top">
+                                        <dxe:TextEdit x:Name="txtIloscObr"  Text="{Binding Ilosc, UpdateSourceTrigger=PropertyChanged}"     MaskType="Numeric" Mask="n"  >
+                                            <mvvm:Interaction.Behaviors>
+                                                <mvvm:FocusBehavior SourceObject="{Binding}" PropertyName="Ilosc"/>
+                                            </mvvm:Interaction.Behaviors>
+                                            <dxe:TextEdit.InputBindings>
+                                                <KeyBinding Key="Enter" Command="{Binding SetFocusCommand}" CommandParameter="2"  />
+                                            </dxe:TextEdit.InputBindings>
+                                        </dxe:TextEdit>
+                                    </dxlc:LayoutItem>
+
+                                    <dxlc:LayoutItem HorizontalAlignment="Left" Width="80" x:Name="lblIloscPow" Label="Ilosć Paczek:" LabelPosition="Top">
+                                        <dxe:TextEdit x:Name="txtIloscObrPowierzchnia" IsEnabled="{Binding Txtzlsztil}" Text="{Binding IloscPaczek, UpdateSourceTrigger=PropertyChanged}"    MaskType="Numeric" Mask="n" >
+                                            <dxe:TextEdit.InputBindings>
+                                                <KeyBinding Key="Enter" Command="{Binding CalcValWgPaczekCommand}" />
+                                            </dxe:TextEdit.InputBindings>
+                                        </dxe:TextEdit>
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem HorizontalAlignment="Stretch" Width="80" x:Name="lblIloscwpaczce" Label="Ilosć w Paczce:" LabelPosition="Top">
+                                        <dxe:ComboBoxEdit  ValueMember="ID_IHP_WYST_JZ" DisplayMember="WARTOSC"  HorizontalAlignment="Stretch" SelectedItem="{Binding JednZastSel,UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding JednZastSelAll}"
+                							VerticalAlignment="Top"  />
+
+
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem HorizontalAlignment="Left" Width="80" x:Name="lblIloscRazem" Label="Ilość Razem:" LabelPosition="Top">
+                                        <dxe:TextEdit x:Name="txtIloscObrRazem" IsEnabled="{Binding TxtIloscRazem}" Text="{Binding IloscRazem, UpdateSourceTrigger=PropertyChanged}">
+                                            <dxe:TextEdit.InputBindings>
+                                                <KeyBinding Key="Enter" Command="{Binding CalcValCommand}" />
+                                                <KeyBinding Key="F3" Command="{Binding ZapiszObr}" />
+                                            </dxe:TextEdit.InputBindings>
+                                            <mvvm:Interaction.Behaviors>
+                                                <mvvm:FocusBehavior SourceObject="{Binding}" PropertyName="IloscObrRazem" />
+                                            </mvvm:Interaction.Behaviors>
+                                        </dxe:TextEdit>
+                                    </dxlc:LayoutItem>
+
+                                    <dxlc:LayoutItem Width="80" Label="Wart. Netto:" LabelPosition="Top">
+                                        <dxe:TextEdit IsEnabled="False" Text="{Binding Wartnetto, UpdateSourceTrigger=PropertyChanged}" />
+                                    </dxlc:LayoutItem>
+                                    <!--<dxlc:LayoutItem Label="Wart. Vat:" Width="50" LabelPosition="Top">
+                                            <dxe:TextEdit IsEnabled="False" HorizontalAlignment="Left" Width="100" Text="{Binding WartvatObr, UpdateSourceTrigger=PropertyChanged}" />
+                                        </dxlc:LayoutItem>-->
+                                    <dxlc:LayoutItem Width="70" Label="Wart. Brutto:" LabelPosition="Top">
+                                        <dxe:TextEdit IsEnabled="False" Text="{Binding Wartbrutto, UpdateSourceTrigger=PropertyChanged}" />
+                                    </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+                                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" x:Name="grCennaObrUzg" Serialization:SerializableItem.TypeName="LayoutGroup" Margin="66,0,0,0" Visibility="Visible">
+                                    <dxlc:LayoutItem     Width="100">
+
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="Netto:"   Width="120">
+                                        <dxe:TextEdit   MaskType="Numeric" Mask="d"  Text="{Binding CenaUzgNetto, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80" >
+                                            <dxe:TextEdit.InputBindings>
+                                                <KeyBinding Key="Enter" Command="{Binding PrzeliczUzgCommandObr}" />
+                                            </dxe:TextEdit.InputBindings>
+                                        </dxe:TextEdit>
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="Vat:" Width="90"  >
+                                        <dxe:TextEdit HorizontalAlignment="Left" Width="50" Text="{Binding VAT}">
+                                            <mvvm:Interaction.Behaviors>
+                                                <local:DisplayTextHelper TextToBind="{Binding Vat, Mode=OneWayToSource, ValidatesOnExceptions=True}" />
+                                            </mvvm:Interaction.Behaviors>
+                                        </dxe:TextEdit>
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="Brutto:"  HorizontalAlignment="Left" Width="140">
+                                        <dxe:TextEdit Text="{Binding CenaUzgBrutto, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
+                                    </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+                                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup" x:Name="grCennaUzgDetalObr" Margin="56,0,0,0" Visibility="Collapsed">
+                                    <dxlc:LayoutItem Label="Netto (Detaliczny):" LabelPosition="Top" Width="145">
+                                        <dxe:TextEdit Text="{Binding CennikDetalN, Mode=TwoWay}" IsReadOnly="True"/>
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="Vat:" Width="40" LabelPosition="Top">
+                                        <dxe:TextEdit Text="{Binding VatDetal}" IsReadOnly="True"/>
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="Brutto (Detaliczny):" Width="145" LabelPosition="Top">
+                                        <dxe:TextEdit Text="{Binding CennikDetalB, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                    </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+                                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup" x:Name="grCennaUzgHurtObr" Margin="56,0,0,0" Visibility="Collapsed">
+
+                                    <dxlc:LayoutItem Label="Netto (Hurtowy):" LabelPosition="Top" Width="145">
+                                        <dxe:TextEdit Text="{Binding CennikHurtN , Mode=TwoWay}" IsReadOnly="True"/>
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="Vat:" Width="40" LabelPosition="Top">
+                                        <dxe:TextEdit Text="{Binding VatHurt}" IsReadOnly="True"/>
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="Brutto (Hurtowy):" Width="145" LabelPosition="Top">
+                                        <dxe:TextEdit Text="{Binding CennikHurtB, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                    </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+                                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup" x:Name="grCennaUzgSpecialObr" Margin="56,0,0,0" Visibility="Collapsed">
+                                    <dxlc:LayoutItem Label="Netto (Specjalny):" LabelPosition="Top" Width="145">
+                                        <dxe:TextEdit Text="{Binding CennikSpecjalN, Mode=TwoWay}" IsReadOnly="True"/>
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="Vat:" Width="40" LabelPosition="Top">
+                                        <dxe:TextEdit Text="{Binding VatSpecjal}" IsReadOnly="True"/>
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem Label="Brutto (Specjalny):" Width="145" LabelPosition="Top" >
+                                        <dxe:TextEdit Text="{Binding CennikSpecjalB, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                    </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+
+                                <dxlc:LayoutItem Label="Uwagi" HorizontalAlignment="Stretch">
+                                    <dxe:MemoEdit EditValue="{Binding UwagiObr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </dxlc:LayoutItem>
+                                <!--<dxlc:LayoutItem HorizontalAlignment="Stretch" Width="460">
+                                    <dx:SimpleButton x:Name="btnZapiszMat" Content="Zapisz Pozycję" Command="{Binding ZapiszObr}" >
+                                        <mvvm:Interaction.Behaviors>
+                                            <mvvm:FocusBehavior SourceObject="{Binding}" PropertyName="btnZapiszMat" />
+                                        </mvvm:Interaction.Behaviors>
+                                    </dx:SimpleButton>
+                                </dxlc:LayoutItem>-->
+                                <!--</dxlc:LayoutGroup>
+
+
+                            <dxlc:LayoutGroup Orientation="Vertical">-->
+                                <dxlc:LayoutItem HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <dxg:GridControl AutoGenerateColumns="AddNew" x:Name="dgvListaLxp"
+                                                      SelectionMode="Row" 
+                                                      EnableSmartColumnsGeneration="False" 
+                                                      ItemsSource="{Binding Poz,UpdateSourceTrigger=PropertyChanged}"  SelectedItem="{Binding PozJ}" PreviewKeyDown="dgvListaLxp_PreviewKeyDown">
+                                        <dxg:GridControl.View>
+                                            <dxg:TableView x:Name="tvSzablon"
+                                                                AllowConditionalFormattingManager="True" 
+                                                                AllowConditionalFormattingMenu="True"
+                                                                AllowPerPixelScrolling="True" 
+                                                                  ShowGroupPanel="False" MultiSelectMode="Row" 
+                                                       AutoWidth="False" AllowEditing="False" 
+                                                       AllowGrouping="False" IsGroupPanelMenuEnabled="False"
+                                                       ShowBandsPanel="False" AllowSorting="False" />
+                                        </dxg:GridControl.View>
+                                        <dxg:GridColumn FieldName="LP" Visible="True" Header="LP"   Width="40" />
+                                        <dxg:GridColumn FieldName="ID_IHP_POZDOK" Visible="False" Header="ID_IHP_POZDOK"   Width="100" />
+                                        <dxg:GridColumn FieldName="IHP_KARTOTEKA.INDEKS" Visible="True" Header="Indeks"   Width="120" />
+                                        <dxg:GridColumn FieldName="ILOSCRAZEM" Visible="True" Header="Ilość R."   Width="40" />
+                                        <dxg:GridColumn FieldName="ILOSCPACZKA" Visible="True" Header="Ilość Paczka."   Width="80" />
+                                        <dxg:GridColumn FieldName="DATADOK" Visible="False" Header="Cena"   Width="40" />
+                                        <dxg:GridColumn FieldName="CENANETTO" Visible="False" Header="Cena"   Width="40" />
+                                        <dxg:GridColumn FieldName="CENABRUTTO" Visible="True" Header="Cena"   Width="55" />
+                                        <dxg:GridColumn FieldName="WARTBRUTTO" Visible="True" Header="Wartość"   Width="55" />
+                                        <dxg:GridColumn FieldName="UWAGI" Visible="True" Header="Uwagi"   Width="200" />
+                                        <dxg:GridColumn FieldName="ID_TOWSUBJECT" Visible="False" Header="ID_IHP_POZDOK"   Width="100" />
+                                        <dxg:GridColumn FieldName="ID_IHP_DEFSTATUS" Visible="False" Header="ID_IHP_POZDOK"   Width="100" />
+                                        <dxg:GridColumn FieldName="WARTNETTO" Visible="False" Header="ID_IHP_POZDOK"   Width="100" />
+                                        <dxg:GridColumn FieldName="WARTBRUTTO" Visible="False" Header="ID_IHP_POZDOK"   Width="100" />
+                                        <dxg:GridColumn FieldName="WARTVAT" Visible="False" Header="ID_IHP_POZDOK"   Width="100" />
+                                        <dxg:GridColumn FieldName="ID_IHP_KARTOTEKA" Visible="False" Header="ID_IHP_KARTOTEKA"   Width="100" />
+                                        <dxg:GridColumn FieldName="NAZWASKRPOZ" Visible="False" Header="NAZWASKRPOZ"   Width="100" />
+                                        <dxg:GridColumn FieldName="ID_IHP_NAGLDOK" Visible="False" Header="ID_IHP_NAGLDOK"   Width="100" />
+                                        <dxg:GridColumn FieldName="IHP_NAGLDOK" Visible="False" Header="IHP_NAGLDOK"   Width="100" />
+                                        <dxg:GridColumn FieldName="IHP_POWIAZANIE_WAGA" Visible="False" Header="IHP_POWIAZANIE_WAGA"   Width="100" />
+                                        <dxg:GridColumn FieldName="IHP_KARTOTEKA" Visible="False" Header="IHP_KARTOTEKA"   Width="100" />
+
+                                        <dxg:GridColumn  Header="Ustalono" Width="Auto" Visible="True" FieldName="CENAUSTALONA"   >
+                                            <dxg:GridColumn.DisplayTemplate>
+                                                <ControlTemplate>
+                                                    <!--<TextBlock Text="{Binding Value, Converter={StaticResource  NumToStringConverter}}"/>-->
+                                                    <TextBlock Text="{Binding Path=Data.CENAUSTALONA, Converter={local:NumToStringConverter}}" />
+                                                </ControlTemplate>
+                                            </dxg:GridColumn.DisplayTemplate>
+                                        </dxg:GridColumn>
+                                    </dxg:GridControl>
+
+                                </dxlc:LayoutItem>
+                                <dxlc:LayoutGroup>
+                                <dxlc:LayoutGroup HorizontalAlignment="Left" >
+                                    <dxlc:LayoutItem HorizontalAlignment="Right"  >
+                                        <dx:SimpleButton x:Name="btnZapiszMat" Content="Zapisz" FontSize="18" FontWeight="Light" Command="{Binding ZapiszObr}" Glyph="{dx:DXImage Image=AddNewDataSource_16x16.png}" >
+                                            <mvvm:Interaction.Behaviors>
+                                                <mvvm:FocusBehavior SourceObject="{Binding}" PropertyName="btnZapiszMat" />
+                                            </mvvm:Interaction.Behaviors>
+                                        </dx:SimpleButton>
+                                    </dxlc:LayoutItem>
+                                    <dxlc:LayoutItem HorizontalAlignment="Right"  >
+                                        <dx:SimpleButton  Content="Porzuć" FontSize="18" FontWeight="Light" Command="{Binding ZapiszObr}" Glyph="{dx:DXImage Image=DeleteList_16x16.png}" >
+                                            <mvvm:Interaction.Behaviors>
+                                                <mvvm:FocusBehavior SourceObject="{Binding}" PropertyName="btnZapiszMat" />
+                                            </mvvm:Interaction.Behaviors>
+                                        </dx:SimpleButton>
+                                    </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+                                <dxlc:LayoutGroup HorizontalAlignment="Right" >
+                                      <dxlc:LayoutItem HorizontalAlignment="Right" FontStretch="UltraExpanded"  FontWeight="Light" Foreground="Chocolate" FontSize="20" Label="Do Zapłaty:" >
+                                    <TextBlock  Text="{Binding WartoscRazem, ConverterParameter=\{0:C\}, Converter={local:StringFormatConverter}, ConverterCulture=pl-PL, UpdateSourceTrigger=PropertyChanged}" />
+                                </dxlc:LayoutItem>
+                                </dxlc:LayoutGroup>
+                            </dxlc:LayoutGroup>
+                            </dxlc:LayoutGroup>
+                        </dxdo:LayoutPanel>
+
+                    </dxdo:LayoutGroup>
+                </dxdo:LayoutGroup>
+            </dxdo:DockLayoutManager>
+        </dxlc:LayoutControl>
+    </Grid>
+</UserControl>
+
+    

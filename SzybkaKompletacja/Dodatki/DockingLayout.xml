@@ -1,0 +1,249 @@
+﻿<XtraSerializer version="1.0" application="DockLayoutManager">
+  <property name="#LayoutVersion" isnull="true" />
+  <property name="$DockLayoutManager" iskey="true" value="DockLayoutManager">
+    <property name="Items" iskey="true" value="14">
+      <property name="Item1" isnull="true" iskey="true">
+        <property name="SerializableSelectedTabPageIndex">-1</property>
+        <property name="SerializableDockSituation" iskey="true" value="0" />
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutGroup</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName" isnull="true" />
+        <property name="Name">dockItem1</property>
+        <property name="Caption" type="System.String">LayoutRoot</property>
+      </property>
+      <property name="Item2" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="IsActive">true</property>
+        <property name="SerializableDockSituation" iskey="true" value="0" />
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName">dockItem1</property>
+        <property name="ParentCollectionName" isnull="true" />
+        <property name="Name">dockItem2</property>
+        <property name="Caption" type="System.String">Dokumenty</property>
+      </property>
+      <property name="Item3" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="SerializableDockSituation" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="DockState">Docked</property>
+            <property name="ParentName">dockItem1</property>
+            <property name="OwnerName">dockItem3</property>
+            <property name="Index">1</property>
+          </property>
+        </property>
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName">$ClosedPanels</property>
+        <property name="Name">dockItem3</property>
+        <property name="Caption" type="System.String">Kamera 2</property>
+      </property>
+      <property name="Item4" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="SerializableDockSituation" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="DockState">Docked</property>
+            <property name="ParentName">dockItem1</property>
+            <property name="OwnerName">lyPanelKamera1</property>
+            <property name="Index">2</property>
+          </property>
+        </property>
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName">$ClosedPanels</property>
+        <property name="Name">lyPanelKamera1</property>
+        <property name="Caption" type="System.String">Kamera 1</property>
+      </property>
+      <property name="Item5" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="SerializableDockSituation" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="DockState">Docked</property>
+            <property name="ParentName">dockItem1</property>
+            <property name="OwnerName">dockItem4</property>
+            <property name="Index">3</property>
+          </property>
+        </property>
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName">$ClosedPanels</property>
+        <property name="Name">dockItem4</property>
+        <property name="Caption" type="System.String">Kamera 3</property>
+      </property>
+      <property name="Item6" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="SerializableDockSituation" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="DockState">Docked</property>
+            <property name="ParentName">dockItem1</property>
+            <property name="OwnerName">dockItem5</property>
+            <property name="Index">4</property>
+          </property>
+        </property>
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName">$ClosedPanels</property>
+        <property name="Name">dockItem5</property>
+        <property name="Caption" type="System.String">Kontrahenci</property>
+      </property>
+      <property name="Item7" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="SerializableDockSituation" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="DockState">Docked</property>
+            <property name="ParentName">dockItem1</property>
+            <property name="OwnerName">dockItem6</property>
+            <property name="Index">6</property>
+          </property>
+        </property>
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName">$ClosedPanels</property>
+        <property name="Name">dockItem6</property>
+        <property name="Caption" type="System.String">Ważenie Usługowe</property>
+      </property>
+      <property name="Item8" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="SerializableDockSituation" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="DockState">Docked</property>
+            <property name="ParentName">dockItem1</property>
+            <property name="OwnerName">dockItem7</property>
+            <property name="Index">7</property>
+          </property>
+        </property>
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName">$ClosedPanels</property>
+        <property name="Name">dockItem7</property>
+        <property name="Caption" type="System.String">Lista Pojazdów</property>
+      </property>
+      <property name="Item9" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="SerializableDockSituation" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="DockState">Docked</property>
+            <property name="ParentName">dockItem1</property>
+            <property name="OwnerName">dockItem8</property>
+            <property name="Index">8</property>
+          </property>
+        </property>
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName">$ClosedPanels</property>
+        <property name="Name">dockItem8</property>
+        <property name="Caption" type="System.String">Towary</property>
+      </property>
+      <property name="Item10" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="SerializableDockSituation" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="DockState">Docked</property>
+            <property name="ParentName">dockItem1</property>
+            <property name="OwnerName">dockItem9</property>
+            <property name="Index">9</property>
+          </property>
+        </property>
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName">$ClosedPanels</property>
+        <property name="Name">dockItem9</property>
+        <property name="Caption" type="System.String">Definicje Dokumentów</property>
+      </property>
+      <property name="Item11" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="SerializableDockSituation" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="DockState">Docked</property>
+            <property name="ParentName">dockItem1</property>
+            <property name="OwnerName">dockItem10</property>
+            <property name="Index">10</property>
+          </property>
+        </property>
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName">$ClosedPanels</property>
+        <property name="Name">dockItem10</property>
+        <property name="Caption" type="System.String">Kierowcy</property>
+      </property>
+      <property name="Item12" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="ItemHeight">0.91*</property>
+        <property name="ItemWidth">0.9*</property>
+        <property name="SerializableDockSituation" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="DockState">Docked</property>
+            <property name="ParentName">dockItem1</property>
+            <property name="OwnerName">dockItem11</property>
+            <property name="Index">11</property>
+          </property>
+        </property>
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName">$ClosedPanels</property>
+        <property name="Name">dockItem11</property>
+      </property>
+      <property name="Item13" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="ItemHeight">0.91*</property>
+        <property name="ItemWidth">0.9*</property>
+        <property name="SerializableDockSituation" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="DockState">Docked</property>
+            <property name="ParentName">dockItem1</property>
+            <property name="OwnerName">dockItem12</property>
+            <property name="Index">12</property>
+          </property>
+        </property>
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName">$ClosedPanels</property>
+        <property name="Name">dockItem12</property>
+      </property>
+      <property name="Item14" isnull="true" iskey="true">
+        <property name="SerializableFloatingBounds">0,0,0,0</property>
+        <property name="SerializableFloatingOffset">0,0</property>
+        <property name="IsActive">false</property>
+        <property name="SerializableDockSituation" iskey="true" value="1">
+          <property name="Item1" isnull="true" iskey="true">
+            <property name="DockState">Docked</property>
+            <property name="ParentName">dockItem1</property>
+            <property name="OwnerName">dockItem13</property>
+            <property name="Index">0</property>
+          </property>
+        </property>
+        <property name="SerializationInfo" isnull="true" iskey="true" />
+        <property name="TypeName">LayoutPanel</property>
+        <property name="ParentName" isnull="true" />
+        <property name="ParentCollectionName">$ClosedPanels</property>
+        <property name="Name">dockItem13</property>
+        <property name="Caption" type="System.String">Rejestracja Ważeń</property>
+      </property>
+    </property>
+    <property name="ManualClosedPanelsBarVisibility">false</property>
+  </property>
+</XtraSerializer>

@@ -1,0 +1,96 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KpInfohelp"
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"         
+              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+            xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+           xmlns:i="http://schemas.microsoft.com/expression/2010/"
+               xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"  
+            xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
+            xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v17.1" 
+             xmlns:dxca="http://schemas.devexpress.com/winfx/2008/xaml/carousel" 
+             xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar" 
+             xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation" 
+               xmlns:dxwui="http://schemas.devexpress.com/winfx/2008/xaml/windowsui" 
+                  xmlns:PANELS="clr-namespace:KpInfohelp" 
+                  x:Class="KpInfohelp.ProgramSettings"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <local:ViewModelProgramSettings />
+    </UserControl.DataContext>
+    <Grid>
+        <dxdo:DockLayoutManager>
+            <dxdo:LayoutGroup>
+                <dxdo:LayoutPanel ItemWidth="230" AllowClose="False" AllowDock="False" AllowActivate="False" AllowDrag="False"  AllowDockToCurrentItem="False" AllowDockToDocumentGroup="False" AllowFloat="False" AllowMaximize="False" AllowMove="False" AllowSizing="False">
+                    <dxn:NavBarControl HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="230">
+                        <dxn:NavBarGroup x:Name="navBarGroup" Header="Ustawienia Programu" DisplayMode="ImageAndText" ImageSource="pack://application:,,,/WagaDuza;component/Resources/icons8-Services-50.png">
+                            <dxn:NavBarItem x:Name="nlicencja" Content="Licencja Programu" Command="{Binding UstawPanel}" CommandParameter="12"/>
+                            <dxn:NavBarItem x:Name="npoloacz6" Content="Dane Firmy" Command="{Binding UstawPanel}" CommandParameter="7"/>
+                            <dxn:NavBarItem x:Name="npoloacz" Content="Baza Danych" Command="{Binding UstawPanel}" CommandParameter="1"/>
+                            <!--<dxn:NavBarItem x:Name="npoloacz2" Content="Rest Server" Command="{Binding UstawPanel}" CommandParameter="2"/>-->
+                            <dxn:NavBarItem x:Name="npoloacz3" Content="Konf. Systemu" Command="{Binding UstawPanel}" CommandParameter="3"/>
+                            <dxn:NavBarItem x:Name="npoloacz4" Content="Wygląd Okien"  Command="{Binding UstawPanel}" CommandParameter="4"/>
+                            <dxn:NavBarItem x:Name="npoloacz5" Content="Uprawnienia"  Command="{Binding UstawPanel}"  IsEnabled="{Binding ShowPermmissions,UpdateSourceTrigger=PropertyChanged}" CommandParameter="5"/>
+        
+                        </dxn:NavBarGroup>
+                        <dxn:NavBarGroup x:Name="navBarGroup1" Header="Kamery" DisplayMode="ImageAndText" ImageSource="pack://application:,,,/WagaDuza;component/Resources/icons8-Bullet%20Camera-50.png">
+                            <dxn:NavBarItem x:Name="navBarItem1" Content="Kamera 1"  Command="{Binding UstawPanel}" CommandParameter="6"/>
+                            <dxn:NavBarItem x:Name="navBarItem2" Content="Kamera 2" Command="{Binding UstawPanel}" CommandParameter="13" />
+                            <dxn:NavBarItem x:Name="navBarItem3" Content="Kamera 3" Command="{Binding UstawPanel}" CommandParameter="14"/>
+                         </dxn:NavBarGroup>
+                        <dxn:NavBarGroup x:Name="navBarGroup2" Header="Waga" DisplayMode="ImageAndText" ImageSource="pack://application:,,,/WagaDuza;component/Resources/icons8-Industrial%20Scales-50.png">
+                            <dxn:NavBarItem x:Name="miernik" Content="Miernik"  Command="{Binding UstawPanel}" CommandParameter="11"/>
+                            <dxn:NavBarItem x:Name="xom2" Content="Serwer Wagowy"/>
+                        </dxn:NavBarGroup>
+                    </dxn:NavBarControl>
+                </dxdo:LayoutPanel>
+                <dxdo:LayoutPanel Closed ="{Binding IsClosedMierniki,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Caption="Konfiguracja Miernika">
+                    <PANELS:Mierniki/>
+               </dxdo:LayoutPanel>
+                <!--     <dxdo:LayoutPanel Caption="Konfiguracja Rest Serwera" Closed ="{Binding IsClosedRestSerwer,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <PANELS:RestSerwer/>
+                </dxdo:LayoutPanel>-->
+                <dxdo:LayoutPanel Caption="Konfiruacja Kamery 1 " Closed ="{Binding IsClosedKamera1Settings,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <PANELS:Kamera1Settings/>
+                </dxdo:LayoutPanel>
+
+                <dxdo:LayoutPanel Caption="Konfiruacja Kamery 2" Closed ="{Binding IsClosedKamera2Settings,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <PANELS:Kamera2Settings/>
+                </dxdo:LayoutPanel>
+
+                <dxdo:LayoutPanel Caption="Konfiruacja Kamery 3" Closed ="{Binding IsClosedKamera3Settings,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <PANELS:Kamera3Settings/>
+                </dxdo:LayoutPanel>
+               
+                <dxdo:LayoutPanel Closed ="{Binding IsClosedBazaDanych,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Caption="Konfiguracja Bazy Danych">
+                    <PANELS:BazaDanych/>
+                </dxdo:LayoutPanel>
+                <dxdo:LayoutPanel Closed ="{Binding IsClosedDaneFirmy,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Caption="Dane Firmy">
+                    <PANELS:DaneFirmy/>
+                </dxdo:LayoutPanel>
+                <dxdo:LayoutPanel Closed ="{Binding IsClosedKonfWazenia,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Caption="Konfiguracja Ważenia">
+                    <PANELS:KonfWazenia/>
+                </dxdo:LayoutPanel>
+                <dxdo:LayoutPanel    Closed ="{Binding IsClosedOknoUzytkownikow,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Caption="Okno Użytkowników">
+                    <PANELS:OknoUzytkownikow/>
+                </dxdo:LayoutPanel>
+                <dxdo:LayoutPanel    Closed ="{Binding IsClosedLicencja,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Caption="Obsługa Licencji">
+                    <PANELS:Licencja/>
+                </dxdo:LayoutPanel>
+                <dxdo:LayoutPanel   Closed ="{Binding IsWygladOkien,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Caption="Wygląd Okien">
+                        <PANELS:WygladOkien/>
+                    </dxdo:LayoutPanel>
+           </dxdo:LayoutGroup>
+        </dxdo:DockLayoutManager>
+        
+    </Grid>
+
+
+
+</UserControl>

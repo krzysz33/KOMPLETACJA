@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BazaDanych>
+    <NazwaBazyDanych>INFOHELP\INFOHELP</NazwaBazyDanych>
+    <KatalogBazyDanych>INFOHELP</KatalogBazyDanych>
+    <RodzajAutoryzacji>1</RodzajAutoryzacji>
+    <UzytkownikBazy>SA</UzytkownikBazy>
+    <Haslo>krzysz33123</Haslo>
+    <LokalnySerwerBazyDanych>1</LokalnySerwerBazyDanych>
+    <HostZdalny>localhost</HostZdalny>
+    <provider>System.Data.SqlClient</provider>
+    <KopiaPrzyZamknieciu>0</KopiaPrzyZamknieciu>
+    <WyslijFtp>1</WyslijFtp>
+    <FtpHost>ftp.infohelp.pl</FtpHost>
+    <FtpUser>krzysz33</FtpUser>
+    <FtpPass>123456</FtpPass>
+  </BazaDanych>
+  <UstawieniaAplikacji>
+    <Parametry>
+      <Parametr>
+        <IdIhpParametry>1</IdIhpParametry>
+        <Rodzaj>1</Rodzaj>
+        <Wartosci>
+          <opis>Włączone domyślnie drugie Ważenie</opis>
+          <Wartosc>1</Wartosc>
+        </Wartosci>
+        <Wartosci>
+          <opis>Wylaczone drugie</opis>
+          <Wartosc>2</Wartosc>
+        </Wartosci>
+      </Parametr>
+      <Parametr>
+        <IdIhpParametry>2</IdIhpParametry>
+        <Rodzaj>1</Rodzaj>
+        <Wartosci>
+          <opis>Coś Tam</opis>
+          <Wartosc>3</Wartosc>
+        </Wartosci>
+        <Wartosci>
+          <opis>Coś nie Tam</opis>
+          <Wartosc>4</Wartosc>
+        </Wartosci>
+      </Parametr>
+      <Parametr>
+        <IdIhpParametry>3</IdIhpParametry>
+        <Rodzaj>1</Rodzaj>
+        <Wartosci>
+          <opis>Coś Tam</opis>
+          <Wartosc>3</Wartosc>
+        </Wartosci>
+        <Wartosci>
+          <opis>Coś nie Tam</opis>
+          <Wartosc>4</Wartosc>
+        </Wartosci>
+      </Parametr>
+      <Parametr>
+        <IdIhpParametry>4</IdIhpParametry>
+        <Rodzaj>1</Rodzaj>
+        <Wartosci>
+          <opis>Coś Tam</opis>
+          <Wartosc>3</Wartosc>
+        </Wartosci>
+        <Wartosci>
+          <opis>Coś nie Tam</opis>
+          <Wartosc>4</Wartosc>
+        </Wartosci>
+      </Parametr>
+      <Parametr>
+        <IdIhpParametry>5</IdIhpParametry>
+        <Rodzaj>1</Rodzaj>
+        <Wartosci>
+          <opis>Coś Tam</opis>
+          <Wartosc>3</Wartosc>
+        </Wartosci>
+        <Wartosci>
+          <opis>Coś nie Tam</opis>
+          <Wartosc>4</Wartosc>
+        </Wartosci>
+      </Parametr>
+      <Parametr>
+        <IdIhpParametry>6</IdIhpParametry>
+        <Rodzaj>1</Rodzaj>
+        <Wartosci>
+          <opis>Coś Tam</opis>
+          <Wartosc>3</Wartosc>
+        </Wartosci>
+        <Wartosci>
+          <opis>Coś nie Tam</opis>
+          <Wartosc>4</Wartosc>
+        </Wartosci>
+      </Parametr>
+      <Parametr>
+        <IdIhpParametry>7</IdIhpParametry>
+        <Rodzaj>1</Rodzaj>
+        <Wartosci>
+          <opis>Coś Tam</opis>
+          <Wartosc>3</Wartosc>
+        </Wartosci>
+        <Wartosci>
+          <opis>Coś nie Tam</opis>
+          <Wartosc>4</Wartosc>
+        </Wartosci>
+      </Parametr>
+      <Parametr>
+        <IdIhpParametry>8</IdIhpParametry>
+        <Rodzaj>1</Rodzaj>
+        <Wartosci>
+          <opis>Coś Tam</opis>
+          <Wartosc>3</Wartosc>
+        </Wartosci>
+        <Wartosci>
+          <opis>Coś nie Tam</opis>
+          <Wartosc>4</Wartosc>
+        </Wartosci>
+      </Parametr>
+      <Parametr>
+        <IdIhpParametry>11</IdIhpParametry>
+        <Rodzaj>1</Rodzaj>
+        <Wartosci>
+          <opis>Faktura Netto</opis>
+          <Wartosc>1</Wartosc>
+        </Wartosci>
+        <Wartosci>
+          <opis>Faktura Brutto</opis>
+          <Wartosc>2</Wartosc>
+        </Wartosci>
+      </Parametr>
+    </Parametry>
+  </UstawieniaAplikacji>
+  <UstawieniaPortuCom>
+    <WAGA1>
+      <PortName>COM5</PortName>
+      <Speed>9600</Speed>
+      <SterPrzep>None</SterPrzep>
+      <Paritty>None</Paritty>
+      <BitData>8</BitData>
+      <BitStop>One</BitStop>
+      <Miernik>Axis</Miernik>
+    </WAGA1>
+  </UstawieniaPortuCom>
+  <UstawieniaKamer>
+    <Kamera1>
+	  <IdIhpParametry>13</IdIhpParametry>
+      <AdressIP>192.168.0.20</AdressIP>
+	  <Producent>HIKVISION</Producent>
+	  <Model>DS-2CD2632F-I</Model>
+      <URI>/Streaming/channels/1/picture?snapShotImageType=JPEG</URI>
+         <URILive>/Streaming/channels/1/picture?snapShotImageType=JPEG</URILive>
+      <Port>80</Port>
+      <User>9600</User>
+      <Pass>None</Pass>
+      <Device>1</Device>
+    </Kamera1>
+    <Kamera2>
+	  <IdIhpParametry>14</IdIhpParametry>
+      <AdressIP>192.168.0.20</AdressIP>
+	  <Producent>HIKVISION</Producent>
+	  <Model>DS-2CD2632F-I</Model>
+      <URI>/Streaming/channels/2/picture?snapShotImageType=JPEG</URI>
+      <URILive>/Streaming/channels/1/picture?snapShotImageType=JPEG</URILive>
+      <Port>80</Port>
+      <User>9600</User>
+      <Pass>None</Pass>
+      <Device>1</Device>
+    </Kamera2>
+    <Kamera3>
+	  <IdIhpParametry>15</IdIhpParametry>
+      <AdressIP>192.168.0.20</AdressIP>
+	  <Producent>HIKVISION</Producent>
+	  <Model>DS-2CD2632F-I</Model>
+      <URI>/Streaming/channels/3/picture?snapShotImageType=JPEG</URI>
+      <URILive>/Streaming/channels/1/picture?snapShotImageType=JPEG</URILive>
+      <Port>80</Port>
+      <User>9600</User>
+      <Pass>None</Pass>
+      <Device>1</Device>
+    </Kamera3>
+  </UstawieniaKamer>
+</AppSettings>
